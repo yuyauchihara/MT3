@@ -17,6 +17,7 @@ public class Move : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine("Reflection");
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -34,14 +35,22 @@ public class Move : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Q) || Input.GetKey("joystick button 1"))
         {
+            Reflection();
             GetComponent<Renderer>().material.color = blue.color;
             Guard = true;
         }
         else
         {
-            GetComponent<Renderer>().material.color = green.color;
+            //GetComponent<Renderer>().material.color = green.color;
             Guard = false;
         }
+    }
+
+    IEnumerator Reflection()
+    {
+        RefGuard = true;
+        yield return new WaitForSeconds(3);
+        RefGuard = false;
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -63,18 +72,24 @@ public class Move : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if(other.gameObject.tag == "bullet")
+        if (Guard == true)
         {
-            if(Guard == false)
-            {
-                if(Input.GetKey("joystick button 1"))
-                {
-                    Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
-                    Refrb.AddForce(Ref);
-                }
-            }
-            
+            Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+            Refrb.AddForce(Ref);
         }
+
+        //if(other.gameObject.tag == "bullet")
+        //{
+        //    if(Guard == false)
+        //    {
+        //        if(Input.GetKey("joystick button 1"))
+        //        {
+        //            Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+        //            Refrb.AddForce(Ref);
+        //        }
+        //    }
+
+        //}
         //if(Guard == true)
         //{
         //    if(other.gameObject.tag == "bullet")
