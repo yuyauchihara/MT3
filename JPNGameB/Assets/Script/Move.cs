@@ -14,10 +14,10 @@ public class Move : MonoBehaviour
     bool RefGuard = false;
 
     Vector2 Ref = new Vector2(5500, 0);
+    Vector2 Knc = new Vector2(300, 0);
     // Start is called before the first frame update
     void Start()
-    {
-        StartCoroutine("Reflection");
+    {        
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -33,23 +33,26 @@ public class Move : MonoBehaviour
             rb.AddForce(force);
         }
 
-        if (Input.GetKey(KeyCode.Q) || Input.GetKey("joystick button 1"))
+        if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown("joystick button 1"))
         {
-            Reflection();
-            GetComponent<Renderer>().material.color = blue.color;
-            Guard = true;
+            //Reflection();
+            //GetComponent<Renderer>().material.color = blue.color;
+            //Guard = true;
+            StartCoroutine("Reflection");
         }
-        else
-        {
-            //GetComponent<Renderer>().material.color = green.color;
-            Guard = false;
-        }
+        //else
+        //{
+        //    //GetComponent<Renderer>().material.color = green.color;
+        //    Guard = false;
+        //}
     }
 
     IEnumerator Reflection()
     {
+        GetComponent<Renderer>().material.color = blue.color;
         RefGuard = true;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
+        GetComponent<Renderer>().material.color = green.color;
         RefGuard = false;
     }
 
@@ -72,31 +75,22 @@ public class Move : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (Guard == true)
+        if (other.gameObject.tag == "bullet")
         {
-            Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
-            Refrb.AddForce(Ref);
+            if(RefGuard == true)
+            {
+                Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+                Refrb.AddForce(Ref);
+            }
         }
-
-        //if(other.gameObject.tag == "bullet")
-        //{
-        //    if(Guard == false)
-        //    {
-        //        if(Input.GetKey("joystick button 1"))
-        //        {
-        //            Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
-        //            Refrb.AddForce(Ref);
-        //        }
-        //    }
-
-        //}
-        //if(Guard == true)
-        //{
-        //    if(other.gameObject.tag == "bullet")
-        //    {
-        //        Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
-        //        Refrb.AddForce(Ref);
-        //    }
-        //}
+        
+        if(other.gameObject.tag == "Sekkin")
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Rigidbody2D KnockBack = other.gameObject.GetComponent<Rigidbody2D>();
+                KnockBack.AddForce(Knc);
+            }
+        }
     }
 }
