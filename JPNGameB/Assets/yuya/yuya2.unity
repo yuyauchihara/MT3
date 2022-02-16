@@ -3734,5 +3734,10 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[123].second.m_AllTileFlags
       value: 1073741825
       objectReference: {fileID: 0}
+    - target: {fileID: 6663591827720470095, guid: 92c1b0c7c31303b478b3ed9eecaedc6a,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92c1b0c7c31303b478b3ed9eecaedc6a, type: 3}
