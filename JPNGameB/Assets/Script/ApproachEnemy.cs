@@ -16,6 +16,15 @@ public class ApproachEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(moveKnock == true)
+        {
+            Debug.Log("true");
+        }
+        else
+        {
+            Debug.Log("false");
+        }
+
         moveKnock = move.KnockFlag;
         if(moveKnock == false)
         {
@@ -25,9 +34,15 @@ public class ApproachEnemy : MonoBehaviour
         {
             if(moveKnock == true)
             {
-                transform.Translate(0.1f, 0, 0);
-                moveKnock = false;
+                StartCoroutine("KnockBack");
             }
         }
+    }
+
+    IEnumerator KnockBack()
+    {
+        transform.Translate(0.3f, 0, 0);
+        yield return new WaitForSeconds(0.5f);
+        moveKnock = false;
     }
 }
