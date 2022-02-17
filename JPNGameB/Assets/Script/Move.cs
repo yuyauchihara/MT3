@@ -1,18 +1,31 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Move : MonoBehaviour
 {
+    public int i = 0;
 
     Rigidbody2D rb;
     Rigidbody2D Refrb;
     float moveSpeed = 10.5f;
     public Material blue;
     public Material green;
+    public Material purple;
     bool Guard = false;
     bool RefGuard = false;
     public bool KnockFlag = false;
+
+    private bool keyIsBlock = false; //キー入力ブロックフラグ
+    private System.DateTime pressedKeyTime; //前回キー入力された時間
+    private System.TimeSpan elapsedTime; //キー入力されてからの経過時間
+
+
+    private System.TimeSpan blockTime = new TimeSpan(0, 0, 3); //ブロックする時間　
+
+    public GameObject AE;
+    Transform EnemyPositon;
 
     Vector2 Ref = new Vector2(5500, 0);
     Vector2 Knc = new Vector2(300, 0);
@@ -20,12 +33,26 @@ public class Move : MonoBehaviour
     void Start()
     {        
         rb = GetComponent<Rigidbody2D>();
+        EnemyPositon = AE.GetComponent<Transform>();
     }
 
     // Update is called once per frame
     void Update()
     {
         rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, 0);
+
+        if (keyIsBlock)
+        {
+            elapsedTime = DateTime.Now - pressedKeyTime;
+            if (elapsedTime > blockTime)
+            {
+                keyIsBlock = false;
+            }
+            else
+            {
+                return;
+            }
+        }
 
         Vector2 force = new Vector2(0, 9000.0f);
 
@@ -39,8 +66,14 @@ public class Move : MonoBehaviour
             //Reflection();
             //GetComponent<Renderer>().material.color = blue.color;
             //Guard = true;
+
+            keyIsBlock = true;
+            pressedKeyTime = DateTime.Now;
+
             StartCoroutine("Reflection");
         }
+
+
         //else
         //{
         //    //GetComponent<Renderer>().material.color = green.color;
@@ -93,10 +126,24 @@ public class Move : MonoBehaviour
                 //KnockBack.AddForce(Knc);
                 KnockFlag = true;
             }
-            else
-            {
-                KnockFlag = false;
-            }
         }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Sekkin")
+        {
+            i = 1;
+            StartCoroutine("stan");
+            
+        }
+    }
+
+    IEnumerator stan()
+    {
+        EnemyPositon.transform.Translate(0f, 0, 0);
+        yield return new WaitForSeconds(0.4f);
+        KnockFlag = false;
+        i = 0;
     }
 }

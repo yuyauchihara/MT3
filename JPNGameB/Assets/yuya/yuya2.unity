@@ -278,8 +278,13 @@ PrefabInstance:
     - target: {fileID: 2502893377878238598, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
         type: 3}
       propertyPath: m_Radius
-      value: 2.45
+      value: 1.57
       objectReference: {fileID: 0}
+    - target: {fileID: 2502893377878238599, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
+        type: 3}
+      propertyPath: AE
+      value: 
+      objectReference: {fileID: 2082680220}
     - target: {fileID: 2502893377878238616, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
         type: 3}
       propertyPath: m_Name
@@ -294,6 +299,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Constraints
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2502893377878238619, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3364dd32b6eb791479c8b7fd5b8062bf, type: 3}
@@ -377,17 +387,17 @@ PrefabInstance:
     - target: {fileID: 6253042874359732176, guid: dd77c1a4660a1a14d8ff69ae6cf03710,
         type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6253042874359732176, guid: dd77c1a4660a1a14d8ff69ae6cf03710,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.95592266
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6253042874359732176, guid: dd77c1a4660a1a14d8ff69ae6cf03710,
         type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.9495225
       objectReference: {fileID: 0}
     - target: {fileID: 6253042874359732177, guid: dd77c1a4660a1a14d8ff69ae6cf03710,
         type: 3}
@@ -5276,7 +5286,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 47f5ead0136388c48b372ba53c671eb9, type: 3}
-  m_Color: {r: 0.830163, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.96657693, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

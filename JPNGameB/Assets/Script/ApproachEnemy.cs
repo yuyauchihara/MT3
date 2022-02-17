@@ -32,7 +32,7 @@ public class ApproachEnemy : MonoBehaviour
         }
         else
         {
-            if(moveKnock == true)
+            if (moveKnock == true && move.i == 0)
             {
                 StartCoroutine("KnockBack");
             }
@@ -41,8 +41,9 @@ public class ApproachEnemy : MonoBehaviour
 
     IEnumerator KnockBack()
     {
-        transform.Translate(0.3f, 0, 0);
-        yield return new WaitForSeconds(0.5f);
+        transform.Translate(0.03f, 0, 0);
+        yield return new WaitForSeconds(0.01f);
+        
         moveKnock = false;
     }
 }

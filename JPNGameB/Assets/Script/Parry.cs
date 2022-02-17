@@ -18,7 +18,7 @@ public class Parry : MonoBehaviour
     private System.TimeSpan elapsedTime; //キー入力されてからの経過時間
 
 
-    private System.TimeSpan blockTime = new TimeSpan(0, 0, 3); //ブロックする時間　1s
+    private System.TimeSpan blockTime = new TimeSpan(0, 0, 3); //ブロックする時間　
 
     Vector2 Par = new Vector2(-900.0f, 0);
     void Start()
