@@ -87,11 +87,15 @@ public class Move : MonoBehaviour
         
         if(other.gameObject.tag == "Sekkin")
         {
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown("joystick button 3"))
             {
                 //Rigidbody2D KnockBack = other.gameObject.GetComponent<Rigidbody2D>();
                 //KnockBack.AddForce(Knc);
                 KnockFlag = true;
+            }
+            else
+            {
+                KnockFlag = false;
             }
         }
     }
