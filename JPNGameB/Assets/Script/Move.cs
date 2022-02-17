@@ -12,6 +12,7 @@ public class Move : MonoBehaviour
     public Material green;
     bool Guard = false;
     bool RefGuard = false;
+    public bool KnockFlag = false;
 
     Vector2 Ref = new Vector2(5500, 0);
     Vector2 Knc = new Vector2(300, 0);
@@ -88,8 +89,9 @@ public class Move : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                Rigidbody2D KnockBack = other.gameObject.GetComponent<Rigidbody2D>();
-                KnockBack.AddForce(Knc);
+                //Rigidbody2D KnockBack = other.gameObject.GetComponent<Rigidbody2D>();
+                //KnockBack.AddForce(Knc);
+                KnockFlag = true;
             }
         }
     }
