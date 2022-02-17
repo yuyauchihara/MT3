@@ -12,10 +12,11 @@ public class Move : MonoBehaviour
     float moveSpeed = 10.5f;
     public Material blue;
     public Material green;
-    public Material purple;
+    public Material black;
     bool Guard = false;
     bool RefGuard = false;
     public bool KnockFlag = false;
+    bool counterflag = false;
 
     private bool keyIsBlock = false; //キー入力ブロックフラグ
     private System.DateTime pressedKeyTime; //前回キー入力された時間
@@ -73,7 +74,13 @@ public class Move : MonoBehaviour
             StartCoroutine("Reflection");
         }
 
+        if (Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown("joystick button 3"))
+        {
+            keyIsBlock = true;
+            pressedKeyTime = DateTime.Now;
 
+            StartCoroutine("counter"); 
+        }
         //else
         //{
         //    //GetComponent<Renderer>().material.color = green.color;
@@ -120,12 +127,10 @@ public class Move : MonoBehaviour
         
         if(other.gameObject.tag == "Sekkin")
         {
-            if (Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown("joystick button 3"))
+            if (counterflag == true)
             {
-                //Rigidbody2D KnockBack = other.gameObject.GetComponent<Rigidbody2D>();
-                //KnockBack.AddForce(Knc);
                 KnockFlag = true;
-            }
+            } 
         }
     }
 
@@ -139,10 +144,20 @@ public class Move : MonoBehaviour
         }
     }
 
+
+    IEnumerator counter()
+    {
+        GetComponent<Renderer>().material.color = black.color;//プレイヤーの色を白に
+        counterflag = true;
+        yield return new WaitForSeconds(2);//二秒待つ
+        GetComponent<Renderer>().material.color = green.color;//色を緑に
+        counterflag = false;
+    }
+
     IEnumerator stan()
     {
         EnemyPositon.transform.Translate(0f, 0, 0);
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(2f);
         KnockFlag = false;
         i = 0;
     }
