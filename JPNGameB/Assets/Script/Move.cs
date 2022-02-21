@@ -34,6 +34,7 @@ public class Move : MonoBehaviour
     bool HoldShield = false; //RBで盾を構えているか判定するフラグ
 
     // Start is called before the first frame update
+
     void Start()
     {        
         rb = GetComponent<Rigidbody2D>();
