@@ -59,12 +59,12 @@ public class Move : MonoBehaviour
             }
         }
 
-        Vector2 force = new Vector2(0, 9000.0f);
+        //Vector2 force = new Vector2(0, 9000.0f);
 
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 0"))
-        {
-            rb.AddForce(force);
-        }
+        //if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 0"))
+        //{
+        //    rb.AddForce(force);
+        //}
 
         //if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown("joystick button 1"))
         //{
