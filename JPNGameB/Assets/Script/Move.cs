@@ -98,11 +98,6 @@ public class Move : MonoBehaviour
             moveSpeed = 10.5f;
         }
 
-        if(HoldShield == true)
-        {
-
-        }
-
         //else
         //{
         //    //GetComponent<Renderer>().material.color = green.color;
