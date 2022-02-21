@@ -30,6 +30,9 @@ public class Move : MonoBehaviour
 
     Vector2 Ref = new Vector2(5500, 0);
     Vector2 Knc = new Vector2(300, 0);
+
+    bool HoldShield = false; //RBで盾を構えているか判定するフラグ
+
     // Start is called before the first frame update
 
     void Start()
@@ -63,25 +66,44 @@ public class Move : MonoBehaviour
             rb.AddForce(force);
         }
 
-        if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown("joystick button 1"))
+        //if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown("joystick button 1"))
+        //{
+        //    //Reflection();
+        //    //GetComponent<Renderer>().material.color = blue.color;
+        //    //Guard = true;
+
+        //    keyIsBlock = true;
+        //    pressedKeyTime = DateTime.Now;
+
+        //    StartCoroutine("Reflection");
+        //}
+
+        //if (Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown("joystick button 3"))
+        //{
+        //    keyIsBlock = true;
+        //    pressedKeyTime = DateTime.Now;
+
+        //    StartCoroutine("counter"); 
+        //}
+
+        if (Input.GetKey(KeyCode.Q) || Input.GetKey("joystick button 5"))
         {
-            //Reflection();
-            //GetComponent<Renderer>().material.color = blue.color;
-            //Guard = true;
-
-            keyIsBlock = true;
-            pressedKeyTime = DateTime.Now;
-
-            StartCoroutine("Reflection");
+            HoldShield = true;
+            GetComponent<Renderer>().material.color = blue.color;
+            moveSpeed = 5.5f;
+        }
+        else
+        {
+            HoldShield = false;
+            GetComponent<Renderer>().material.color = green.color;
+            moveSpeed = 10.5f;
         }
 
-        if (Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown("joystick button 3"))
+        if(HoldShield == true)
         {
-            keyIsBlock = true;
-            pressedKeyTime = DateTime.Now;
 
-            StartCoroutine("counter"); 
         }
+
         //else
         //{
         //    //GetComponent<Renderer>().material.color = green.color;
