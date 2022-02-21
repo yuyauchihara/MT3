@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Main.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/koudai/title.unity
+    guid: bcdbd3828c266994eb2bbc0de0b9d915
+  - enabled: 1
+    path: Assets/koudai/koudai.unity
+    guid: 59ac477994b49494990ab390275aad14
+  - enabled: 1
+    path: Assets/koudai/clear.unity
+    guid: 37ff5955fe910e94fade9108067bbd63
   m_configObjects: {}

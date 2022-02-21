@@ -6,6 +6,8 @@ TagManager:
   tags:
   - bullet
   - Sekkin
+  - stage
+  - goal
   layers:
   - Default
   - TransparentFX
