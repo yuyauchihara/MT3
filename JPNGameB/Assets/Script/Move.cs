@@ -31,6 +31,7 @@ public class Move : MonoBehaviour
     Vector2 Ref = new Vector2(5500, 0);
     Vector2 Knc = new Vector2(300, 0);
     // Start is called before the first frame update
+
     void Start()
     {        
         rb = GetComponent<Rigidbody2D>();
