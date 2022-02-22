@@ -129,11 +129,11 @@ public class Move : MonoBehaviour
 
         if (Guard == false)
         {
-            if (other.gameObject.tag == "bullet")
-            {
-                //Destroy(gameObject);
-                Destroy(other.gameObject);
-            }
+            //if (other.gameObject.tag == "bullet")
+            //{
+            //    //Destroy(gameObject);
+            //    Destroy(other.gameObject);
+            //}
         }
     }
 

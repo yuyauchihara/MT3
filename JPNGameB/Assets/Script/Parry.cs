@@ -20,7 +20,8 @@ public class Parry : MonoBehaviour
 
     private System.TimeSpan blockTime = new TimeSpan(0, 0, 3); //ブロックする時間　
 
-    Vector2 Par = new Vector2(-900.0f, 0);
+    Vector2 Par = new Vector2(-600.0f, 0);//パりぃーした時の弾の速度
+
     void Start()
     {
 
@@ -29,6 +30,17 @@ public class Parry : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        var h = Input.GetAxis("Horizontal");//横
+        var v = Input.GetAxis("Vertical");//縦
+
+
+        float radian = Mathf.Atan2(v, h) * Mathf.Rad2Deg;
+
+        if (radian < 0)
+        {
+            radian += 360;
+        }
+
         if (keyIsBlock)
         {
             elapsedTime = DateTime.Now - pressedKeyTime;
