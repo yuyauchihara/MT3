@@ -8,12 +8,14 @@ public class Parry : MonoBehaviour
     Collider2D Parco;
     Rigidbody2D Parrb;
 
+    public GameObject Player;
+
     public Material white;
     public Material green;
 
     bool parry = false;
 
-    private bool keyIsBlock = false; //キー入力ブロックフラグ
+    private bool keyIsBlock = false; //キー入力をブロックするフラグ
     private System.DateTime pressedKeyTime; //前回キー入力された時間
     private System.TimeSpan elapsedTime; //キー入力されてからの経過時間
 
@@ -21,6 +23,8 @@ public class Parry : MonoBehaviour
     private System.TimeSpan blockTime = new TimeSpan(0, 0, 3); //ブロックする時間　
 
     Vector2 Par = new Vector2(-600.0f, 0);//パりぃーした時の弾の速度
+
+    private int  i = 0;
 
     void Start()
     {
@@ -30,16 +34,29 @@ public class Parry : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var h = Input.GetAxis("Horizontal");//横
-        var v = Input.GetAxis("Vertical");//縦
 
+        var h = Input.GetAxis("JoyHorizontal");//横
+        var v = Input.GetAxis("JoyVertical");//縦
 
-        float radian = Mathf.Atan2(v, h) * Mathf.Rad2Deg;
-
-        if (radian < 0)
+        if ( v > 0) 
         {
-            radian += 360;
+            i++;
+        }else if(v < 0){
+            i--;
         }
+        else
+        {
+            i = 0;
+        }
+        //Debug.Log(i);
+
+        if (i < 50 && i > -50)
+        {
+            this.transform.position += new Vector3(0, v / 30);
+        }
+        
+
+        //transform.position += vec;
 
         if (keyIsBlock)
         {
