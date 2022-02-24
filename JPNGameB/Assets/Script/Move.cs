@@ -49,7 +49,7 @@ public class Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed,GetComponent<Rigidbody2D>().velocity.y);
+        rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
 
 
         if (keyIsBlock)
@@ -65,12 +65,12 @@ public class Move : MonoBehaviour
             }
         }
 
-        Vector2 force = new Vector2(0, 1f);
+        //Vector2 force = new Vector2(0, 1f);
 
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 0"))
-        {
-            rb.AddForce(force);
-        }
+        //if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 0"))
+        //{
+        //    rb.AddForce(force);
+        //}
 
         //if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown("joystick button 1"))
         //{
@@ -123,11 +123,8 @@ public class Move : MonoBehaviour
             }
         }
 
-        //else
-        //{
-        //    //GetComponent<Renderer>().material.color = green.color;
-        //    Guard = false;
-        //}
+
+
     }
 
     IEnumerator Reflection()
