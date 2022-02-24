@@ -18,11 +18,11 @@ public class ApproachEnemy : MonoBehaviour
     {
         if(moveKnock == true)
         {
-            Debug.Log("true");
+            //Debug.Log("true");
         }
         else
         {
-            Debug.Log("false");
+            //Debug.Log("false");
         }
 
         moveKnock = move.KnockFlag;
