@@ -1,34 +1,47 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ApproachEnemy : MonoBehaviour
 {
     public GameObject player;
+    public GameObject paneru;
+    public GameObject sec;
+    public bool counterFlag = false;
+
+    Text seco;
     Move move;
     bool moveKnock;
+    float moveSpeed = -0.03f;
+
+    int WaitToAttack = 3;
+
     // Start is called before the first frame update
     void Start()
     {
         move = player.GetComponent<Move>();
+        seco = sec.GetComponent<Text>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        seco.text = WaitToAttack.ToString();
+
         if(moveKnock == true)
         {
-            Debug.Log("true");
+            //Debug.Log("true");
         }
         else
         {
-            Debug.Log("false");
+            //Debug.Log("false");
         }
 
         moveKnock = move.KnockFlag;
         if(moveKnock == false)
         {
-            transform.Translate(-0.05f, 0, 0);
+            transform.Translate(moveSpeed, 0, 0);
         }
         else
         {
@@ -37,13 +50,56 @@ public class ApproachEnemy : MonoBehaviour
                 StartCoroutine("KnockBack");
             }
         }
+
+        if(WaitToAttack <= 0)
+        {
+            paneru.SetActive(true);
+        }
+
+        if(WaitToAttack == 1)
+        {
+            counterFlag = true;
+        }
+        else
+        {
+            counterFlag = false;
+        }
+
     }
 
     IEnumerator KnockBack()
     {
-        transform.Translate(0.03f, 0, 0);
-        yield return new WaitForSeconds(0.01f);
+        transform.Translate(3.03f, 0, 0);
+        yield return new WaitForSeconds(0.1f);
         
         moveKnock = false;
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            moveSpeed = 0;
+            StartCoroutine("Attack");
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            moveSpeed = -0.03f;
+            StopCoroutine("Attack");
+            WaitToAttack = 3;
+        }
+    }
+
+    IEnumerator Attack()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            WaitToAttack--;
+        }
     }
 }
