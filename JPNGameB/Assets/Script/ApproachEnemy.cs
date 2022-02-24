@@ -7,6 +7,7 @@ public class ApproachEnemy : MonoBehaviour
 {
     public GameObject player;
     public GameObject paneru;
+    public GameObject knocktim;
     public GameObject sec;
     public bool counterFlag = false;
 
@@ -29,7 +30,7 @@ public class ApproachEnemy : MonoBehaviour
     {
         seco.text = WaitToAttack.ToString();
 
-        if(moveKnock == true)
+        if (moveKnock == true)
         {
             //Debug.Log("true");
         }
@@ -39,7 +40,7 @@ public class ApproachEnemy : MonoBehaviour
         }
 
         moveKnock = move.KnockFlag;
-        if(moveKnock == false)
+        if (moveKnock == false)
         {
             transform.Translate(moveSpeed, 0, 0);
         }
@@ -51,18 +52,20 @@ public class ApproachEnemy : MonoBehaviour
             }
         }
 
-        if(WaitToAttack <= 0)
+        if (WaitToAttack <= 0)
         {
             paneru.SetActive(true);
         }
 
-        if(WaitToAttack == 1)
+        if (WaitToAttack == 1)
         {
             counterFlag = true;
+            knocktim.SetActive(true);
         }
         else
         {
             counterFlag = false;
+            knocktim.SetActive(false);
         }
 
     }
@@ -71,13 +74,12 @@ public class ApproachEnemy : MonoBehaviour
     {
         transform.Translate(3.03f, 0, 0);
         yield return new WaitForSeconds(0.1f);
-        
-        moveKnock = false;
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             moveSpeed = 0;
             StartCoroutine("Attack");

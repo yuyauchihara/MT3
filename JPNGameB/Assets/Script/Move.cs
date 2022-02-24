@@ -40,7 +40,7 @@ public class Move : MonoBehaviour
     // Start is called before the first frame update
 
     void Start()
-    {        
+    {
         rb = GetComponent<Rigidbody2D>();
         EnemyPositon = AE.GetComponent<Transform>();
         CF = AE.GetComponent<ApproachEnemy>();
@@ -49,7 +49,8 @@ public class Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, 0);
+        rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
+
 
         if (keyIsBlock)
         {
@@ -64,7 +65,7 @@ public class Move : MonoBehaviour
             }
         }
 
-        //Vector2 force = new Vector2(0, 9000.0f);
+        //Vector2 force = new Vector2(0, 1f);
 
         //if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 0"))
         //{
@@ -103,29 +104,27 @@ public class Move : MonoBehaviour
             GetComponent<Renderer>().material.color = green.color;
             moveSpeed = 10.5f;
         }
-       
+
 
         if (CF.counterFlag == true)
         {
-            if(HoldShield == true)
+            if (HoldShield == true)
             {
-                KnockBackFlg = true;
+                KnockBackFlg = true; //こいつが引き継がれてるかも
             }
         }
 
-        if(KnockBackFlg == true)
+        if (KnockBackFlg == true)
         {
             if (Input.GetKeyUp(KeyCode.Q) || Input.GetKeyUp("joystick button 5"))
             {
                 KnockFlag = true;
+                KnockBackFlg = false;
             }
         }
 
-        //else
-        //{
-        //    //GetComponent<Renderer>().material.color = green.color;
-        //    Guard = false;
-        //}
+
+
     }
 
     IEnumerator Reflection()
@@ -158,19 +157,19 @@ public class Move : MonoBehaviour
     {
         if (other.gameObject.tag == "bullet")
         {
-            if(RefGuard == true)
+            if (RefGuard == true)
             {
                 Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                 Refrb.AddForce(Ref);
             }
         }
-        
-        if(other.gameObject.tag == "Sekkin")
+
+        if (other.gameObject.tag == "Sekkin")
         {
             if (counterflag == true)
             {
                 KnockFlag = true;
-            } 
+            }
         }
     }
 
@@ -180,7 +179,7 @@ public class Move : MonoBehaviour
         {
             i = 1;
             StartCoroutine("stan");
-            
+
         }
     }
 

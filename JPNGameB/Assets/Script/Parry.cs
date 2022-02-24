@@ -34,7 +34,7 @@ public class Parry : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var h = Input.GetAxis("JoyHorizontal");//横
+        //var h = Input.GetAxis("JoyHorizontal");//横
         var v = Input.GetAxis("JoyVertical");//縦 
 
         Debug.Log(i);
@@ -48,18 +48,19 @@ public class Parry : MonoBehaviour
             i--;
         }
 
-        if (i > 20)
+        if (i > 30)
         {
-            i = 20;
+            i = 30;
         }
-        if (i < -20)
+        if (i < -10)
         {
-            i = -20;
+            i = -10;
         }
 
-        if (i < 20 && i > -20)
+        if (i < 30 && i > -10)
         {
             this.transform.position += new Vector3(0, v / 40);
+            transform.Rotate(new Vector3(0, 0, v));
         }
 
         if (keyIsBlock)
