@@ -17,6 +17,6 @@ public class SceneChange : MonoBehaviour
 
     void ChangeScene()
     {
-        SceneManager.LoadScene("koudai");
+        SceneManager.LoadScene("yuya2");
     }
 }

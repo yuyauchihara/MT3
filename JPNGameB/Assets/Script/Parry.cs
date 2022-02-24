@@ -28,35 +28,40 @@ public class Parry : MonoBehaviour
 
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        //var h = Input.GetAxis("JoyHorizontal");//横
+        var v = Input.GetAxis("JoyVertical");//縦 
 
-        var h = Input.GetAxis("JoyHorizontal");//横
-        var v = Input.GetAxis("JoyVertical");//縦
+        Debug.Log(i);
 
-        if ( v > 0) 
+        if (v > 0)
         {
             i++;
-        }else if(v < 0){
+        }
+        if (v < 0)
+        {
             i--;
         }
-        else
-        {
-            i = 0;
-        }
-        //Debug.Log(i);
 
-        if (i < 50 && i > -50)
+        if (i > 30)
         {
-            this.transform.position += new Vector3(0, v / 30);
+            i = 30;
         }
-        
+        if (i < -10)
+        {
+            i = -10;
+        }
 
-        //transform.position += vec;
+        if (i < 30 && i > -10)
+        {
+            this.transform.position += new Vector3(0, v / 40);
+            transform.Rotate(new Vector3(0, 0, v));
+        }
 
         if (keyIsBlock)
         {
@@ -77,8 +82,6 @@ public class Parry : MonoBehaviour
             pressedKeyTime = DateTime.Now;
 
             StartCoroutine("Parryflag");//パリィフラグのコルーチンへ
-            //GetComponent<Renderer>().material.color = white.color;
-            //parry = true;
         }
         //else
         //{
@@ -96,8 +99,16 @@ public class Parry : MonoBehaviour
         parry = false;//フラグをオフ
     }
 
+
+
     void OnTriggerStay2D(Collider2D other)
     {
+        
+        //if (other.gameObject.tag == "shieldarea")
+        //{
+        //    this.transform.position += new Vector3(0, v / 40);
+        //}
+
         if (parry == true)
         {
             Rigidbody2D Parrb = other.gameObject.GetComponent<Rigidbody2D>();

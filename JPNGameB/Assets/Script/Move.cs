@@ -49,7 +49,7 @@ public class Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed,GetComponent<Rigidbody2D>().velocity.y);
+        rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
 
 
         if (keyIsBlock)

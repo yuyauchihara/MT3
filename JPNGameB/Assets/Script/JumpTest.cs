@@ -23,7 +23,7 @@ public class JumpTest : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && this.jumpCount < 1)
+        if (Input.GetKeyDown("joystick button 0") && this.jumpCount < 1 || Input.GetKeyDown(KeyCode.Space) && this.jumpCount < 1)
         {
             keyIsBlock = true;
             pressedKeyTime = DateTime.Now;
