@@ -8,6 +8,9 @@ TagManager:
   - Sekkin
   - stage
   - goal
+  - gaol
+  - shield area
+  - shieldarea
   layers:
   - Default
   - TransparentFX
