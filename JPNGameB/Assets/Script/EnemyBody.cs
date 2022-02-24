@@ -18,9 +18,9 @@ public class EnemyBody : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        //if(other.gameObject.tag == "bullet")
-        //{
-        //    Destroy(gameObject);
-        //}
+        if (other.gameObject.tag == "bullet")
+        {
+            Destroy(gameObject);
+        }
     }
 }

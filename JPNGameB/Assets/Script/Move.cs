@@ -157,7 +157,7 @@ public class Move : MonoBehaviour
     {
         if (other.gameObject.tag == "bullet")
         {
-            if (RefGuard == true)
+            if (HoldShield == true)
             {
                 Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                 Refrb.AddForce(Ref);
