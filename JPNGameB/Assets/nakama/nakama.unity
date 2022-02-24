@@ -127,12 +127,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1739415579}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &10191768 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2502893377878238596, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
-    type: 3}
-  m_PrefabInstance: {fileID: 1739415579}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &47627211
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,6 +365,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 10191762}
+  paneru: {fileID: 0}
+  knocktim: {fileID: 0}
+  sec: {fileID: 0}
+  counterFlag: 0
 --- !u!50 &1211722320
 Rigidbody2D:
   serializedVersion: 4
@@ -514,7 +512,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97733f4c53fcf0449bd2af6655a1aee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTrans: {fileID: 10191768}
   bulletSpeed: 30
   limitSpeed: 50
 --- !u!50 &1318754396
@@ -786,7 +783,7 @@ GameObject:
   - component: {fileID: 1963268469}
   - component: {fileID: 1963268468}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: SkyEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
