@@ -7,6 +7,7 @@ public class ApproachEnemy : MonoBehaviour
 {
     public GameObject player;
     public GameObject paneru;
+    public GameObject knocktim;
     public GameObject sec;
     public bool counterFlag = false;
 
@@ -59,10 +60,12 @@ public class ApproachEnemy : MonoBehaviour
         if(WaitToAttack == 1)
         {
             counterFlag = true;
+            knocktim.SetActive(true);
         }
         else
         {
             counterFlag = false;
+            knocktim.SetActive(false);
         }
 
     }
@@ -72,7 +75,6 @@ public class ApproachEnemy : MonoBehaviour
         transform.Translate(3.03f, 0, 0);
         yield return new WaitForSeconds(0.1f);
         
-        moveKnock = false;
     }
 
     void OnTriggerEnter2D(Collider2D other)
