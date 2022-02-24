@@ -13,10 +13,14 @@ public class Move : MonoBehaviour
     public Material blue;
     public Material green;
     public Material black;
+
+    ApproachEnemy CF;
+
     bool Guard = false;
     bool RefGuard = false;
     public bool KnockFlag = false;
     bool counterflag = false;
+    bool KnockBackFlg = false;
 
     private bool keyIsBlock = false; //キー入力ブロックフラグ
     private System.DateTime pressedKeyTime; //前回キー入力された時間
@@ -39,6 +43,7 @@ public class Move : MonoBehaviour
     {        
         rb = GetComponent<Rigidbody2D>();
         EnemyPositon = AE.GetComponent<Transform>();
+        CF = AE.GetComponent<ApproachEnemy>();
     }
 
     // Update is called once per frame
@@ -83,7 +88,7 @@ public class Move : MonoBehaviour
         //    keyIsBlock = true;
         //    pressedKeyTime = DateTime.Now;
 
-        //    StartCoroutine("counter"); 
+        //    StartCoroutine("counter");
         //}
 
         if (Input.GetKey(KeyCode.Q) || Input.GetKey("joystick button 5"))
@@ -97,6 +102,23 @@ public class Move : MonoBehaviour
             HoldShield = false;
             GetComponent<Renderer>().material.color = green.color;
             moveSpeed = 10.5f;
+        }
+       
+
+        if (CF.counterFlag == true)
+        {
+            if(HoldShield == true)
+            {
+                KnockBackFlg = true;
+            }
+        }
+
+        if(KnockBackFlg == true)
+        {
+            if (Input.GetKeyUp(KeyCode.Q) || Input.GetKeyUp("joystick button 5"))
+            {
+                KnockFlag = true;
+            }
         }
 
         //else
