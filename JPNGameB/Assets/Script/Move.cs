@@ -65,12 +65,12 @@ public class Move : MonoBehaviour
             }
         }
 
-        Vector2 force = new Vector2(0, 1f);
+        //Vector2 force = new Vector2(0, 1f);
 
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 0"))
-        {
-            rb.AddForce(force);
-        }
+        //if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 0"))
+        //{
+        //    rb.AddForce(force);
+        //}
 
         //if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown("joystick button 1"))
         //{
@@ -123,11 +123,8 @@ public class Move : MonoBehaviour
             }
         }
 
-        //else
-        //{
-        //    //GetComponent<Renderer>().material.color = green.color;
-        //    Guard = false;
-        //}
+
+
     }
 
     IEnumerator Reflection()
