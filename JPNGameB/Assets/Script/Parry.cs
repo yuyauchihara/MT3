@@ -9,6 +9,7 @@ public class Parry : MonoBehaviour
     Rigidbody2D Parrb;
 
     public GameObject Player;
+    
 
     public Material white;
     public Material green;
@@ -118,6 +119,7 @@ public class Parry : MonoBehaviour
         {
             if (HoldShield == true)
             {
+                
                 Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                 Refrb.AddForce(Ref);
             }
