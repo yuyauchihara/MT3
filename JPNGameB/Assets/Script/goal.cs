@@ -22,7 +22,7 @@ public class goal : MonoBehaviour
         if(collision.gameObject.tag == "goal")
         {
             //Debug.Log("kuria");
-            Invoke("ChangeScene", 1.0f);
+            Invoke("ChangeScene", 0.0f);
         }
     }
     void ChangeScene()
