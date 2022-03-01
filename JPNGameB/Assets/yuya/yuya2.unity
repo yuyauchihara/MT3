@@ -717,6 +717,11 @@ PrefabInstance:
       propertyPath: black
       value: 
       objectReference: {fileID: 2100000, guid: e1fb0e4bcbd6181479355aa8012375a7, type: 2}
+    - target: {fileID: 2502893377878238599, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
+        type: 3}
+      propertyPath: shield
+      value: 
+      objectReference: {fileID: 1538498701}
     - target: {fileID: 2502893377878238616, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
         type: 3}
       propertyPath: m_Name
@@ -1632,6 +1637,7 @@ MonoBehaviour:
   blue: {fileID: 0}
   green: {fileID: 0}
   black: {fileID: 0}
+  shield: {fileID: 0}
   KnockFlag: 0
   AE: {fileID: 0}
 --- !u!1001 &1609706970
