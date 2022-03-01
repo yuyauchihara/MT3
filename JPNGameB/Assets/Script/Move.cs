@@ -24,6 +24,8 @@ public class Move : MonoBehaviour
     bool counterflag = false;
     bool KnockBackFlg = false;
 
+    float H, V;
+
     private bool keyIsBlock = false; //キー入力ブロックフラグ
     private System.DateTime pressedKeyTime; //前回キー入力された時間
     private System.TimeSpan elapsedTime; //キー入力されてからの経過時間
@@ -34,7 +36,8 @@ public class Move : MonoBehaviour
     public GameObject AE;
     Transform EnemyPositon;
 
-    Vector2 Ref = new Vector2(5500, 0);
+    Vector2 Ref; //反射のやつ
+
     Vector2 Knc = new Vector2(300, 0);
 
     bool HoldShield = false; //RBで盾を構えているか判定するフラグ
@@ -55,6 +58,11 @@ public class Move : MonoBehaviour
     {
         rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
 
+        V = Input.GetAxis("JoyVertical");//右スティックの縦 
+        H = Input.GetAxis("JoyHorizontal");//左スティックの横
+
+        Ref = new Vector2(H * 100,V * 100);
+        //Ref = new Vector2(500, 0);
 
         if (keyIsBlock)
         {
