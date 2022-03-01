@@ -38,9 +38,17 @@ public class Parry : MonoBehaviour
     void Update()
     {
         //var h = Input.GetAxis("JoyHorizontal");//横
-        var v = Input.GetAxis("JoyVertical");//縦 
-
-        Debug.Log(i);
+        var v = Input.GetAxis("JoyVertical");//右スティックの縦 
+        var h = Input.GetAxis("Horizontal");//左スティックの横
+        Debug.Log(h);
+        if (h < 0)
+        {
+            Player.transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+        else if (0 < h)
+        {
+            Player.transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
 
         if (v > 0)
         {
