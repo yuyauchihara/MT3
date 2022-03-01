@@ -4,95 +4,119 @@ using UnityEngine;
 public class Jump : MonoBehaviour
 {
     //インスペクターで設定する
-    public float speed;         //キャラの移動速度
+    public float gravity;       //重力
     public float jumpSpeed;     //ジャンプする速度
-    public int Fall;            //落ちる速さ
-    public int seigenJikan;     //ジャンプの時間を制限かける
-    public GroundCheck ground; //接地判定
+    public float jumpHeight;    //高さ制限
+    public float Down = 0.5f;   //落下の加速度調整
+    public GroundCheck ground;  //接地判定
+    public GroundCheck wallR;   //右壁に張り付いているか判定
+    public GroundCheck wallL;   //左壁に張り付いているか判定
 
     //プライベート変数
+    //private Animator anim = null;
     private Rigidbody2D rb = null;
-    private bool isGround = false;  //地面の判定を取得
-    private bool isJump = false;    //ジャンプしているかの判定を取得
-    private int seigen = 0;         //ジャンプの制限
-    private float gravity = -9.81f; //重力
-    private float totalUPTime = 1f; //ジャンプ加速
+    private bool isGround = false;
+    private bool isJump = false;
+    private bool isWallR = false;
+    private bool isWallL = false;
+    private float jumpPos = 0.0f;
+    private float ySpeed = 0;
+    private float moveSpeed = 10.5f;     //速度
 
-    private float xSpeed = 0f;  //横移動の変数
-    private float ySpeed = 0f;  //盾移動の変数
-
+    //private float moveSpeed = 10.5f;
 
     void Start()
     {
         //コンポーネントのインスタンスを捕まえる
+        //anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        ySpeed = -gravity;
     }
 
     void FixedUpdate()
     {
+        var Horizontal = Input.GetAxis("Horizontal");
         //接地判定を得る
         isGround = ground.IsGround();
+        isWallR = wallR.IsGround();
+        isWallL = wallL.IsGround();
+        //isHead = head.IsGround();
 
-        Vector2 force = new Vector2(0, 9000.0f);
-
-        //キー入力されたら行動する
-        float horizontalKey = Input.GetAxis("Horizontal");
-
-        if (isGround == true)
+        //地面についているかtrueならついている
+        if (isGround)
         {
-            if (isGround == true)
+            ySpeed = -gravity;
+            if (Input.GetKey(KeyCode.Space))
             {
+                ySpeed = jumpSpeed;
+                jumpPos = transform.position.y; //ジャンプした位置を記録する
                 isJump = true;
-                seigen = 0;
-                totalUPTime = 1f;
-                ySpeed = gravity;
             }
             else
             {
                 isJump = false;
             }
         }
-        if (isJump)
+        else if (isJump)    //ジャンプボタンを押している間true、制限高さを超えるとfalse
         {
-            if (Input.GetKey/*Down*/(KeyCode.Space) && seigen <= seigenJikan)
+            //ジャンプを押されている。かつ、現在の高さがジャンプした位置から自分の決めた位置より下ならジャンプを継続する
+            if (Input.GetKey(KeyCode.Space) && jumpPos + jumpHeight > transform.position.y)
             {
-                //for (seigen = 0; seigen <= seigenJikan; seigen++)
-                //{
-
-                totalUPTime += Time.deltaTime;
-                ySpeed = Mathf.Clamp((jumpSpeed * Time.deltaTime) * totalUPTime, 0, 20);
-                seigen++;
-                //}
-
-                //ySpeed = jumpSpeed;
-
-                //this.rb.AddForce(force);
-
-                //StartCoroutine(LogCoroutine());
+                ySpeed = jumpSpeed;
             }
             else
             {
-                isJump = false; 
+                isJump = false;
             }
         }
-        else
+        else if(!isJump && !isGround)   //空中にいる、かつジャンプの上昇中じゃなかったら落下する処理
         {
-            ySpeed = -Fall;
+            if (ySpeed > 1)
+            {
+                ySpeed -= ySpeed * (6 * Time.deltaTime);
+            }
+            else
+            {
+                ySpeed += -gravity * Time.deltaTime - Down;
+            }
+
         }
-        if (horizontalKey > 0)
+
+        //右壁にくっついた状態かの判定
+        if (isWallR)
         {
-            xSpeed = speed;
+            if(Horizontal > 0)
+            {
+                moveSpeed = 0;
+            }
+            else
+            {
+                moveSpeed = 10.5f;
+            }
         }
-        else if (horizontalKey < 0)
+        else if(!isWallR && !isWallL)
         {
-            xSpeed = -speed;
+            moveSpeed = 10.5f;
         }
-        else
+
+        //左壁にくっついた状態かの判定
+        if (isWallL)
         {
-            xSpeed = 0.0f;
+            if (Horizontal < 0)
+            {
+                moveSpeed = 0;
+            }
+            else
+            {
+                moveSpeed = 10.5f;
+            }
         }
-                
-        rb.velocity = new Vector2(xSpeed, ySpeed);
-        Debug.Log(seigen);       
+        else if(!isWallR && !isWallL)
+        {
+            moveSpeed = 10.5f;
+        }
+
+        rb.velocity = new Vector2(Horizontal * moveSpeed, ySpeed);
+        Debug.Log(isWallR);
     }
 }
