@@ -1304,6 +1304,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 250
+--- !u!114 &1291211640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291211636}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 416a17a6133619f4f83867efdd65ded4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravity: 0
+  jumpSpeed: 0
+  jumpHeight: 0
+  Down: 0.5
+  ground: {fileID: 0}
+  wallR: {fileID: 0}
+  wallL: {fileID: 0}
 --- !u!1 &1348162436
 GameObject:
   m_ObjectHideFlags: 0

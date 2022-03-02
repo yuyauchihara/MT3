@@ -61,7 +61,7 @@ public class Move : MonoBehaviour
         V = Input.GetAxis("JoyVertical");//右スティックの縦 
         H = Input.GetAxis("JoyHorizontal");//左スティックの横
 
-        Ref = new Vector2(H * 100,V * 100);
+        Ref = new Vector2(H * 100,V * 100); //ここが毎フレーム更新されるため謎の誘導を受けている
         //Ref = new Vector2(500, 0);
 
         if (keyIsBlock)
