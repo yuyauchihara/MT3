@@ -14,6 +14,8 @@ public class Move : MonoBehaviour
     public Material green;
     public Material black;
 
+    public GameObject shield;
+
     ApproachEnemy CF;
 
     bool Guard = false;
@@ -44,6 +46,8 @@ public class Move : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         EnemyPositon = AE.GetComponent<Transform>();
         CF = AE.GetComponent<ApproachEnemy>();
+
+        shield.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -96,11 +100,13 @@ public class Move : MonoBehaviour
         {
             HoldShield = true;
             GetComponent<Renderer>().material.color = blue.color;
+            shield.gameObject.SetActive(true);
             moveSpeed = 5.5f;
         }
         else
         {
             HoldShield = false;
+            shield.gameObject.SetActive(false);
             GetComponent<Renderer>().material.color = green.color;
             moveSpeed = 10.5f;
         }
