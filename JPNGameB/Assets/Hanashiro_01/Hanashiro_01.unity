@@ -208,6 +208,11 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 1.57
       objectReference: {fileID: 0}
+    - target: {fileID: 2502893377878238598, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2502893377878238599, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
         type: 3}
       propertyPath: AE
@@ -1374,6 +1379,7 @@ GameObject:
   - component: {fileID: 1220923953}
   - component: {fileID: 1220923952}
   - component: {fileID: 1220923955}
+  - component: {fileID: 1220923956}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Untagged
@@ -1505,6 +1511,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1220923956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220923950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a8c3cd2f261014449cddf07b86fb584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Ply: {fileID: 0}
 --- !u!1001 &1249306067
 PrefabInstance:
   m_ObjectHideFlags: 0
