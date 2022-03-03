@@ -72,8 +72,8 @@ public class Move : MonoBehaviour
 
         rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
 
-        V = Input.GetAxis("JoyVertical");//右スティックの縦 
-        H = Input.GetAxis("JoyHorizontal") * -1;//左スティックの横
+        //V = Input.GetAxis("JoyVertical");//右スティックの縦 リフレクション
+        //H = Input.GetAxis("JoyHorizontal") * -1;//左スティックの横　リフレクション
 
         //Ref = new Vector2(H * 100,V * 100); //ここが毎フレーム更新されるため謎の誘導を受けている
 
@@ -180,14 +180,14 @@ public class Move : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "bullet")
-        {
-            if (HoldShield == true)
-            {
-                Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
-                Refrb.velocity = new Vector2(H * RefSpeed,V * RefSpeed);
-            }
-        }
+        //if (other.gameObject.tag == "bullet") //リフレクション
+        //{
+        //    if (HoldShield == true)
+        //    {
+        //        Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+        //        Refrb.velocity = new Vector2(H * RefSpeed,V * RefSpeed);
+        //    }
+        //}
 
         if (other.gameObject.tag == "Sekkin")
         {
