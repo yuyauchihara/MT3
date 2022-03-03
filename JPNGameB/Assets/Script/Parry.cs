@@ -71,13 +71,13 @@ public class Parry : MonoBehaviour
             i = 0;
         }
 
-        if (Pdirection == true && 0 < i && i < 40 && h2 < 0)
+        if (Pdirection == true && 0 < i && i < 50 && h2 < 0)
         {
             //this.transform.position += new Vector3(0, v / 40);
             transform.Rotate(new Vector3(0, 0, v));
         }
 
-        if (Pdirection == false && 0 < i && i < 40 && h2 > 0)
+        if (Pdirection == false && 0 < i && i < 50 && h2 > 0)
         {
             //this.transform.position += new Vector3(0, v / 40);
             transform.Rotate(new Vector3(0, 0, v * -1));
