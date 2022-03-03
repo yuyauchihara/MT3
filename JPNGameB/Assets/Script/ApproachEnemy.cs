@@ -54,7 +54,7 @@ public class ApproachEnemy : MonoBehaviour
 
         if (WaitToAttack <= 0)
         {
-            paneru.SetActive(true);
+            //paneru.SetActive(true);
         }
 
         if (WaitToAttack == 1)

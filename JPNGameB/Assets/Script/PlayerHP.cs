@@ -2,33 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBody : MonoBehaviour
+public class PlayerHP : MonoBehaviour
 {
+    public GameObject Ply;
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
-    //void OnCollisionEnter2D(Collision2D other)
-    //{
-    //    if (other.gameObject.tag == "bullet")
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //}
-
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "bullet")
         {
-            Destroy(gameObject);
+            Destroy(other.gameObject);
         }
     }
 }

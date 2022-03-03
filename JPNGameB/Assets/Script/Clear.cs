@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class goal : MonoBehaviour
+public class Clear : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -21,8 +21,7 @@ public class goal : MonoBehaviour
     {
         if(collision.gameObject.tag == "goal")
         {
-            //Debug.Log("kuria");
-            Invoke("ChangeScene", 1.0f);
+            Invoke("ChangeScene", 0.0f);
         }
     }
     void ChangeScene()
