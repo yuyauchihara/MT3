@@ -10,6 +10,7 @@ public class Move : MonoBehaviour
 
     Rigidbody2D rb;
     Rigidbody2D Refrb;
+    BoxCollider2D m_ObjectCollider;
     float moveSpeed = 10.5f;
     public Material blue;
     public Material green;
@@ -56,6 +57,8 @@ public class Move : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         EnemyPositon = AE.GetComponent<Transform>();
         CF = AE.GetComponent<ApproachEnemy>();
+
+        m_ObjectCollider = GetComponent<BoxCollider2D>();
 
         shield.gameObject.SetActive(false);
 

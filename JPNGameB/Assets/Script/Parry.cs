@@ -29,7 +29,7 @@ public class Parry : MonoBehaviour
     private int  i = 0;
 
     bool HoldShield = false;
-    bool Pdirection = true; //プレイヤーの向き、trueなら左、falseなら右
+    bool Pdirection = true; //プレイヤーの向き、trueなら右、falseなら左
     void Start()
     {
         
@@ -41,7 +41,8 @@ public class Parry : MonoBehaviour
         //var h = Input.GetAxis("JoyHorizontal");//横
         var v = Input.GetAxis("JoyVertical");//右スティックの縦 
         var h = Input.GetAxis("Horizontal");//左スティックの横
-
+        var h2 = Input.GetAxis("JoyHorizontal");//右スティックの横
+        Debug.Log(h2);
         if (h < 0)
         {
             Player.transform.rotation = Quaternion.Euler(0, 180, 0);
@@ -66,14 +67,14 @@ public class Parry : MonoBehaviour
         {
             i = 0;
         }
-
-        if (Pdirection == true && 0 < i && i < 40)
+        
+        if (Pdirection == true && 0 < i && i < 40 && h2 < 0)
         {
             //this.transform.position += new Vector3(0, v / 40);
             transform.Rotate(new Vector3(0, 0, v));
         }
 
-        if (Pdirection == false && 0 < i && i < 40)
+        if (Pdirection == false && 0 < i && i < 40 && h2 > 0)
         {
             //this.transform.position += new Vector3(0, v / 40);
             transform.Rotate(new Vector3(0, 0, v * -1));
@@ -92,14 +93,14 @@ public class Parry : MonoBehaviour
         //    }
         //}
 
-        if (Input.GetKeyUp("joystick button 5")) 
-        {
-            //keyIsBlock = true;
-            pressedKeyTime = DateTime.Now;
+        //if (Input.GetKeyUp("joystick button 5")) 
+        //{
+        //    //keyIsBlock = true;
+        //    pressedKeyTime = DateTime.Now;
 
-            //StartCoroutine("Parryflag");//パリィフラグのコルーチンへ
-        }
-        //else
+        //    //StartCoroutine("Parryflag");//パリィフラグのコルーチンへ
+        //}
+        ////else
         //{
         //    //GetComponent<Renderer>().material.color = green.color;
         //    parry = false;
@@ -119,12 +120,11 @@ public class Parry : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        var h2 = Input.GetAxis("JoyHorizontal");//右スティックの横
-        if (h2 < 0 && other.gameObject.tag == "bullet")
+
+        if (other.gameObject.tag == "bullet")
         {
             if (HoldShield == true)
             {
-                
                 Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                 Refrb.AddForce(Ref);
             }
