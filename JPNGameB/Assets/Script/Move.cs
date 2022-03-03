@@ -183,7 +183,7 @@ public class Move : MonoBehaviour
 
         if (other.gameObject.tag == "bullet")
         {
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
         }
 
         if (other.gameObject.tag == "Sekkin")
