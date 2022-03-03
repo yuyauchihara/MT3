@@ -46,7 +46,7 @@ public class Jump : MonoBehaviour
         if (isGround)
         {
             ySpeed = -gravity;
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKey("joystick button 0"))
             {
                 ySpeed = jumpSpeed;
                 jumpPos = transform.position.y; //ジャンプした位置を記録する
@@ -60,7 +60,7 @@ public class Jump : MonoBehaviour
         else if (isJump)    //ジャンプボタンを押している間true、制限高さを超えるとfalse
         {
             //ジャンプを押されている。かつ、現在の高さがジャンプした位置から自分の決めた位置より下ならジャンプを継続する
-            if (Input.GetKey(KeyCode.Space) && jumpPos + jumpHeight > transform.position.y)
+            if (Input.GetKey("joystick button 0") && jumpPos + jumpHeight > transform.position.y)
             {
                 ySpeed = jumpSpeed;
             }
@@ -117,6 +117,6 @@ public class Jump : MonoBehaviour
         }
 
         rb.velocity = new Vector2(Horizontal * moveSpeed, ySpeed);
-        Debug.Log(isWallR);
+        Debug.Log(isJump);
     }
 }
