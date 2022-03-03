@@ -158,11 +158,14 @@ public class Move : MonoBehaviour
         RefGuard = false;
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "bullet")
+        if(HoldShield == false)
         {
-            //Destroy(other.gameObject);
+            if (other.gameObject.tag == "bullet")
+            {
+                //Destroy(other.gameObject);
+            }
         }
 
         if (Guard == false)
