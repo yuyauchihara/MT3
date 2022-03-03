@@ -161,23 +161,6 @@ public class Move : MonoBehaviour
         RefGuard = false;
     }
 
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "bullet")
-        {
-            //Destroy(other.gameObject);
-        }
-
-        if (Guard == false)
-        {
-            //if (other.gameObject.tag == "bullet")
-            //{
-            //    //Destroy(gameObject);
-            //    Destroy(other.gameObject);
-            //}
-        }
-    }
-
     void OnTriggerStay2D(Collider2D other)
     {
         //if (other.gameObject.tag == "bullet") //リフレクション
@@ -188,6 +171,20 @@ public class Move : MonoBehaviour
         //        Refrb.velocity = new Vector2(H * RefSpeed,V * RefSpeed);
         //    }
         //}
+        if (Guard == false)
+        {
+            //if (other.gameObject.tag == "bullet")
+            //{
+            //    //Destroy(gameObject);
+            //    Destroy(other.gameObject);
+            //}
+        }
+
+
+        if (other.gameObject.tag == "bullet")
+        {
+            Destroy(other.gameObject);
+        }
 
         if (other.gameObject.tag == "Sekkin")
         {

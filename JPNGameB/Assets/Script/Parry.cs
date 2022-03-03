@@ -44,6 +44,7 @@ public class Parry : MonoBehaviour
         //var h = Input.GetAxis("JoyHorizontal");//横
         var v = Input.GetAxis("JoyVertical");//右スティックの縦 
         var h = Input.GetAxis("Horizontal");//左スティックの横
+        var h2 = Input.GetAxis("JoyHorizontal");//右スティックの横
 
         if (h < 0)
         {
@@ -70,13 +71,13 @@ public class Parry : MonoBehaviour
             i = 0;
         }
 
-        if (Pdirection == true && 0 < i && i < 40)
+        if (Pdirection == true && 0 < i && i < 40 && h2 < 0)
         {
             //this.transform.position += new Vector3(0, v / 40);
             transform.Rotate(new Vector3(0, 0, v));
         }
 
-        if (Pdirection == false && 0 < i && i < 40)
+        if (Pdirection == false && 0 < i && i < 40 && h2 > 0)
         {
             //this.transform.position += new Vector3(0, v / 40);
             transform.Rotate(new Vector3(0, 0, v * -1));
@@ -160,6 +161,7 @@ public class Parry : MonoBehaviour
                 Refrb.velocity = new Vector2(H * RefSpeed, V * RefSpeed);
             }
         }
+
 
         //if (other.gameObject.tag == "shieldarea")
         //{
