@@ -747,7 +747,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.97318614, y: 1}
+    m_SensorSize: {x: 1.1459854, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -15084,7 +15084,7 @@ PrefabInstance:
         type: 3}
       propertyPath: AE
       value: 
-      objectReference: {fileID: 931231785}
+      objectReference: {fileID: 0}
     - target: {fileID: 2502893377878238599, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
         type: 3}
       propertyPath: purple
@@ -16275,7 +16275,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 956360303}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.004266739, y: 0.83001363, z: -10}
+  m_LocalPosition: {x: -0.004278183, y: 0.83197534, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1037032410}
@@ -17348,7 +17348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ab24540ff2a5be499103f27814c6100, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPre: {fileID: 2374227993310454594, guid: 17b0f0c55e0321d42b2dd5dccb2e4aaa,
+  bulletPre: {fileID: 5090128467653935869, guid: d3a3fdd1ee10c0e42a25d211321618f6,
     type: 3}
 --- !u!1001 &1628948378
 PrefabInstance:
