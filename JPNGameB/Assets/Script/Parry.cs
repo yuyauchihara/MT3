@@ -8,8 +8,11 @@ public class Parry : MonoBehaviour
     Collider2D Parco;
     Rigidbody2D Parrb;
 
+    float RefSpeed = 10f;
+
     public GameObject Player;
-    
+
+    float H, V; //リフレクション
 
     public Material white;
     public Material green;
@@ -29,7 +32,7 @@ public class Parry : MonoBehaviour
     private int  i = 0;
 
     bool HoldShield = false;
-
+    bool Pdirection = true; //プレイヤーの向き、trueなら左、falseなら右
     void Start()
     {
         
@@ -41,38 +44,42 @@ public class Parry : MonoBehaviour
         //var h = Input.GetAxis("JoyHorizontal");//横
         var v = Input.GetAxis("JoyVertical");//右スティックの縦 
         var h = Input.GetAxis("Horizontal");//左スティックの横
-        Debug.Log(h);
+
         if (h < 0)
         {
             Player.transform.rotation = Quaternion.Euler(0, 180, 0);
+            Pdirection = false;
         }
         else if (0 < h)
         {
             Player.transform.rotation = Quaternion.Euler(0, 0, 0);
+            Pdirection = true;
+        }
+
+        if (v == 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
         if (v > 0)
         {
             i++;
         }
-        if (v < 0)
+        else
         {
-            i--;
+            i = 0;
         }
 
-        if (i > 30)
+        if (Pdirection == true && 0 < i && i < 40)
         {
-            i = 30;
-        }
-        if (i < -10)
-        {
-            i = -10;
-        }
-
-        if (i < 30 && i > -10)
-        {
-            this.transform.position += new Vector3(0, v / 40);
+            //this.transform.position += new Vector3(0, v / 40);
             transform.Rotate(new Vector3(0, 0, v));
+        }
+
+        if (Pdirection == false && 0 < i && i < 40)
+        {
+            //this.transform.position += new Vector3(0, v / 40);
+            transform.Rotate(new Vector3(0, 0, v * -1));
         }
 
         //if (keyIsBlock)
@@ -100,6 +107,25 @@ public class Parry : MonoBehaviour
         //    //GetComponent<Renderer>().material.color = green.color;
         //    parry = false;
         //}
+
+        //ホールドシールドの判定
+
+        if (Input.GetKey(KeyCode.Q) || Input.GetKey("joystick button 5"))
+        {
+            HoldShield = true;
+        }
+        else
+        {
+            HoldShield = false;
+        }
+
+        //ホールドシールドの判定終わり
+
+        //リフレクション角度の取得
+        V = Input.GetAxis("JoyVertical");//右スティックの縦 リフレクション
+        H = Input.GetAxis("JoyHorizontal") * -1;//左スティックの横　リフレクション
+        //リフレクション角度の取得終わり
+
     }
 
     //IEnumerator Parryflag()//パリィコルーチン
@@ -115,16 +141,25 @@ public class Parry : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "bullet")
+        //var h2 = Input.GetAxis("JoyHorizontal");//右スティックの横
+        //if (h2 < 0 && other.gameObject.tag == "bullet")
+        //{
+        //    if (HoldShield == true)
+        //    {
+                
+        //        Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+        //        Refrb.AddForce(Ref);
+        //    }
+        //}
+
+        if (other.gameObject.tag == "bullet") //リフレクション
         {
             if (HoldShield == true)
             {
-                
                 Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
-                Refrb.AddForce(Ref);
+                Refrb.velocity = new Vector2(H * RefSpeed, V * RefSpeed);
             }
         }
-
 
         //if (other.gameObject.tag == "shieldarea")
         //{

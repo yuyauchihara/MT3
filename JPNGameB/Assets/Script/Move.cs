@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Move : MonoBehaviour
 {
@@ -14,6 +15,12 @@ public class Move : MonoBehaviour
     public Material green;
     public Material black;
 
+    //public GameObject Zahyo;
+    //Text Zahyohyo;
+    
+
+    float RefSpeed = 10f; //リフレの速度
+
     public GameObject shield;
 
     ApproachEnemy CF;
@@ -23,6 +30,8 @@ public class Move : MonoBehaviour
     public bool KnockFlag = false;
     bool counterflag = false;
     bool KnockBackFlg = false;
+
+    float H, V;
 
     private bool keyIsBlock = false; //キー入力ブロックフラグ
     private System.DateTime pressedKeyTime; //前回キー入力された時間
@@ -34,7 +43,8 @@ public class Move : MonoBehaviour
     public GameObject AE;
     Transform EnemyPositon;
 
-    Vector2 Ref = new Vector2(5500, 0);
+    Vector2 Ref; //反射のやつ
+
     Vector2 Knc = new Vector2(300, 0);
 
     bool HoldShield = false; //RBで盾を構えているか判定するフラグ
@@ -48,13 +58,21 @@ public class Move : MonoBehaviour
         CF = AE.GetComponent<ApproachEnemy>();
 
         shield.gameObject.SetActive(false);
+
+        //Zahyohyo = Zahyo.GetComponent<Text>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Zahyohyo.text = H + "," + V.ToString();
+
         rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
 
+        //V = Input.GetAxis("JoyVertical");//右スティックの縦 リフレクション
+        //H = Input.GetAxis("JoyHorizontal") * -1;//左スティックの横　リフレクション
+
+        //Ref = new Vector2(H * 100,V * 100); //ここが毎フレーム更新されるため謎の誘導を受けている
 
         if (keyIsBlock)
         {
@@ -129,8 +147,6 @@ public class Move : MonoBehaviour
             }
         }
 
-
-
     }
 
     IEnumerator Reflection()
@@ -161,14 +177,14 @@ public class Move : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "bullet")
-        {
-            if (HoldShield == true)
-            {
-                Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
-                Refrb.AddForce(Ref);
-            }
-        }
+        //if (other.gameObject.tag == "bullet") //リフレクション
+        //{
+        //    if (HoldShield == true)
+        //    {
+        //        Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+        //        Refrb.velocity = new Vector2(H * RefSpeed,V * RefSpeed);
+        //    }
+        //}
 
         if (other.gameObject.tag == "Sekkin")
         {
