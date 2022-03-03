@@ -26,8 +26,8 @@ public class BulletMover : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 vector3 = gomi.position - bulletTrans.position;  //弾から追いかける対象への方向を計算
-        rb.AddForce(vector3.normalized * bulletSpeed);                  //方向の長さを1に正規化、任意の力をAddForceで加える
+        Vector2 vector2 = gomi.position - bulletTrans.position;  //弾から追いかける対象への方向を計算
+        /*rb.AddForce(vector2.normalized * bulletSpeed); */                 //方向の長さを1に正規化、任意の力をAddForceで加える
 
         float speedXTemp = Mathf.Clamp(rb.velocity.x, -limitSpeed, limitSpeed);　//X方向の速度を制限
         float speedYTemp = Mathf.Clamp(rb.velocity.y, -limitSpeed, limitSpeed);  //Y方向の速度を制限
