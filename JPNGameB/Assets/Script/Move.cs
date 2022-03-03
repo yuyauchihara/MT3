@@ -15,8 +15,8 @@ public class Move : MonoBehaviour
     public Material green;
     public Material black;
 
-    public GameObject Zahyo;
-    Text Zahyohyo;
+    //public GameObject Zahyo;
+    //Text Zahyohyo;
     
 
     float RefSpeed = 10f; //リフレの速度
@@ -59,13 +59,13 @@ public class Move : MonoBehaviour
 
         shield.gameObject.SetActive(false);
 
-        Zahyohyo = Zahyo.GetComponent<Text>();
+        //Zahyohyo = Zahyo.GetComponent<Text>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Zahyohyo.text = H + "," + V.ToString();
+        //Zahyohyo.text = H + "," + V.ToString();
 
         rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
 
