@@ -16,9 +16,17 @@ public class bullet : MonoBehaviour
         
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    //void OnCollisionEnter2D(Collision2D other)
+    //{
+    //    if(other.gameObject.tag == "stage")
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "stage")
+        if (other.gameObject.tag == "stage")
         {
             Destroy(gameObject);
         }
