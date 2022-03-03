@@ -20,7 +20,7 @@ public class EnemyBody : MonoBehaviour
     {
         if (other.gameObject.tag == "bullet")
         {
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 }

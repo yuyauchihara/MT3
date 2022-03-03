@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Move : MonoBehaviour
 {
@@ -13,6 +14,12 @@ public class Move : MonoBehaviour
     public Material blue;
     public Material green;
     public Material black;
+
+    public GameObject Zahyo;
+    Text Zahyohyo;
+    
+
+    float RefSpeed = 10f; //リフレの速度
 
     public GameObject shield;
 
@@ -51,18 +58,21 @@ public class Move : MonoBehaviour
         CF = AE.GetComponent<ApproachEnemy>();
 
         shield.gameObject.SetActive(false);
+
+        Zahyohyo = Zahyo.GetComponent<Text>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        Zahyohyo.text = H + "," + V.ToString();
+
         rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
 
         V = Input.GetAxis("JoyVertical");//右スティックの縦 
-        H = Input.GetAxis("JoyHorizontal");//左スティックの横
+        H = Input.GetAxis("JoyHorizontal") * -1;//左スティックの横
 
-        Ref = new Vector2(H * 100,V * 100); //ここが毎フレーム更新されるため謎の誘導を受けている
-        //Ref = new Vector2(500, 0);
+        //Ref = new Vector2(H * 100,V * 100); //ここが毎フレーム更新されるため謎の誘導を受けている
 
         if (keyIsBlock)
         {
@@ -172,7 +182,7 @@ public class Move : MonoBehaviour
             if (HoldShield == true)
             {
                 Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
-                Refrb.AddForce(Ref);
+                Refrb.velocity = new Vector2(H * RefSpeed,V * RefSpeed);
             }
         }
 
