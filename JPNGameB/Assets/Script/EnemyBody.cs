@@ -16,7 +16,15 @@ public class EnemyBody : MonoBehaviour
         
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    //void OnCollisionEnter2D(Collision2D other)
+    //{
+    //    if (other.gameObject.tag == "bullet")
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
+
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "bullet")
         {

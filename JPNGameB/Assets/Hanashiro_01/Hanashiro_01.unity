@@ -258,6 +258,11 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2502893377878238619, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4027893847868078332, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
         type: 3}
       propertyPath: m_RootOrder
@@ -1368,6 +1373,7 @@ GameObject:
   - component: {fileID: 1220923954}
   - component: {fileID: 1220923953}
   - component: {fileID: 1220923952}
+  - component: {fileID: 1220923955}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Untagged
@@ -1405,7 +1411,6 @@ MonoBehaviour:
   blue: {fileID: 0}
   green: {fileID: 0}
   black: {fileID: 0}
-  Zahyo: {fileID: 0}
   shield: {fileID: 0}
   KnockFlag: 0
   AE: {fileID: 0}
@@ -1474,6 +1479,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1220923955
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220923950}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1001 &1249306067
 PrefabInstance:
   m_ObjectHideFlags: 0
