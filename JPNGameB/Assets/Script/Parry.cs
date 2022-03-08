@@ -147,7 +147,6 @@ public class Parry : MonoBehaviour
         //{
         //    if (HoldShield == true)
         //    {
-                
         //        Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
         //        Refrb.AddForce(Ref);
         //    }
@@ -157,8 +156,16 @@ public class Parry : MonoBehaviour
         {
             if (HoldShield == true)
             {
-                Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
-                Refrb.velocity = new Vector2(H * RefSpeed, V * RefSpeed);
+                if (V == 0 && H == 0)
+                {
+                    Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+                    Refrb.velocity = new Vector2(1 * RefSpeed, 0 * RefSpeed);
+                }
+                else
+                {
+                    Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+                    Refrb.velocity = new Vector2(H * RefSpeed, V * RefSpeed);
+                }                         
             }
         }
 
