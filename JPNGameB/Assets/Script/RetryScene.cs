@@ -28,7 +28,7 @@ public class RetryScene : MonoBehaviour
 
     void RetryChangeScene()
     {
-        SceneManager.LoadScene("yuya2");
+        SceneManager.LoadScene("Main");
     }
 
     void GameEnd()

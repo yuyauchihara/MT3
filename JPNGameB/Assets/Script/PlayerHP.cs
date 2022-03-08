@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class bullet : MonoBehaviour
+public class PlayerHP : MonoBehaviour
 {
+    public GameObject Ply;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,19 +17,11 @@ public class bullet : MonoBehaviour
         
     }
 
-    //void OnCollisionEnter2D(Collision2D other)
-    //{
-    //    if(other.gameObject.tag == "stage")
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //}
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "stage")
+        if (other.gameObject.tag == "bullet")
         {
-            Destroy(gameObject);
+            Destroy(other.gameObject);
         }
     }
 }

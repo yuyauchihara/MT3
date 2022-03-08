@@ -77,7 +77,7 @@ public class Jump : MonoBehaviour
             }
             else
             {
-                ySpeed += -gravity * Time.deltaTime - Down;
+               ySpeed = Mathf.Clamp(ySpeed + -gravity * Time.deltaTime - Down ,-15,0);
             }
 
         }
@@ -117,6 +117,6 @@ public class Jump : MonoBehaviour
         }
 
         rb.velocity = new Vector2(Horizontal * moveSpeed, ySpeed);
-        Debug.Log(isJump);
+        Debug.Log(ySpeed);
     }
 }
