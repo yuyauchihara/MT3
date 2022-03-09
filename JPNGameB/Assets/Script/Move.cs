@@ -70,7 +70,7 @@ public class Move : MonoBehaviour
     {
         //Zahyohyo.text = H + "," + V.ToString();
 
-        rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
+        //rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
 
         //V = Input.GetAxis("JoyVertical");//右スティックの縦 リフレクション
         //H = Input.GetAxis("JoyHorizontal") * -1;//左スティックの横　リフレクション
