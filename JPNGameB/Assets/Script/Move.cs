@@ -120,7 +120,7 @@ public class Move : MonoBehaviour
         if (Input.GetKey(KeyCode.Q) || Input.GetKey("joystick button 5"))
         {
             HoldShield = true;
-            GetComponent<Renderer>().material.color = blue.color;
+            //GetComponent<Renderer>().material.color = blue.color;
             shield.gameObject.SetActive(true);
             moveSpeed = 5.5f;
         }
@@ -128,7 +128,7 @@ public class Move : MonoBehaviour
         {
             HoldShield = false;
             shield.gameObject.SetActive(false);
-            GetComponent<Renderer>().material.color = green.color;
+            //GetComponent<Renderer>().material.color = green.color;
             moveSpeed = 10.5f;
         }
 
