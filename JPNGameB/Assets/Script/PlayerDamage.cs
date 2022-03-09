@@ -1,29 +1,47 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Collections;
+
 public class PlayerDamage : MonoBehaviour
 {
-    public GameObject hpbar;
-    public bool on_damage = false;       //ダメージフラグ
-    private SpriteRenderer renderer;
+    public SpriteRenderer sp;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    // ダメージ判定フラグ
+    private bool isDamage { get; set; }
 
-    // Update is called once per frame
     void Update()
     {
-        
+
+        // ダメージを受けている場合、点滅させる
+        if (isDamage)
+        {
+
+            float level = Mathf.Abs(Mathf.Sin(Time.time * 10));
+            sp.color = new Color(1f, 1f, 1f, level);
+
+        }
+
     }
+
+    // トリガー発生時
     private void OnTriggerEnter2D(Collider2D other)
     {
+
         if (other.gameObject.tag == "bullet")
         {
-            
+            Debug.Log("点滅なう");
+            StartCoroutine(OnDamage());
         }
+    }
+
+    public IEnumerator OnDamage()
+    {
+        isDamage = true;
+        yield return new WaitForSeconds(3.0f);
+
+        // 通常状態に戻す
+        isDamage = false;
+        sp.color = new Color(1f, 1f, 1f, 1f);
+
     }
 }
