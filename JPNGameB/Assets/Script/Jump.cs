@@ -81,6 +81,7 @@ public class Jump : MonoBehaviour
             if (pushRB)
             {
                 RBCount = 1;
+                moveSpeed = 5.5f;
             }
 
             if (!pushJump)
