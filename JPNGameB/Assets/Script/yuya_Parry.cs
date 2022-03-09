@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Parry : MonoBehaviour
+public class yuya_Parry : MonoBehaviour
 {
     Collider2D Parco;
     Rigidbody2D Parrb;
@@ -29,13 +29,14 @@ public class Parry : MonoBehaviour
     Vector2 Par = new Vector2(-600.0f, 0);//パりぃーした時の弾の速度
     Vector2 Ref = new Vector2(5500, 0);
 
-    private int  i = 0;
+    private int i = 0;
+
 
     bool HoldShield = false;
     bool Pdirection = true; //プレイヤーの向き、trueなら左、falseなら右
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -71,16 +72,16 @@ public class Parry : MonoBehaviour
             i = 0;
         }
 
-        if (Pdirection == true && 0 < i && i < 50 && h2 < 0)
+        if (Pdirection == true && 0 < i && i < 7 && h2 < 0)
         {
             //this.transform.position += new Vector3(0, v / 40);
-            transform.Rotate(new Vector3(0, 0, v));
+            transform.Rotate(new Vector3(0, 0, v * 10));
         }
 
-        if (Pdirection == false && 0 < i && i < 50 && h2 > 0)
+        if (Pdirection == false && 0 < i && i < 7 && h2 > 0)
         {
             //this.transform.position += new Vector3(0, v / 40);
-            transform.Rotate(new Vector3(0, 0, v * -1));
+            transform.Rotate(new Vector3(0, 0, v * -10));
         }
 
         //if (keyIsBlock)
@@ -96,7 +97,7 @@ public class Parry : MonoBehaviour
         //    }
         //}
 
-        if (Input.GetKeyUp("joystick button 5")) 
+        if (Input.GetKeyUp("joystick button 5"))
         {
             //keyIsBlock = true;
             pressedKeyTime = DateTime.Now;
@@ -147,25 +148,25 @@ public class Parry : MonoBehaviour
         //{
         //    if (HoldShield == true)
         //    {
+
         //        Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
         //        Refrb.AddForce(Ref);
         //    }
         //}
+        var h2 = Input.GetAxis("JoyHorizontal");//右スティックの横
 
         if (other.gameObject.tag == "bullet") //リフレクション
         {
             if (HoldShield == true)
             {
-                if (V == 0 && H == 0)
+                if (h2 < 0)
                 {
+
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
-                    Refrb.velocity = new Vector2(1 * RefSpeed, 0 * RefSpeed);
+                    Refrb.velocity = new Vector2(H * -RefSpeed,0);
                 }
-                else
-                {
-                    Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
-                    Refrb.velocity = new Vector2(H * RefSpeed, V * RefSpeed);
-                }                         
+                //Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+                //Refrb.velocity = new Vector2(H * RefSpeed, V * RefSpeed);
             }
         }
 
