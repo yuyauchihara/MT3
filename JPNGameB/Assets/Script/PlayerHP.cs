@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHP : MonoBehaviour
 {
-    public GameObject Ply;
+    //public GameObject Ply;
+    public Slider Tairyoku;
+    float HealthPoint = 10.0f;
+    float MaxHP = 10.0f;
 
     bool HoldShield = false;
 
@@ -26,6 +30,8 @@ public class PlayerHP : MonoBehaviour
             HoldShield = false;
         }
 
+        Tairyoku.value = HealthPoint / MaxHP;
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -34,6 +40,7 @@ public class PlayerHP : MonoBehaviour
         {
             if (other.gameObject.tag == "bullet")
             {
+                HealthPoint--;
                 Destroy(other.gameObject);
             }
         }
