@@ -27,7 +27,8 @@ public class Jump : MonoBehaviour
     private float Down = 0.3f;   //落下の加速度調整
     private float RBCountTime = 0f; //落下速度低下の制限時間1秒
     private float RBCount = 0;      //RBの連続入力阻止
-    private float JumpBlock = 0;
+    private float JumpBlock = 0;    //バニホの制限
+    private int pushCount = 0;      //ジャンプ盾構えの制限
 
 
     //private float moveSpeed = 10.5f;
@@ -68,12 +69,19 @@ public class Jump : MonoBehaviour
             pushJump = false;
         }
 
-            //地面についているかtrueならついている
-            if (isGround)
+        //地面についているかtrueならついている
+        if (isGround)
         {
             ySpeed = -gravity;
             RBCountTime = 0;
             RBCount = 0;
+            pushCount = 0;
+            moveSpeed = 10.5f;
+
+            if (pushRB)
+            {
+                RBCount = 1;
+            }
 
             if (!pushJump)
             {
@@ -94,7 +102,7 @@ public class Jump : MonoBehaviour
         else if (isJump)    //ジャンプボタンを押している間true、制限高さを超えるとfalse
         {
             //ジャンプを押されている。かつ、現在の高さがジャンプした位置から自分の決めた位置より下ならジャンプを継続する
-            if (Input.GetKey("joystick button 0") && jumpPos + jumpHeight > transform.position.y && JumpBlock == 0)
+            if (Input.GetKey("joystick button 0") && jumpPos + jumpHeight > transform.position.y && JumpBlock == 0 && !pushRB)
             {
                 ySpeed = jumpSpeed;
             }
@@ -113,18 +121,19 @@ public class Jump : MonoBehaviour
             else
             {
                 //空中でRBを押したときの処理
-                if (pushRB && RBCountTime < 60) {
+                if (pushRB && RBCountTime < 60) 
+                {
 
                     if (RBCount == 0)
                     {
                         ySpeed = 0.2f;
                         moveSpeed = 0.0f;
                         RBCountTime++;
+                        pushCount = 1;
                     }
-                }
-                else if(RBCount != 0 && !pushRB)
+                }else if (pushCount == 1 && !pushRB)
                 {
-                    RBCount++;
+                    RBCount = 1;
                 }
                 ySpeed = Mathf.Clamp(ySpeed + -gravity * Time.deltaTime - Down, -15, 0);
             }
@@ -143,7 +152,7 @@ public class Jump : MonoBehaviour
                 moveSpeed = 10.5f;
             }
         }
-        else if(!isWallR && !isWallL && !isJump && isGround)
+        else if(!isWallR && !isWallL && !pushRB)
         {
             moveSpeed = 10.5f;
         }
@@ -160,12 +169,12 @@ public class Jump : MonoBehaviour
                 moveSpeed = 10.5f;
             }
         }
-        else if(!isWallR && !isWallL && !isJump && isGround)
+        else if(!isWallR && !isWallL && !pushRB)
         {
             moveSpeed = 10.5f;
         }
 
         rb.velocity = new Vector2(Horizontal * moveSpeed, ySpeed);
-        Debug.Log(RBCount);
+        Debug.Log(pushCount);
     }
 }
