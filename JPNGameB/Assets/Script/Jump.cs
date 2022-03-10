@@ -9,6 +9,9 @@ public class Jump : MonoBehaviour
     public GroundCheck ground;  //接地判定
     public GroundCheck wallR;   //右壁に張り付いているか判定
     public GroundCheck wallL;   //左壁に張り付いているか判定
+    public GroundCheck head;    //頭ぶつけた判定
+
+    public float jumpLimitTime; //ジャンプ制限時間
 
     //プライベート変数
     //private Animator anim = null;
@@ -19,6 +22,7 @@ public class Jump : MonoBehaviour
     private bool isWallL = false;
     private bool pushRB = false;
     private bool pushJump = false;
+    private bool isHead = false;
 
     private float jumpPos = 0.0f;
     private float ySpeed = 0;
@@ -29,6 +33,7 @@ public class Jump : MonoBehaviour
     private float RBCount = 0;      //RBの連続入力阻止
     private float JumpBlock = 0;    //バニホの制限
     private int pushCount = 0;      //ジャンプ盾構えの制限
+    private float jumpTime = 0.0f;
 
 
     //private float moveSpeed = 10.5f;
@@ -48,10 +53,10 @@ public class Jump : MonoBehaviour
         isGround = ground.IsGround();
         isWallR = wallR.IsGround();
         isWallL = wallL.IsGround();
-        //isHead = head.IsGround();
+        isHead = head.IsGround();
 
         //RBが押されているかの判定
-        if(Input.GetKey("joystick button 5"))
+        if (Input.GetKey("joystick button 5"))
         {
             pushRB = true;
         }
@@ -94,6 +99,7 @@ public class Jump : MonoBehaviour
                 ySpeed = jumpSpeed;
                 jumpPos = transform.position.y; //ジャンプした位置を記録する
                 isJump = true;
+                jumpTime = 0.0f;
             }
             else
             {
@@ -102,14 +108,23 @@ public class Jump : MonoBehaviour
         }
         else if (isJump)    //ジャンプボタンを押している間true、制限高さを超えるとfalse
         {
+            //ジャンプキーを押しているか
+            bool pushJumpKey = Input.GetKey("joystick button 0");
+            //現在の高さが飛べる高さより下か
+            bool canHeight = jumpPos + jumpHeight > transform.position.y;
+            //ジャンプ時間が長くなりすぎてないか
+            bool canTime = jumpLimitTime > jumpTime;
+
             //ジャンプを押されている。かつ、現在の高さがジャンプした位置から自分の決めた位置より下ならジャンプを継続する
-            if (Input.GetKey("joystick button 0") && jumpPos + jumpHeight > transform.position.y && JumpBlock == 0 && !pushRB)
+            if (pushJumpKey && canHeight && canTime && !isHead && JumpBlock == 0 && !pushRB)
             {
                 ySpeed = jumpSpeed;
+                jumpTime += Time.deltaTime;
             }
             else
             {
                 isJump = false;
+                jumpTime = 0.0f;
             }
         }
         else if(!isJump && !isGround)   //空中にいる、かつジャンプの上昇中じゃなかったら落下する処理
