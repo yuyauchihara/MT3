@@ -21,8 +21,8 @@ public class Enemy613 : MonoBehaviour
         {
             GameObject bullet = (GameObject)Instantiate(bulletPre, transform.position, Quaternion.identity);
             Rigidbody2D Bprb = bullet.GetComponent<Rigidbody2D>();
-            Vector2 force = new Vector2(-300.0f, -300.0f);
-            Bprb.AddForce(force);
+            //Vector2 force = new Vector2(-300.0f, -300.0f);
+            //Bprb.AddForce(force);
             Destroy(bullet, 5f);
             count = 0;
         }
