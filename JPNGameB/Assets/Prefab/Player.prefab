@@ -148,6 +148,7 @@ MonoBehaviour:
   blue: {fileID: 2100000, guid: c23b72ef078c454478aa75d1ccfbf49b, type: 2}
   green: {fileID: 2100000, guid: fa56a70b02872684f9f2587cd41bc963, type: 2}
   black: {fileID: 0}
+  shield: {fileID: 0}
   KnockFlag: 0
   AE: {fileID: 0}
 --- !u!58 &2502893377878238598

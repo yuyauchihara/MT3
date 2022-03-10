@@ -62,25 +62,16 @@ public class Parry : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
-        if (v > 0)
-        {
-            i++;
-        }
-        else
-        {
-            i = 0;
-        }
-
-        if (Pdirection == true && 0 < i && i < 50 && h2 < 0)
+        if (Pdirection == true && h2 < 0)
         {
             //this.transform.position += new Vector3(0, v / 40);
-            transform.Rotate(new Vector3(0, 0, v));
+            transform.rotation = Quaternion.Euler(0, 0, 30);
         }
 
-        if (Pdirection == false && 0 < i && i < 50 && h2 > 0)
+        if (Pdirection == false && h2 > 0)
         {
             //this.transform.position += new Vector3(0, v / 40);
-            transform.Rotate(new Vector3(0, 0, v * -1));
+            transform.rotation = Quaternion.Euler(0, 0, -30);
         }
 
         //if (keyIsBlock)
@@ -124,9 +115,9 @@ public class Parry : MonoBehaviour
 
         //リフレクション角度の取得
         V = Input.GetAxis("JoyVertical");//右スティックの縦 リフレクション
-        H = Input.GetAxis("JoyHorizontal") * -1;//左スティックの横　リフレクション
+        H = Input.GetAxis("JoyHorizontal");//左スティックの横　リフレクション
         //リフレクション角度の取得終わり
-
+        Debug.Log(H);
     }
 
     //IEnumerator Parryflag()//パリィコルーチン
@@ -161,12 +152,18 @@ public class Parry : MonoBehaviour
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                     Refrb.velocity = new Vector2(1 * RefSpeed, 0 * RefSpeed);
                 }
-                else
+                if (H < 0)
                 {
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
-                    Refrb.velocity = new Vector2(H * RefSpeed, V * RefSpeed);
-                }                         
+                    Refrb.velocity = new Vector2(H * RefSpeed * -1, V * RefSpeed);
+                }
+                if (H > 0)
+                {
+                    Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+                    Refrb.velocity = new Vector2(H * RefSpeed * -1, 0);
+                }
             }
+            
         }
 
 
