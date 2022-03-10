@@ -5,12 +5,11 @@ using UnityEngine.UI;
 
 public class PlayerHP : MonoBehaviour
 {
-    //public GameObject Ply;
     public Slider Tairyoku;
     float HealthPoint = 10.0f;
     float MaxHP = 10.0f;
 
-    bool HoldShield = false;
+    public static bool HoldShield = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +28,6 @@ public class PlayerHP : MonoBehaviour
         {
             HoldShield = false;
         }
-
         Tairyoku.value = HealthPoint / MaxHP;
 
     }
@@ -38,7 +36,7 @@ public class PlayerHP : MonoBehaviour
     {
         if (HoldShield == false)
         {
-            if (other.gameObject.tag == "bullet")
+            if (other.gameObject.tag == "bullet" && !PlayerDamage.isDamage)
             {
                 HealthPoint--;
                 Destroy(other.gameObject);

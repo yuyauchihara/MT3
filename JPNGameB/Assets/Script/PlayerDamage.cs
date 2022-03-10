@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerDamage : MonoBehaviour
 {
     public SpriteRenderer sp;
-
     // ダメージ判定フラグ
-    private bool isDamage { get; set; }
+    public static bool isDamage { get; set; }
 
+    
     void Update()
     {
 
@@ -26,10 +26,13 @@ public class PlayerDamage : MonoBehaviour
     // トリガー発生時
     private void OnTriggerEnter2D(Collider2D other)
     {
-
-        if (other.gameObject.tag == "bullet")
+        // ダメージ中は処理スキップ
+        if (isDamage)
         {
-            Debug.Log("点滅なう");
+            return;
+        }
+        if (other.gameObject.tag == "bullet" && !isDamage && !PlayerHP.HoldShield)
+        {
             StartCoroutine(OnDamage());
         }
     }
@@ -37,11 +40,12 @@ public class PlayerDamage : MonoBehaviour
     public IEnumerator OnDamage()
     {
         isDamage = true;
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(1.0f);
 
         // 通常状態に戻す
         isDamage = false;
         sp.color = new Color(1f, 1f, 1f, 1f);
 
     }
+
 }
