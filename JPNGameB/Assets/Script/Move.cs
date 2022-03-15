@@ -49,7 +49,7 @@ public class Move : MonoBehaviour
     Vector2 Knc = new Vector2(300, 0);
 
     bool HoldShield = false; //RBで盾を構えているか判定するフラグ
-
+    bool Pdirection = true; //プレイヤーの向き、trueなら左、falseなら右
     // Start is called before the first frame update
 
     void Start()
@@ -68,6 +68,7 @@ public class Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        var h = Input.GetAxis("Horizontal");//左スティックの横
         //Zahyohyo.text = H + "," + V.ToString();
 
         //rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
@@ -88,6 +89,17 @@ public class Move : MonoBehaviour
             {
                 return;
             }
+        }
+
+        if (h < 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+            Pdirection = false;
+        }
+        else if (0 < h)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            Pdirection = true;
         }
 
         //Vector2 force = new Vector2(0, 1f);

@@ -46,16 +46,6 @@ public class Parry : MonoBehaviour
         var h = Input.GetAxis("Horizontal");//左スティックの横
         var h2 = Input.GetAxis("JoyHorizontal");//右スティックの横
 
-        if (h < 0)
-        {
-            Player.transform.rotation = Quaternion.Euler(0, 180, 0);
-            Pdirection = false;
-        }
-        else if (0 < h)
-        {
-            Player.transform.rotation = Quaternion.Euler(0, 0, 0);
-            Pdirection = true;
-        }
 
         if (v == 0)
         {
