@@ -16,6 +16,8 @@ public class Move : MonoBehaviour
     public Material green;
     public Material black;
 
+    public bool KillAprEnmyFlg = false; //接近する敵がスタンしてる時はTrueとなる Trueの時だけ殺せる
+
     //public GameObject Zahyo;
     //Text Zahyohyo;
     
@@ -229,8 +231,10 @@ public class Move : MonoBehaviour
 
     IEnumerator stan()
     {
+        KillAprEnmyFlg = true;
         EnemyPositon.transform.Translate(0f, 0, 0);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
+        KillAprEnmyFlg = false;
         KnockFlag = false;
         i = 0;
     }

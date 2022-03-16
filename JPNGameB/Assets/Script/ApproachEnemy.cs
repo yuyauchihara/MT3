@@ -10,7 +10,6 @@ public class ApproachEnemy : MonoBehaviour
     public GameObject knocktim;
     public GameObject sec;
     public bool counterFlag = false;
-    bool Stan = false;
 
     Text seco;
     Move move;
@@ -73,8 +72,11 @@ public class ApproachEnemy : MonoBehaviour
 
     IEnumerator KnockBack()
     {
-        transform.Translate(3.03f, 0, 0);
-        yield return new WaitForSeconds(0.1f);
+        //transform.Translate(3.03f, 0, 0);
+        //yield return new WaitForSeconds(0.1f);
+        //transform.Translate(1f, 0, 0);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(6, 0);
+        yield return new WaitForSeconds(1f);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -87,7 +89,7 @@ public class ApproachEnemy : MonoBehaviour
 
         if (other.gameObject.tag == "bullet")
         {
-            if(Stan == true)
+            if(move.KillAprEnmyFlg == true)
             {
                 Destroy(gameObject);
             }
