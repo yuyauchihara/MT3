@@ -11,6 +11,7 @@ TagManager:
   - gaol
   - shield area
   - shieldarea
+  - rock
   layers:
   - Default
   - TransparentFX
