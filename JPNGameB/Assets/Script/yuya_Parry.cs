@@ -31,9 +31,9 @@ public class yuya_Parry : MonoBehaviour
 
     private int i = 0;
 
-
     bool HoldShield = false;
-    bool Pdirection = true; //プレイヤーの向き、trueなら左、falseなら右
+    public static bool parryf = false;
+/*    bool Pdirection = true;*/ //プレイヤーの向き、trueなら左、falseなら右
     void Start()
     {
 
@@ -48,17 +48,16 @@ public class yuya_Parry : MonoBehaviour
         var h2 = Input.GetAxis("JoyHorizontal");//右スティックの横
 
 
-
-        if (h < 0)
-        {
-            Player.transform.rotation = Quaternion.Euler(0, 180, 0);
-            Pdirection = false;
-        }
-        else if (0 < h)
-        {
-            Player.transform.rotation = Quaternion.Euler(0, 0, 0);
-            Pdirection = true;
-        }
+        //if (h < 0)
+        //{
+        //    //transform.rotation = Quaternion.Euler(0, 180, 0);
+        //    Pdirection = false;
+        //}
+        //else if (0 < h)
+        //{
+        //    //transform.rotation = Quaternion.Euler(0, 0, 0);
+        //    Pdirection = true;
+        //}
 
         if (v == 0)
         {
@@ -71,7 +70,7 @@ public class yuya_Parry : MonoBehaviour
         //    transform.rotation = Quaternion.Euler(0, 0, 5);
         //}
 
-        if (Pdirection == true && v > 0.16 && v < 0.3)//r10do
+        if (Move.Pdirection == true && v > 0.16 && v < 0.3 && h2 < 0)//r10do
         {
             //this.transform.position += new Vector3(0, v / 40);
             transform.rotation = Quaternion.Euler(0, 0, 10);
@@ -83,7 +82,7 @@ public class yuya_Parry : MonoBehaviour
         //    transform.rotation = Quaternion.Euler(0, 0, 15);
         //}
 
-        if (Pdirection == true && v > 0.46 && v < 0.60)//r20do
+        if (Move.Pdirection == true && v > 0.46 && v < 0.60 && h2 < 0)//r20do
         {
             //this.transform.position += new Vector3(0, v / 40);
             transform.rotation = Quaternion.Euler(0, 0, 20);
@@ -95,7 +94,7 @@ public class yuya_Parry : MonoBehaviour
         //    transform.rotation = Quaternion.Euler(0, 0, 25);
         //}
 
-        if (Pdirection == true && v > 0.75 && v < 1)//r30do
+        if (Move.Pdirection == true && v > 0.75 && v < 1 && h2 < 0)//r30do
         {
             //this.transform.position += new Vector3(0, v / 40);
             transform.rotation = Quaternion.Euler(0, 0, 30);
@@ -106,8 +105,8 @@ public class yuya_Parry : MonoBehaviour
         //    //this.transform.position += new Vector3(0, v / 40);
         //    transform.rotation = Quaternion.Euler(0, 0, -5);
         //}
-        
-        if (Pdirection == false && v > 0.16 && v < 0.3)//L10do
+
+        if (Move.Pdirection == false && v > 0.16 && v < 0.3 && h2 > 0)//L10do
         {
             //this.transform.position += new Vector3(0, v / 40);
             transform.rotation = Quaternion.Euler(0, 0, -10);
@@ -119,7 +118,7 @@ public class yuya_Parry : MonoBehaviour
         //    transform.rotation = Quaternion.Euler(0, 0, -15);
         //}
 
-        if (Pdirection == false && v > 0.46 && v < 0.60)//L20do
+        if (Move.Pdirection == false && v > 0.46 && v < 0.60 && h2 > 0)//L20do
         {
             //this.transform.position += new Vector3(0, v / 40);
             transform.rotation = Quaternion.Euler(0, 0, -20);
@@ -131,12 +130,12 @@ public class yuya_Parry : MonoBehaviour
         //    transform.rotation = Quaternion.Euler(0, 0, -25);
         //}
 
-        if (Pdirection == false && v > 0.75 && v < 1)//L30do
+        if (Move.Pdirection == false && v > 0.75 && v < 1 && h2 > 0)//L30do
         {
             //this.transform.position += new Vector3(0, v / 40);
             transform.rotation = Quaternion.Euler(0, 0, -30);
         }
-        Debug.Log(v);
+
         //if (keyIsBlock)
         //{
         //    elapsedTime = DateTime.Now - pressedKeyTime;
@@ -178,9 +177,9 @@ public class yuya_Parry : MonoBehaviour
 
         //リフレクション角度の取得
         V = Input.GetAxis("JoyVertical");//右スティックの縦 リフレクション
-        H = Input.GetAxis("JoyHorizontal") * -1;//左スティックの横　リフレクション
+        H = Input.GetAxis("JoyHorizontal");//左スティックの横　リフレクション
         //リフレクション角度の取得終わり
-
+        Debug.Log(H);
     }
 
     //IEnumerator Parryflag()//パリィコルーチン
@@ -201,26 +200,36 @@ public class yuya_Parry : MonoBehaviour
         //{
         //    if (HoldShield == true)
         //    {
-
         //        Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
         //        Refrb.AddForce(Ref);
         //    }
         //}
-        var h2 = Input.GetAxis("JoyHorizontal");//右スティックの横
 
         if (other.gameObject.tag == "bullet") //リフレクション
         {
             if (HoldShield == true)
             {
-                if (h2 < 0)
+                if (V == 0 && H == 0)
                 {
-
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
-                    Refrb.velocity = new Vector2(H * -RefSpeed,0);
+                    Refrb.velocity = new Vector2(1 * RefSpeed, 0 * RefSpeed);
                 }
-                //Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
-                //Refrb.velocity = new Vector2(H * RefSpeed, V * RefSpeed);
+                if (H < 0)
+                {
+                    Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+                    Refrb.velocity = new Vector2(H * RefSpeed * -1, V * RefSpeed);
+                }
+                if (H > 0)
+                {
+                    Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+                    Refrb.velocity = new Vector2(H * RefSpeed * -1, 0);
+                    parryf = true;
+                }else
+                {
+                    parryf = false;
+                }
             }
+
         }
 
 

@@ -34,14 +34,18 @@ public class PlayerHP : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (HoldShield == false)
+
+        if (other.gameObject.tag == "bullet" && !PlayerDamage.isDamage)
         {
-            if (other.gameObject.tag == "bullet" && !PlayerDamage.isDamage)
+           
+            if (yuya_Parry.parryf == false)
             {
                 HealthPoint--;
                 Destroy(other.gameObject);
             }
+            
         }
+
         
     }
 }
