@@ -33,6 +33,9 @@ public class Parry : MonoBehaviour
 
     bool HoldShield = false;
     bool Pdirection = true; //プレイヤーの向き、trueなら左、falseなら右
+
+    float radian;
+
     void Start()
     {
         
@@ -168,7 +171,7 @@ public class Parry : MonoBehaviour
         H = Input.GetAxisRaw("JoyHorizontal");//左スティックの横　リフレクション
         //リフレクション角度の取得終わり
 
-        float radian = Mathf.Atan2(V, H) * Mathf.Rad2Deg;
+        radian = Mathf.Atan2(V, H*-1) * Mathf.Rad2Deg;
 
         Debug.Log(radian);
     }
@@ -208,7 +211,7 @@ public class Parry : MonoBehaviour
                 if (H < 0) //リフレクション
                 {
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
-                    Refrb.velocity = new Vector2(H * RefSpeed * -1, V * RefSpeed);
+                    Refrb.velocity = new Vector2(Mathf.Cos(radian * Mathf.Deg2Rad) * RefSpeed, Mathf.Sin(radian * Mathf.Deg2Rad) * RefSpeed);
                 }
                 if (H > 0) //パリィ
                 {
