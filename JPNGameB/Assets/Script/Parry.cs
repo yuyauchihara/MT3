@@ -35,7 +35,7 @@ public class Parry : MonoBehaviour
     bool Pdirection = true; //プレイヤーの向き、trueなら左、falseなら右
 
     float radian;
-
+    public static bool parryf = false; // パリィフラグ
     void Start()
     {
         
@@ -61,7 +61,7 @@ public class Parry : MonoBehaviour
         //    transform.rotation = Quaternion.Euler(0, 0, 5);
         //}
 
-        if (Pdirection == true && v > 0.16 && v < 0.3)//r10do
+        if (Move.Pdirection == true && v > 0.16 && v < 0.3 && h2 < 0)//r10do
         {
             //this.transform.position += new Vector3(0, v / 40);
             transform.rotation = Quaternion.Euler(0, 0, 10);
@@ -73,7 +73,7 @@ public class Parry : MonoBehaviour
         //    transform.rotation = Quaternion.Euler(0, 0, 15);
         //}
 
-        if (Pdirection == true && v > 0.46 && v < 0.60)//r20do
+        if (Move.Pdirection == true && v > 0.46 && v < 0.60 && h2 < 0)//r20do
         {
             //this.transform.position += new Vector3(0, v / 40);
             transform.rotation = Quaternion.Euler(0, 0, 20);
@@ -85,7 +85,7 @@ public class Parry : MonoBehaviour
         //    transform.rotation = Quaternion.Euler(0, 0, 25);
         //}
 
-        if (Pdirection == true && v > 0.75 && v < 1)//r30do
+        if (Move.Pdirection == true && v > 0.75 && v < 1 && h2 < 0)//r30do
         {
             //this.transform.position += new Vector3(0, v / 40);
             transform.rotation = Quaternion.Euler(0, 0, 30);
@@ -97,7 +97,7 @@ public class Parry : MonoBehaviour
         //    transform.rotation = Quaternion.Euler(0, 0, -5);
         //}
 
-        if (Pdirection == false && v > 0.16 && v < 0.3)//L10do
+        if (Move.Pdirection == false && v > 0.16 && v < 0.3 && h2 > 0)//L10do
         {
             //this.transform.position += new Vector3(0, v / 40);
             transform.rotation = Quaternion.Euler(0, 0, -10);
@@ -109,7 +109,7 @@ public class Parry : MonoBehaviour
         //    transform.rotation = Quaternion.Euler(0, 0, -15);
         //}
 
-        if (Pdirection == false && v > 0.46 && v < 0.60)//L20do
+        if (Move.Pdirection == false && v > 0.46 && v < 0.60 && h2 > 0)//L20do
         {
             //this.transform.position += new Vector3(0, v / 40);
             transform.rotation = Quaternion.Euler(0, 0, -20);
@@ -121,12 +121,11 @@ public class Parry : MonoBehaviour
         //    transform.rotation = Quaternion.Euler(0, 0, -25);
         //}
 
-        if (Pdirection == false && v > 0.75 && v < 1)//L30do
+        if (Move.Pdirection == false && v > 0.75 && v < 1 && h2 > 0)//L30do
         {
             //this.transform.position += new Vector3(0, v / 40);
             transform.rotation = Quaternion.Euler(0, 0, -30);
         }
-
         //if (keyIsBlock)
         //{
         //    elapsedTime = DateTime.Now - pressedKeyTime;
@@ -217,6 +216,11 @@ public class Parry : MonoBehaviour
                 {
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                     Refrb.velocity = new Vector2(H * RefSpeed * -1, 0);
+                    parryf = true;
+                }
+                else
+                {
+                    parryf = false;
                 }
             }
             
