@@ -747,7 +747,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.0238473, y: 1}
+    m_SensorSize: {x: 1.1418182, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -16154,6 +16154,7 @@ GameObject:
   - component: {fileID: 675773871}
   - component: {fileID: 675773870}
   - component: {fileID: 675773869}
+  - component: {fileID: 675773873}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Untagged
@@ -16266,6 +16267,21 @@ Transform:
   m_Father: {fileID: 636476947}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &675773873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675773868}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ae1929cb2ad915479ae5816ae1796fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 636476946}
+  white: {fileID: 0}
+  green: {fileID: 0}
 --- !u!1001 &702967292
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16525,6 +16541,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPre: {fileID: 2374227993310454594, guid: 17b0f0c55e0321d42b2dd5dccb2e4aaa,
     type: 3}
+  Bspeed: -900
 --- !u!1 &830843878
 GameObject:
   m_ObjectHideFlags: 0
@@ -17351,7 +17368,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 956360303}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0042705536, y: 1.1598041, z: -10}
+  m_LocalPosition: {x: -0.004278183, y: 1.1616741, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1037032410}
@@ -18124,7 +18141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3852d1bc5a67aa647b3137986aefaa39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Spawn: {fileID: 1547096417}
+  Spawn:
+  - {fileID: 0}
 --- !u!61 &1148358224
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24863,6 +24881,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253042873693061323, guid: dd77c1a4660a1a14d8ff69ae6cf03710,
+        type: 3}
+      propertyPath: Bspeed
+      value: -500
       objectReference: {fileID: 0}
     - target: {fileID: 6253042873693061325, guid: dd77c1a4660a1a14d8ff69ae6cf03710,
         type: 3}
