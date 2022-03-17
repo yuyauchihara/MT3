@@ -14,7 +14,7 @@ public class BulletMover : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.Find("Player (1)");
+        player = GameObject.Find("Player");
         gomi = player.GetComponent<Transform>();
     }
 
