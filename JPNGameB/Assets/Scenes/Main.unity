@@ -747,7 +747,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.0238473, y: 1}
+    m_SensorSize: {x: 1.1418182, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -16525,6 +16525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPre: {fileID: 2374227993310454594, guid: 17b0f0c55e0321d42b2dd5dccb2e4aaa,
     type: 3}
+  Bspeed: -900
 --- !u!1 &830843878
 GameObject:
   m_ObjectHideFlags: 0
@@ -17351,7 +17352,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 956360303}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0042705536, y: 1.1598041, z: -10}
+  m_LocalPosition: {x: -0.004278183, y: 1.1616741, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1037032410}
@@ -24863,6 +24864,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253042873693061323, guid: dd77c1a4660a1a14d8ff69ae6cf03710,
+        type: 3}
+      propertyPath: Bspeed
+      value: -500
       objectReference: {fileID: 0}
     - target: {fileID: 6253042873693061325, guid: dd77c1a4660a1a14d8ff69ae6cf03710,
         type: 3}
