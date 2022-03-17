@@ -47,6 +47,8 @@ public class yuya_Parry : MonoBehaviour
         var h = Input.GetAxis("Horizontal");//左スティックの横
         var h2 = Input.GetAxis("JoyHorizontal");//右スティックの横
 
+
+
         if (h < 0)
         {
             Player.transform.rotation = Quaternion.Euler(0, 180, 0);
@@ -63,27 +65,78 @@ public class yuya_Parry : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
-        if (v > 0)
-        {
-            i++;
-        }
-        else
-        {
-            i = 0;
-        }
+        //if (Pdirection == true && v > 0 && v < 0.15)//r５度
+        //{
+        //    //this.transform.position += new Vector3(0, v / 40);
+        //    transform.rotation = Quaternion.Euler(0, 0, 5);
+        //}
 
-        if (Pdirection == true && 0 < i && i < 7 && h2 < 0)
+        if (Pdirection == true && v > 0.16 && v < 0.3)//r10do
         {
             //this.transform.position += new Vector3(0, v / 40);
-            transform.Rotate(new Vector3(0, 0, v * 10));
+            transform.rotation = Quaternion.Euler(0, 0, 10);
         }
 
-        if (Pdirection == false && 0 < i && i < 7 && h2 > 0)
+        //if (Pdirection == true && v > 0.31 && v < 0.45)//r15do
+        //{
+        //    //this.transform.position += new Vector3(0, v / 40);
+        //    transform.rotation = Quaternion.Euler(0, 0, 15);
+        //}
+
+        if (Pdirection == true && v > 0.46 && v < 0.60)//r20do
         {
             //this.transform.position += new Vector3(0, v / 40);
-            transform.Rotate(new Vector3(0, 0, v * -10));
+            transform.rotation = Quaternion.Euler(0, 0, 20);
         }
 
+        //if (Pdirection == true && v > 0.60 && v < 0.75)//r25do
+        //{
+        //    //this.transform.position += new Vector3(0, v / 40);
+        //    transform.rotation = Quaternion.Euler(0, 0, 25);
+        //}
+
+        if (Pdirection == true && v > 0.75 && v < 1)//r30do
+        {
+            //this.transform.position += new Vector3(0, v / 40);
+            transform.rotation = Quaternion.Euler(0, 0, 30);
+        }
+
+        //if (Pdirection == false && v > 0 && v < 1.5)//L5do
+        //{
+        //    //this.transform.position += new Vector3(0, v / 40);
+        //    transform.rotation = Quaternion.Euler(0, 0, -5);
+        //}
+        
+        if (Pdirection == false && v > 0.16 && v < 0.3)//L10do
+        {
+            //this.transform.position += new Vector3(0, v / 40);
+            transform.rotation = Quaternion.Euler(0, 0, -10);
+        }
+
+        //if (Pdirection == false && v > 0.31 && v < 0.45)//L15do
+        //{
+        //    //this.transform.position += new Vector3(0, v / 40);
+        //    transform.rotation = Quaternion.Euler(0, 0, -15);
+        //}
+
+        if (Pdirection == false && v > 0.46 && v < 0.60)//L20do
+        {
+            //this.transform.position += new Vector3(0, v / 40);
+            transform.rotation = Quaternion.Euler(0, 0, -20);
+        }
+
+        //if (Pdirection == false && v > 0.60 && v < 0.75)//L25do
+        //{
+        //    //this.transform.position += new Vector3(0, v / 40);
+        //    transform.rotation = Quaternion.Euler(0, 0, -25);
+        //}
+
+        if (Pdirection == false && v > 0.75 && v < 1)//L30do
+        {
+            //this.transform.position += new Vector3(0, v / 40);
+            transform.rotation = Quaternion.Euler(0, 0, -30);
+        }
+        Debug.Log(v);
         //if (keyIsBlock)
         //{
         //    elapsedTime = DateTime.Now - pressedKeyTime;
