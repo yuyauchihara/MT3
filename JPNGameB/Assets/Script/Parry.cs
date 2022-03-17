@@ -164,10 +164,13 @@ public class Parry : MonoBehaviour
         //ホールドシールドの判定終わり
 
         //リフレクション角度の取得
-        V = Input.GetAxis("JoyVertical");//右スティックの縦 リフレクション
-        H = Input.GetAxis("JoyHorizontal");//左スティックの横　リフレクション
+        V = Input.GetAxisRaw("JoyVertical");//右スティックの縦 リフレクション
+        H = Input.GetAxisRaw("JoyHorizontal");//左スティックの横　リフレクション
         //リフレクション角度の取得終わり
-        Debug.Log(H);
+
+        float radian = Mathf.Atan2(V, H) * Mathf.Rad2Deg;
+
+        Debug.Log(radian);
     }
 
     //IEnumerator Parryflag()//パリィコルーチン
@@ -197,17 +200,17 @@ public class Parry : MonoBehaviour
         {
             if (HoldShield == true)
             {
-                if (V == 0 && H == 0)
+                if (V == 0 && H == 0)　//リフレクション(入力無し)
                 {
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                     Refrb.velocity = new Vector2(1 * RefSpeed, 0 * RefSpeed);
                 }
-                if (H < 0)
+                if (H < 0) //リフレクション
                 {
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                     Refrb.velocity = new Vector2(H * RefSpeed * -1, V * RefSpeed);
                 }
-                if (H > 0)
+                if (H > 0) //パリィ
                 {
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                     Refrb.velocity = new Vector2(H * RefSpeed * -1, 0);
