@@ -15,7 +15,7 @@ public class ApproachEnemy : MonoBehaviour
     Move move;
     bool moveKnock;
     float moveSpeed = -0.03f;
-
+    bool Dflag = false; //エネミーが岩に当たったら死ぬ
     int WaitToAttack = 3;
 
     // Start is called before the first frame update
@@ -42,7 +42,7 @@ public class ApproachEnemy : MonoBehaviour
         moveKnock = move.KnockFlag;
         if (moveKnock == false)
         {
-            transform.Translate(moveSpeed, 0, 0);
+            transform.Translate(moveSpeed, 0, 0); // 移動
         }
         else
         {
@@ -72,18 +72,36 @@ public class ApproachEnemy : MonoBehaviour
 
     IEnumerator KnockBack()
     {
-        transform.Translate(3.03f, 0, 0);
-        yield return new WaitForSeconds(0.1f);
-
+        //transform.Translate(3.03f, 0, 0);
+        //yield return new WaitForSeconds(0.1f);
+        //transform.Translate(1f, 0, 0);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(6, 0);
+        Dflag = true;
+        yield return new WaitForSeconds(1f);
+        Dflag = false;
     }
-
+    
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.gameObject.tag == "Rock" && Dflag == true)
+        {
+            Debug.Log("やーらーれーたー");
+            Destroy(gameObject);
+        }
         if (other.gameObject.tag == "Player")
         {
             moveSpeed = 0;
             StartCoroutine("Attack");
         }
+
+        if (other.gameObject.tag == "bullet")
+        {
+            if(move.KillAprEnmyFlg == true)
+            {
+                Destroy(gameObject);
+            }
+        }
+
     }
 
     void OnTriggerExit2D(Collider2D other)

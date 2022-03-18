@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Parry : MonoBehaviour
+public class yuya_Parry : MonoBehaviour
 {
     Collider2D Parco;
     Rigidbody2D Parrb;
@@ -29,16 +29,14 @@ public class Parry : MonoBehaviour
     Vector2 Par = new Vector2(-600.0f, 0);//パりぃーした時の弾の速度
     Vector2 Ref = new Vector2(5500, 0);
 
-    private int  i = 0;
+    private int i = 0;
 
     bool HoldShield = false;
-    bool Pdirection = true; //プレイヤーの向き、trueなら左、falseなら右
-
-    float radian;
-    public static bool parryf = false; // パリィフラグ
+    public static bool parryf = false;
+/*    bool Pdirection = true;*/ //プレイヤーの向き、trueなら左、falseなら右
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -49,6 +47,17 @@ public class Parry : MonoBehaviour
         var h = Input.GetAxis("Horizontal");//左スティックの横
         var h2 = Input.GetAxis("JoyHorizontal");//右スティックの横
 
+
+        //if (h < 0)
+        //{
+        //    //transform.rotation = Quaternion.Euler(0, 180, 0);
+        //    Pdirection = false;
+        //}
+        //else if (0 < h)
+        //{
+        //    //transform.rotation = Quaternion.Euler(0, 0, 0);
+        //    Pdirection = true;
+        //}
 
         if (v == 0)
         {
@@ -126,6 +135,7 @@ public class Parry : MonoBehaviour
             //this.transform.position += new Vector3(0, v / 40);
             transform.rotation = Quaternion.Euler(0, 0, -30);
         }
+
         //if (keyIsBlock)
         //{
         //    elapsedTime = DateTime.Now - pressedKeyTime;
@@ -139,7 +149,7 @@ public class Parry : MonoBehaviour
         //    }
         //}
 
-        if (Input.GetKeyUp("joystick button 5")) 
+        if (Input.GetKeyUp("joystick button 5"))
         {
             //keyIsBlock = true;
             pressedKeyTime = DateTime.Now;
@@ -166,13 +176,10 @@ public class Parry : MonoBehaviour
         //ホールドシールドの判定終わり
 
         //リフレクション角度の取得
-        V = Input.GetAxisRaw("JoyVertical");//右スティックの縦 リフレクション
-        H = Input.GetAxisRaw("JoyHorizontal");//左スティックの横　リフレクション
+        V = Input.GetAxis("JoyVertical");//右スティックの縦 リフレクション
+        H = Input.GetAxis("JoyHorizontal");//左スティックの横　リフレクション
         //リフレクション角度の取得終わり
-
-        radian = Mathf.Atan2(V, H*-1) * Mathf.Rad2Deg;
-
-        Debug.Log(radian);
+        Debug.Log(H);
     }
 
     //IEnumerator Parryflag()//パリィコルーチン
@@ -202,28 +209,27 @@ public class Parry : MonoBehaviour
         {
             if (HoldShield == true)
             {
-                if (V == 0 && H == 0)　//リフレクション(入力無し)
+                if (V == 0 && H == 0)
                 {
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                     Refrb.velocity = new Vector2(1 * RefSpeed, 0 * RefSpeed);
                 }
-                if (H < 0) //リフレクション
+                if (H < 0)
                 {
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
-                    Refrb.velocity = new Vector2(Mathf.Cos(radian * Mathf.Deg2Rad) * RefSpeed, Mathf.Sin(radian * Mathf.Deg2Rad) * RefSpeed);
+                    Refrb.velocity = new Vector2(H * RefSpeed * -1, V * RefSpeed);
                 }
-                if (H > 0) //パリィ
+                if (H > 0)
                 {
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                     Refrb.velocity = new Vector2(H * RefSpeed * -1, 0);
                     parryf = true;
-                }
-                else
+                }else
                 {
                     parryf = false;
                 }
             }
-            
+
         }
 
 

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class Jump : MonoBehaviour
+public class HANA_Jump : MonoBehaviour
 {
     //インスペクターで設定する
     public float jumpSpeed;     //ジャンプする速度
@@ -9,9 +9,6 @@ public class Jump : MonoBehaviour
     public GroundCheck ground;  //接地判定
     public GroundCheck wallR;   //右壁に張り付いているか判定
     public GroundCheck wallL;   //左壁に張り付いているか判定
-    public GroundCheck head;    //頭ぶつけた判定
-
-    public float jumpLimitTime; //ジャンプ制限時間
 
     //プライベート変数
     //private Animator anim = null;
@@ -22,7 +19,6 @@ public class Jump : MonoBehaviour
     private bool isWallL = false;
     private bool pushRB = false;
     private bool pushJump = false;
-    private bool isHead = false;
 
     private float jumpPos = 0.0f;
     private float ySpeed = 0;
@@ -31,9 +27,7 @@ public class Jump : MonoBehaviour
     private float Down = 0.3f;   //落下の加速度調整
     private float RBCountTime = 0f; //落下速度低下の制限時間1秒
     private float RBCount = 0;      //RBの連続入力阻止
-    private float JumpBlock = 0;    //バニホの制限
-    private int pushCount = 0;      //ジャンプ盾構えの制限
-    private float jumpTime = 0.0f;
+    private float JumpBlock = 0;
 
 
     //private float moveSpeed = 10.5f;
@@ -53,7 +47,7 @@ public class Jump : MonoBehaviour
         isGround = ground.IsGround();
         isWallR = wallR.IsGround();
         isWallL = wallL.IsGround();
-        isHead = head.IsGround();
+        //isHead = head.IsGround();
 
         //RBが押されているかの判定
         if (Input.GetKey("joystick button 5"))
@@ -80,14 +74,6 @@ public class Jump : MonoBehaviour
             ySpeed = -gravity;
             RBCountTime = 0;
             RBCount = 0;
-            pushCount = 0;
-            moveSpeed = 10.5f;
-
-            if (pushRB)
-            {
-                RBCount = 1;
-                moveSpeed = 5.5f;
-            }
 
             if (!pushJump)
             {
@@ -99,7 +85,6 @@ public class Jump : MonoBehaviour
                 ySpeed = jumpSpeed;
                 jumpPos = transform.position.y; //ジャンプした位置を記録する
                 isJump = true;
-                jumpTime = 0.0f;
             }
             else
             {
@@ -108,26 +93,17 @@ public class Jump : MonoBehaviour
         }
         else if (isJump)    //ジャンプボタンを押している間true、制限高さを超えるとfalse
         {
-            //ジャンプキーを押しているか
-            bool pushJumpKey = Input.GetKey("joystick button 0");
-            //現在の高さが飛べる高さより下か
-            bool canHeight = jumpPos + jumpHeight > transform.position.y;
-            //ジャンプ時間が長くなりすぎてないか
-            bool canTime = jumpLimitTime > jumpTime;
-
             //ジャンプを押されている。かつ、現在の高さがジャンプした位置から自分の決めた位置より下ならジャンプを継続する
-            if (pushJumpKey && canHeight && canTime && !isHead && JumpBlock == 0 && !pushRB)
+            if (Input.GetKey("joystick button 0") && jumpPos + jumpHeight > transform.position.y && JumpBlock == 0)
             {
                 ySpeed = jumpSpeed;
-                jumpTime += Time.deltaTime;
             }
             else
             {
                 isJump = false;
-                jumpTime = 0.0f;
             }
         }
-        else if(!isJump && !isGround)   //空中にいる、かつジャンプの上昇中じゃなかったら落下する処理
+        else if (!isJump && !isGround)   //空中にいる、かつジャンプの上昇中じゃなかったら落下する処理
         {
             if (ySpeed > 1)
             {
@@ -137,7 +113,7 @@ public class Jump : MonoBehaviour
             else
             {
                 //空中でRBを押したときの処理
-                if (pushRB && RBCountTime < 60) 
+                if (pushRB && RBCountTime < 60)
                 {
 
                     if (RBCount == 0)
@@ -145,11 +121,11 @@ public class Jump : MonoBehaviour
                         ySpeed = 0.2f;
                         moveSpeed = 0.0f;
                         RBCountTime++;
-                        pushCount = 1;
                     }
-                }else if (pushCount == 1 && !pushRB)
+                }
+                else if (RBCount != 0 && !pushRB)
                 {
-                    RBCount = 1;
+                    RBCount++;
                 }
                 ySpeed = Mathf.Clamp(ySpeed + -gravity * Time.deltaTime - Down, -15, 0);
             }
@@ -159,7 +135,7 @@ public class Jump : MonoBehaviour
         //右壁にくっついた状態かの判定
         if (isWallR)
         {
-            if(Horizontal > 0)
+            if (Horizontal > 0)
             {
                 moveSpeed = 0;
             }
@@ -168,7 +144,7 @@ public class Jump : MonoBehaviour
                 moveSpeed = 10.5f;
             }
         }
-        else if(!isWallR && !isWallL && !pushRB)
+        else if (!isWallR && !isWallL && !isJump && isGround)
         {
             moveSpeed = 10.5f;
         }
@@ -185,12 +161,23 @@ public class Jump : MonoBehaviour
                 moveSpeed = 10.5f;
             }
         }
-        else if(!isWallR && !isWallL && !pushRB)
+        else if (!isWallR && !isWallL && !isJump && isGround)
         {
             moveSpeed = 10.5f;
         }
 
-        rb.velocity = new Vector2(Horizontal * moveSpeed, ySpeed);
-        Debug.Log(pushCount);
+        //花城_移動速度の変更ここから
+        if (Input.GetKey(KeyCode.Q) || Input.GetKey("joystick button 5"))
+        {
+            moveSpeed = 5.5f;
+        }
+        else
+        {
+            moveSpeed = 10.5f;
+        }
+        //花城_移動速度の変更ここまで
+
+        rb.velocity = new Vector2(Horizontal * moveSpeed, ySpeed); //花城_移動の処理
+        Debug.Log(RBCount);
     }
 }
