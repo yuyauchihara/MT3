@@ -880,7 +880,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.4784689, y: 1}
+    m_SensorSize: {x: 4.895288, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -16622,6 +16622,12 @@ MonoBehaviour:
   OpenGate: {fileID: 762506300}
   GateEnemy:
   - {fileID: 887226899}
+  - {fileID: 1931816974}
+  - {fileID: 2050063589}
+  - {fileID: 931231785}
+  - {fileID: 207290320}
+  - {fileID: 974120554}
+  - {fileID: 569872005}
 --- !u!61 &762506303
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17401,7 +17407,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 956360303}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.003260099, y: 0.9044817, z: -10}
+  m_LocalPosition: {x: 14.665293, y: 0.94581497, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1037032410}
@@ -18730,7 +18736,7 @@ PrefabInstance:
     - target: {fileID: 6253042874359732207, guid: dd77c1a4660a1a14d8ff69ae6cf03710,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.38
+      value: 4.13
       objectReference: {fileID: 0}
     - target: {fileID: 6253042874359732207, guid: dd77c1a4660a1a14d8ff69ae6cf03710,
         type: 3}
