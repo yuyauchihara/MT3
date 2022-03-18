@@ -19,7 +19,7 @@ public class Clear : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "goal")
+        if(collision.gameObject.tag == "goal" && GateOpen.ClearFlag)
         {
             Invoke("ChangeScene", 0.0f);
         }
