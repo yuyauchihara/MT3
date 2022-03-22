@@ -191,6 +191,6 @@ public class Jump : MonoBehaviour
         }
 
         rb.velocity = new Vector2(Horizontal * moveSpeed, ySpeed);
-        Debug.Log(pushCount);
+        //Debug.Log(pushCount);
     }
 }

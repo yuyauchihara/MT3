@@ -202,12 +202,12 @@ public class Parry : MonoBehaviour
         {
             if (HoldShield == true)
             {
-                if (Move.Pdirection == true && V == 0 && H == 0)　//リフレクション(入力無し)
+                if (Move.Pdirection == true && V == 0 && H == 0)　//右向きのリフレクション(入力無し)
                 {
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                     Refrb.velocity = new Vector2(1 * RefSpeed, 0 * RefSpeed);
                 }
-                if (Move.Pdirection == false && V == 0 && H == 0)　//リフレクション(入力無し)
+                if (Move.Pdirection == false && V == 0 && H == 0)　//左向きのリフレクション(入力無し)
                 {
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                     Refrb.velocity = new Vector2(1 * -RefSpeed, 0 * RefSpeed);
