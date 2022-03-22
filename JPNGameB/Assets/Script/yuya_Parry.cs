@@ -32,8 +32,11 @@ public class yuya_Parry : MonoBehaviour
     private int i = 0;
 
     bool HoldShield = false;
-    public static bool parryf = false;
-/*    bool Pdirection = true;*/ //プレイヤーの向き、trueなら左、falseなら右
+    bool Pdirection = true; //プレイヤーの向き、trueなら左、falseなら右
+
+    float radian;
+    public static bool parryf = false; // パリィフラグ
+    public int ShieldRote = 0;
     void Start()
     {
 
@@ -47,21 +50,14 @@ public class yuya_Parry : MonoBehaviour
         var h = Input.GetAxis("Horizontal");//左スティックの横
         var h2 = Input.GetAxis("JoyHorizontal");//右スティックの横
 
-
-        //if (h < 0)
-        //{
-        //    //transform.rotation = Quaternion.Euler(0, 180, 0);
-        //    Pdirection = false;
-        //}
-        //else if (0 < h)
-        //{
-        //    //transform.rotation = Quaternion.Euler(0, 0, 0);
-        //    Pdirection = true;
-        //}
-
-        if (v == 0)
+        //Debug.Log(H);
+        //Debug.Log(Move.Pdirection);
+        //Debug.Log(ShieldRote);
+        Debug.Log(parryf);
+        if (v == 0 && v < 0.15)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
+            ShieldRote = 0;
         }
 
         //if (Pdirection == true && v > 0 && v < 0.15)//r５度
@@ -74,6 +70,7 @@ public class yuya_Parry : MonoBehaviour
         {
             //this.transform.position += new Vector3(0, v / 40);
             transform.rotation = Quaternion.Euler(0, 0, 10);
+            ShieldRote = 10;
         }
 
         //if (Pdirection == true && v > 0.31 && v < 0.45)//r15do
@@ -86,6 +83,7 @@ public class yuya_Parry : MonoBehaviour
         {
             //this.transform.position += new Vector3(0, v / 40);
             transform.rotation = Quaternion.Euler(0, 0, 20);
+            ShieldRote = 20;
         }
 
         //if (Pdirection == true && v > 0.60 && v < 0.75)//r25do
@@ -98,6 +96,7 @@ public class yuya_Parry : MonoBehaviour
         {
             //this.transform.position += new Vector3(0, v / 40);
             transform.rotation = Quaternion.Euler(0, 0, 30);
+            ShieldRote = 30;
         }
 
         //if (Pdirection == false && v > 0 && v < 1.5)//L5do
@@ -110,6 +109,7 @@ public class yuya_Parry : MonoBehaviour
         {
             //this.transform.position += new Vector3(0, v / 40);
             transform.rotation = Quaternion.Euler(0, 0, -10);
+            ShieldRote = -10;
         }
 
         //if (Pdirection == false && v > 0.31 && v < 0.45)//L15do
@@ -122,6 +122,7 @@ public class yuya_Parry : MonoBehaviour
         {
             //this.transform.position += new Vector3(0, v / 40);
             transform.rotation = Quaternion.Euler(0, 0, -20);
+            ShieldRote = -20;
         }
 
         //if (Pdirection == false && v > 0.60 && v < 0.75)//L25do
@@ -134,8 +135,8 @@ public class yuya_Parry : MonoBehaviour
         {
             //this.transform.position += new Vector3(0, v / 40);
             transform.rotation = Quaternion.Euler(0, 0, -30);
+            ShieldRote = -30;
         }
-
         //if (keyIsBlock)
         //{
         //    elapsedTime = DateTime.Now - pressedKeyTime;
@@ -156,11 +157,6 @@ public class yuya_Parry : MonoBehaviour
 
             //StartCoroutine("Parryflag");//パリィフラグのコルーチンへ
         }
-        //else
-        //{
-        //    //GetComponent<Renderer>().material.color = green.color;
-        //    parry = false;
-        //}
 
         //ホールドシールドの判定
 
@@ -176,89 +172,104 @@ public class yuya_Parry : MonoBehaviour
         //ホールドシールドの判定終わり
 
         //リフレクション角度の取得
-        V = Input.GetAxis("JoyVertical");//右スティックの縦 リフレクション
-        H = Input.GetAxis("JoyHorizontal");//左スティックの横　リフレクション
+        V = Input.GetAxisRaw("JoyVertical");//右スティックの縦 リフレクション
+        H = Input.GetAxisRaw("JoyHorizontal");//左スティックの横　リフレクション
         //リフレクション角度の取得終わり
-        Debug.Log(H);
+
+        radian = Mathf.Atan2(V, H * -1) * Mathf.Rad2Deg;
+
+        //Debug.Log(radian);
     }
-
-    //IEnumerator Parryflag()//パリィコルーチン
-    //{
-    //    GetComponent<Renderer>().material.color = white.color;//プレイヤーの色を白に
-    //    parry = true;//フラグをオン
-    //    yield return new WaitForSeconds(2);//二秒待つ
-    //    GetComponent<Renderer>().material.color = green.color;//色を緑に
-    //    parry = false;//フラグをオフ
-    //}
-
-
 
     void OnTriggerStay2D(Collider2D other)
     {
-        //var h2 = Input.GetAxis("JoyHorizontal");//右スティックの横
-        //if (h2 < 0 && other.gameObject.tag == "bullet")
-        //{
-        //    if (HoldShield == true)
-        //    {
-        //        Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
-        //        Refrb.AddForce(Ref);
-        //    }
-        //}
-
+        
         if (other.gameObject.tag == "bullet") //リフレクション
         {
             if (HoldShield == true)
             {
-                if (V == 0 && H == 0)
+                if (Move.Pdirection == true)
                 {
-                    Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
-                    Refrb.velocity = new Vector2(1 * RefSpeed, 0 * RefSpeed);
+                    if (Move.Pdirection == true && V == 0 && H == 0 && ShieldRote == 0) //右向きのリフレクション(入力無し)
+                    {
+                        Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+                        Refrb.velocity = new Vector2(1 * RefSpeed, 0 * RefSpeed);
+                    }
+
+                    if (Move.Pdirection == true && H != 0 && ShieldRote == 0) //右向きのリフレクション(0)
+                    {
+                        Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+                        Refrb.velocity = new Vector2(1 * RefSpeed, 0 * RefSpeed);
+                    }
+
+                    if (Move.Pdirection == true && H < 0 && ShieldRote == 10)// reflectionの処理　右向き１０度
+                    {
+                        Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+                        Refrb.velocity = new Vector2(1 * RefSpeed, 2f);
+                    }
+
+                    if (Move.Pdirection == true && H < 0 && ShieldRote == 20)//２０度
+                    {
+                        Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+                        Refrb.velocity = new Vector2(1 * RefSpeed, 4f);
+                    }
+
+                    if (Move.Pdirection == true && H < 0 && ShieldRote == 30)//３０度
+                    {
+                        Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+                        Refrb.velocity = new Vector2(1 * RefSpeed, 6f);
+                    }
                 }
-                if (H < 0)
+
+                if (Move.Pdirection == false)
                 {
-                    Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
-                    Refrb.velocity = new Vector2(H * RefSpeed * -1, V * RefSpeed);
+                    if (Move.Pdirection == false && V == 0 && H == 0 && ShieldRote == 0) //左向きのリフレクション(入力無し)
+                    {
+                        Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+                        Refrb.velocity = new Vector2(1 * -RefSpeed, 0 * RefSpeed);
+                    }
+
+                    if (Move.Pdirection == false && H != 0 && ShieldRote == 0) //左向きのリフレクション(0)
+                    {
+                        Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+                        Refrb.velocity = new Vector2(1 * -RefSpeed, 0 * RefSpeed);
+                    }
+
+                    if (Move.Pdirection == false && H > 0 && ShieldRote == -10)//左向き１０度
+                    {
+                        Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+                        Refrb.velocity = new Vector2(1 * -RefSpeed, 2f);
+                    }
+
+                    if (Move.Pdirection == false && H > 0 && ShieldRote == -20)//２０度
+                    {
+                        Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+                        Refrb.velocity = new Vector2(1 * -RefSpeed, 4f);
+                    }
+
+                    if (Move.Pdirection == false && H > 0 && ShieldRote == -30)//３０度
+                    {
+                        Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+                        Refrb.velocity = new Vector2(1 * -RefSpeed, 6f);
+                    }
                 }
-                if (H > 0)
+
+                if (Move.Pdirection == true && H > 0) //パリィ
                 {
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                     Refrb.velocity = new Vector2(H * RefSpeed * -1, 0);
                     parryf = true;
-                }else
+                }else if (Move.Pdirection == false && H < 0)
+                {
+                    Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+                    Refrb.velocity = new Vector2(H * RefSpeed * -1, 0);
+                    parryf = true;
+                }
+                else
                 {
                     parryf = false;
                 }
             }
-
         }
-
-
-        //if (other.gameObject.tag == "shieldarea")
-        //{
-        //    this.transform.position += new Vector3(0, v / 40);
-        //}
-
-        //if (parry == true)
-        //{
-        //    Rigidbody2D Parrb = other.gameObject.GetComponent<Rigidbody2D>();
-        //    Parrb.AddForce(Par);
-
-        //    Collider2D Parco = other.gameObject.GetComponent<Collider2D>();
-        //    Parco.isTrigger = true;
-        //}
-
-        //if (other.gameObject.tag == "bullet")
-        //{
-        //    if (parry == false)
-        //    {
-        //        if (Input.GetKey("joystick button 2")) //EキーかコントローラーのXボタンでパリィ
-        //        {
-        //            Parco.isTrigger = true;
-        //            Rigidbody2D Parrb = other.gameObject.GetComponent<Rigidbody2D>();
-        //            Parrb.AddForce(Par);
-        //        }
-        //    }
-
-        //}
     }
 }

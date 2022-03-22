@@ -31,7 +31,7 @@ public class PlayerDamage : MonoBehaviour
         {
             return;
         }
-        if (other.gameObject.tag == "bullet" && !isDamage && Parry.parryf == false)
+        if (other.gameObject.tag == "bullet" && !isDamage && yuya_Parry.parryf == false)
         {
             StartCoroutine(OnDamage());
         }
