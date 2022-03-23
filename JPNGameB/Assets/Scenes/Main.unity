@@ -880,7 +880,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.4784689, y: 1}
+    m_SensorSize: {x: 1.0337079, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -4844,7 +4844,7 @@ PrefabInstance:
     - target: {fileID: 3326315162173351200, guid: 92c1b0c7c31303b478b3ed9eecaedc6a,
         type: 3}
       propertyPath: m_TileColorArray.Array.data[0].m_Data.a
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3326315162173351200, guid: 92c1b0c7c31303b478b3ed9eecaedc6a,
         type: 3}
@@ -4854,22 +4854,22 @@ PrefabInstance:
     - target: {fileID: 3326315162173351200, guid: 92c1b0c7c31303b478b3ed9eecaedc6a,
         type: 3}
       propertyPath: m_TileColorArray.Array.data[1].m_Data.r
-      value: 2.147e-41
+      value: 2.4778e-41
       objectReference: {fileID: 0}
     - target: {fileID: 3326315162173351200, guid: 92c1b0c7c31303b478b3ed9eecaedc6a,
         type: 3}
       propertyPath: m_TileColorArray.Array.data[1].m_Data.g
-      value: 2.147e-41
+      value: 2.4778e-41
       objectReference: {fileID: 0}
     - target: {fileID: 3326315162173351200, guid: 92c1b0c7c31303b478b3ed9eecaedc6a,
         type: 3}
       propertyPath: m_TileColorArray.Array.data[1].m_Data.a
-      value: 2.147e-41
+      value: 2.4778e-41
       objectReference: {fileID: 0}
     - target: {fileID: 3326315162173351200, guid: 92c1b0c7c31303b478b3ed9eecaedc6a,
         type: 3}
       propertyPath: m_TileColorArray.Array.data[1].m_Data.b
-      value: 2.147e-41
+      value: 2.4778e-41
       objectReference: {fileID: 0}
     - target: {fileID: 6663591827244760562, guid: 92c1b0c7c31303b478b3ed9eecaedc6a,
         type: 3}
@@ -15044,7 +15044,7 @@ PrefabInstance:
     - target: {fileID: 6663591827720470092, guid: 92c1b0c7c31303b478b3ed9eecaedc6a,
         type: 3}
       propertyPath: m_TileColorArray.Array.data[0].m_Data.a
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6663591827720470092, guid: 92c1b0c7c31303b478b3ed9eecaedc6a,
         type: 3}
@@ -15054,22 +15054,22 @@ PrefabInstance:
     - target: {fileID: 6663591827720470092, guid: 92c1b0c7c31303b478b3ed9eecaedc6a,
         type: 3}
       propertyPath: m_TileColorArray.Array.data[1].m_Data.r
-      value: NaN
+      value: 2.4668e-41
       objectReference: {fileID: 0}
     - target: {fileID: 6663591827720470092, guid: 92c1b0c7c31303b478b3ed9eecaedc6a,
         type: 3}
       propertyPath: m_TileColorArray.Array.data[1].m_Data.g
-      value: NaN
+      value: 2.4668e-41
       objectReference: {fileID: 0}
     - target: {fileID: 6663591827720470092, guid: 92c1b0c7c31303b478b3ed9eecaedc6a,
         type: 3}
       propertyPath: m_TileColorArray.Array.data[1].m_Data.a
-      value: NaN
+      value: 2.4668e-41
       objectReference: {fileID: 0}
     - target: {fileID: 6663591827720470092, guid: 92c1b0c7c31303b478b3ed9eecaedc6a,
         type: 3}
       propertyPath: m_TileColorArray.Array.data[1].m_Data.b
-      value: NaN
+      value: 2.4668e-41
       objectReference: {fileID: 0}
     - target: {fileID: 6663591827720470092, guid: 92c1b0c7c31303b478b3ed9eecaedc6a,
         type: 3}
@@ -17167,7 +17167,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 
 --- !u!222 &908011179
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17401,7 +17401,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 956360303}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.003260099, y: 0.9044817, z: -10}
+  m_LocalPosition: {x: -0.0032850413, y: 0.9113972, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1037032410}
