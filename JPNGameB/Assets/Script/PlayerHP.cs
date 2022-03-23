@@ -38,7 +38,7 @@ public class PlayerHP : MonoBehaviour
         if (other.gameObject.tag == "bullet" && !PlayerDamage.isDamage)
         {
            
-            if (Parry.parryf == false)
+            if (yuya_Parry.parryf == false)
             {
                 HealthPoint--;
                 Destroy(other.gameObject);
