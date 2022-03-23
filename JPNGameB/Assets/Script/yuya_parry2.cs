@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class yuya_Parry2 : MonoBehaviour
+public class yuya_parry2 : MonoBehaviour
 {
     Collider2D Parco;
     Rigidbody2D Parrb;
@@ -37,6 +37,8 @@ public class yuya_Parry2 : MonoBehaviour
     float radian;
     public static bool parryf = false; // パリィフラグ
     public int ShieldRote = 0;
+    float sr = 0;//盾の角度の値
+    float sy = 0;//盾の高さの値
     void Start()
     {
 
@@ -54,10 +56,26 @@ public class yuya_Parry2 : MonoBehaviour
         //Debug.Log(Move.Pdirection);
         //Debug.Log(ShieldRote);
         Debug.Log(parryf);
-        if (v == 0 && v < 0.15)
+        if (v == 0)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
             ShieldRote = 0;
+            sr = 0;
+            sy = 0;
+        }
+
+        if (v > 0 && sy < 0.61)//盾の移動
+        {
+            sy = v * 0.6f;
+            transform.localPosition = new Vector2(0.9f, sy);
+        }
+
+
+
+        if (v > 0 && sr < 41)//盾の回転
+        {
+            sr = v * 40;
+            transform.rotation = Quaternion.Euler(0, 0, sr);
         }
 
         //if ()
