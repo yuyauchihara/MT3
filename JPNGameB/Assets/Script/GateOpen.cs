@@ -25,7 +25,7 @@ public class GateOpen : MonoBehaviour
         if (other.gameObject.tag == "Player")           //プレイヤーのタグに当たったら判断開始
         {
             EnemyDeadCount = 0;
-            for (int j = 0; j < EnemylistSize; j++)     //サイズ分の変数の中身を見る※今は複数には対応してない
+            for (int j = 0; j < EnemylistSize; j++)     //サイズ分の変数の中身を見る
             {
                 if (GateEnemy[j] == null)               //中身が何もなかったら(デリートされてたら)※複数
                 {
