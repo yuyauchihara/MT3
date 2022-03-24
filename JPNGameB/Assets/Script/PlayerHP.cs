@@ -45,7 +45,16 @@ public class PlayerHP : MonoBehaviour
             }
             
         }
+        if (other.gameObject.tag == "Sekkin" && !PlayerDamage.isDamage)
+        {
 
-        
+            if (yuya_Parry.parryf == false)
+            {
+                HealthPoint--;
+            }
+
+        }
+
+
     }
 }
