@@ -139,7 +139,8 @@ public class yuya_parry2 : MonoBehaviour
 
         if (other.gameObject.tag == "bullet") //リフレクション
         {
-            if (HoldShield == true)
+            GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
+            if (Input.GetKeyUp("joystick button 5"))
             {
                 if (Move.Pdirection == true && V == 0 && H == 0)　//右向きのリフレクション(入力無し)
                 {
@@ -192,6 +193,14 @@ public class yuya_parry2 : MonoBehaviour
                 }
             }
 
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "bullet")
+        {
+            GetComponent<SpriteRenderer>().color = new Color(0, 220, 255);
         }
     }
 }
