@@ -60,6 +60,17 @@ public class yuya_Parry : MonoBehaviour
             ShieldRote = 0;
         }
 
+        if(Move.Pdirection == true && H >= 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            ShieldRote = 0;
+        }
+
+        if (Move.Pdirection == false && H <= 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            ShieldRote = 0;
+        }
         //if (Pdirection == true && v > 0 && v < 0.15)//r５度
         //{
         //    //this.transform.position += new Vector3(0, v / 40);
@@ -92,7 +103,7 @@ public class yuya_Parry : MonoBehaviour
         //    transform.rotation = Quaternion.Euler(0, 0, 25);
         //}
 
-        if (Move.Pdirection == true && v > 0.75 && v < 1 && h2 < 0)//r30do
+        if (Move.Pdirection == true && v > 0.75 && v <= 1 && h2 < 0)//r30do
         {
             //this.transform.position += new Vector3(0, v / 40);
             transform.rotation = Quaternion.Euler(0, 0, 30);
@@ -131,7 +142,7 @@ public class yuya_Parry : MonoBehaviour
         //    transform.rotation = Quaternion.Euler(0, 0, -25);
         //}
 
-        if (Move.Pdirection == false && v > 0.75 && v < 1 && h2 > 0)//L30do
+        if (Move.Pdirection == false && v > 0.75 && v <= 1 && h2 > 0)//L30do
         {
             //this.transform.position += new Vector3(0, v / 40);
             transform.rotation = Quaternion.Euler(0, 0, -30);
@@ -190,7 +201,7 @@ public class yuya_Parry : MonoBehaviour
             {
                 if (Move.Pdirection == true)
                 {
-                    if (Move.Pdirection == true && V == 0 && H == 0 && ShieldRote == 0) //右向きのリフレクション(入力無し)
+                    if (Move.Pdirection == true && H == 0 && ShieldRote == 0) //右向きのリフレクション(入力無し)
                     {
                         Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                         Refrb.velocity = new Vector2(1 * RefSpeed, 0 * RefSpeed);
@@ -223,7 +234,7 @@ public class yuya_Parry : MonoBehaviour
 
                 if (Move.Pdirection == false)
                 {
-                    if (Move.Pdirection == false && V == 0 && H == 0 && ShieldRote == 0) //左向きのリフレクション(入力無し)
+                    if (Move.Pdirection == false && H == 0 && ShieldRote == 0) //左向きのリフレクション(入力無し)
                     {
                         Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                         Refrb.velocity = new Vector2(1 * -RefSpeed, 0 * RefSpeed);
