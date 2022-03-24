@@ -39,7 +39,7 @@ public class yuya_Parry : MonoBehaviour
     public int ShieldRote = 0;
     void Start()
     {
-
+        Application.targetFrameRate = 50;
     }
 
     // Update is called once per frame

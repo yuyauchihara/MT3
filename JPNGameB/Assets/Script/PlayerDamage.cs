@@ -31,7 +31,7 @@ public class PlayerDamage : MonoBehaviour
         {
             return;
         }
-        if (other.gameObject.tag == "bullet" || other.gameObject.tag == "Sekkin" && !isDamage && yuya_Parry.parryf == false)
+        if (other.gameObject.tag == "bullet" || other.gameObject.tag == "Sekkin" && !isDamage && yuya_parry2.parryf == false)
         {
             StartCoroutine(OnDamage());
         }
