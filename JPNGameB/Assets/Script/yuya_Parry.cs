@@ -39,7 +39,7 @@ public class yuya_Parry : MonoBehaviour
     public int ShieldRote = 0;
     void Start()
     {
-
+        Application.targetFrameRate = 50;
     }
 
     // Update is called once per frame
@@ -54,7 +54,7 @@ public class yuya_Parry : MonoBehaviour
         //Debug.Log(Move.Pdirection);
         //Debug.Log(ShieldRote);
         Debug.Log(parryf);
-        if (v == 0 && v < 0.15)
+        if (v == 0)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
             ShieldRote = 0;
@@ -197,7 +197,8 @@ public class yuya_Parry : MonoBehaviour
         
         if (other.gameObject.tag == "bullet") //リフレクション
         {
-            if (HoldShield == true)
+            GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
+            if (Input.GetKeyUp("joystick button 5"))
             {
                 if (Move.Pdirection == true)
                 {
@@ -281,6 +282,13 @@ public class yuya_Parry : MonoBehaviour
                     parryf = false;
                 }
             }
+        }
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "bullet")
+        {
+            GetComponent<SpriteRenderer>().color = new Color(0, 220, 255);
         }
     }
 }
