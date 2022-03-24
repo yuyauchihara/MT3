@@ -59,22 +59,29 @@ public class yuya_parry2 : MonoBehaviour
         if (v == 0)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
+            transform.localPosition = new Vector2(0.8f, 0.3f);
             ShieldRote = 0;
             sr = 0;
             sy = 0;
         }
 
-        if (v > 0 && sy < 0.61)//盾の移動
+        if(v > 0 && sy < 0.31)//盾の移動
         {
-            sy = v * 0.6f;
-            transform.localPosition = new Vector2(0.9f, sy);
+            sy = v * 0.3f;
+            transform.localPosition = new Vector2(0.8f, sy + 0.3f);
         }
 
 
 
-        if (v > 0 && sr < 41)//盾の回転
+        if (Move.Pdirection == true && v > 0 && sr < 41)//盾の回転
         {
             sr = v * 40;
+            transform.rotation = Quaternion.Euler(0, 0, sr);
+        }
+
+        if (Move.Pdirection == false && v > 0 && sr > -41)//盾の回転
+        {
+            sr = v * -40;
             transform.rotation = Quaternion.Euler(0, 0, sr);
         }
 
@@ -144,12 +151,36 @@ public class yuya_parry2 : MonoBehaviour
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                     Refrb.velocity = new Vector2(1 * -RefSpeed, 0 * RefSpeed);
                 }
-                if (H < 0) //リフレクション
+                if (Move.Pdirection == true && H < 0 && V < 0.75) //右向きのリフレクション
                 {
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                     Refrb.velocity = new Vector2(Mathf.Cos(radian * Mathf.Deg2Rad) * RefSpeed, Mathf.Sin(radian * Mathf.Deg2Rad) * RefSpeed);
                 }
-                if (H > 0) //パリィ
+
+                if (Move.Pdirection == true && H < 0 && V > 0.75) //右向きのリフレクション(上限を超えたときの処理)
+                {
+                    Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+                    Refrb.velocity = new Vector2(1 * -RefSpeed, 8f);
+                }
+                if (Move.Pdirection == false && H > 0 && V < 0.75) //左向きのリフレクション
+                {
+                    Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+                    Refrb.velocity = new Vector2(Mathf.Cos(radian * Mathf.Deg2Rad) * RefSpeed, Mathf.Sin(radian * Mathf.Deg2Rad) * RefSpeed);
+                }
+
+                if (Move.Pdirection == false && H > 0 && V > 0.75) //左向きのリフレクション(上限を超えたときの処理)
+                {
+                    Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+                    Refrb.velocity = new Vector2(1 * -RefSpeed, 8f);
+                }
+
+                if (Move.Pdirection == true && H > 0) //パリィ
+                {
+                    Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+                    Refrb.velocity = new Vector2(H * RefSpeed * -1, 0);
+                    parryf = true;
+                }
+                else if (Move.Pdirection == false && H < 0)
                 {
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                     Refrb.velocity = new Vector2(H * RefSpeed * -1, 0);
