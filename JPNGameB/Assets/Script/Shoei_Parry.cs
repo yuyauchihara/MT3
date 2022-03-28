@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Parry : MonoBehaviour
+public class Shoei_Parry : MonoBehaviour
 {
     Collider2D Parco;
     Rigidbody2D Parrb;
@@ -29,7 +29,7 @@ public class Parry : MonoBehaviour
     Vector2 Par = new Vector2(-600.0f, 0);//パりぃーした時の弾の速度
     Vector2 Ref = new Vector2(5500, 0);
 
-    private int  i = 0;
+    private int i = 0;
 
     bool HoldShield = false;
     bool Pdirection = true; //プレイヤーの向き、trueなら左、falseなら右
@@ -139,7 +139,7 @@ public class Parry : MonoBehaviour
         //    }
         //}
 
-        if (Input.GetKeyUp("joystick button 5")) 
+        if (Input.GetKeyUp("joystick button 5"))
         {
             //keyIsBlock = true;
             pressedKeyTime = DateTime.Now;
@@ -170,7 +170,7 @@ public class Parry : MonoBehaviour
         H = Input.GetAxisRaw("JoyHorizontal");//左スティックの横　リフレクション
         //リフレクション角度の取得終わり
 
-        radian = Mathf.Atan2(V, H*-1) * Mathf.Rad2Deg;
+        radian = Mathf.Atan2(V, H * -1) * Mathf.Rad2Deg;
 
         Debug.Log(radian);
     }
@@ -202,14 +202,14 @@ public class Parry : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
             //testrefStart
-            if(Input.GetKeyUp("joystick button 5"))
+            if (Input.GetKeyUp("joystick button 5"))
             {
-                if (Move.Pdirection == true && V == 0 && H == 0)　//右向きのリフレクション(入力無し)
+                if (Move.Pdirection == true && V == 0 && H == 0)　//リフレクション(入力無し)
                 {
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                     Refrb.velocity = new Vector2(1 * RefSpeed, 0 * RefSpeed);
                 }
-                if (Move.Pdirection == false && V == 0 && H == 0)　//左向きのリフレクション(入力無し)
+                if (Move.Pdirection == false && V == 0 && H == 0)　//リフレクション(入力無し)
                 {
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                     Refrb.velocity = new Vector2(1 * -RefSpeed, 0 * RefSpeed);
@@ -262,7 +262,7 @@ public class Parry : MonoBehaviour
                 //    parryf = false;
                 //}
             }
-            
+
         }
 
         //if (other.gameObject.tag == "shieldarea")
@@ -296,7 +296,7 @@ public class Parry : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if(other.gameObject.tag == "bullet")
+        if (other.gameObject.tag == "bullet")
         {
             GetComponent<SpriteRenderer>().color = new Color(0, 220, 255);
         }
