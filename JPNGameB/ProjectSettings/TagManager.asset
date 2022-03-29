@@ -11,6 +11,8 @@ TagManager:
   - gaol
   - shield area
   - shieldarea
+  - Wall(kari)
+  - Rock
   layers:
   - Default
   - TransparentFX

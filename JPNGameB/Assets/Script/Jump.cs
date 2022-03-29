@@ -19,7 +19,6 @@ public class Jump : MonoBehaviour
     private bool isGround = false;
     private bool isJump = false;
     private bool isWallR = false;
-    private bool isWallL = false;
     private bool pushRB = false;
     private bool pushJump = false;
     private bool isHead = false;
@@ -52,7 +51,6 @@ public class Jump : MonoBehaviour
         //接地判定を得る
         isGround = ground.IsGround();
         isWallR = wallR.IsGround();
-        isWallL = wallL.IsGround();
         isHead = head.IsGround();
 
         //RBが押されているかの判定
@@ -94,7 +92,7 @@ public class Jump : MonoBehaviour
                 JumpBlock = 0;
             }
 
-            if (Input.GetKey("joystick button 0") && JumpBlock == 0)
+            if (Input.GetKey("joystick button 0") && JumpBlock == 0 && !pushRB)
             {
                 ySpeed = jumpSpeed;
                 jumpPos = transform.position.y; //ジャンプした位置を記録する
@@ -140,14 +138,14 @@ public class Jump : MonoBehaviour
                 if (pushRB && RBCountTime < 60) 
                 {
 
-                    if (RBCount == 0)
-                    {
-                        ySpeed = 0.2f;
-                        moveSpeed = 0.0f;
-                        RBCountTime++;
-                        pushCount = 1;
-                    }
-                }else if (pushCount == 1 && !pushRB)
+                    //if (RBCount == 0)
+                    //{
+                    //    ySpeed = 0.2f;
+                    //    moveSpeed = 0.0f;
+                    //    RBCountTime++;
+                    //    pushCount = 1;
+                    //}
+                }else if (/*pushCount == 1 &&*/ !pushRB)
                 {
                     RBCount = 1;
                 }
@@ -157,7 +155,7 @@ public class Jump : MonoBehaviour
         }
 
         //右壁にくっついた状態かの判定
-        if (isWallR)
+        if (isWallR && Move.Pdirection == true)
         {
             if(Horizontal > 0)
             {
@@ -167,14 +165,7 @@ public class Jump : MonoBehaviour
             {
                 moveSpeed = 10.5f;
             }
-        }
-        else if(!isWallR && !isWallL && !pushRB)
-        {
-            moveSpeed = 10.5f;
-        }
-
-        //左壁にくっついた状態かの判定
-        if (isWallL)
+        }else if(isWallR && Move.Pdirection == false)
         {
             if (Horizontal < 0)
             {
@@ -185,12 +176,30 @@ public class Jump : MonoBehaviour
                 moveSpeed = 10.5f;
             }
         }
-        else if(!isWallR && !isWallL && !pushRB)
+        else if(!isWallR /*&& !isWallL*/ && !pushRB)
         {
             moveSpeed = 10.5f;
         }
 
+        ////左壁にくっついた状態かの判定
+        //if (isWallL && Move.Pdirection == false)
+        //{
+        //    if (Horizontal < 0)
+        //    {
+        //        moveSpeed = 0;
+        //    }
+        //    else
+        //    {
+        //        moveSpeed = 10.5f;
+        //    }
+        //}
+        //else if(!isWallR && !isWallL && !pushRB)
+        //{
+        //    moveSpeed = 10.5f;
+        //}
+
         rb.velocity = new Vector2(Horizontal * moveSpeed, ySpeed);
-        Debug.Log(pushCount);
+        //Debug.Log(ySpeed);
+        //Debug.Log(isWallL);
     }
 }

@@ -18,7 +18,7 @@ public class Enemybullet : MonoBehaviour
         this.Enemy = GameObject.Find("Muzzle1");
         PlayerPos = this.Player.transform.position;
         EnemyPos = this.Enemy.transform.position;
-        Aim(Enemy.transform.position, Player.transform.position, 3.0f);
+        Aim(Enemy.transform.position, Player.transform.position, speed);
     }
     void Update()
     {
