@@ -8,10 +8,12 @@ public class HANA_BulletTogou : MonoBehaviour
     public float BulletSped;
     public bool ChangeFlag;
     float count = 0;
+    AudioSource audioSource;
+    public AudioClip ShotSound;
 
     void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -23,6 +25,7 @@ public class HANA_BulletTogou : MonoBehaviour
         {
             GameObject bullet = (GameObject)Instantiate(bulletPre, transform.position, Quaternion.identity);
             Rigidbody2D Bprb = bullet.GetComponent<Rigidbody2D>();
+            audioSource.PlayOneShot(ShotSound);
 
             if (ChangeFlag == true)
             {

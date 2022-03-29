@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class EnemyBody : MonoBehaviour
 {
+    
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -28,7 +29,7 @@ public class EnemyBody : MonoBehaviour
     {
         if (other.gameObject.tag == "bullet")
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
