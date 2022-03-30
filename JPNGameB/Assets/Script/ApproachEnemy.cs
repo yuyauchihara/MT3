@@ -60,12 +60,12 @@ public class ApproachEnemy : MonoBehaviour
         if (WaitToAttack == 1)
         {
             counterFlag = true;
-            knocktim.SetActive(true);
+            GetComponent<SpriteRenderer>().color = new Color(255, 0, 0);
         }
         else
         {
             counterFlag = false;
-            knocktim.SetActive(false);
+            GetComponent<SpriteRenderer>().color = new Color(255, 255, 0);
         }
 
     }
