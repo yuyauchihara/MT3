@@ -31,7 +31,8 @@ public class PlayerDamage : MonoBehaviour
         {
             return;
         }
-        if (other.gameObject.tag == "bullet" || other.gameObject.tag == "Sekkin" && !isDamage && yuya_parry2.parryf == false)
+        if (other.gameObject.tag == "bullet" || other.gameObject.tag == "Sekkin" && !isDamage && Shoei_Parry.parryf == false) //0331_yuya.parry2からShoei_Parryに一時的に変更
+
         {
             StartCoroutine(OnDamage());
         }

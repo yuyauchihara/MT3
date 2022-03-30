@@ -6,7 +6,7 @@ public class SoundMgr : MonoBehaviour
 {
 
     AudioSource audioSource;
-    public AudioClip ReflectionSound,GuardSound;
+    public AudioClip ReflectionSound,GuardSound,ParrySound;
     public GameObject GuardArea;
     public GameObject Shield;
     ShieldGuard GuF;
@@ -25,20 +25,23 @@ public class SoundMgr : MonoBehaviour
     {
         if (GuF.GuardFlag == true) //GuardAreaのShieldGuard.csのGuardFlagがtrueなら
         {
-            if (!audioSource.isPlaying) //上記かつ音声が再生中で無いならば
-            {
+            
                 audioSource.PlayOneShot(GuardSound); //一回再生する
                 GuF.GuardFlag = false; //再生後falseを代入する事で連続再生を防いでる
-            }
         }
 
-        if (Reflct.RefFlag == true) //シールドオブジェクトのスクリプト内のRefFlagがtrueなら
+        if (Reflct.RefFlag == true) //ShieldのShoei_ParryのRefFlagがtrueなら
         {
-            if (!audioSource.isPlaying) //上記かつ音声が再生中で無いならば
-            {
+            
                 audioSource.PlayOneShot(ReflectionSound); //一回再生する
                 Reflct.RefFlag = false; //再生後falseを代入する事で連続再生を防いでる
-            }
+           
+        }
+
+        if(Reflct.ParyFlag == true)
+        {
+            audioSource.PlayOneShot(ParrySound);
+            Reflct.ParyFlag = false;
         }
 
     }

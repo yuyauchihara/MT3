@@ -32,12 +32,14 @@ public class Shoei_Parry : MonoBehaviour
 
     float radian;
     public static bool parryf = false; // パリィフラグ
-    public bool RefFlag; //リフレクションフラグうんち
+    public bool RefFlag; //リフレクションフラグ音声用
+    public bool ParyFlag = false; //パリィフラグ音声用
     public int ShieldRote = 0;
     float sr = 0;//盾の角度の値
     float sy = 0;//盾の高さの値
     void Start()
-    {      
+    {
+        parryf = false;
         Application.targetFrameRate = 50;
     }
 
@@ -140,52 +142,60 @@ public class Shoei_Parry : MonoBehaviour
             GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
             if (Input.GetKeyUp("joystick button 5") || Input.GetKeyUp(KeyCode.Q))
             {
-                RefFlag = true;
-                Time.timeScale = 0.7f;
+                
+
                 if (Move.Pdirection == true && V == 0 && H == 0)　//右向きのリフレクション(入力無し)
                 {
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                     Refrb.velocity = new Vector2(1 * RefSpeed, 0 * RefSpeed);
+                    RefFlag = true; //音声再生で使用、SoundMgr.csと共有
                 }
                 if (Move.Pdirection == false && V == 0 && H == 0)　//左向きのリフレクション(入力無し)
                 {
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                     Refrb.velocity = new Vector2(1 * -RefSpeed, 0 * RefSpeed);
+                    RefFlag = true; //音声再生で使用、SoundMgr.csと共有
                 }
                 if (Move.Pdirection == true && H < 0 && sr < 41) //右向きのリフレクション
                 {
+                    RefFlag = true; //音声再生で使用、SoundMgr.csと共有
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                     Refrb.velocity = new Vector2(Mathf.Cos(sr * Mathf.Deg2Rad) * RefSpeed, Mathf.Sin(sr * Mathf.Deg2Rad) * RefSpeed);
                 }
                 if (Move.Pdirection == true && H <= 0 && sr == 40)
                 {
+                    RefFlag = true; //音声再生で使用、SoundMgr.csと共有
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                     Refrb.velocity = new Vector2(Mathf.Cos(40 * Mathf.Deg2Rad) * RefSpeed, Mathf.Sin(40 * Mathf.Deg2Rad) * RefSpeed);
                 }
 
                 if (Move.Pdirection == false && H > 0 && sr > -41) //左向きのリフレクション
                 {
+                    RefFlag = true; //音声再生で使用、SoundMgr.csと共有
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                     Refrb.velocity = new Vector2(Mathf.Cos(radian * Mathf.Deg2Rad) * RefSpeed, Mathf.Sin(radian * Mathf.Deg2Rad) * RefSpeed);
                 }
 
                 if (Move.Pdirection == false && H >= 0 && sr == -40)
                 {
+                    RefFlag = true; //音声再生で使用、SoundMgr.csと共有
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                     Refrb.velocity = new Vector2(Mathf.Cos(40 * Mathf.Deg2Rad) * -RefSpeed, Mathf.Sin(40 * Mathf.Deg2Rad) * RefSpeed);
                 }
 
                 if (Move.Pdirection == true && H > 0) //パリィ
                 {
+                    parryf = true;
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                     Refrb.velocity = new Vector2(1 * RefSpeed * -1, 0);
-                    parryf = true;
+                    ParyFlag = true; //音声の為のフラグ SoundMgr.csと共有              
                 }
                 else if (Move.Pdirection == false && H < 0)
                 {
+                    parryf = true;
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                     Refrb.velocity = new Vector2(1 * RefSpeed, 0);
-                    parryf = true;
+                    ParyFlag = true; //音声の為のフラグ SoundMgr.csと共有
                 }
                 else
                 {
@@ -200,7 +210,6 @@ public class Shoei_Parry : MonoBehaviour
     {
         if (other.gameObject.tag == "bullet")
         {
-            Time.timeScale = 1.0f;
             GetComponent<SpriteRenderer>().color = new Color(0, 220, 255);
         }
     }
