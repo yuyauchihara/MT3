@@ -14,7 +14,7 @@ public class ApproachEnemy : MonoBehaviour
     Text seco;
     Move move;
     bool moveKnock;
-    float moveSpeed = -0.03f;
+    public float moveSpeed;
     bool Dflag = false; //エネミーが岩に当たったら死ぬ
     int WaitToAttack = 3;
 

@@ -56,7 +56,7 @@ public class yuya_parry2 : MonoBehaviour
         //Debug.Log(Move.Pdirection);
         //Debug.Log(ShieldRote);
         Debug.Log(parryf);
-        if (v == 0)
+        if (Move.Pdirection == true && H > 0 || v == 0)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
             transform.localPosition = new Vector2(0.8f, 0.3f);
@@ -64,23 +64,36 @@ public class yuya_parry2 : MonoBehaviour
             sr = 0;
             sy = 0;
         }
-        
 
-        if (v > 0 && sy < 0.31)//盾の移動
+        if (Move.Pdirection == false && H < 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            transform.localPosition = new Vector2(0.8f, 0.3f);
+            ShieldRote = 0;
+            sr = 0;
+            sy = 0;
+        }
+
+
+        if (Move.Pdirection == true && H < 0 && v > 0 && sy < 0.31)//盾の移動
+        {
+            sy = v * 0.3f;
+            transform.localPosition = new Vector2(0.8f, sy + 0.3f);
+        }
+        if (Move.Pdirection == false && H > 0 && v > 0 && sy < 0.31)//盾の移動
         {
             sy = v * 0.3f;
             transform.localPosition = new Vector2(0.8f, sy + 0.3f);
         }
 
 
-
-        if (Move.Pdirection == true && v > 0 && sr < 41)//盾の回転
+        if (Move.Pdirection == true && v > 0 && sr < 41 && H < 0)//盾の回転
         {
             sr = v * 40;
             transform.rotation = Quaternion.Euler(0, 0, sr);
         }
 
-        if (Move.Pdirection == false && v > 0 && sr > -41)//盾の回転
+        if (Move.Pdirection == false && v > 0 && sr > -41 && H > 0)//盾の回転
         {
             sr = v * -40;
             transform.rotation = Quaternion.Euler(0, 0, sr);
