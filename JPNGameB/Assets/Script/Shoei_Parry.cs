@@ -54,7 +54,7 @@ public class Shoei_Parry : MonoBehaviour
         //Debug.Log(H);
         //Debug.Log(Move.Pdirection);
         //Debug.Log(ShieldRote);
-        Debug.Log(parryf);
+        //Debug.Log(parryf);
         if (v == 0)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -189,21 +189,17 @@ public class Shoei_Parry : MonoBehaviour
 
                 if (Move.Pdirection == true && H > 0) //パリィ
                 {
-                    parryf = true;
+                    
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                     Refrb.velocity = new Vector2(1 * RefSpeed * -1, 0);
                     ParyFlag = true; //音声の為のフラグ SoundMgr.csと共有              
                 }
                 else if (Move.Pdirection == false && H < 0)
                 {
-                    parryf = true;
+                    
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                     Refrb.velocity = new Vector2(1 * RefSpeed, 0);
                     ParyFlag = true; //音声の為のフラグ SoundMgr.csと共有
-                }
-                else
-                {
-                    parryf = false;
                 }
             }
 

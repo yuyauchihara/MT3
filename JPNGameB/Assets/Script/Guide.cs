@@ -30,13 +30,12 @@ public class Guide : MonoBehaviour
 
         if (h < 0)
         {
-            transform.localPosition = new Vector2(-0.8f, 0);
+            transform.localPosition = new Vector2(-0.7f, 0);
             transform.localRotation = Quaternion.Euler(0, 180, 0);
-
         }
         if (0 < h)
         {
-            transform.localPosition = new Vector2(0.8f, 0);
+            transform.localPosition = new Vector2(0.7f, 0);
             transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
     }

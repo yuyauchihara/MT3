@@ -39,7 +39,7 @@ public class Move : MonoBehaviour
     private bool keyIsBlock = false; //キー入力ブロックフラグ
     private System.DateTime pressedKeyTime; //前回キー入力された時間
     private System.TimeSpan elapsedTime; //キー入力されてからの経過時間
-
+    public static bool parryf = false; // パリィフラグ
 
     private System.TimeSpan blockTime = new TimeSpan(0, 0, 3); //ブロックする時間　
 
@@ -70,7 +70,10 @@ public class Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        Debug.Log(parryf);
         var h = Input.GetAxis("Horizontal");//左スティックの横
+        var h2 = Input.GetAxis("JoyHorizontal");//右スティックの横
         //Zahyohyo.text = H + "," + V.ToString();
 
         //rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
@@ -79,6 +82,21 @@ public class Move : MonoBehaviour
         //H = Input.GetAxis("JoyHorizontal") * -1;//左スティックの横　リフレクション
 
         //Ref = new Vector2(H * 100,V * 100); //ここが毎フレーム更新されるため謎の誘導を受けている
+
+        if (Move.Pdirection == true && h2 > 0) //パリィ
+        {
+            parryf = true;
+                         
+        }
+        else if (Move.Pdirection == false && h2 < 0)
+        {
+            parryf = true;
+            
+        }
+        else
+        {
+            parryf = false;
+        }
 
         if (keyIsBlock)
         {
