@@ -234,6 +234,11 @@ PrefabInstance:
       propertyPath: ShotSound
       value: 
       objectReference: {fileID: 8300000, guid: 295279267ba26504791093dd55d5a496, type: 3}
+    - target: {fileID: 5799295027446139899, guid: b20b3d79966cda549bccc37e47116b5d,
+        type: 3}
+      propertyPath: ShotSpan
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b20b3d79966cda549bccc37e47116b5d, type: 3}
 --- !u!1 &138053558

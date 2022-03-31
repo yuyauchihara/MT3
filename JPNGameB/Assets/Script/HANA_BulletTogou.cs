@@ -7,6 +7,7 @@ public class HANA_BulletTogou : MonoBehaviour
     public GameObject bulletPre;
     public float BulletSped;
     public bool ChangeFlag;
+    public float ShotSpan;
     float count = 0;
     AudioSource audioSource;
     public AudioClip ShotSound;
@@ -21,7 +22,7 @@ public class HANA_BulletTogou : MonoBehaviour
 
         count += Time.deltaTime;
 
-        if (count >= 3.0f)
+        if (count >= ShotSpan)
         {
             GameObject bullet = (GameObject)Instantiate(bulletPre, transform.position, Quaternion.identity);
             Rigidbody2D Bprb = bullet.GetComponent<Rigidbody2D>();
