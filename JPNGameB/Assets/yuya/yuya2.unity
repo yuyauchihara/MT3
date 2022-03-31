@@ -180,6 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tairyoku: {fileID: 0}
+  HitPlayerSound: {fileID: 0}
 --- !u!70 &1822131
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -321,7 +322,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02968624cfb2c4f438296b9f278209f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sp: {fileID: 76914672}
 --- !u!1 &84556405
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,6 +331,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 84556406}
+  - component: {fileID: 84556407}
   m_Layer: 0
   m_Name: Guideline2
   m_TagString: Untagged
@@ -346,7 +347,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 84556405}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4, y: 0, z: 0}
+  m_LocalPosition: {x: 0.8, y: 0, z: 0}
   m_LocalScale: {x: 0.62, y: 1, z: 1}
   m_Children:
   - {fileID: 1225020876}
@@ -356,6 +357,18 @@ Transform:
   m_Father: {fileID: 1373658576}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &84556407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84556405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02968624cfb2c4f438296b9f278209f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &150213578
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,7 +463,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02968624cfb2c4f438296b9f278209f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sp: {fileID: 150213580}
 --- !u!1 &203065474
 GameObject:
   m_ObjectHideFlags: 0
@@ -776,7 +788,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 520623480}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.7575792, y: 0.9282482, z: -9.9}
+  m_LocalPosition: {x: -0.5490215, y: 0.9129264, z: -9.9}
   m_LocalScale: {x: 0.7692308, y: 1.0971428, z: 1}
   m_Children:
   - {fileID: 375383070}
@@ -1801,6 +1813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tairyoku: {fileID: 0}
+  HitPlayerSound: {fileID: 0}
 --- !u!70 &973125221
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1888,7 +1901,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1038796290}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.55, y: 0, z: 0}
+  m_LocalPosition: {x: 1.85, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.05, z: 1}
   m_Children: []
   m_Father: {fileID: 84556406}
@@ -2392,7 +2405,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1225020875}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.15, y: 0, z: 0}
+  m_LocalPosition: {x: 0.55, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.05, z: 1}
   m_Children: []
   m_Father: {fileID: 84556406}
@@ -2759,7 +2772,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.810909, y: 1}
+    m_SensorSize: {x: 1.1563636, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3997,7 +4010,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02968624cfb2c4f438296b9f278209f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sp: {fileID: 1888764890}
 --- !u!1 &1903124206 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6253042873693061325, guid: dd77c1a4660a1a14d8ff69ae6cf03710,
@@ -4084,7 +4096,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1939788382}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.27, y: 0, z: 0}
+  m_LocalPosition: {x: 4.45, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.05, z: 1}
   m_Children: []
   m_Father: {fileID: 84556406}
@@ -4165,7 +4177,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1949275340}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.91, y: 0, z: 0}
+  m_LocalPosition: {x: 3.15, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.05, z: 1}
   m_Children: []
   m_Father: {fileID: 84556406}
@@ -18605,7 +18617,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02968624cfb2c4f438296b9f278209f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sp: {fileID: 2113727732}
 --- !u!1 &2124067062
 GameObject:
   m_ObjectHideFlags: 3
