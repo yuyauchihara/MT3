@@ -76,7 +76,6 @@ public class Shoei_Parry : MonoBehaviour
             transform.localPosition = new Vector2(0.5f, sy + 0f);
         }
 
-
         if (Move.Pdirection == true && v > 0 && sr < 41 && H < 0)//盾の回転
         {
             sr = v * 40;
