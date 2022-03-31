@@ -17,6 +17,7 @@ public class Guide : MonoBehaviour
     {
         var h = Input.GetAxis("Horizontal");//左スティックの横
         var v = Input.GetAxis("JoyVertical");//右スティックの縦 
+        var h2 = Input.GetAxis("JoyHorizontal");//右スティックの横
         //if (Input.GetKey("joystick button 5"))
         //{
         //    float level = Mathf.Abs(Mathf.Sin(Time.time * 2));
@@ -27,13 +28,14 @@ public class Guide : MonoBehaviour
         //    sp.color = new Color(1f, 1f, 1f, 1f);
         //}
 
+        
 
-        if (h < 0)
+        if (h < 0 && h2 > 0)
         {
             transform.localPosition = new Vector2(-0.7f, 0);
             transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
-        if (0 < h)
+        if (0 < h && h2 < 0)
         {
             transform.localPosition = new Vector2(0.7f, 0);
             transform.localRotation = Quaternion.Euler(0, 0, 0);
