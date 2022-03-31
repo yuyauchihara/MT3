@@ -173,6 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 636476946}
   RefFlag: 0
+  ParyFlag: 0
   ShieldRote: 0
 --- !u!70 &2954740
 CapsuleCollider2D:
@@ -16583,6 +16584,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -6.18
       objectReference: {fileID: 0}
+    - target: {fileID: 5799295027446139899, guid: b20b3d79966cda549bccc37e47116b5d,
+        type: 3}
+      propertyPath: ShotSpan
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b20b3d79966cda549bccc37e47116b5d, type: 3}
 --- !u!1 &635426875
@@ -18801,6 +18807,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 1611209964}
   RefFlag: 0
+  ParyFlag: 0
   ShieldRote: 0
 --- !u!70 &1383306791
 CapsuleCollider2D:
