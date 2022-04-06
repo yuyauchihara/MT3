@@ -28,7 +28,7 @@ public class Move : MonoBehaviour
 
     ApproachEnemy CF;
 
-    bool Guard = false;
+    public static bool Guard = false;
     bool RefGuard = false;
     public bool KnockFlag = false;
     bool counterflag = false;
