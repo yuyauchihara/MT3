@@ -35,8 +35,8 @@ public class HANA_BulletTogou : MonoBehaviour
 
             if (ChangeFlag == true)
             {
-                Vector2 force = new Vector2(BulletSped, 0f);
-                Bprb.AddForce(force);
+                //Vector2 force = new Vector2(BulletSped, 0f);
+                //Bprb.AddForce(force);
             }
             else //false
             {

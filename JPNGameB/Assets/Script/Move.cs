@@ -50,7 +50,7 @@ public class Move : MonoBehaviour
 
     Vector2 Knc = new Vector2(300, 0);
 
-    bool HoldShield = false; //RBで盾を構えているか判定するフラグ
+    public static bool HoldShield = false; //RBで盾を構えているか判定するフラグ 0403_public staticに変更
     public static bool Pdirection = true; //プレイヤーの向き、trueなら左、falseなら右
     // Start is called before the first frame update
 

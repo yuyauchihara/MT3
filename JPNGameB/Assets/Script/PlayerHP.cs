@@ -42,7 +42,7 @@ public class PlayerHP : MonoBehaviour
         if (other.gameObject.tag == "bullet" && !PlayerDamage.isDamage) //銃撃によるダメージ
         {
            
-            if (Move.parryf == false) //0327_テストの為フラグをShoei_Parryに一時的に変更した。本来はyuya_parry2.parryf
+            if (Move.parryf == false) 
             {
                 HealthPoint--;
                 audioSource.PlayOneShot(HitPlayerSound); //被弾音再生
@@ -50,10 +50,10 @@ public class PlayerHP : MonoBehaviour
             }
             
         }
-        if (other.gameObject.tag == "Sekkin" && !PlayerDamage.isDamage) //近接攻撃によるダメージ
+        if (other.gameObject.tag == "Sekkin" && !PlayerDamage.isDamage) //近接攻撃によるダメージ 
         {
 
-            if (Move.parryf == false) //0327_テストの為フラグをShoei_Parryに一時的に変更した。本来はyuya_parry2.parryf
+            if (Move.parryf == false && Move.HoldShield == false) //0403_&& Move.HoldShield == false
             {
                 HealthPoint--;
             }
