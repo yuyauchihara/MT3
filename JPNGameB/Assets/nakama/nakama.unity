@@ -167,6 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPre: {fileID: 1152466381440513179, guid: 3eb8ec1974532ed4ea4eb6d31c8d53a6,
     type: 3}
+  Bspeed: -900
 --- !u!114 &47627214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1038,6 +1039,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5264303845023098333, guid: 1b8bb511276fdfe46917f2480d76535d,
         type: 3}
+    - target: {fileID: 3723705158643337700, guid: 33eef323067981b49a32617e50194858,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7307661324498750545, guid: 33eef323067981b49a32617e50194858,
         type: 3}
       propertyPath: m_Name
@@ -1097,6 +1103,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307661324893772619, guid: 33eef323067981b49a32617e50194858,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33eef323067981b49a32617e50194858, type: 3}
@@ -1747,7 +1758,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaccbe2c6ca2b2945978838c7daf9b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 250
+  ground: {fileID: 0}
+  wallR: {fileID: 0}
+  jumpLimitTime: 0
 --- !u!114 &2079373762
 MonoBehaviour:
   m_ObjectHideFlags: 0
