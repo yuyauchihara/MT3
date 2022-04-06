@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class PlayerHP : MonoBehaviour
 {
     public Slider Tairyoku;
+    public AudioClip HitPlayerSound;
+    AudioSource audioSource;
     float HealthPoint = 10.0f;
     float MaxHP = 10.0f;
 
@@ -14,12 +16,14 @@ public class PlayerHP : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
+
         if (Input.GetKey(KeyCode.Q) || Input.GetKey("joystick button 5"))
         {
             HoldShield = true;
@@ -35,20 +39,21 @@ public class PlayerHP : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
 
-        if (other.gameObject.tag == "bullet" && !PlayerDamage.isDamage)
+        if (other.gameObject.tag == "bullet" && !PlayerDamage.isDamage) //銃撃によるダメージ
         {
            
-            if (yuya_parry2.parryf == false)
+            if (Move.parryf == false) 
             {
                 HealthPoint--;
+                audioSource.PlayOneShot(HitPlayerSound); //被弾音再生
                 Destroy(other.gameObject);
             }
             
         }
-        if (other.gameObject.tag == "Sekkin" && !PlayerDamage.isDamage)
+        if (other.gameObject.tag == "Sekkin" && !PlayerDamage.isDamage) //近接攻撃によるダメージ 
         {
 
-            if (yuya_parry2.parryf == false)
+            if (Move.parryf == false && Move.HoldShield == false) //0403_&& Move.HoldShield == false
             {
                 HealthPoint--;
             }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnEnemy : MonoBehaviour
 {
     public GameObject[] Spawn;      //オブジェクトを格納する変数
+    public GameObject[] DelaySpawn; //同士討ちさせないための格納変数
 
     private int listSize = 0;       //格納する変数のサイズを取得する変数
     private int count;              //連続で呼ばれてヌルリファレンスを起こさないようにする処理
@@ -15,6 +16,8 @@ public class SpawnEnemy : MonoBehaviour
     private bool delayFlg = false;  //ディレイ処理をかける処理を入れるフラグ
     private bool SpawnFlg = false;  //敵が表示できるかのフラグ
 
+    public int wait = 0;
+
     void Start()
     {
         count = 0;
@@ -22,7 +25,8 @@ public class SpawnEnemy : MonoBehaviour
 
         for (int i = 0; i < listSize; i++)
         {
-            Spawn[i].gameObject.SetActive(false);    //敵を非表示する
+            Spawn[i].gameObject.SetActive(false);       //敵の非表示
+            DelaySpawn[i].gameObject.SetActive(false);  //敵の非表示
         }
     }
 
@@ -43,6 +47,11 @@ public class SpawnEnemy : MonoBehaviour
             SpawnDelayEnemy();
             count = 1;
         }
+
+        if(Spawn[wait] == null)
+        {
+            WaitSpawn();
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)     //敵が出てくるための処理
@@ -61,5 +70,13 @@ public class SpawnEnemy : MonoBehaviour
             Spawn[i].gameObject.SetActive(true);    //敵を表示する
         }
         delayFlg = false;
+    }
+
+    private void WaitSpawn()
+    {
+        for (int i = 0; i < listSize; i++)
+        {
+            DelaySpawn[i].gameObject.SetActive(true);    //敵を表示する
+        }
     }
 }

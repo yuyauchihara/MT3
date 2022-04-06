@@ -20,7 +20,7 @@ public class GateOpen : MonoBehaviour
         OpenGate.gameObject.SetActive(true);    //ゲートを表示する
     }
 
-    void OnTriggerEnter2D(Collider2D other)             //ここで敵が倒れているかを判断する
+    void OnTriggerStay2D(Collider2D other)             //ここで敵が倒れているかを判断する
     {
         if (other.gameObject.tag == "Player")           //プレイヤーのタグに当たったら判断開始
         {

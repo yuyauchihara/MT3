@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class ShieldGuard : MonoBehaviour
 {
+    public bool GuardFlag = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(yuya_Parry.parryf == true)
+        if(yuya_Parry.parryf == true) //0328_本来はyuya_Parryだった　
         {
             this.gameObject.SetActive(false);
         }
@@ -27,6 +28,7 @@ public class ShieldGuard : MonoBehaviour
     {
         if(other.gameObject.tag == "bullet")
         {
+            GuardFlag = true;
             Destroy(other.gameObject);
         }
     }
