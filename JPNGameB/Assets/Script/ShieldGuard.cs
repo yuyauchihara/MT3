@@ -25,6 +25,7 @@ public class ShieldGuard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(isDamage);
         if(yuya_Parry.parryf == true) //0328_本来はyuya_Parryだった　
         {
             this.gameObject.SetActive(false);
