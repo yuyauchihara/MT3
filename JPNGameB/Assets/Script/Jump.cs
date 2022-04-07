@@ -25,7 +25,7 @@ public class Jump : MonoBehaviour
 
     private float jumpPos = 0.0f;
     private float ySpeed = 0;
-    private float moveSpeed = 10.5f;     //速度
+    private float moveSpeed = 7.5f;     //速度
     private float gravity = 5;       //重力
     private float Down = 0.3f;   //落下の加速度調整
     private float RBCountTime = 0f; //落下速度低下の制限時間1秒
@@ -79,12 +79,12 @@ public class Jump : MonoBehaviour
             RBCountTime = 0;
             RBCount = 0;
             pushCount = 0;
-            moveSpeed = 10.5f;
+            moveSpeed = 7.5f;
 
             if (pushRB)
             {
                 RBCount = 1;
-                moveSpeed = 5.5f;
+                moveSpeed = 4f;
             }
 
             if (!pushJump)
@@ -163,7 +163,7 @@ public class Jump : MonoBehaviour
             }
             else
             {
-                moveSpeed = 10.5f;
+                moveSpeed = 7.5f;
             }
         }else if(isWallR && Move.Pdirection == false)
         {
@@ -173,12 +173,12 @@ public class Jump : MonoBehaviour
             }
             else
             {
-                moveSpeed = 10.5f;
+                moveSpeed = 7.5f;
             }
         }
         else if(!isWallR /*&& !isWallL*/ && !pushRB)
         {
-            moveSpeed = 10.5f;
+            moveSpeed = 7.5f;
         }
 
         ////左壁にくっついた状態かの判定

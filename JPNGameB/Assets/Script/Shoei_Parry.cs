@@ -13,10 +13,6 @@ public class Shoei_Parry : MonoBehaviour
     public GameObject Player;
 
     float H, V; //リフレクション
-
-    public Material white;
-    public Material green;
-
     bool parry = false;
 
     private bool keyIsBlock = false; //キー入力をブロックするフラグ
@@ -36,8 +32,14 @@ public class Shoei_Parry : MonoBehaviour
 
     float radian;
     public static bool parryf = false; // パリィフラグ
+    public bool RefFlag; //リフレクションフラグ音声用
+    public bool ParyFlag = false; //パリィフラグ音声用
+    public int ShieldRote = 0;
+    float sr = 0;//盾の角度の値
+    float sy = 0;//盾の高さの値
     void Start()
     {
+        parryf = false;
         Application.targetFrameRate = 50;
     }
 
@@ -49,83 +51,48 @@ public class Shoei_Parry : MonoBehaviour
         var h = Input.GetAxis("Horizontal");//左スティックの横
         var h2 = Input.GetAxis("JoyHorizontal");//右スティックの横
 
-
+        //Debug.Log(H);
+        //Debug.Log(Move.Pdirection);
+        //Debug.Log(ShieldRote);
+        //Debug.Log(parryf);
         if (v == 0)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
+            transform.localPosition = new Vector2(0.5f, 0f);
+            ShieldRote = 0;
+            sr = 0;
+            sy = 0;
         }
 
-        //if (Pdirection == true && v > 0 && v < 0.15)//r５度
+
+        if (Move.Pdirection == true && H < 0 && v > 0 && sy < 0.31)//盾の移動
+        {
+            sy = v * 0.3f;
+            transform.localPosition = new Vector2(0.5f, sy + 0f);
+        }
+        if (Move.Pdirection == false && H > 0 && v > 0 && sy < 0.31)//盾の移動
+        {
+            sy = v * 0.3f;
+            transform.localPosition = new Vector2(0.5f, sy + 0f);
+        }
+
+        if (Move.Pdirection == true && v > 0 && sr < 41 && H < 0)//盾の回転
+        {
+            sr = v * 40;
+            transform.rotation = Quaternion.Euler(0, 0, sr);
+        }
+
+        if (Move.Pdirection == false && v > 0 && sr > -41 && H > 0)//盾の回転
+        {
+            sr = v * -40;
+            transform.rotation = Quaternion.Euler(0, 0, sr);
+        }
+
+        //if ()
         //{
-        //    //this.transform.position += new Vector3(0, v / 40);
-        //    transform.rotation = Quaternion.Euler(0, 0, 5);
+
         //}
 
-        if (Move.Pdirection == true && v > 0.16 && v < 0.3 && h2 < 0)//r10do
-        {
-            //this.transform.position += new Vector3(0, v / 40);
-            transform.rotation = Quaternion.Euler(0, 0, 10);
-        }
-
-        //if (Pdirection == true && v > 0.31 && v < 0.45)//r15do
-        //{
-        //    //this.transform.position += new Vector3(0, v / 40);
-        //    transform.rotation = Quaternion.Euler(0, 0, 15);
-        //}
-
-        if (Move.Pdirection == true && v > 0.46 && v < 0.60 && h2 < 0)//r20do
-        {
-            //this.transform.position += new Vector3(0, v / 40);
-            transform.rotation = Quaternion.Euler(0, 0, 20);
-        }
-
-        //if (Pdirection == true && v > 0.60 && v < 0.75)//r25do
-        //{
-        //    //this.transform.position += new Vector3(0, v / 40);
-        //    transform.rotation = Quaternion.Euler(0, 0, 25);
-        //}
-
-        if (Move.Pdirection == true && v > 0.75 && v < 1 && h2 < 0)//r30do
-        {
-            //this.transform.position += new Vector3(0, v / 40);
-            transform.rotation = Quaternion.Euler(0, 0, 30);
-        }
-
-        //if (Pdirection == false && v > 0 && v < 1.5)//L5do
-        //{
-        //    //this.transform.position += new Vector3(0, v / 40);
-        //    transform.rotation = Quaternion.Euler(0, 0, -5);
-        //}
-
-        if (Move.Pdirection == false && v > 0.16 && v < 0.3 && h2 > 0)//L10do
-        {
-            //this.transform.position += new Vector3(0, v / 40);
-            transform.rotation = Quaternion.Euler(0, 0, -10);
-        }
-
-        //if (Pdirection == false && v > 0.31 && v < 0.45)//L15do
-        //{
-        //    //this.transform.position += new Vector3(0, v / 40);
-        //    transform.rotation = Quaternion.Euler(0, 0, -15);
-        //}
-
-        if (Move.Pdirection == false && v > 0.46 && v < 0.60 && h2 > 0)//L20do
-        {
-            //this.transform.position += new Vector3(0, v / 40);
-            transform.rotation = Quaternion.Euler(0, 0, -20);
-        }
-
-        //if (Pdirection == false && v > 0.60 && v < 0.75)//L25do
-        //{
-        //    //this.transform.position += new Vector3(0, v / 40);
-        //    transform.rotation = Quaternion.Euler(0, 0, -25);
-        //}
-
-        if (Move.Pdirection == false && v > 0.75 && v < 1 && h2 > 0)//L30do
-        {
-            //this.transform.position += new Vector3(0, v / 40);
-            transform.rotation = Quaternion.Euler(0, 0, -30);
-        }
         //if (keyIsBlock)
         //{
         //    elapsedTime = DateTime.Now - pressedKeyTime;
@@ -146,11 +113,6 @@ public class Shoei_Parry : MonoBehaviour
 
             //StartCoroutine("Parryflag");//パリィフラグのコルーチンへ
         }
-        //else
-        //{
-        //    //GetComponent<Renderer>().material.color = green.color;
-        //    parry = false;
-        //}
 
         //ホールドシールドの判定
 
@@ -172,126 +134,75 @@ public class Shoei_Parry : MonoBehaviour
 
         radian = Mathf.Atan2(V, H * -1) * Mathf.Rad2Deg;
 
-        Debug.Log(radian);
+        //Debug.Log(radian);
     }
-
-    //IEnumerator Parryflag()//パリィコルーチン
-    //{
-    //    GetComponent<Renderer>().material.color = white.color;//プレイヤーの色を白に
-    //    parry = true;//フラグをオン
-    //    yield return new WaitForSeconds(2);//二秒待つ
-    //    GetComponent<Renderer>().material.color = green.color;//色を緑に
-    //    parry = false;//フラグをオフ
-    //}
-
-
 
     void OnTriggerStay2D(Collider2D other)
     {
-        //var h2 = Input.GetAxis("JoyHorizontal");//右スティックの横
-        //if (h2 < 0 && other.gameObject.tag == "bullet")
-        //{
-        //    if (HoldShield == true)
-        //    {
-        //        Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
-        //        Refrb.AddForce(Ref);
-        //    }
-        //}
 
         if (other.gameObject.tag == "bullet") //リフレクション
         {
             GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
-            //testrefStart
-            if (Input.GetKeyUp("joystick button 5"))
+            if (Input.GetKeyUp("joystick button 5") || Input.GetKeyUp(KeyCode.Q))
             {
-                if (Move.Pdirection == true && V == 0 && H == 0)　//リフレクション(入力無し)
+                
+
+                if (Move.Pdirection == true && V == 0 && H == 0)　//右向きのリフレクション(入力無し)
                 {
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                     Refrb.velocity = new Vector2(1 * RefSpeed, 0 * RefSpeed);
+                    RefFlag = true; //音声再生で使用、SoundMgr.csと共有
                 }
-                if (Move.Pdirection == false && V == 0 && H == 0)　//リフレクション(入力無し)
+                if (Move.Pdirection == false && V == 0 && H == 0)　//左向きのリフレクション(入力無し)
                 {
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                     Refrb.velocity = new Vector2(1 * -RefSpeed, 0 * RefSpeed);
+                    RefFlag = true; //音声再生で使用、SoundMgr.csと共有
                 }
-                if (H < 0) //リフレクション
+                if (Move.Pdirection == true && H < 0 && sr < 41) //右向きのリフレクション
                 {
+                    RefFlag = true; //音声再生で使用、SoundMgr.csと共有
+                    Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+                    Refrb.velocity = new Vector2(Mathf.Cos(sr * Mathf.Deg2Rad) * RefSpeed, Mathf.Sin(sr * Mathf.Deg2Rad) * RefSpeed);
+                }
+                if (Move.Pdirection == true && H <= 0 && sr == 40)
+                {
+                    RefFlag = true; //音声再生で使用、SoundMgr.csと共有
+                    Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+                    Refrb.velocity = new Vector2(Mathf.Cos(40 * Mathf.Deg2Rad) * RefSpeed, Mathf.Sin(40 * Mathf.Deg2Rad) * RefSpeed);
+                }
+
+                if (Move.Pdirection == false && H > 0 && sr > -41) //左向きのリフレクション
+                {
+                    RefFlag = true; //音声再生で使用、SoundMgr.csと共有
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                     Refrb.velocity = new Vector2(Mathf.Cos(radian * Mathf.Deg2Rad) * RefSpeed, Mathf.Sin(radian * Mathf.Deg2Rad) * RefSpeed);
                 }
 
-                if (H > 0) //パリィ
+                if (Move.Pdirection == false && H >= 0 && sr == -40)
                 {
+                    RefFlag = true; //音声再生で使用、SoundMgr.csと共有
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
-                    Refrb.velocity = new Vector2(H * RefSpeed * -1, 0);
-                    parryf = true;
+                    Refrb.velocity = new Vector2(Mathf.Cos(40 * Mathf.Deg2Rad) * -RefSpeed, Mathf.Sin(40 * Mathf.Deg2Rad) * RefSpeed);
                 }
-                else
+
+                if (Move.Pdirection == true && H > 0) //パリィ
                 {
-                    parryf = false;
+                    
+                    Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+                    Refrb.velocity = new Vector2(1 * RefSpeed * -1, 0);
+                    ParyFlag = true; //音声の為のフラグ SoundMgr.csと共有              
                 }
-
-            }
-            //testrefFinish
-
-            if (HoldShield == true)
-            {
-                //if (Move.Pdirection == true && V == 0 && H == 0)　//リフレクション(入力無し)
-                //{
-                //    Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
-                //    Refrb.velocity = new Vector2(1 * RefSpeed, 0 * RefSpeed);
-                //}
-                //if (Move.Pdirection == false && V == 0 && H == 0)　//リフレクション(入力無し)
-                //{
-                //    Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
-                //    Refrb.velocity = new Vector2(1 * -RefSpeed, 0 * RefSpeed);
-                //}
-                //if (H < 0) //リフレクション
-                //{
-                //    Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
-                //    Refrb.velocity = new Vector2(Mathf.Cos(radian * Mathf.Deg2Rad) * RefSpeed, Mathf.Sin(radian * Mathf.Deg2Rad) * RefSpeed);
-                //}
-                //if (H > 0) //パリィ
-                //{
-                //    Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
-                //    Refrb.velocity = new Vector2(H * RefSpeed * -1, 0);
-                //    parryf = true;
-                //}
-                //else
-                //{
-                //    parryf = false;
-                //}
+                else if (Move.Pdirection == false && H < 0)
+                {
+                    
+                    Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+                    Refrb.velocity = new Vector2(1 * RefSpeed, 0);
+                    ParyFlag = true; //音声の為のフラグ SoundMgr.csと共有
+                }
             }
 
         }
-
-        //if (other.gameObject.tag == "shieldarea")
-        //{
-        //    this.transform.position += new Vector3(0, v / 40);
-        //}
-
-        //if (parry == true)
-        //{
-        //    Rigidbody2D Parrb = other.gameObject.GetComponent<Rigidbody2D>();
-        //    Parrb.AddForce(Par);
-
-        //    Collider2D Parco = other.gameObject.GetComponent<Collider2D>();
-        //    Parco.isTrigger = true;
-        //}
-
-        //if (other.gameObject.tag == "bullet")
-        //{
-        //    if (parry == false)
-        //    {
-        //        if (Input.GetKey("joystick button 2")) //EキーかコントローラーのXボタンでパリィ
-        //        {
-        //            Parco.isTrigger = true;
-        //            Rigidbody2D Parrb = other.gameObject.GetComponent<Rigidbody2D>();
-        //            Parrb.AddForce(Par);
-        //        }
-        //    }
-
-        //}
     }
 
     void OnTriggerExit2D(Collider2D other)

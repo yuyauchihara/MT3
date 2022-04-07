@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBody : MonoBehaviour
+public class BarrierCore : MonoBehaviour
 {
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -14,23 +13,14 @@ public class EnemyBody : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
-
-    //void OnCollisionEnter2D(Collision2D other)
-    //{
-    //    if (other.gameObject.tag == "bullet")
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //}
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "bullet")
         {
             gameObject.SetActive(false);
-            Destroy(other.gameObject);
         }
     }
 }

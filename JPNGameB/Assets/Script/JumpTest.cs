@@ -55,7 +55,16 @@ public class JumpTest: MonoBehaviour
             Jump = false;
         }
 
-        if(isWallR && Move.Pdirection == true)
+        if (Input.GetKey("joystick button 5")) //移動速度変更
+        {
+            moveSpeed = 5.5f;
+        }
+        else
+        {
+            moveSpeed = 10.5f;
+        }
+
+        if (isWallR && Move.Pdirection == true)
         {
             if (Horizontal > 0)
             {

@@ -8,10 +8,13 @@ public class HANA_BulletTogou : MonoBehaviour
     public float BulletSped;
     public bool ChangeFlag;
     float count = 0;
+    AudioSource audioSource;
+    public AudioClip ShotSound;
+    public float ShotSpan;
 
     void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -19,15 +22,21 @@ public class HANA_BulletTogou : MonoBehaviour
 
         count += Time.deltaTime;
 
-        if (count >= 3.0f)
+        
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (count >= ShotSpan && collision.gameObject.tag == "Player")
         {
             GameObject bullet = (GameObject)Instantiate(bulletPre, transform.position, Quaternion.identity);
             Rigidbody2D Bprb = bullet.GetComponent<Rigidbody2D>();
+            audioSource.PlayOneShot(ShotSound);
 
             if (ChangeFlag == true)
             {
-                Vector2 force = new Vector2(BulletSped, 0f);
-                Bprb.AddForce(force);
+                //Vector2 force = new Vector2(BulletSped, 0f);
+                //Bprb.AddForce(force);
             }
             else //false
             {
