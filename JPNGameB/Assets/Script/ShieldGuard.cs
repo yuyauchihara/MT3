@@ -1,13 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ShieldGuard : MonoBehaviour
 {
     public bool GuardFlag = false;
+
+    GameObject PlayerAtari;
+    PlayerHP playerHp;
+
     // Start is called before the first frame update
     void Start()
     {
+        
 
     }
 
@@ -26,11 +33,22 @@ public class ShieldGuard : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "bullet")
+        PlayerAtari = GameObject.Find("PlayerAtari");
+        playerHp = PlayerAtari.GetComponent<PlayerHP>();
+
+        if (other.gameObject.tag == "bullet")
         {
             GuardFlag = true;
+            playerHp.HealthPoint -= 0.5f;
             Destroy(other.gameObject);
+            if (playerHp.HealthPoint == 0)
+            {
+                Invoke("ChangeScene", 1.5f);
+            }
         }
     }
-
+    void ChangeScene()
+    {
+        SceneManager.LoadScene("GameOver");
+    }
 }
