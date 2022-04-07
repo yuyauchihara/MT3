@@ -31,8 +31,8 @@ public class Guide : MonoBehaviour
 
         if (Move.Pdirection == false && v == 0)
         {
-            transform.localPosition = new Vector2(-0.7f, 0);
-            transform.localRotation = Quaternion.Euler(0, 180, 0);
+            transform.localPosition = new Vector2(0.7f, 0);
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
         if (Move.Pdirection == true && v == 0)
         {
@@ -43,8 +43,8 @@ public class Guide : MonoBehaviour
         if (Move.Pdirection == false && v > 0 && H > 0)
         {
             
-            transform.localPosition = new Vector2(-0.7f, 0);
-            transform.localRotation = Quaternion.Euler(0, 180, 0);
+            transform.localPosition = new Vector2(0.7f, 0);
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
         if (Move.Pdirection == true && v > 0 && H < 0)
         {
