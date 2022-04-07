@@ -54,7 +54,7 @@ public class Shoei_Parry : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(GuardTime);
+        Debug.Log(Parysc);
         //var h = Input.GetAxis("JoyHorizontal");//横
         var v = Input.GetAxis("JoyVertical");//右スティックの縦 
         var h = Input.GetAxis("Horizontal");//左スティックの横
@@ -211,15 +211,7 @@ public class Shoei_Parry : MonoBehaviour
                         RefFlag = true; //音声再生で使用、SoundMgr.csと共有
                         Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                         Refrb.velocity = new Vector2(Mathf.Cos(40 * Mathf.Deg2Rad) * RefSpeed, Mathf.Sin(40 * Mathf.Deg2Rad) * RefSpeed);
-                    }
-
-                    if (H > 0) //パリィ
-                    {
-                        Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
-                        Refrb.velocity = new Vector2(1 * RefSpeed * -1, 0);
-                        ParyFlag = true; //音声の為のフラグ SoundMgr.csと共有
-                        Parysc = true;
-                    }
+                    } 
                 }
 
                 if (Move.Pdirection == false && GuardTime == false)//プレイヤーが左向き
@@ -245,18 +237,24 @@ public class Shoei_Parry : MonoBehaviour
                         Refrb.velocity = new Vector2(Mathf.Cos(40 * Mathf.Deg2Rad) * -RefSpeed, Mathf.Sin(40 * Mathf.Deg2Rad) * RefSpeed);
                     }
 
-                    if (H < 0)
-                    {
-                        Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
-                        Refrb.velocity = new Vector2(1 * RefSpeed, 0);
-                        ParyFlag = true; //音声の為のフラグ SoundMgr.csと共有
-                        Parysc = true;
-                    }
                 }
 
-                
-                
-            
+                if (Move.Pdirection == true && H > 0) //パリィ
+                {
+                    Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+                    Refrb.velocity = new Vector2(1 * RefSpeed * -1, 0);
+                    ParyFlag = true; //音声の為のフラグ SoundMgr.csと共有
+                    Parysc = true;
+                }
+
+                if (Move.Pdirection == false && H < 0)
+                {
+                    Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
+                    Refrb.velocity = new Vector2(1 * RefSpeed, 0);
+                    ParyFlag = true; //音声の為のフラグ SoundMgr.csと共有
+                    Parysc = true;
+                }
+
             }
 
         }
@@ -292,8 +290,8 @@ public class Shoei_Parry : MonoBehaviour
     IEnumerator cooltime()
     {
         yield return new WaitForSeconds(1.0f);
-        
 
+        Parysc = false;
         GuardTime = false;
     }
 }

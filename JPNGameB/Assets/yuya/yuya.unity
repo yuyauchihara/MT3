@@ -646,6 +646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GuardFlag: 0
+  sp: {fileID: 1485114634}
 --- !u!61 &149634757
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16590,7 +16591,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &431039105
 Transform:
   m_ObjectHideFlags: 0
@@ -17240,6 +17241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GuardFlag: 0
+  sp: {fileID: 0}
 --- !u!61 &587699543
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17523,6 +17525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tairyoku: {fileID: 0}
   HitPlayerSound: {fileID: 0}
+  HealthPoint: 10
 --- !u!70 &731428229
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -20992,6 +20995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GuardFlag: 0
+  sp: {fileID: 0}
 --- !u!61 &1680945839
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21235,6 +21239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tairyoku: {fileID: 0}
   HitPlayerSound: {fileID: 0}
+  HealthPoint: 10
 --- !u!70 &1780266566
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -22128,6 +22133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tairyoku: {fileID: 1870911636}
   HitPlayerSound: {fileID: 8300000, guid: 157b6186f66d7644eb607d846c801238, type: 3}
+  HealthPoint: 10
 --- !u!70 &1954069364
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
