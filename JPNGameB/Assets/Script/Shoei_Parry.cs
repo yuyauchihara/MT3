@@ -211,6 +211,15 @@ public class Shoei_Parry : MonoBehaviour
             }
 
         }
+
+        if(other.gameObject.tag == "Sekkin")
+        {
+            GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
+            if (Input.GetKeyUp("joystick button 5") || Input.GetKeyUp(KeyCode.Q)){
+                other.GetComponent<New_AproachEnemy>().isKnockBack = true;
+            }
+        }
+
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -219,5 +228,11 @@ public class Shoei_Parry : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().color = new Color(0, 220, 255);
         }
+
+        if(other.gameObject.tag == "Sekkin")
+        {
+            GetComponent<SpriteRenderer>().color = new Color(0, 220, 255);
+        }
+
     }
 }

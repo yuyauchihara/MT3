@@ -9,6 +9,7 @@ public class AttackArea : MonoBehaviour
     public GameObject EnemyCore;
     Transform pos,EnemyCorePos;
     New_AproachEnemy NAP;
+    public static bool isInAttackArea = false;
 
     void Start()
     {
@@ -23,11 +24,12 @@ public class AttackArea : MonoBehaviour
         pos.position = EnemyCorePos.position; //AttackAreaのオブジェクトをEnemyCoreに追従させる処理
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
-        if(other.gameObject.tag == "PlayerArea") //AttackAreaにプレイヤーが進入すると接近速度が上がる
+        if(other.gameObject.tag == "PlayerArea" && New_AproachEnemy.isAttack == false) //AttackAreaにプレイヤーが進入すると接近速度が上がる
         {
-            NAP.EnemyMove *= 1.3f;
+            NAP.EnemyMove = New_AproachEnemy.Direction * 5.5f;
+            isInAttackArea = true;
         }
     }
 
@@ -35,7 +37,8 @@ public class AttackArea : MonoBehaviour
     {
         if (other.gameObject.tag == "PlayerArea") //AttackAreaからプレイヤーが出ると接近速度が元に戻る
         {
-            NAP.EnemyMove = NAP.MoveSpeedAndDirection;
+            //NAP.EnemyMove = NAP.MoveSpeedAndDirection;
+            isInAttackArea = false;
         }
     }
 
