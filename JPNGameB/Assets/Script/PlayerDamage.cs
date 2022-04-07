@@ -11,7 +11,7 @@ public class PlayerDamage : MonoBehaviour
     
     void Update()
     {
-
+        
         // ダメージを受けている場合、点滅させる
         if (isDamage)
         {
@@ -26,6 +26,7 @@ public class PlayerDamage : MonoBehaviour
     // トリガー発生時
     private void OnTriggerEnter2D(Collider2D other)
     {
+        var h2 = Input.GetAxis("JoyHorizontal");//右スティックの横
         // ダメージ中は処理スキップ
         if (isDamage)
         {
@@ -33,6 +34,15 @@ public class PlayerDamage : MonoBehaviour
         }
         if (other.gameObject.tag == "bullet" && Move.parryf == false || other.gameObject.tag == "Sekkin" && !isDamage && Move.parryf == false && Move.HoldShield == false) //0331_yuya.parry2からShoei_Parryに一時的に変更 0403_&& Move.HoldShield == falseを追加
 
+        {
+            StartCoroutine(OnDamage());
+        }
+
+        if (other.gameObject.tag == "bullet" && Move.Pdirection == true && h2 > 0 && Shoei_Parry.Parysc == false)
+        {
+            StartCoroutine(OnDamage());
+        }
+        if (other.gameObject.tag == "bullet" && Move.Pdirection == false && h2 < 0 && Shoei_Parry.Parysc == false)
         {
             StartCoroutine(OnDamage());
         }
