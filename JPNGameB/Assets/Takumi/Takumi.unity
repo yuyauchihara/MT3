@@ -5297,6 +5297,7 @@ MonoBehaviour:
   knocktim: {fileID: 0}
   sec: {fileID: 0}
   counterFlag: 0
+  moveSpeed: 0
 --- !u!50 &1902642439
 Rigidbody2D:
   serializedVersion: 4
