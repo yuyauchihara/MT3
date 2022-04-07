@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Barrier : MonoBehaviour
 {
-    public GameObject Core1, Core2;
+    public GameObject Core1, Core2, Core3;
     int BarrierHP = 2;
-    bool core1Del = false, core2Del = false;
+    bool core1Del = false, core2Del = false, core3Del = false;
     bool ChangeColor = false;
     // Start is called before the first frame update
     void Start()
@@ -29,14 +29,20 @@ public class Barrier : MonoBehaviour
             core2Del = true;
         }
 
-        if(BarrierHP == 1)
+        if (Core3.activeSelf == false && core3Del == false)
         {
-            GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255,255);
+            BarrierHP--;
+            core3Del = true;
         }
 
-        if(BarrierHP <= 0)
+        if (BarrierHP == 1)
         {
-            Destroy(gameObject);
+            //GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255,255);
+        }
+
+        if(core1Del == true && core2Del == true && core3Del == true)
+        {
+            gameObject.SetActive(false);
         }
     }
 

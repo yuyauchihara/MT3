@@ -347,6 +347,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0.03
       objectReference: {fileID: 0}
+    - target: {fileID: 5234569213583412156, guid: c16f93bfb35716a40b233da579e37148,
+        type: 3}
+      propertyPath: Life
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5234569213711839731, guid: c16f93bfb35716a40b233da579e37148,
         type: 3}
       propertyPath: ShotSound

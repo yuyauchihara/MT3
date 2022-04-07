@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyBody : MonoBehaviour
 {
+    public int Life;
     
     // Start is called before the first frame update
     void Start()
@@ -14,7 +15,10 @@ public class EnemyBody : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(Life <= 0)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     //void OnCollisionEnter2D(Collision2D other)
@@ -29,7 +33,9 @@ public class EnemyBody : MonoBehaviour
     {
         if (other.gameObject.tag == "bullet")
         {
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
+            Life--;
+            Destroy(other.gameObject);
             if (CameraChange.Battle == true)
             {
                 Check.DeleteEnemy += 1;
