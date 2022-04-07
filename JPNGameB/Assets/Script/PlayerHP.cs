@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHP : MonoBehaviour
 {
     public Slider Tairyoku;
     public AudioClip HitPlayerSound;
     AudioSource audioSource;
-    float HealthPoint = 10.0f;
+    ShieldGuard shieldGuard;
+    public float HealthPoint = 10.0f;
     float MaxHP = 10.0f;
 
     public static bool HoldShield = false;
@@ -17,6 +19,7 @@ public class PlayerHP : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        shieldGuard = GetComponent<ShieldGuard>();
     }
 
     // Update is called once per frame
@@ -46,17 +49,13 @@ public class PlayerHP : MonoBehaviour
                 HealthPoint--;
                 audioSource.PlayOneShot(HitPlayerSound); //被弾音再生
                 Destroy(other.gameObject);
+                if (HealthPoint == 0)
+                {
+                    Invoke("ChangeScene", 1.5f);
+                }
             }
         }
-        if (other.gameObject.tag == "bullet")
-        {
-            if (Move.Guard == false)
-            {
-                HealthPoint -= 0.5f;
-                //audioSource.PlayOneShot(HitPlayerSound); //被弾音再生
-                Destroy(other.gameObject);
-            }
-        }
+      
         if (other.gameObject.tag == "Sekkin" && !PlayerDamage.isDamage) //近接攻撃によるダメージ 
         {
 
@@ -66,7 +65,9 @@ public class PlayerHP : MonoBehaviour
             }
 
         }
-
-
+    }
+    void ChangeScene()
+    {
+        SceneManager.LoadScene("GameOver");
     }
 }

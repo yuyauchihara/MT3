@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/koudai/retry.unity
     guid: 19e1aa058ac382f4bbab12350035438d
+  - enabled: 1
+    path: Assets/nakama/GameOver.unity
+    guid: a8628d55bca0d2d4cae629497992ec75
   m_configObjects: {}
