@@ -361,7 +361,9 @@ MonoBehaviour:
   Spawn:
   - {fileID: 410805291}
   - {fileID: 1160037035}
+  DelaySpawn: []
   delay: 0
+  wait: 0
 --- !u!61 &16255660
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16992,7 +16994,9 @@ MonoBehaviour:
   Spawn:
   - {fileID: 1944051212}
   - {fileID: 931231785}
+  DelaySpawn: []
   delay: 0
+  wait: 0
 --- !u!61 &635426878
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19438,7 +19442,9 @@ MonoBehaviour:
   Spawn:
   - {fileID: 785593129}
   - {fileID: 56714061}
+  DelaySpawn: []
   delay: 0
+  wait: 0
 --- !u!61 &1307211888
 BoxCollider2D:
   m_ObjectHideFlags: 0
