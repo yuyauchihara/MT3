@@ -16580,7 +16580,6 @@ GameObject:
   - component: {fileID: 431039111}
   - component: {fileID: 431039110}
   - component: {fileID: 431039109}
-  - component: {fileID: 431039108}
   - component: {fileID: 431039107}
   - component: {fileID: 431039106}
   m_Layer: 0
@@ -16638,22 +16637,6 @@ CapsuleCollider2D:
   m_Offset: {x: -1.65, y: -0.06}
   m_Size: {x: 9.55, y: 0.8}
   m_Direction: 0
---- !u!114 &431039108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 431039104}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ae1929cb2ad915479ae5816ae1796fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 1485114635}
-  white: {fileID: 0}
-  green: {fileID: 0}
-  ShieldRote: 0
 --- !u!61 &431039109
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17815,6 +17798,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPre: {fileID: 5264303845023098333, guid: 1b8bb511276fdfe46917f2480d76535d,
     type: 3}
+  changetype: 1
+  speed: 0
+  move: {x: 0, y: 0, z: 0}
 --- !u!1 &842949927
 GameObject:
   m_ObjectHideFlags: 0
