@@ -145,6 +145,9 @@ public class JumpTest: MonoBehaviour
             }
             BattleCount = 0;
         }
-        rb.velocity = new Vector2(Horizontal * moveSpeed, ySpeed);
+        if (!Jump)
+        {
+            rb.velocity = new Vector2(Horizontal * moveSpeed, ySpeed);
+        }
     }   
 }

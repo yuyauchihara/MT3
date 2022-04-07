@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/koudai/1-1.unity
     guid: 9c403b0103c5e1e40b6f29e6439c3435
+  - enabled: 1
+    path: Assets/koudai/1-2.unity
+    guid: 214ffcefd99324349a36a3348869a90e
   - enabled: 0
     path: Assets/Scenes/Main.unity
     guid: 2cda990e2423bbf4892e6590ba056729
