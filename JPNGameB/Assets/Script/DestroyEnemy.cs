@@ -24,7 +24,7 @@ public class DestroyEnemy : MonoBehaviour
                 audioSource.PlayOneShot(HitSound);
                 OnePlay = true;
             }           
-            Destroy(gameObject, 2);
+            //Destroy(gameObject, 2);
         }
     }
 }

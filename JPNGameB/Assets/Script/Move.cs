@@ -71,7 +71,7 @@ public class Move : MonoBehaviour
     void Update()
     {
 
-        Debug.Log(parryf);
+        //Debug.Log(parryf);
         var h = Input.GetAxis("Horizontal");//左スティックの横
         var h2 = Input.GetAxis("JoyHorizontal");//右スティックの横
         //Zahyohyo.text = H + "," + V.ToString();
@@ -83,12 +83,12 @@ public class Move : MonoBehaviour
 
         //Ref = new Vector2(H * 100,V * 100); //ここが毎フレーム更新されるため謎の誘導を受けている
 
-        if (Move.Pdirection == true && h2 > 0) //パリィ
+        if (Pdirection == true && h2 > 0) //パリィ
         {
             parryf = true;
                          
         }
-        else if (Move.Pdirection == false && h2 < 0)
+        else if (Pdirection == false && h2 < 0)
         {
             parryf = true;
             
@@ -156,12 +156,11 @@ public class Move : MonoBehaviour
             shield.gameObject.SetActive(true);
             moveSpeed = 5.5f;
         }
-        else
+        
+        if(Input.GetKeyUp(KeyCode.Q) || Input.GetKeyUp("joystick button 5"))
         {
-            HoldShield = false;
-            shield.gameObject.SetActive(false);
-            //GetComponent<Renderer>().material.color = green.color;
-            moveSpeed = 10.5f;
+            StartCoroutine(cool());
+            
         }
 
 
@@ -255,5 +254,14 @@ public class Move : MonoBehaviour
         KillAprEnmyFlg = false;
         KnockFlag = false;
         i = 0;
+    }
+
+    IEnumerator cool()
+    {
+        yield return new WaitForSeconds(1.1f);
+
+        HoldShield = false;
+        shield.gameObject.SetActive(false);
+        moveSpeed = 10.5f;
     }
 }

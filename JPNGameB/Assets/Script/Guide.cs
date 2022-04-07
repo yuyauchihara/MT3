@@ -31,28 +31,26 @@ public class Guide : MonoBehaviour
 
         if (Move.Pdirection == false && v == 0)
         {
-            transform.localPosition = new Vector2(-0.7f, 0);
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-            sr = 0;
+            transform.localPosition = new Vector2(0.7f, 0);
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
         if (Move.Pdirection == true && v == 0)
         {
             transform.localPosition = new Vector2(0.7f, 0);
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-            sr = 0;
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
 
-        if (Move.Pdirection == false && v > 0 && sr > -41 && H > 0)
+        if (Move.Pdirection == false && v > 0 && H > 0)
         {
-            sr = v * -40;
-            transform.localPosition = new Vector2(-0.7f, 0);
-            transform.rotation = Quaternion.Euler(0, 180, -sr);
-        }
-        if (Move.Pdirection == true && v > 0 && sr < 41 && H < 0)
-        {
-            sr = v * 40;
+            
             transform.localPosition = new Vector2(0.7f, 0);
-            transform.rotation = Quaternion.Euler(0, 0, sr);
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }
+        if (Move.Pdirection == true && v > 0 && H < 0)
+        {
+            
+            transform.localPosition = new Vector2(0.7f, 0);
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
     }
 
