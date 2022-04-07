@@ -34,6 +34,7 @@ public class Shoei_Parry : MonoBehaviour
     public static bool parryf = false; // パリィフラグ
     public bool RefFlag; //リフレクションフラグ音声用
     public bool ParyFlag = false; //パリィフラグ音声用
+    public static bool Parysc = false;
     public int ShieldRote = 0;
     float sr = 0;//盾の角度の値
     float sy = 0;//盾の高さの値
@@ -46,6 +47,7 @@ public class Shoei_Parry : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(Parysc);
         //var h = Input.GetAxis("JoyHorizontal");//横
         var v = Input.GetAxis("JoyVertical");//右スティックの縦 
         var h = Input.GetAxis("Horizontal");//左スティックの横
@@ -86,6 +88,12 @@ public class Shoei_Parry : MonoBehaviour
         {
             sr = v * -40;
             transform.rotation = Quaternion.Euler(0, 0, sr);
+        }
+
+
+        if (Move.Pdirection == true && H < 0 || Move.Pdirection == false && H > 0)
+        {
+            Parysc = false;
         }
 
         //if ()
@@ -145,8 +153,7 @@ public class Shoei_Parry : MonoBehaviour
             GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
             if (Input.GetKeyUp("joystick button 5") || Input.GetKeyUp(KeyCode.Q))
             {
-                
-
+               
                 if (Move.Pdirection == true && V == 0 && H == 0)　//右向きのリフレクション(入力無し)
                 {
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
@@ -187,22 +194,32 @@ public class Shoei_Parry : MonoBehaviour
                 }
 
                 if (Move.Pdirection == true && H > 0) //パリィ
-                {
-                    
+                { 
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                     Refrb.velocity = new Vector2(1 * RefSpeed * -1, 0);
-                    ParyFlag = true; //音声の為のフラグ SoundMgr.csと共有              
+                    ParyFlag = true; //音声の為のフラグ SoundMgr.csと共有
+                    Parysc = true;
                 }
-                else if (Move.Pdirection == false && H < 0)
-                {
-                    
+                if (Move.Pdirection == false && H < 0)
+                {  
                     Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                     Refrb.velocity = new Vector2(1 * RefSpeed, 0);
                     ParyFlag = true; //音声の為のフラグ SoundMgr.csと共有
+                    Parysc = true;
                 }
+            
             }
 
         }
+
+        if(other.gameObject.tag == "Sekkin")
+        {
+            GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
+            if (Input.GetKeyUp("joystick button 5") || Input.GetKeyUp(KeyCode.Q)){
+                other.GetComponent<New_AproachEnemy>().isKnockBack = true;
+            }
+        }
+
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -211,5 +228,11 @@ public class Shoei_Parry : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().color = new Color(0, 220, 255);
         }
+
+        if(other.gameObject.tag == "Sekkin")
+        {
+            GetComponent<SpriteRenderer>().color = new Color(0, 220, 255);
+        }
+
     }
 }

@@ -71,7 +71,7 @@ public class Move : MonoBehaviour
     void Update()
     {
 
-        Debug.Log(parryf);
+        //Debug.Log(parryf);
         var h = Input.GetAxis("Horizontal");//左スティックの横
         var h2 = Input.GetAxis("JoyHorizontal");//右スティックの横
         //Zahyohyo.text = H + "," + V.ToString();

@@ -434,6 +434,7 @@ MonoBehaviour:
   knocktim: {fileID: 1024906725}
   sec: {fileID: 574932779}
   counterFlag: 0
+  moveSpeed: 0
 --- !u!50 &148870574
 Rigidbody2D:
   serializedVersion: 4
@@ -1817,6 +1818,7 @@ MonoBehaviour:
   Spawn:
   - {fileID: 904228264}
   - {fileID: 148870571}
+  delay: 0
 --- !u!61 &464960596
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1888,6 +1890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tairyoku: {fileID: 0}
+  HitPlayerSound: {fileID: 0}
 --- !u!70 &466996183
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2250,6 +2253,7 @@ MonoBehaviour:
   Spawn:
   - {fileID: 1447529041}
   - {fileID: 591868237}
+  delay: 0
 --- !u!61 &510354243
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17238,6 +17242,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPre: {fileID: 5264303845023098333, guid: 1b8bb511276fdfe46917f2480d76535d,
     type: 3}
+  changetype: 1
+  speed: 0
+  move: {x: 0, y: 0, z: 0}
 --- !u!1 &573132257 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2502893377878238616, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
@@ -17281,7 +17288,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaccbe2c6ca2b2945978838c7daf9b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 250
+  ground: {fileID: 0}
+  wallR: {fileID: 0}
+  BattleCount: 0
+  BattleExit: 0
+  jumpLimitTime: 0
 --- !u!114 &573132261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17543,6 +17554,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPre: {fileID: 5264303845023098333, guid: 1b8bb511276fdfe46917f2480d76535d,
     type: 3}
+  changetype: 1
+  speed: 0
+  move: {x: 0, y: 0, z: 0}
 --- !u!1 &631803197
 GameObject:
   m_ObjectHideFlags: 0
@@ -18530,6 +18544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Spawn:
   - {fileID: 1117715485}
+  delay: 0
 --- !u!61 &822915358
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18706,6 +18721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tairyoku: {fileID: 1415012045}
+  HitPlayerSound: {fileID: 0}
 --- !u!70 &875297953
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -18823,6 +18839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a764f93d26b015f45967e830993afad0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GuardFlag: 0
 --- !u!61 &932061503
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19048,7 +19065,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaccbe2c6ca2b2945978838c7daf9b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 250
+  ground: {fileID: 0}
+  wallR: {fileID: 0}
+  BattleCount: 0
+  BattleExit: 0
+  jumpLimitTime: 0
 --- !u!1 &953713548
 GameObject:
   m_ObjectHideFlags: 0
@@ -19234,6 +19255,7 @@ MonoBehaviour:
   knocktim: {fileID: 776023069}
   sec: {fileID: 350947390}
   counterFlag: 0
+  moveSpeed: 0
 --- !u!50 &985169908
 Rigidbody2D:
   serializedVersion: 4
@@ -19505,6 +19527,9 @@ MonoBehaviour:
   bulletPre: {fileID: 5264303845023098333, guid: 1b8bb511276fdfe46917f2480d76535d,
     type: 3}
   BulletSped: -300
+  ChangeFlag: 0
+  ShotSound: {fileID: 0}
+  ShotSpan: 0
 --- !u!114 &1063561850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19519,6 +19544,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPre: {fileID: 5264303845023098333, guid: 1b8bb511276fdfe46917f2480d76535d,
     type: 3}
+  changetype: 1
+  speed: 0
+  move: {x: 0, y: 0, z: 0}
 --- !u!1001 &1100393244
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20409,7 +20437,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaccbe2c6ca2b2945978838c7daf9b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 250
+  ground: {fileID: 0}
+  wallR: {fileID: 0}
+  BattleCount: 0
+  BattleExit: 0
+  jumpLimitTime: 0
 --- !u!212 &1224197328 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2502893377878238597, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
@@ -20739,7 +20771,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaccbe2c6ca2b2945978838c7daf9b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 250
+  ground: {fileID: 0}
+  wallR: {fileID: 0}
+  BattleCount: 0
+  BattleExit: 0
+  jumpLimitTime: 0
 --- !u!4 &1281474372 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2502893377878238596, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
@@ -20991,7 +21027,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.037037, y: 1}
+    m_SensorSize: {x: 1.0338165, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -23732,7 +23768,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaccbe2c6ca2b2945978838c7daf9b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 250
+  ground: {fileID: 0}
+  wallR: {fileID: 0}
+  BattleCount: 0
+  BattleExit: 0
+  jumpLimitTime: 0
 --- !u!212 &1772064968 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2502893377878238597, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
@@ -24014,6 +24054,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tairyoku: {fileID: 1608136073}
+  HitPlayerSound: {fileID: 0}
 --- !u!70 &1859207649
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -24509,8 +24550,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1772064960}
-  white: {fileID: 0}
-  green: {fileID: 0}
+  RefFlag: 0
+  ParyFlag: 0
+  ShieldRote: 0
 --- !u!70 &2008312998
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -24560,7 +24602,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.2, y: 1.89}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -24623,7 +24665,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 47f5ead0136388c48b372ba53c671eb9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 10d12453dabf694439bd4e36c219616b, type: 3}
   m_Color: {r: 0, g: 0.86100006, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -24708,6 +24750,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tairyoku: {fileID: 1608136073}
+  HitPlayerSound: {fileID: 0}
 --- !u!70 &2042627549
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -24846,7 +24889,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2086222779}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0032865084, y: 0.91143876, z: -10}
+  m_LocalPosition: {x: -0.0032850413, y: 0.9113986, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 78367446}
