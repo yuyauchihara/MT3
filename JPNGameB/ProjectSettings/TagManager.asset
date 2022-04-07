@@ -13,8 +13,7 @@ TagManager:
   - shieldarea
   - Wall(kari)
   - Rock
-  - Shield
-  - PlayerArea
+  - Battle
   layers:
   - Default
   - TransparentFX

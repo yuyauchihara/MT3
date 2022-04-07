@@ -30,7 +30,11 @@ public class EnemyBody : MonoBehaviour
         if (other.gameObject.tag == "bullet")
         {
             gameObject.SetActive(false);
-            Destroy(other.gameObject);
+            if (CameraChange.Battle == true)
+            {
+                Check.DeleteEnemy += 1;
+            }
+            Check.BattleEnemyDelete = true;
         }
     }
 }

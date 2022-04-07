@@ -8,7 +8,7 @@ public class DestroyEnemy : MonoBehaviour
     AudioSource audioSource;
     public AudioClip HitSound;
     [SerializeField] GameObject Enemy;
-    bool OnePlayerFucker = false;
+    bool OnePlay = false;
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -19,10 +19,10 @@ public class DestroyEnemy : MonoBehaviour
     {
         if(Enemy.activeSelf == false)
         {
-            if(OnePlayerFucker == false)
+            if(OnePlay == false)
             {
                 audioSource.PlayOneShot(HitSound);
-                OnePlayerFucker = true;
+                OnePlay = true;
             }           
             Destroy(gameObject, 2);
         }
