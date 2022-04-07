@@ -41,7 +41,7 @@ public class PlayerHP : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-
+        var h2 = Input.GetAxis("JoyHorizontal");//右スティックの横
         if (other.gameObject.tag == "bullet" && !PlayerDamage.isDamage) //銃撃によるダメージ
         {
             if (Move.parryf == false)
@@ -55,7 +55,19 @@ public class PlayerHP : MonoBehaviour
                 }
             }
         }
-      
+        if (other.gameObject.tag == "bullet" && Move.Pdirection == true && h2 > 0 && Shoei_Parry.Parysc == false)
+        {
+            HealthPoint--;
+            audioSource.PlayOneShot(HitPlayerSound); //被弾音再生
+            Destroy(other.gameObject);
+        }
+        if (other.gameObject.tag == "bullet" && Move.Pdirection == false && h2 < 0 && Shoei_Parry.Parysc == false)
+        {
+            HealthPoint--;
+            audioSource.PlayOneShot(HitPlayerSound); //被弾音再生
+            Destroy(other.gameObject);
+        }
+
         if (other.gameObject.tag == "Sekkin" && !PlayerDamage.isDamage) //近接攻撃によるダメージ 
         {
 
