@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/koudai/title.unity
     guid: bcdbd3828c266994eb2bbc0de0b9d915
   - enabled: 1
