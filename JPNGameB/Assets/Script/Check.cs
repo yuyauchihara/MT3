@@ -15,6 +15,7 @@ public class Check : MonoBehaviour
         {
             DeleteEnemy = 0;
         }
+        Debug.Log(EnemySousu);
     }
     private void CheckStart()
     {
@@ -29,9 +30,9 @@ public class Check : MonoBehaviour
             CheckStart();
         }
 
-        if (other.tag == "Player" && DeleteEnemy == EnemySousu && BattleEnemyDelete)
-        {
-            CheckStart();
-        }
+        //if (other.tag == "Player" && DeleteEnemy == EnemySousu && BattleEnemyDelete)
+        //{
+        //    CheckStart();
+        //}
     }
 }

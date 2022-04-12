@@ -12,6 +12,10 @@ public class GateOpen : MonoBehaviour
     private int EnemylistSize = 0;      //敵を格納する変数のサイズを取得する変数
     private int EnemyDeadCount = 0;     //敵を倒した数を数える変数
 
+    public bool Open = false;
+
+    public bool Clear = false;
+
 
     void Start()
     {
@@ -42,5 +46,18 @@ public class GateOpen : MonoBehaviour
     void GateDelete()
     {
         OpenGate.gameObject.SetActive(false);           //ゲートを非表示にする
+    }
+
+    private void Update()
+    {
+        if (Open)
+        {
+            GateDelete();
+        }
+
+        if (Clear)
+        {
+            ClearFlag = true;
+        }
     }
 }
