@@ -430,9 +430,7 @@ MonoBehaviour:
   Spawn:
   - {fileID: 149786561}
   - {fileID: 946452545}
-  DelaySpawn: []
   delay: 0
-  wait: 0
 --- !u!61 &106764554
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -648,6 +646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GuardFlag: 0
+  sp: {fileID: 1485114634}
 --- !u!61 &149634757
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1007,6 +1006,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ground: {fileID: 0}
   wallR: {fileID: 0}
+  BattleCount: 0
+  BattleExit: 0
   jumpLimitTime: 0
 --- !u!114 &219037898
 MonoBehaviour:
@@ -16445,6 +16446,9 @@ MonoBehaviour:
   RefFlag: 0
   ParyFlag: 0
   ShieldRote: 0
+  spriteRenderer: {fileID: 0}
+  sprite: {fileID: 0}
+  sprite2: {fileID: 0}
 --- !u!70 &429032553
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -16578,7 +16582,6 @@ GameObject:
   m_Component:
   - component: {fileID: 431039105}
   - component: {fileID: 431039111}
-  - component: {fileID: 431039110}
   - component: {fileID: 431039109}
   - component: {fileID: 431039107}
   - component: {fileID: 431039106}
@@ -16588,7 +16591,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &431039105
 Transform:
   m_ObjectHideFlags: 0
@@ -16597,8 +16600,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 431039104}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5330002, y: 0.005, z: 0}
-  m_LocalScale: {x: 0.37766623, y: 1.1004391, z: 1}
+  m_LocalPosition: {x: 0.041, y: 0.066, z: -8.53}
+  m_LocalScale: {x: 0.37766623, y: 0.9530903, z: 1}
   m_Children:
   - {fileID: 149634755}
   - {fileID: 1398357017}
@@ -16621,6 +16624,9 @@ MonoBehaviour:
   RefFlag: 0
   ParyFlag: 0
   ShieldRote: 0
+  spriteRenderer: {fileID: 431039111}
+  sprite: {fileID: 21300000, guid: 10d12453dabf694439bd4e36c219616b, type: 3}
+  sprite2: {fileID: 21300000, guid: 70a4eec191cfb8f40a5235cb2a912eb4, type: 3}
 --- !u!70 &431039107
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -16654,7 +16660,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.2, y: 1.89}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -16663,21 +16669,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.62, y: 1.1}
   m_EdgeRadius: 0
---- !u!114 &431039110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 431039104}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98c48d90b7e63e24097feed3d4b97b06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 1485114635}
-  white: {fileID: 0}
-  green: {fileID: 2100000, guid: fa56a70b02872684f9f2587cd41bc963, type: 2}
 --- !u!212 &431039111
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16717,8 +16708,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 47f5ead0136388c48b372ba53c671eb9, type: 3}
-  m_Color: {r: 0, g: 0.86100006, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 10d12453dabf694439bd4e36c219616b, type: 3}
+  m_Color: {r: 0.8000001, g: 0.8000001, b: 0.8000001, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -16775,9 +16766,7 @@ MonoBehaviour:
   Spawn:
   - {fileID: 1816733522}
   - {fileID: 1820977394}
-  DelaySpawn: []
   delay: 0
-  wait: 0
 --- !u!61 &449522742
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17252,6 +17241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GuardFlag: 0
+  sp: {fileID: 0}
 --- !u!61 &587699543
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17535,6 +17525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tairyoku: {fileID: 0}
   HitPlayerSound: {fileID: 0}
+  HealthPoint: 10
 --- !u!70 &731428229
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -17975,6 +17966,9 @@ MonoBehaviour:
   RefFlag: 0
   ParyFlag: 0
   ShieldRote: 0
+  spriteRenderer: {fileID: 0}
+  sprite: {fileID: 0}
+  sprite2: {fileID: 0}
 --- !u!70 &924274151
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -18611,6 +18605,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ground: {fileID: 0}
   wallR: {fileID: 0}
+  BattleCount: 0
+  BattleExit: 0
   jumpLimitTime: 0
 --- !u!114 &977963933
 MonoBehaviour:
@@ -19118,7 +19114,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1166896067}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00329091, y: 0.9129251, z: -10}
+  m_LocalPosition: {x: -0.00329091, y: 0.9129476, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 512973337}
@@ -19524,7 +19520,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.1563636, y: 1}
+    m_SensorSize: {x: 1.1581818, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -19778,9 +19774,7 @@ MonoBehaviour:
   Spawn:
   - {fileID: 1270562892}
   - {fileID: 1129157163}
-  DelaySpawn: []
   delay: 0
-  wait: 0
 --- !u!61 &1228304023
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20486,6 +20480,23 @@ PrefabInstance:
       propertyPath: shield
       value: 
       objectReference: {fileID: 431039104}
+    - target: {fileID: 2502893377878238599, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
+        type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 431039111}
+    - target: {fileID: 2502893377878238599, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
+        type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 10d12453dabf694439bd4e36c219616b,
+        type: 3}
+    - target: {fileID: 2502893377878238599, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
+        type: 3}
+      propertyPath: sprite2
+      value: 
+      objectReference: {fileID: 21300000, guid: 1d7bd352b6e40ec4fbc9866312d6b7ed,
+        type: 3}
     - target: {fileID: 2502893377878238616, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
         type: 3}
       propertyPath: m_Name
@@ -20571,6 +20582,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ground: {fileID: 0}
   wallR: {fileID: 0}
+  BattleCount: 0
+  BattleExit: 0
   jumpLimitTime: 0
 --- !u!114 &1485114637
 MonoBehaviour:
@@ -20982,6 +20995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GuardFlag: 0
+  sp: {fileID: 0}
 --- !u!61 &1680945839
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21225,6 +21239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tairyoku: {fileID: 0}
   HitPlayerSound: {fileID: 0}
+  HealthPoint: 10
 --- !u!70 &1780266566
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -22118,6 +22133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tairyoku: {fileID: 1870911636}
   HitPlayerSound: {fileID: 8300000, guid: 157b6186f66d7644eb607d846c801238, type: 3}
+  HealthPoint: 10
 --- !u!70 &1954069364
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
