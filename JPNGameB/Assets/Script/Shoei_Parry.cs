@@ -45,10 +45,15 @@ public class Shoei_Parry : MonoBehaviour
 
     bool GuardTime = false;
 
+    //スタン関係
+    public GameObject GuardArea;
+    ShieldGuard SG;
+
     void Start()
     {
         parryf = false;
         Application.targetFrameRate = 50;
+        SG = GuardArea.GetComponent<ShieldGuard>();
     }
 
     // Update is called once per frame
@@ -190,6 +195,7 @@ public class Shoei_Parry : MonoBehaviour
             GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
             if (Input.GetKeyUp("joystick button 5") || Input.GetKeyUp(KeyCode.Q))
             {
+                SG.GuardCount = 0;
                 if (Move.Pdirection == true && GuardTime == false)//プレイヤーが右向き
                 {
                     if (V == 0 && H == 0) //右向きのリフレクション(入力無し)

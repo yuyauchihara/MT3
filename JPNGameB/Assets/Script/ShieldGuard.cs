@@ -8,12 +8,18 @@ public class ShieldGuard : MonoBehaviour
 {
     public bool GuardFlag = false;
 
-    //GameObject PlayerAtari;
-    //PlayerHP playerHp;
+    GameObject PlayerAtari;
+    PlayerHP playerHp;
+
+    //スタン関係
+    public int GuardCount = 0; //通常ガードの回数カウント
+    public static bool isStun = false;
+    public Slider StunSlider;
+    int MaxStunGauge = 3;
 
     public SpriteRenderer sp;
     // ダメージ判定フラグ
-    //public static bool isDamage { get; set; }
+    public static bool isDamage { get; set; }
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +31,7 @@ public class ShieldGuard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(isDamage);
+        Debug.Log(isDamage);
         if(yuya_Parry.parryf == true) //0328_本来はyuya_Parryだった　
         {
             this.gameObject.SetActive(false);
@@ -35,43 +41,60 @@ public class ShieldGuard : MonoBehaviour
             this.gameObject.SetActive(true);
         }
 
-        //// ダメージを受けている場合、点滅させる
-        //if (isDamage)
-        //{
+        // ダメージを受けている場合、点滅させる
+        if (isDamage)
+        {
 
-        //    float level = Mathf.Abs(Mathf.Sin(Time.time * 10));
-        //    sp.color = new Color(1f, 1f, 1f, level);
+            float level = Mathf.Abs(Mathf.Sin(Time.time * 10));
+            sp.color = new Color(1f, 1f, 1f, level);
 
-        //}
+        }
+
+        if(GuardCount >= 3)
+        {
+            isStun = true;
+        }
+        else
+        {
+            isStun = false;
+        }
+
+        StunSlider.value = MaxStunGauge / GuardCount;
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        //PlayerAtari = GameObject.Find("PlayerAtari");
-        //playerHp = PlayerAtari.GetComponent<PlayerHP>();
+        PlayerAtari = GameObject.Find("PlayerAtari");
+        playerHp = PlayerAtari.GetComponent<PlayerHP>();
 
-        //if (isDamage)
-        //{
-        //    return;
-        //}
+        if (isDamage)
+        {
+            return;
+        }
 
-        if (other.gameObject.tag == "bullet" && yuya_Parry.Parysc == false)
+        if (other.gameObject.tag == "bullet" && Shoei_Parry.Parysc == false)
         {
             GuardFlag = true;
+            GuardCount++; //通常ガードカウント
+
             //playerHp.HealthPoint -= 0.5f;
+
             Destroy(other.gameObject);
+
             //StartCoroutine(OnDamage());
-            //if (playerHp.HealthPoint == 0)
-            //{
-            //    Invoke("ChangeScene", 1.5f);
-            //}
+
+            if (playerHp.HealthPoint == 0)
+            {
+                Invoke("ChangeScene", 1.5f);
+            }
 
         }
     }
-    //void ChangeScene()
-    //{
-    //    SceneManager.LoadScene("GameOver");
-    //}
+    void ChangeScene()
+    {
+        SceneManager.LoadScene("GameOver");
+    }
     //public IEnumerator OnDamage()
     //{
     //    isDamage = true;
