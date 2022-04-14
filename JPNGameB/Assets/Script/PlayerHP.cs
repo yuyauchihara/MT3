@@ -80,6 +80,7 @@ public class PlayerHP : MonoBehaviour
     }
     void ChangeScene()
     {
+        CameraChange.Battle = false;
         SceneManager.LoadScene("GameOver");
     }
 }

@@ -200,6 +200,7 @@ public class yuya_Parry : MonoBehaviour
                         Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                         Refrb.velocity = new Vector2(1 * RefSpeed, 0 * RefSpeed);
                         RefFlag = true; //音声再生で使用、SoundMgr.csと共有
+                        bullet.FriendlyFireFlag = true;
                     }
 
                     if (H < 0 && sr < 41) //右向きのリフレクション
@@ -207,6 +208,7 @@ public class yuya_Parry : MonoBehaviour
                         RefFlag = true; //音声再生で使用、SoundMgr.csと共有
                         Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                         Refrb.velocity = new Vector2(Mathf.Cos(sr * Mathf.Deg2Rad) * RefSpeed, Mathf.Sin(sr * Mathf.Deg2Rad) * RefSpeed);
+                        bullet.FriendlyFireFlag = true;
                     }
 
                     if (H <= 0 && sr == 40)
@@ -214,6 +216,7 @@ public class yuya_Parry : MonoBehaviour
                         RefFlag = true; //音声再生で使用、SoundMgr.csと共有
                         Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                         Refrb.velocity = new Vector2(Mathf.Cos(40 * Mathf.Deg2Rad) * RefSpeed, Mathf.Sin(40 * Mathf.Deg2Rad) * RefSpeed);
+                        bullet.FriendlyFireFlag = true;
                     }
                 }
 
@@ -224,6 +227,7 @@ public class yuya_Parry : MonoBehaviour
                         Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                         Refrb.velocity = new Vector2(1 * -RefSpeed, 0 * RefSpeed);
                         RefFlag = true; //音声再生で使用、SoundMgr.csと共有
+                        bullet.FriendlyFireFlag = true;
                     }
 
                     if (H > 0 && sr > -41) //左向きのリフレクション
@@ -231,6 +235,7 @@ public class yuya_Parry : MonoBehaviour
                         RefFlag = true; //音声再生で使用、SoundMgr.csと共有
                         Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                         Refrb.velocity = new Vector2(Mathf.Cos(radian * Mathf.Deg2Rad) * RefSpeed, Mathf.Sin(radian * Mathf.Deg2Rad) * RefSpeed);
+                        bullet.FriendlyFireFlag = true;
                     }
 
                     if (H >= 0 && sr == -40)
@@ -238,6 +243,7 @@ public class yuya_Parry : MonoBehaviour
                         RefFlag = true; //音声再生で使用、SoundMgr.csと共有
                         Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                         Refrb.velocity = new Vector2(Mathf.Cos(40 * Mathf.Deg2Rad) * -RefSpeed, Mathf.Sin(40 * Mathf.Deg2Rad) * RefSpeed);
+                        bullet.FriendlyFireFlag = true;
                     }
 
                 }
@@ -248,6 +254,7 @@ public class yuya_Parry : MonoBehaviour
                     Refrb.velocity = new Vector2(1 * RefSpeed * -1, 0);
                     ParyFlag = true; //音声の為のフラグ SoundMgr.csと共有
                     Parysc = true;
+                    bullet.FriendlyFireFlag = true;
                 }
 
                 if (Move.Pdirection == false && H < 0)
@@ -256,6 +263,7 @@ public class yuya_Parry : MonoBehaviour
                     Refrb.velocity = new Vector2(1 * RefSpeed, 0);
                     ParyFlag = true; //音声の為のフラグ SoundMgr.csと共有
                     Parysc = true;
+                    bullet.FriendlyFireFlag = true;
                 }
 
             }

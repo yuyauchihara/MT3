@@ -2974,7 +2974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd5a37bdfa9769f41b7f04b017b1ea6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tairyoku: {fileID: 0}
+  Tairyoku: {fileID: 930118205}
   HitPlayerSound: {fileID: 8300000, guid: 157b6186f66d7644eb607d846c801238, type: 3}
   HealthPoint: 10
 --- !u!70 &655630502
