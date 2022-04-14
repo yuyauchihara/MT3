@@ -153,11 +153,11 @@ public class JumpTest: MonoBehaviour
             BattleCount = 0;
         }
 
-        if(Move.HoldShield == true) //盾を構えてる時の移動速度の変化
+        if(Move.HoldShield == true && !CameraChange.Battle) //盾を構えてる時の移動速度の変化
         {
             moveSpeed = 5.5f;
         }
-        else
+        else if(!CameraChange.Battle)
         {
             moveSpeed = 10.5f;
         }

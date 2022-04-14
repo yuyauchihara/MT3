@@ -7,47 +7,109 @@ public class SceneChange : MonoBehaviour
 {
     public int Scene = 0;
     public static string SceneName;
-    private string[] ScenesName;
-    public GameObject FOB;
+    private string[] StageName;
+    private string[] SceneChangeName;
+
+    public bool StageMode = false;      //ステージを変える方(trueならステージ切り替えモード)
+    public bool SceneMode = true;       //シーンを変える方(trueならシーン切り替えモード)※初期true
+
+    public fadeoutScene fadeout;        //フェードアウトするオブジェクト格納
+
+    public bool FadeOutInMode = true;   //フェードインさせるかどうかのフラグtrueならさせる
+
+    public bool title = false;          //タイトルならtrueにしとく
 
     void Start()
     {
-        ScenesName = new string[] { "clear", "1-1", "1-2", "1-3" };
+        StageName = new string[] { "1-1", "1-2", "1-3", "2-1", "2-2", "2-3", "3-1", "3-2", "3-3" };     //ステージを切り替えるための変数
+        SceneChangeName = new string[] { "title", "StageSlect", "clear" };                     //シーンを切り替えるための変数
+    }
+
+    void Update()
+    {
+        if (SceneMode)           //モードの切り替えでtrueになったらもう片方をfalseにする
+        {
+            StageMode = false;
+        }
+        else
+        {
+            StageMode = true;
+        }
+
+        if (StageMode)          //モードの切り替えでtrueになったらもう片方をfalseにする
+        {
+            SceneMode = false;
+        }
+        else
+        {
+            SceneMode = true;
+        }
+
+        if(Input.GetKey("joystick button 0") && title)
+        {
+            SceneManager.LoadScene("1-1");
+        }
+
+    }
+
+    void ChangeStage()
+    {
+        SceneName = StageName[Scene];
+        if (FadeOutInMode)
+        {
+            fadeout.fadeSceneChange();
+        }
+        else if (!FadeOutInMode)
+        {
+            Change();
+        }
     }
 
     void ChangeScene()
     {
-        //switch (Scene)
-        //{
-        //    default:
-        //        SceneManager.LoadScene("title");
-        //        break;
-
-        //    case 0:
-        //        SceneManager.LoadScene("clear");
-        //        break;
-
-        //    case 1:
-        //        SceneManager.LoadScene("1-1");
-        //        break;
-
-        //    case 2:
-        //        SceneManager.LoadScene("1-2");
-        //        break;
-
-        //    case 3:
-        //        SceneManager.LoadScene("1-3");
-        //        break;
-        //}
-        SceneName = ScenesName[Scene];
-        FOB.GetComponent<fadeoutScene>().sceneChange();
+        if (Scene < 3)                                  //格納している変数の値を超えていない
+        {
+            SceneName = SceneChangeName[Scene];
+            if (FadeOutInMode)
+            {
+                fadeout.fadeSceneChange();
+            }else if (!FadeOutInMode)
+            {
+                Change();
+            }
+        }
+        else                                            //超えていたらゲームを終了する
+        {
+            GameEnd();
+        }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void goalKenti()
     {
-        if (collision.gameObject.tag == "goal" && GateOpen.ClearFlag)
+
+        if (ChangeSceneFLG.ClearFlag && SceneMode)
         {
             Invoke("ChangeScene", 0.0f);
         }
+
+        if (ChangeSceneFLG.ClearFlag && StageMode)
+        {
+            Invoke("ChangeStage", 0.0f);
+        }
+    }
+
+    void clear()
+    {
+
+    }
+
+    void GameEnd()
+    {
+        Application.Quit();
+    }
+
+    public void Change()
+    {
+        SceneManager.LoadScene(SceneName);
     }
 }

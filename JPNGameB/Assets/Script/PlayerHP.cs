@@ -51,7 +51,7 @@ public class PlayerHP : MonoBehaviour
                 Destroy(other.gameObject);
                 if (HealthPoint == 0)
                 {
-                    Invoke("ChangeScene", 1.5f);
+                    Invoke("ChangeScene", 1.0f);
                 }
             }
         }
