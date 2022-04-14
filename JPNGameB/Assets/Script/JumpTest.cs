@@ -37,7 +37,7 @@ public class JumpTest: MonoBehaviour
     public static bool StunPlayer = false; //プレイヤーがスタンするフラグ
     public GameObject GuardArea;
     public GameObject Shield;
-    ShieldGuard SG;
+    //ShieldGuard SG;
 
     void Start()
     {
@@ -47,7 +47,7 @@ public class JumpTest: MonoBehaviour
         ySpeed = -gravity;
         JumpYpos = transform.position.y;
         ugoki = 0;
-        SG = GuardArea.GetComponent<ShieldGuard>();
+        //SG = GuardArea.GetComponent<ShieldGuard>();
     }
 
     void FixedUpdate()
@@ -162,7 +162,7 @@ public class JumpTest: MonoBehaviour
             moveSpeed = 10.5f;
         }
 
-        if(ShieldGuard.isStun == true) //スタンコルーチン開始
+        if(Move.isStun == true) //スタンコルーチン開始
         {
             StartCoroutine("Stun");
         }
@@ -184,7 +184,7 @@ public class JumpTest: MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         StunPlayer = false;
         //Shield.SetActive(true);
-        SG.GuardCount = 0;
+        ShieldGuard.GuardCount = 0;
     }
 
 }
