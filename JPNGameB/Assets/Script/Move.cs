@@ -60,6 +60,10 @@ public class Move : MonoBehaviour
     public Sprite sprite2;
     // Start is called before the first frame update
 
+    public static bool isStun = false;
+
+    //public GameObject GuardArea;
+    //ShieldGuard moveSG;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -69,6 +73,8 @@ public class Move : MonoBehaviour
         m_ObjectCollider = GetComponent<BoxCollider2D>();
 
         shield.gameObject.SetActive(false);
+
+        //moveSG = GuardArea.GetComponent<ShieldGuard>();
 
         //Zahyohyo = Zahyo.GetComponent<Text>();
     }
@@ -88,6 +94,8 @@ public class Move : MonoBehaviour
         //H = Input.GetAxis("JoyHorizontal") * -1;//左スティックの横　リフレクション
 
         //Ref = new Vector2(H * 100,V * 100); //ここが毎フレーム更新されるため謎の誘導を受けている
+
+        
 
         if (Pdirection == true && h2 > 0) //パリィ
         {
@@ -173,6 +181,17 @@ public class Move : MonoBehaviour
             StartCoroutine(Gcool());
         }
 
+        //Debug.Log(moveSG.GuardCount);
+        if (ShieldGuard.GuardCount >= 3)
+        {
+            
+            isStun = true;
+        }
+        else
+        {
+
+            isStun = false;
+        }
 
         if (CF.counterFlag == true)
         {
@@ -190,6 +209,8 @@ public class Move : MonoBehaviour
                 KnockBackFlg = false;
             }
         }
+
+        
 
     }
 

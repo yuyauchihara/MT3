@@ -192,7 +192,7 @@ public class yuya_Parry : MonoBehaviour
             GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
             if (Input.GetKeyUp("joystick button 5") || Input.GetKeyUp(KeyCode.Q))
             {
-                SG.GuardCount = 0;
+                ShieldGuard.GuardCount = 0;
                 if (Move.Pdirection == true && Move.GuardTime == false)//プレイヤーが右向き
                 {
                     if (V == 0 && H == 0) //右向きのリフレクション(入力無し)
