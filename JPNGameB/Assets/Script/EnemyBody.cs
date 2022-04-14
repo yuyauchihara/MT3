@@ -33,14 +33,18 @@ public class EnemyBody : MonoBehaviour
     {
         if (other.gameObject.tag == "bullet")
         {
-            //gameObject.SetActive(false);
-            Life--;
-            Destroy(other.gameObject);
-            if (CameraChange.Battle == true)
+            if (bullet.FriendlyFireFlag == true)
             {
-                Check.DeleteEnemy += 1;
+                //gameObject.SetActive(false);
+                Life--;
+                Destroy(other.gameObject);
+                if (CameraChange.Battle == true)
+                {
+                    Check.DeleteEnemy += 1;
+                }
+                Check.BattleEnemyDelete = true;
+                bullet.FriendlyFireFlag = false;
             }
-            Check.BattleEnemyDelete = true;
         }
     }
 }
