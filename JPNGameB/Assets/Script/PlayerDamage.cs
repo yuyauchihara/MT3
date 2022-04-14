@@ -38,11 +38,11 @@ public class PlayerDamage : MonoBehaviour
             StartCoroutine(OnDamage());
         }
 
-        if (other.gameObject.tag == "bullet" && Move.Pdirection == true && h2 > 0 && Shoei_Parry.Parysc == false)
+        if (other.gameObject.tag == "bullet" && Move.Pdirection == true && h2 > 0 && yuya_Parry.Parysc == false)
         {
             StartCoroutine(OnDamage());
         }
-        if (other.gameObject.tag == "bullet" && Move.Pdirection == false && h2 < 0 && Shoei_Parry.Parysc == false)
+        if (other.gameObject.tag == "bullet" && Move.Pdirection == false && h2 < 0 && yuya_Parry.Parysc == false)
         {
             StartCoroutine(OnDamage());
         }

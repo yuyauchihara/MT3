@@ -51,17 +51,17 @@ public class PlayerHP : MonoBehaviour
                 Destroy(other.gameObject);
                 if (HealthPoint == 0)
                 {
-                    Invoke("ChangeScene", 1.5f);
+                    Invoke("ChangeScene", 1.0f);
                 }
             }
         }
-        if (other.gameObject.tag == "bullet" && Move.Pdirection == true && h2 > 0 && Shoei_Parry.Parysc == false)
+        if (other.gameObject.tag == "bullet" && Move.Pdirection == true && h2 > 0 && yuya_Parry.Parysc == false)
         {
             HealthPoint--;
             audioSource.PlayOneShot(HitPlayerSound); //被弾音再生
             Destroy(other.gameObject);
         }
-        if (other.gameObject.tag == "bullet" && Move.Pdirection == false && h2 < 0 && Shoei_Parry.Parysc == false)
+        if (other.gameObject.tag == "bullet" && Move.Pdirection == false && h2 < 0 && yuya_Parry.Parysc == false)
         {
             HealthPoint--;
             audioSource.PlayOneShot(HitPlayerSound); //被弾音再生
