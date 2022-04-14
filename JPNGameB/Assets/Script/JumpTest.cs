@@ -36,6 +36,7 @@ public class JumpTest: MonoBehaviour
     //スタン関係処理
     public static bool StunPlayer = false; //プレイヤーがスタンするフラグ
     public GameObject GuardArea;
+    public GameObject Shield;
     ShieldGuard SG;
 
     void Start()
@@ -161,7 +162,7 @@ public class JumpTest: MonoBehaviour
             moveSpeed = 10.5f;
         }
 
-        if(ShieldGuard.isStun == true)
+        if(ShieldGuard.isStun == true) //スタンコルーチン開始
         {
             StartCoroutine("Stun");
         }
@@ -179,8 +180,10 @@ public class JumpTest: MonoBehaviour
     IEnumerator Stun() //プレイヤーをスタン状態にするコルーチン
     {
         StunPlayer = true;
+        //Shield.SetActive(false);
         yield return new WaitForSeconds(2.0f);
         StunPlayer = false;
+        //Shield.SetActive(true);
         SG.GuardCount = 0;
     }
 

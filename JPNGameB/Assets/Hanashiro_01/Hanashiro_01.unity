@@ -612,6 +612,7 @@ MonoBehaviour:
   BattleExit: 0
   jumpLimitTime: 0.5
   GuardArea: {fileID: 1841803397}
+  Shield: {fileID: 548039166}
 --- !u!1 &211516903
 GameObject:
   m_ObjectHideFlags: 0
@@ -17378,8 +17379,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1169254775}
-  white: {fileID: 0}
-  green: {fileID: 0}
+  RefFlag: 0
+  ParyFlag: 0
   ShieldRote: 0
 --- !u!61 &673474120
 BoxCollider2D:
@@ -18951,6 +18952,7 @@ MonoBehaviour:
   BattleExit: 0
   jumpLimitTime: 0
   GuardArea: {fileID: 0}
+  Shield: {fileID: 0}
 --- !u!114 &1169254777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21292,6 +21294,23 @@ PrefabInstance:
       propertyPath: shield
       value: 
       objectReference: {fileID: 548039166}
+    - target: {fileID: 2502893377878238599, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
+        type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 548039171}
+    - target: {fileID: 2502893377878238599, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
+        type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 10d12453dabf694439bd4e36c219616b,
+        type: 3}
+    - target: {fileID: 2502893377878238599, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
+        type: 3}
+      propertyPath: sprite2
+      value: 
+      objectReference: {fileID: 21300000, guid: 70a4eec191cfb8f40a5235cb2a912eb4,
+        type: 3}
     - target: {fileID: 2502893377878238616, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
         type: 3}
       propertyPath: m_Name
