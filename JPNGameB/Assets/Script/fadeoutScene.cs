@@ -9,6 +9,8 @@ public class fadeoutScene : MonoBehaviour
     public GameObject fade;//インスペクタからPrefab化したCanvasを入れる
     public GameObject fadeCanvas;//操作するCanvas、タグで探す
 
+    public SceneChange sceneChange;
+
     void Start()
     {
         if (!FadeManager.isFadeInstance)//isFadeInstanceは後で用意する
@@ -29,10 +31,11 @@ public class fadeoutScene : MonoBehaviour
         Debug.Log("Name:" + fadeCanvas.name);
     }
 
-    public async void sceneChange()//ボタン操作などで呼び出す
+    public async void fadeSceneChange()//ボタン操作などで呼び出す
     {
         fadeCanvas.GetComponent<FadeManager>().fadeOut();//フェードアウトフラグを立てる
         await Task.Delay(200);//暗転するまで待つ
-        SceneManager.LoadScene("1-2");//シーンチェンジ
+        sceneChange.Change();
+        //SceneManager.LoadScene("1-2");//シーンチェンジ
     }
 }
