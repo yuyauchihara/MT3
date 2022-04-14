@@ -73,7 +73,7 @@ public class ShieldGuard : MonoBehaviour
             return;
         }
 
-        if (other.gameObject.tag == "bullet" && Shoei_Parry.Parysc == false)
+        if (other.gameObject.tag == "bullet" && yuya_Parry.Parysc == false)
         {
             GuardFlag = true;
             GuardCount++; //通常ガードカウント

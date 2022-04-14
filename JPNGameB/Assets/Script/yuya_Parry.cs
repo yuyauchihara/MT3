@@ -43,10 +43,14 @@ public class yuya_Parry : MonoBehaviour
     //public Sprite sprite;
     //public Sprite sprite2;
 
+    public GameObject GuardArea;
+    ShieldGuard SG;
+
     void Start()
     {
         parryf = false;
         Application.targetFrameRate = 50;
+        SG = GuardArea.GetComponent<ShieldGuard>();
     }
 
     // Update is called once per frame
@@ -188,6 +192,7 @@ public class yuya_Parry : MonoBehaviour
             GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
             if (Input.GetKeyUp("joystick button 5") || Input.GetKeyUp(KeyCode.Q))
             {
+                SG.GuardCount = 0;
                 if (Move.Pdirection == true && Move.GuardTime == false)//プレイヤーが右向き
                 {
                     if (V == 0 && H == 0) //右向きのリフレクション(入力無し)
