@@ -47,7 +47,17 @@ public class SceneChange : MonoBehaviour
 
         if(Input.GetKey("joystick button 0") && title)
         {
-            SceneManager.LoadScene("1-1");
+            if (SceneMode)
+            {
+                SceneName = SceneChangeName[Scene];
+                Change();
+            }
+
+            if (StageMode)
+            {
+                SceneName = StageName[Scene];
+                Change();
+            }
         }
 
     }

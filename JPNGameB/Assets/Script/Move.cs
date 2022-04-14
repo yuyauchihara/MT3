@@ -163,7 +163,7 @@ public class Move : MonoBehaviour
         //    StartCoroutine("counter");
         //}
 
-        if (Input.GetKey("joystick button 5") && GuardTime == false && GuardTime == false && JumpTest.StunPlayer == false || Input.GetKey(KeyCode.Q) && GuardTime == false && JumpTest.StunPlayer == false)
+        if (Input.GetKey("joystick button 5")  && GuardTime == false && JumpTest.StunPlayer == false || Input.GetKey(KeyCode.Q) && GuardTime == false && JumpTest.StunPlayer == false)
         {
             HoldShield = true;
             //GetComponent<Renderer>().material.color = blue.color;

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class yuya_Parry : MonoBehaviour
+public class nakama_Parry : MonoBehaviour
 {
     Collider2D Parco;
     Rigidbody2D Parrb;
@@ -39,18 +39,16 @@ public class yuya_Parry : MonoBehaviour
     float sr = 0;//盾の角度の値
     float sy = 0;//盾の高さの値
 
-    //public SpriteRenderer spriteRenderer;
-    //public Sprite sprite;
-    //public Sprite sprite2;
+    public SpriteRenderer spriteRenderer;
+    public Sprite sprite;
+    public Sprite sprite2;
 
-    public GameObject GuardArea;
-    ShieldGuard SG;
+    bool GuardTime = false;
 
     void Start()
     {
         parryf = false;
         Application.targetFrameRate = 50;
-        SG = GuardArea.GetComponent<ShieldGuard>();
     }
 
     // Update is called once per frame
@@ -128,20 +126,20 @@ public class yuya_Parry : MonoBehaviour
             Parysc = false;
         }
 
-        //if (Input.GetKey("joystick button 5") && Move.GuardTime == false || Input.GetKey(KeyCode.Q) && Move.GuardTime == false)
-        //{
-        //    spriteRenderer.sprite = sprite;
-        //}
-
-        if (Input.GetKeyUp("joystick button 5") && Move.GuardTime == false || Input.GetKeyUp(KeyCode.Q) && Move.GuardTime == false)//リフレクションなどのモーション
+        if (Input.GetKey("joystick button 5") && GuardTime == false || Input.GetKey(KeyCode.Q) && GuardTime == false)
         {
-            //spriteRenderer.sprite = sprite2;//画像切り替え
-            
+            spriteRenderer.sprite = sprite;
+        }
+
+        if (Input.GetKeyUp("joystick button 5") || Input.GetKeyUp(KeyCode.Q))//リフレクションなどのモーション
+        {
+            spriteRenderer.sprite = sprite2;//画像切り替え
+            GuardTime = true;
 
             StartCoroutine(cooltime());
         }
 
-        if (Move.GuardTime == true)
+        if (GuardTime == true)
         {
             transform.localPosition = new Vector3(-0.2f, sy + 0f, -2f);
         }
@@ -186,14 +184,14 @@ public class yuya_Parry : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-
+        
         if (other.gameObject.tag == "bullet") //リフレクション
         {
             GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
             if (Input.GetKeyUp("joystick button 5") || Input.GetKeyUp(KeyCode.Q))
             {
-                ShieldGuard.GuardCount = 0;
-                if (Move.Pdirection == true && Move.GuardTime == false)//プレイヤーが右向き
+                
+                if (Move.Pdirection == true && GuardTime == false)//プレイヤーが右向き
                 {
                     if (V == 0 && H == 0) //右向きのリフレクション(入力無し)
                     {
@@ -220,7 +218,7 @@ public class yuya_Parry : MonoBehaviour
                     }
                 }
 
-                if (Move.Pdirection == false && Move.GuardTime == false)//プレイヤーが左向き
+                if (Move.Pdirection == false && GuardTime == false)//プレイヤーが左向き
                 {
                     if (V == 0 && H == 0) //左向きのリフレクション(入力無し)
                     {
@@ -275,7 +273,7 @@ public class yuya_Parry : MonoBehaviour
             GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
             if (Input.GetKeyUp("joystick button 5") || Input.GetKeyUp(KeyCode.Q))
             {
-                if (Move.GuardTime == false)
+                if (GuardTime == false)
                 {
                     other.GetComponent<New_AproachEnemy>().isKnockBack = true;
                 }
@@ -300,9 +298,9 @@ public class yuya_Parry : MonoBehaviour
 
     IEnumerator cooltime()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.0f);
 
         Parysc = false;
-        
+        GuardTime = false;
     }
 }

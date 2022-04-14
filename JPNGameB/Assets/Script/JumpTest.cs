@@ -47,6 +47,7 @@ public class JumpTest: MonoBehaviour
         ySpeed = -gravity;
         JumpYpos = transform.position.y;
         ugoki = 0;
+        ShieldGuard.GuardCount = 0;
         //SG = GuardArea.GetComponent<ShieldGuard>();
     }
 
