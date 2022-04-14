@@ -10,7 +10,7 @@ public class SoundMgr : MonoBehaviour
     public GameObject GuardArea;
     public GameObject Shield;
     ShieldGuard GuF;
-    Shoei_Parry Reflct;
+    yuya_Parry Reflct;
 
 
     // Start is called before the first frame update
@@ -18,7 +18,7 @@ public class SoundMgr : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         GuF = GuardArea.GetComponent<ShieldGuard>();
-        Reflct = Shield.GetComponent<Shoei_Parry>();
+        Reflct = Shield.GetComponent<yuya_Parry>();
     }
 
     // Update is called once per frame
