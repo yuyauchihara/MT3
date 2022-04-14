@@ -166,6 +166,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GuardFlag: 0
+  GuardCount: 0
+  StunSlider: {fileID: 0}
   sp: {fileID: 0}
 --- !u!61 &12113027
 BoxCollider2D:
@@ -16382,6 +16384,8 @@ MonoBehaviour:
   BattleCount: 0
   BattleExit: 0
   jumpLimitTime: 0.5
+  GuardArea: {fileID: 1065281508}
+  Shield: {fileID: 2022185751}
 --- !u!114 &744900969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19292,6 +19296,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GuardFlag: 0
+  GuardCount: 0
+  StunSlider: {fileID: 0}
   sp: {fileID: 744900967}
 --- !u!61 &1772974787
 BoxCollider2D:
@@ -19808,6 +19814,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   sprite: {fileID: 0}
   sprite2: {fileID: 0}
+  GuardArea: {fileID: 0}
 --- !u!70 &1905539278
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -19837,8 +19844,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 2048110736}
-  white: {fileID: 0}
-  green: {fileID: 0}
+  RefFlag: 0
+  ParyFlag: 0
   ShieldRote: 0
 --- !u!61 &1905539280
 BoxCollider2D:
@@ -20233,6 +20240,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 2022185756}
   sprite: {fileID: 21300000, guid: 10d12453dabf694439bd4e36c219616b, type: 3}
   sprite2: {fileID: 21300000, guid: 70a4eec191cfb8f40a5235cb2a912eb4, type: 3}
+  GuardArea: {fileID: 1772974784}
 --- !u!70 &2022185754
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -20774,6 +20782,8 @@ MonoBehaviour:
   BattleCount: 0
   BattleExit: 0
   jumpLimitTime: 0.5
+  GuardArea: {fileID: 0}
+  Shield: {fileID: 0}
 --- !u!114 &2048110738
 MonoBehaviour:
   m_ObjectHideFlags: 0

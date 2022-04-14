@@ -11,11 +11,13 @@ public class SceneChange : MonoBehaviour
     private string[] SceneChangeName;
 
     public bool StageMode = false;      //ステージを変える方(trueならステージ切り替えモード)
-    public bool SceneMode = true;      //シーンを変える方(trueならシーン切り替えモード)※初期true
+    public bool SceneMode = true;       //シーンを変える方(trueならシーン切り替えモード)※初期true
 
-    public fadeoutScene fadeout;
+    public fadeoutScene fadeout;        //フェードアウトするオブジェクト格納
 
-    public bool FadeOutInMode = true;
+    public bool FadeOutInMode = true;   //フェードインさせるかどうかのフラグtrueならさせる
+
+    public bool title = false;          //タイトルならtrueにしとく
 
     void Start()
     {
@@ -43,7 +45,11 @@ public class SceneChange : MonoBehaviour
             SceneMode = true;
         }
 
-        Debug.Log(SceneName);
+        if(Input.GetKey("joystick button 0") && title)
+        {
+            SceneManager.LoadScene("1-1");
+        }
+
     }
 
     void ChangeStage()
