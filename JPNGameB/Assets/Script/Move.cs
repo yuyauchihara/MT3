@@ -52,6 +52,12 @@ public class Move : MonoBehaviour
 
     public static bool HoldShield = false; //RBで盾を構えているか判定するフラグ 0403_public staticに変更
     public static bool Pdirection = true; //プレイヤーの向き、trueなら左、falseなら右
+
+    public static bool GuardTime = false;//盾のクールタイム用のフラグ
+
+    public SpriteRenderer spriteRenderer;
+    public Sprite sprite;
+    public Sprite sprite2;
     // Start is called before the first frame update
 
     void Start()
@@ -149,18 +155,22 @@ public class Move : MonoBehaviour
         //    StartCoroutine("counter");
         //}
 
-        if (Input.GetKey(KeyCode.Q) || Input.GetKey("joystick button 5"))
+        if (Input.GetKey("joystick button 5") && GuardTime == false && GuardTime == false && JumpTest.StunPlayer == false || Input.GetKey(KeyCode.Q) && GuardTime == false && JumpTest.StunPlayer == false)
         {
             HoldShield = true;
             //GetComponent<Renderer>().material.color = blue.color;
             shield.gameObject.SetActive(true);
             moveSpeed = 5.5f;
+            spriteRenderer.sprite = sprite;//画像切り替え
+
         }
-        
-        if(Input.GetKeyUp(KeyCode.Q) || Input.GetKeyUp("joystick button 5"))
+
+        if (Input.GetKeyUp(KeyCode.Q) && GuardTime == false || Input.GetKeyUp("joystick button 5") && GuardTime == false)
         {
-            StartCoroutine(cool());
-            
+            spriteRenderer.sprite = sprite2;//画像切り替え
+
+            GuardTime = true;
+            StartCoroutine(Gcool());
         }
 
 
@@ -256,11 +266,12 @@ public class Move : MonoBehaviour
         i = 0;
     }
 
-    IEnumerator cool()
+    IEnumerator Gcool()
     {
-        yield return new WaitForSeconds(1.1f);
+        yield return new WaitForSeconds(0.5f);
 
         HoldShield = false;
+        GuardTime = false;
         shield.gameObject.SetActive(false);
         moveSpeed = 10.5f;
     }

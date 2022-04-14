@@ -11,6 +11,12 @@ public class ShieldGuard : MonoBehaviour
     GameObject PlayerAtari;
     PlayerHP playerHp;
 
+    //スタン関係
+    public int GuardCount = 0; //通常ガードの回数カウント
+    public static bool isStun = false;
+    public Slider StunSlider;
+    int MaxStunGauge = 3;
+
     public SpriteRenderer sp;
     // ダメージ判定フラグ
     public static bool isDamage { get; set; }
@@ -43,6 +49,18 @@ public class ShieldGuard : MonoBehaviour
             sp.color = new Color(1f, 1f, 1f, level);
 
         }
+
+        if(GuardCount >= 3)
+        {
+            isStun = true;
+        }
+        else
+        {
+            isStun = false;
+        }
+
+        StunSlider.value = MaxStunGauge / GuardCount;
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -58,9 +76,14 @@ public class ShieldGuard : MonoBehaviour
         if (other.gameObject.tag == "bullet" && Shoei_Parry.Parysc == false)
         {
             GuardFlag = true;
-            playerHp.HealthPoint -= 0.5f;
+            GuardCount++; //通常ガードカウント
+
+            //playerHp.HealthPoint -= 0.5f;
+
             Destroy(other.gameObject);
-            StartCoroutine(OnDamage());
+
+            //StartCoroutine(OnDamage());
+
             if (playerHp.HealthPoint == 0)
             {
                 Invoke("ChangeScene", 1.5f);
@@ -72,14 +95,14 @@ public class ShieldGuard : MonoBehaviour
     {
         SceneManager.LoadScene("GameOver");
     }
-    public IEnumerator OnDamage()
-    {
-        isDamage = true;
-        yield return new WaitForSeconds(1.0f);
+    //public IEnumerator OnDamage()
+    //{
+    //    isDamage = true;
+    //    yield return new WaitForSeconds(1.0f);
 
-        // 通常状態に戻す
-        isDamage = false;
-        sp.color = new Color(1f, 1f, 1f, 1f);
+    //    // 通常状態に戻す
+    //    isDamage = false;
+    //    sp.color = new Color(1f, 1f, 1f, 1f);
 
-    }
+    //}
 }

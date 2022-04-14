@@ -33,6 +33,12 @@ public class JumpTest: MonoBehaviour
 
     private int ugoki = 0;      //ゲームが始まった時に動きが止まるのを解消
 
+    //スタン関係処理
+    public static bool StunPlayer = false; //プレイヤーがスタンするフラグ
+    public GameObject GuardArea;
+    public GameObject Shield;
+    ShieldGuard SG;
+
     void Start()
     {
         //コンポーネントのインスタンスを捕まえる
@@ -41,6 +47,7 @@ public class JumpTest: MonoBehaviour
         ySpeed = -gravity;
         JumpYpos = transform.position.y;
         ugoki = 0;
+        SG = GuardArea.GetComponent<ShieldGuard>();
     }
 
     void FixedUpdate()
@@ -145,9 +152,39 @@ public class JumpTest: MonoBehaviour
             }
             BattleCount = 0;
         }
-        if (!Jump)
+
+        if(Move.HoldShield == true) //盾を構えてる時の移動速度の変化
+        {
+            moveSpeed = 5.5f;
+        }
+        else
+        {
+            moveSpeed = 10.5f;
+        }
+
+        if(ShieldGuard.isStun == true) //スタンコルーチン開始
+        {
+            StartCoroutine("Stun");
+        }
+
+        if (!Jump && StunPlayer == false) //スタン処理を追加
         {
             rb.velocity = new Vector2(Horizontal * moveSpeed, ySpeed);
         }
-    }   
+        else if(StunPlayer == true)
+        {
+            rb.velocity = new Vector2(0, ySpeed);
+        }
+    }
+    
+    IEnumerator Stun() //プレイヤーをスタン状態にするコルーチン
+    {
+        StunPlayer = true;
+        //Shield.SetActive(false);
+        yield return new WaitForSeconds(2.0f);
+        StunPlayer = false;
+        //Shield.SetActive(true);
+        SG.GuardCount = 0;
+    }
+
 }
