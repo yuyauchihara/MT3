@@ -574,7 +574,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Scene: 2
-  FOB: {fileID: 0}
+  StageMode: 0
+  SceneMode: 1
+  fadeout: {fileID: 0}
+  FadeOutInMode: 1
+  title: 0
 --- !u!114 &175333635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1227,7 +1231,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GuardFlag: 0
-  GuardCount: 0
   StunSlider: {fileID: 0}
   sp: {fileID: 0}
 --- !u!1 &379447197
@@ -17382,6 +17385,7 @@ MonoBehaviour:
   RefFlag: 0
   ParyFlag: 0
   ShieldRote: 0
+  GuardArea: {fileID: 0}
 --- !u!61 &673474120
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20944,7 +20948,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GuardFlag: 0
-  GuardCount: 0
   StunSlider: {fileID: 94556729}
   sp: {fileID: 175333633}
 --- !u!61 &1841803400
@@ -20980,15 +20983,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 485396195856553508, guid: b20b3d79966cda549bccc37e47116b5d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 485396195856553508, guid: b20b3d79966cda549bccc37e47116b5d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.07
+      objectReference: {fileID: 0}
     - target: {fileID: 1792380901353452448, guid: b20b3d79966cda549bccc37e47116b5d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.41
+      value: -8.12
       objectReference: {fileID: 0}
     - target: {fileID: 1792380901353452448, guid: b20b3d79966cda549bccc37e47116b5d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.87
+      value: -1.33
       objectReference: {fileID: 0}
     - target: {fileID: 1792380901353452448, guid: b20b3d79966cda549bccc37e47116b5d,
         type: 3}
@@ -21049,7 +21062,7 @@ PrefabInstance:
         type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 1169254775}
+      objectReference: {fileID: 0}
     - target: {fileID: 8274731578962064688, guid: b20b3d79966cda549bccc37e47116b5d,
         type: 3}
       propertyPath: m_Size.x
