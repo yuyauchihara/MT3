@@ -45,14 +45,19 @@ public class SceneChange : MonoBehaviour
             SceneMode = true;
         }
 
-        if (Input.GetKey("joystick button 0") && SceneMode && title)
+        if(Input.GetKey("joystick button 0") && title)
         {
-            Invoke("ChangeScene", 0.0f);
-        }
+            if (SceneMode)
+            {
+                SceneName = SceneChangeName[Scene];
+                Change();
+            }
 
-        if (Input.GetKey("joystick button 0") && StageMode && title)
-        {
-            Invoke("ChangeStage", 0.0f);
+            if (StageMode)
+            {
+                SceneName = StageName[Scene];
+                Change();
+            }
         }
 
     }

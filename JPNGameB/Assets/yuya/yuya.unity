@@ -648,6 +648,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GuardFlag: 0
+  GuardCount: 0
+  StunSlider: {fileID: 0}
   sp: {fileID: 1485114634}
 --- !u!61 &149634757
 BoxCollider2D:
@@ -1011,6 +1013,8 @@ MonoBehaviour:
   BattleCount: 0
   BattleExit: 0
   jumpLimitTime: 0
+  GuardArea: {fileID: 0}
+  Shield: {fileID: 0}
 --- !u!114 &219037898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16451,6 +16455,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   sprite: {fileID: 0}
   sprite2: {fileID: 0}
+  GuardArea: {fileID: 0}
 --- !u!70 &429032553
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -16483,6 +16488,7 @@ MonoBehaviour:
   RefFlag: 0
   ParyFlag: 0
   ShieldRote: 0
+  GuardArea: {fileID: 0}
 --- !u!61 &429032555
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16594,7 +16600,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &431039105
 Transform:
   m_ObjectHideFlags: 0
@@ -16630,6 +16636,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 431039111}
   sprite: {fileID: 21300000, guid: 10d12453dabf694439bd4e36c219616b, type: 3}
   sprite2: {fileID: 21300000, guid: 70a4eec191cfb8f40a5235cb2a912eb4, type: 3}
+  GuardArea: {fileID: 149634754}
 --- !u!70 &431039107
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -16662,6 +16669,7 @@ MonoBehaviour:
   RefFlag: 0
   ParyFlag: 0
   ShieldRote: 0
+  GuardArea: {fileID: 149634754}
 --- !u!61 &431039109
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17260,6 +17268,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GuardFlag: 0
+  GuardCount: 0
+  StunSlider: {fileID: 0}
   sp: {fileID: 0}
 --- !u!61 &587699543
 BoxCollider2D:
@@ -17989,6 +17999,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   sprite: {fileID: 0}
   sprite2: {fileID: 0}
+  GuardArea: {fileID: 0}
 --- !u!70 &924274151
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -18021,6 +18032,7 @@ MonoBehaviour:
   RefFlag: 0
   ParyFlag: 0
   ShieldRote: 0
+  GuardArea: {fileID: 0}
 --- !u!61 &924274153
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18628,6 +18640,8 @@ MonoBehaviour:
   BattleCount: 0
   BattleExit: 0
   jumpLimitTime: 0
+  GuardArea: {fileID: 0}
+  Shield: {fileID: 0}
 --- !u!114 &977963933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20520,6 +20534,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 70a4eec191cfb8f40a5235cb2a912eb4,
         type: 3}
+    - target: {fileID: 2502893377878238599, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
+        type: 3}
+      propertyPath: GuardArea
+      value: 
+      objectReference: {fileID: 149634754}
     - target: {fileID: 2502893377878238616, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
         type: 3}
       propertyPath: m_Name
@@ -20598,16 +20617,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1485114635}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aaccbe2c6ca2b2945978838c7daf9b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ground: {fileID: 0}
-  wallR: {fileID: 0}
+  ground: {fileID: 568890955}
+  wallR: {fileID: 1828778891}
   BattleCount: 0
   BattleExit: 0
-  jumpLimitTime: 0
+  jumpLimitTime: 0.5
+  GuardArea: {fileID: 149634754}
+  Shield: {fileID: 431039104}
 --- !u!114 &1485114637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20615,7 +20636,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1485114635}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 416a17a6133619f4f83867efdd65ded4, type: 3}
   m_Name: 
@@ -21018,6 +21039,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GuardFlag: 0
+  GuardCount: 0
+  StunSlider: {fileID: 0}
   sp: {fileID: 0}
 --- !u!61 &1680945839
 BoxCollider2D:

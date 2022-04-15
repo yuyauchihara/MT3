@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shoei_Parry : MonoBehaviour
+public class nakama_Parry : MonoBehaviour
 {
     Collider2D Parco;
     Rigidbody2D Parrb;
@@ -45,15 +45,10 @@ public class Shoei_Parry : MonoBehaviour
 
     bool GuardTime = false;
 
-    //スタン関係
-    public GameObject GuardArea;
-    ShieldGuard SG;
-
     void Start()
     {
         parryf = false;
         Application.targetFrameRate = 50;
-        SG = GuardArea.GetComponent<ShieldGuard>();
     }
 
     // Update is called once per frame
@@ -131,22 +126,22 @@ public class Shoei_Parry : MonoBehaviour
             Parysc = false;
         }
 
-        if (Input.GetKey("joystick button 5") && GuardTime == false|| Input.GetKey(KeyCode.Q) && GuardTime == false)
+        if (Input.GetKey("joystick button 5") && GuardTime == false || Input.GetKey(KeyCode.Q) && GuardTime == false)
         {
-            spriteRenderer.sprite = sprite;      
+            spriteRenderer.sprite = sprite;
         }
 
         if (Input.GetKeyUp("joystick button 5") || Input.GetKeyUp(KeyCode.Q))//リフレクションなどのモーション
         {
             spriteRenderer.sprite = sprite2;//画像切り替え
             GuardTime = true;
-            
+
             StartCoroutine(cooltime());
         }
 
         if (GuardTime == true)
         {
-            transform.localPosition = new Vector3(-0.2f, sy + 0f,-2f);
+            transform.localPosition = new Vector3(-0.2f, sy + 0f, -2f);
         }
 
         //if ()
@@ -154,7 +149,7 @@ public class Shoei_Parry : MonoBehaviour
 
         //}
 
-        
+
 
         if (Input.GetKeyUp("joystick button 5"))
         {
@@ -189,13 +184,13 @@ public class Shoei_Parry : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-
+        
         if (other.gameObject.tag == "bullet") //リフレクション
         {
             GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
             if (Input.GetKeyUp("joystick button 5") || Input.GetKeyUp(KeyCode.Q))
             {
-                ShieldGuard.GuardCount = 0;
+                
                 if (Move.Pdirection == true && GuardTime == false)//プレイヤーが右向き
                 {
                     if (V == 0 && H == 0) //右向きのリフレクション(入力無し)
@@ -203,6 +198,7 @@ public class Shoei_Parry : MonoBehaviour
                         Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                         Refrb.velocity = new Vector2(1 * RefSpeed, 0 * RefSpeed);
                         RefFlag = true; //音声再生で使用、SoundMgr.csと共有
+                        bullet.FriendlyFireFlag = true;
                     }
 
                     if (H < 0 && sr < 41) //右向きのリフレクション
@@ -210,6 +206,7 @@ public class Shoei_Parry : MonoBehaviour
                         RefFlag = true; //音声再生で使用、SoundMgr.csと共有
                         Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                         Refrb.velocity = new Vector2(Mathf.Cos(sr * Mathf.Deg2Rad) * RefSpeed, Mathf.Sin(sr * Mathf.Deg2Rad) * RefSpeed);
+                        bullet.FriendlyFireFlag = true;
                     }
 
                     if (H <= 0 && sr == 40)
@@ -217,7 +214,8 @@ public class Shoei_Parry : MonoBehaviour
                         RefFlag = true; //音声再生で使用、SoundMgr.csと共有
                         Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                         Refrb.velocity = new Vector2(Mathf.Cos(40 * Mathf.Deg2Rad) * RefSpeed, Mathf.Sin(40 * Mathf.Deg2Rad) * RefSpeed);
-                    } 
+                        bullet.FriendlyFireFlag = true;
+                    }
                 }
 
                 if (Move.Pdirection == false && GuardTime == false)//プレイヤーが左向き
@@ -227,6 +225,7 @@ public class Shoei_Parry : MonoBehaviour
                         Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                         Refrb.velocity = new Vector2(1 * -RefSpeed, 0 * RefSpeed);
                         RefFlag = true; //音声再生で使用、SoundMgr.csと共有
+                        bullet.FriendlyFireFlag = true;
                     }
 
                     if (H > 0 && sr > -41) //左向きのリフレクション
@@ -234,6 +233,7 @@ public class Shoei_Parry : MonoBehaviour
                         RefFlag = true; //音声再生で使用、SoundMgr.csと共有
                         Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                         Refrb.velocity = new Vector2(Mathf.Cos(radian * Mathf.Deg2Rad) * RefSpeed, Mathf.Sin(radian * Mathf.Deg2Rad) * RefSpeed);
+                        bullet.FriendlyFireFlag = true;
                     }
 
                     if (H >= 0 && sr == -40)
@@ -241,6 +241,7 @@ public class Shoei_Parry : MonoBehaviour
                         RefFlag = true; //音声再生で使用、SoundMgr.csと共有
                         Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
                         Refrb.velocity = new Vector2(Mathf.Cos(40 * Mathf.Deg2Rad) * -RefSpeed, Mathf.Sin(40 * Mathf.Deg2Rad) * RefSpeed);
+                        bullet.FriendlyFireFlag = true;
                     }
 
                 }
@@ -251,6 +252,7 @@ public class Shoei_Parry : MonoBehaviour
                     Refrb.velocity = new Vector2(1 * RefSpeed * -1, 0);
                     ParyFlag = true; //音声の為のフラグ SoundMgr.csと共有
                     Parysc = true;
+                    bullet.FriendlyFireFlag = true;
                 }
 
                 if (Move.Pdirection == false && H < 0)
@@ -259,13 +261,14 @@ public class Shoei_Parry : MonoBehaviour
                     Refrb.velocity = new Vector2(1 * RefSpeed, 0);
                     ParyFlag = true; //音声の為のフラグ SoundMgr.csと共有
                     Parysc = true;
+                    bullet.FriendlyFireFlag = true;
                 }
 
             }
 
         }
 
-        if(other.gameObject.tag == "Sekkin")
+        if (other.gameObject.tag == "Sekkin")
         {
             GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
             if (Input.GetKeyUp("joystick button 5") || Input.GetKeyUp(KeyCode.Q))
@@ -286,7 +289,7 @@ public class Shoei_Parry : MonoBehaviour
             GetComponent<SpriteRenderer>().color = new Color(0, 220, 255);
         }
 
-        if(other.gameObject.tag == "Sekkin")
+        if (other.gameObject.tag == "Sekkin")
         {
             GetComponent<SpriteRenderer>().color = new Color(0, 220, 255);
         }

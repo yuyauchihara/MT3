@@ -12,7 +12,7 @@ public class ShieldGuard : MonoBehaviour
     PlayerHP playerHp;
 
     //スタン関係
-    public int GuardCount = 0; //通常ガードの回数カウント
+    public static int GuardCount = 0; //通常ガードの回数カウント
     public static bool isStun = false;
     public Slider StunSlider;
     int MaxStunGauge = 3;
@@ -31,7 +31,7 @@ public class ShieldGuard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(isDamage);
+        //Debug.Log(isDamage);
         if(yuya_Parry.parryf == true) //0328_本来はyuya_Parryだった　
         {
             this.gameObject.SetActive(false);
@@ -50,14 +50,14 @@ public class ShieldGuard : MonoBehaviour
 
         }
 
-        if(GuardCount >= 3)
-        {
-            isStun = true;
-        }
-        else
-        {
-            isStun = false;
-        }
+        //if(GuardCount >= 3)
+        //{
+        //    isStun = true;
+        //}
+        //else
+        //{
+        //    isStun = false;
+        //}
 
         StunSlider.value = MaxStunGauge / GuardCount;
 
@@ -73,7 +73,7 @@ public class ShieldGuard : MonoBehaviour
             return;
         }
 
-        if (other.gameObject.tag == "bullet" && Shoei_Parry.Parysc == false)
+        if (other.gameObject.tag == "bullet" && yuya_Parry.Parysc == false)
         {
             GuardFlag = true;
             GuardCount++; //通常ガードカウント
