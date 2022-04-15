@@ -62,7 +62,14 @@ public class JumpTest: MonoBehaviour
         if (isGround)
         {
             ySpeed = -gravity;
-            moveSpeed = 10.5f;
+            if (!Move.HoldShield)
+            {
+                moveSpeed = 10.5f;
+            }
+            if(Move.HoldShield)
+            {
+                moveSpeed = 5.5f;
+            }
             jumpTime = 0.0f;
             count = 0;
             Jump = false;
@@ -125,12 +132,28 @@ public class JumpTest: MonoBehaviour
             }
             rb.velocity = new Vector2(JumpXSpeed, ySpeed);      //ジャンプ中は勝手に動く
         }
-        
-        if(CameraChange.Battle == true) //敵が出てきたらプレイヤーの動きを止める
+
+        //if (Move.HoldShield == true /*&& !CameraChange.Battle*/) //盾を構えてる時の移動速度の変化
+        //{
+        //    moveSpeed = 5.5f;
+        //}
+        //else /*if(!CameraChange.Battle)*/
+        //{
+        //    moveSpeed = 10.5f;
+        //}
+
+        if (CameraChange.Battle == true) //敵が出てきたらプレイヤーの動きを止める
         {
             if(BattleCount > 110)
             {
-                moveSpeed = 10.5f;
+                if (!Move.HoldShield)
+                {
+                    moveSpeed = 10.5f;
+                }
+                else if (Move.HoldShield)
+                {
+                    moveSpeed = 5.5f;
+                }
             }
             else
             {
@@ -144,7 +167,14 @@ public class JumpTest: MonoBehaviour
         {
             if (BattleExit > 110)
             {
-                moveSpeed = 10.5f;
+                if (!Move.HoldShield)
+                {
+                    moveSpeed = 10.5f;
+                }
+                else if (Move.HoldShield)
+                {
+                    moveSpeed = 5.5f;
+                }
             }
             else
             {
@@ -152,15 +182,6 @@ public class JumpTest: MonoBehaviour
                 BattleExit++;
             }
             BattleCount = 0;
-        }
-
-        if(Move.HoldShield == true && !CameraChange.Battle) //盾を構えてる時の移動速度の変化
-        {
-            moveSpeed = 5.5f;
-        }
-        else if(!CameraChange.Battle)
-        {
-            moveSpeed = 10.5f;
         }
 
         if(Move.isStun == true) //スタンコルーチン開始
@@ -187,5 +208,4 @@ public class JumpTest: MonoBehaviour
         //Shield.SetActive(true);
         ShieldGuard.GuardCount = 0;
     }
-
 }
