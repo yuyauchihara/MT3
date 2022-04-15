@@ -557,7 +557,7 @@ MonoBehaviour:
   StageMode: 1
   SceneMode: 0
   fadeout: {fileID: 0}
-  FadeOutInMode: 1
+  FadeOutInMode: 0
   title: 1
 --- !u!4 &1787803645
 Transform:
