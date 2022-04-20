@@ -2032,6 +2032,7 @@ GameObject:
   - component: {fileID: 548039170}
   - component: {fileID: 548039169}
   - component: {fileID: 548039168}
+  - component: {fileID: 548039172}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Untagged
@@ -2062,7 +2063,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 548039166}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3275c20284c31f44ca59c941720fdc71, type: 3}
   m_Name: 
@@ -2167,6 +2168,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &548039172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548039166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ae1929cb2ad915479ae5816ae1796fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 175333631}
+  RefFlag: 0
+  ParyFlag: 0
+  ShieldRote: 0
+  GuardArea: {fileID: 1841803397}
 --- !u!1001 &548202584
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21058,6 +21076,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5799295025426035124, guid: b20b3d79966cda549bccc37e47116b5d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5799295025426035124, guid: b20b3d79966cda549bccc37e47116b5d,
+        type: 3}
+      propertyPath: Life
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5799295025426035127, guid: b20b3d79966cda549bccc37e47116b5d,
         type: 3}
       propertyPath: target
@@ -21324,6 +21352,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 70a4eec191cfb8f40a5235cb2a912eb4,
         type: 3}
+    - target: {fileID: 2502893377878238599, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
+        type: 3}
+      propertyPath: GuardArea
+      value: 
+      objectReference: {fileID: 1841803397}
     - target: {fileID: 2502893377878238616, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
         type: 3}
       propertyPath: m_Name
