@@ -43,7 +43,6 @@ public class Move : MonoBehaviour
 
     private System.TimeSpan blockTime = new TimeSpan(0, 0, 3); //ブロックする時間　
 
-    public GameObject AE;
     Transform EnemyPositon;
 
     Vector2 Ref; //反射のやつ
@@ -62,17 +61,23 @@ public class Move : MonoBehaviour
 
     public static bool isStun = false;
 
+    //ガードカウントを初期化する奴ら
+    public GameObject GuardArea;
+    ShieldGuard SG;
+
+    float h2;
+
     //public GameObject GuardArea;
     //ShieldGuard moveSG;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        EnemyPositon = AE.GetComponent<Transform>();
-        CF = AE.GetComponent<ApproachEnemy>();
 
         m_ObjectCollider = GetComponent<BoxCollider2D>();
 
         shield.gameObject.SetActive(false);
+
+        SG = GuardArea.GetComponent<ShieldGuard>(); //ガードカウント関係
 
         //moveSG = GuardArea.GetComponent<ShieldGuard>();
 
@@ -85,7 +90,13 @@ public class Move : MonoBehaviour
 
         //Debug.Log(parryf);
         var h = Input.GetAxis("Horizontal");//左スティックの横
-        var h2 = Input.GetAxis("JoyHorizontal");//右スティックの横
+
+        if(JumpTest.StunPlayer == false)
+        {
+            h2 = Input.GetAxis("JoyHorizontal");//右スティックの横 //0420_h2の型をfloatで宣言
+
+        }
+
         //Zahyohyo.text = H + "," + V.ToString();
 
         //rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
@@ -95,7 +106,7 @@ public class Move : MonoBehaviour
 
         //Ref = new Vector2(H * 100,V * 100); //ここが毎フレーム更新されるため謎の誘導を受けている
 
-        
+
 
         if (Pdirection == true && h2 > 0) //パリィ
         {
@@ -163,14 +174,16 @@ public class Move : MonoBehaviour
         //    StartCoroutine("counter");
         //}
 
-        if (Input.GetKey("joystick button 5")  && GuardTime == false && JumpTest.StunPlayer == false || Input.GetKey(KeyCode.Q) && GuardTime == false && JumpTest.StunPlayer == false)
+        if (Input.GetKey("joystick button 5")  && GuardTime == false || Input.GetKey(KeyCode.Q) && GuardTime == false)
         {
-            HoldShield = true;
-            //GetComponent<Renderer>().material.color = blue.color;
-            shield.gameObject.SetActive(true);
-            moveSpeed = 5.5f;
-            spriteRenderer.sprite = sprite;//画像切り替え
-
+            if (JumpTest.StunPlayer == false)
+            {
+                HoldShield = true;
+                //GetComponent<Renderer>().material.color = blue.color;
+                shield.gameObject.SetActive(true);
+                moveSpeed = 5.5f;
+                spriteRenderer.sprite = sprite;//画像切り替え
+            }
         }
 
         if (Input.GetKeyUp(KeyCode.Q) && GuardTime == false || Input.GetKeyUp("joystick button 5") && GuardTime == false)
@@ -193,24 +206,12 @@ public class Move : MonoBehaviour
             isStun = false;
         }
 
-        if (CF.counterFlag == true)
+        if(JumpTest.StunPlayer == true) //スタン中は盾を解除
         {
-            if (HoldShield == true)
-            {
-                KnockBackFlg = true; //こいつが引き継がれてるかも
-            }
+            HoldShield = false;
+            shield.gameObject.SetActive(false);
+            ShieldGuard.GuardCount = 0;
         }
-
-        if (KnockBackFlg == true)
-        {
-            if (Input.GetKeyUp(KeyCode.Q) || Input.GetKeyUp("joystick button 5"))
-            {
-                KnockFlag = true;
-                KnockBackFlg = false;
-            }
-        }
-
-        
 
     }
 
@@ -221,6 +222,7 @@ public class Move : MonoBehaviour
         yield return new WaitForSeconds(2);
         GetComponent<Renderer>().material.color = green.color;
         RefGuard = false;
+
     }
 
     void OnTriggerStay2D(Collider2D other)
