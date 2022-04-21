@@ -65,8 +65,6 @@ public class Move : MonoBehaviour
     public GameObject GuardArea;
     ShieldGuard SG;
 
-    float h2;
-
     //public GameObject GuardArea;
     //ShieldGuard moveSG;
     void Start()
@@ -90,12 +88,7 @@ public class Move : MonoBehaviour
 
         //Debug.Log(parryf);
         var h = Input.GetAxis("Horizontal");//左スティックの横
-
-        if(JumpTest.StunPlayer == false)
-        {
-            h2 = Input.GetAxis("JoyHorizontal");//右スティックの横 //0420_h2の型をfloatで宣言
-
-        }
+        var h2 = Input.GetAxis("JoyHorizontal");//右スティックの横 //0420_h2の型をfloatで宣言
 
         //Zahyohyo.text = H + "," + V.ToString();
 
@@ -136,15 +129,18 @@ public class Move : MonoBehaviour
             }
         }
 
-        if (h < 0)
+        if(JumpTest.StunPlayer == false)
         {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-            Pdirection = false;
-        }
-        else if (0 < h)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-            Pdirection = true;
+            if (h < 0)
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+                Pdirection = false;
+            }
+            else if (0 < h)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                Pdirection = true;
+            }
         }
 
         //Vector2 force = new Vector2(0, 1f);
