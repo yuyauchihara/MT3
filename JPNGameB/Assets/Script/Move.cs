@@ -59,27 +59,18 @@ public class Move : MonoBehaviour
     public Sprite sprite2;
     // Start is called before the first frame update
 
+    //スタン系
     public static bool isStun = false;
 
-    //ガードカウントを初期化する奴ら
-    public GameObject GuardArea;
-    ShieldGuard SG;
+    //スタンエフェクト関係
+    public ParticleSystem StunEf;
 
-    //public GameObject GuardArea;
-    //ShieldGuard moveSG;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
         m_ObjectCollider = GetComponent<BoxCollider2D>();
-
         shield.gameObject.SetActive(false);
-
-        SG = GuardArea.GetComponent<ShieldGuard>(); //ガードカウント関係
-
-        //moveSG = GuardArea.GetComponent<ShieldGuard>();
-
-        //Zahyohyo = Zahyo.GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -202,11 +193,12 @@ public class Move : MonoBehaviour
             isStun = false;
         }
 
-        if(JumpTest.StunPlayer == true) //スタン中は盾を解除
-        {
+        if(JumpTest.StunPlayer == true) //スタン中は盾を解除,パーティクルの再生
+        {           
             HoldShield = false;
             shield.gameObject.SetActive(false);
-            ShieldGuard.GuardCount = 0;
+            StunEf.Play();
+            ShieldGuard.GuardCount = 0;            
         }
 
     }
@@ -255,17 +247,6 @@ public class Move : MonoBehaviour
         }
     }
 
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Sekkin")
-        {
-            i = 1;
-            StartCoroutine("stan");
-
-        }
-    }
-
-
     IEnumerator counter()
     {
         GetComponent<Renderer>().material.color = black.color;//プレイヤーの色を白に
@@ -273,16 +254,6 @@ public class Move : MonoBehaviour
         yield return new WaitForSeconds(2);//二秒待つ
         GetComponent<Renderer>().material.color = green.color;//色を緑に
         counterflag = false;
-    }
-
-    IEnumerator stan()
-    {
-        KillAprEnmyFlg = true;
-        EnemyPositon.transform.Translate(0f, 0, 0);
-        yield return new WaitForSeconds(3f);
-        KillAprEnmyFlg = false;
-        KnockFlag = false;
-        i = 0;
     }
 
     IEnumerator Gcool()
