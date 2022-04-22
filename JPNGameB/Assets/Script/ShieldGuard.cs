@@ -59,7 +59,8 @@ public class ShieldGuard : MonoBehaviour
         //    isStun = false;
         //}
 
-        StunSlider.value = MaxStunGauge / GuardCount;
+        int bunshi = 3 - GuardCount;
+        StunSlider.value = bunshi / MaxStunGauge;
 
     }
 
