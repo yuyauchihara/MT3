@@ -69,11 +69,15 @@ public class Move : MonoBehaviour
     public Slider StunSlider;
     float MaxStunGauge = 3.0f;
 
+    //アニメーション用
+    private Animator anim = null;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         m_ObjectCollider = GetComponent<BoxCollider2D>();
         shield.gameObject.SetActive(false);
+        anim = GetComponent<Animator>(); //アニメーション用
     }
 
     // Update is called once per frame
@@ -180,6 +184,7 @@ public class Move : MonoBehaviour
         {
             spriteRenderer.sprite = sprite2;//画像切り替え
 
+            anim.SetBool("p_guard", true);
             GuardTime = true;
             StartCoroutine(Gcool());
         }
@@ -270,6 +275,7 @@ public class Move : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
 
+        anim.SetBool("p_guard", false);
         HoldShield = false;
         GuardTime = false;
         shield.gameObject.SetActive(false);
