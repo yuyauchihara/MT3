@@ -65,6 +65,9 @@ public class Move : MonoBehaviour
     //スタンエフェクト関係
     public ParticleSystem StunEf;
 
+    //スタンゲージ
+    public Slider StunSlider;
+    float MaxStunGauge = 3.0f;
 
     void Start()
     {
@@ -198,9 +201,16 @@ public class Move : MonoBehaviour
             HoldShield = false;
             shield.gameObject.SetActive(false);
             StunEf.Play();
-            ShieldGuard.GuardCount = 0;            
+            //ShieldGuard.GuardCount = 0;            
+        }else if(JumpTest.StunPlayer == false)
+        {
+            StunEf.Stop();
         }
 
+        float bunshi = MaxStunGauge - ShieldGuard.GuardCount;
+
+        StunSlider.value = bunshi / MaxStunGauge;
+        Debug.Log(ShieldGuard.GuardCount);
     }
 
     IEnumerator Reflection()
