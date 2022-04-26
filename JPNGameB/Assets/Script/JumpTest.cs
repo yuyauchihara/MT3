@@ -99,12 +99,12 @@ public class JumpTest: MonoBehaviour
         //}
 
         //目の前に壁があったらジャンプを始める
-        if (isWallR && Move.Pdirection == true && JumpYpos >= transform.position.y) //右
+        if (isWallR && Move.Pdirection == true && JumpYpos >= transform.position.y && isGround) //右
         {
             Jump = true;
             JumpXSpeed = 3.0f;
         }
-        else if (isWallR && Move.Pdirection == false && JumpYpos >= transform.position.y)   //左
+        else if (isWallR && Move.Pdirection == false && JumpYpos >= transform.position.y && isGround)   //左
         {
             Jump = true;
             JumpXSpeed = -3.0f;
@@ -132,6 +132,21 @@ public class JumpTest: MonoBehaviour
             }
             rb.velocity = new Vector2(JumpXSpeed, ySpeed);      //ジャンプ中は勝手に動く
         }
+
+        //ジャンプしなかったときの落下処理
+        if (!isGround && !Jump)     //落下の処理
+        {
+            if (ySpeed > 1)
+            {
+                ySpeed -= ySpeed * (6 * Time.deltaTime);
+            }
+            else
+            {
+                ySpeed = Mathf.Clamp(ySpeed + -gravity * Time.deltaTime - Down, -15, 0);
+            }
+            rb.velocity = new Vector2(1.5f, ySpeed);
+        }
+
 
         //if (Move.HoldShield == true /*&& !CameraChange.Battle*/) //盾を構えてる時の移動速度の変化
         //{
@@ -189,7 +204,7 @@ public class JumpTest: MonoBehaviour
             StartCoroutine("Stun");
         }
 
-        if (!Jump && StunPlayer == false) //スタン処理を追加
+        if (!Jump && StunPlayer == false && isGround) //スタン処理を追加
         {
             rb.velocity = new Vector2(Horizontal * moveSpeed, ySpeed);
         }

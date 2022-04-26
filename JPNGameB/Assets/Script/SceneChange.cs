@@ -45,7 +45,7 @@ public class SceneChange : MonoBehaviour
             SceneMode = true;
         }
 
-        if(Input.GetKey("joystick button 0") && title)
+        if(Input.GetKey("joystick button 0") && title || Input.GetKey("joystick button 1") && title || Input.GetKey("joystick button 3") && title)
         {
             if (SceneMode)
             {
