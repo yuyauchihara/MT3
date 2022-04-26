@@ -651,12 +651,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 23.076}
---- !u!198 &231552054 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 19800000, guid: 77ec3c4e07a36814fb3169ecef41b50a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1533277391}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &262973497
 GameObject:
   m_ObjectHideFlags: 0
@@ -18253,6 +18247,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!198 &858576101 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19800000, guid: 77ec3c4e07a36814fb3169ecef41b50a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1533277391}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &880339904
 GameObject:
   m_ObjectHideFlags: 0
@@ -20132,13 +20132,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.7142857
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 77ec3c4e07a36814fb3169ecef41b50a, type: 3}
+      propertyPath: OnlyDeactivate
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 77ec3c4e07a36814fb3169ecef41b50a, type: 3}
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 77ec3c4e07a36814fb3169ecef41b50a, type: 3}
       propertyPath: looping
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 77ec3c4e07a36814fb3169ecef41b50a, type: 3}
+      propertyPath: stopAction
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19800002, guid: 77ec3c4e07a36814fb3169ecef41b50a, type: 3}
       propertyPath: playOnAwake
@@ -21449,7 +21457,12 @@ PrefabInstance:
         type: 3}
       propertyPath: StunEf
       value: 
-      objectReference: {fileID: 231552054}
+      objectReference: {fileID: 858576101}
+    - target: {fileID: 2502893377878238599, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
+        type: 3}
+      propertyPath: StunSlider
+      value: 
+      objectReference: {fileID: 94556729}
     - target: {fileID: 2502893377878238616, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
         type: 3}
       propertyPath: m_Name
