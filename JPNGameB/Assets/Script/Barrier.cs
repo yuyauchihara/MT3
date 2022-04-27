@@ -5,13 +5,15 @@ using UnityEngine;
 public class Barrier : MonoBehaviour
 {
     public GameObject[] Core;
+    int Yososu = 0;
     int BarrierHP = 2;
     bool core1Del = false, core2Del = false, core3Del = false;
     bool ChangeColor = false;
+    
     // Start is called before the first frame update
     void Start()
     {
-
+        Yososu = Core.Length;
     }
 
     // Update is called once per frame
@@ -28,6 +30,9 @@ public class Barrier : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+
+
+
     }
 
     void OnTriggerEnter2D(Collider2D other)

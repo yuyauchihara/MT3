@@ -381,7 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad980451443d70438faac0bc6c235a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 5.8800006, z: 0}
+  m_TrackedObjectOffset: {x: 3.8600006, y: 3.4150116, z: 0}
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
@@ -612,7 +612,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &209453924
 Transform:
   m_ObjectHideFlags: 0
@@ -661,7 +661,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 289838019}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.2000003, z: -10}
+  m_LocalPosition: {x: 2.9692314, y: 2.4392939, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1405893405}
@@ -731,13 +731,13 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1
+    width: 1.04
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 9.61
+  orthographic size: 5.48
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -961,7 +961,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &517005931
 Transform:
   m_ObjectHideFlags: 0
@@ -970,7 +970,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 517005930}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.112702, y: -0.43709195, z: -66.19531}
+  m_LocalPosition: {x: -10.15, y: -0.43709195, z: -66.19531}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 1793844107}
@@ -1837,14 +1837,14 @@ MonoBehaviour:
   m_Follow: {fileID: 1958592994}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 9.61
+    OrthographicSize: 5.48
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.45933, y: 1}
+    m_SensorSize: {x: 2.4138756, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1861,13 +1861,19 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1051864198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.55, y: 4.2949896, z: -10.1}
+  m_LocalPosition: {x: -8.07, y: 1.8300004, z: -10.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 144696502}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1093928821 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1792380901353452453, guid: b20b3d79966cda549bccc37e47116b5d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1373249357}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1114090502
 GameObject:
   m_ObjectHideFlags: 0
@@ -2062,8 +2068,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Core:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1368197629}
+  - {fileID: 1093928821}
 --- !u!212 &1121044940
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2210,7 +2216,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.45933, y: 1}
+    m_SensorSize: {x: 2.4138756, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2227,7 +2233,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1178063579}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.28, y: -0.06, z: 101.93125}
+  m_LocalPosition: {x: 6.47, y: -0.06, z: 101.93125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1278958478}
@@ -2301,7 +2307,7 @@ PrefabInstance:
     - target: {fileID: 2502893377878238596, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.55
+      value: -11.93
       objectReference: {fileID: 0}
     - target: {fileID: 2502893377878238596, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
         type: 3}
@@ -2514,7 +2520,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1272916757
 Transform:
   m_ObjectHideFlags: 0
@@ -2720,6 +2726,12 @@ MonoBehaviour:
   Core2: {fileID: 0}
   Core3: {fileID: 1973315773}
   Muzzle: {fileID: 1611499267}
+--- !u!1 &1368197629 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1792380901353452453, guid: b20b3d79966cda549bccc37e47116b5d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1980986649}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1373249357
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2790,12 +2802,17 @@ PrefabInstance:
     - target: {fileID: 1792380901353452453, guid: b20b3d79966cda549bccc37e47116b5d,
         type: 3}
       propertyPath: m_Name
-      value: ShotEnemy0328_3
+      value: ShotEnemy0328_1
       objectReference: {fileID: 0}
     - target: {fileID: 5799295025426035127, guid: b20b3d79966cda549bccc37e47116b5d,
         type: 3}
       propertyPath: target
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5799295027446139899, guid: b20b3d79966cda549bccc37e47116b5d,
+        type: 3}
+      propertyPath: ShotSpan
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8274731578962064688, guid: b20b3d79966cda549bccc37e47116b5d,
         type: 3}
@@ -5811,7 +5828,7 @@ PrefabInstance:
     - target: {fileID: 1792380901353452448, guid: b20b3d79966cda549bccc37e47116b5d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.78
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 1792380901353452448, guid: b20b3d79966cda549bccc37e47116b5d,
         type: 3}
@@ -5866,13 +5883,13 @@ PrefabInstance:
     - target: {fileID: 1792380901353452453, guid: b20b3d79966cda549bccc37e47116b5d,
         type: 3}
       propertyPath: m_Name
-      value: ShotEnemy0328_1
+      value: ShotEnemy0328_0
       objectReference: {fileID: 0}
     - target: {fileID: 5799295025426035127, guid: b20b3d79966cda549bccc37e47116b5d,
         type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1958592985}
     - target: {fileID: 5799295027446139899, guid: b20b3d79966cda549bccc37e47116b5d,
         type: 3}
       propertyPath: ShotSpan
