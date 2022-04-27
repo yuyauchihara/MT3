@@ -12,10 +12,8 @@ public class ShieldGuard : MonoBehaviour
     PlayerHP playerHp;
 
     //スタン関係
-    public static int GuardCount = 0; //通常ガードの回数カウント
+    public static float GuardCount = 0f; //通常ガードの回数カウント
     public static bool isStun = false;
-    public Slider StunSlider;
-    int MaxStunGauge = 3;
 
     public SpriteRenderer sp;
     // ダメージ判定フラグ
@@ -57,9 +55,7 @@ public class ShieldGuard : MonoBehaviour
         //else
         //{
         //    isStun = false;
-        //}
-
-        StunSlider.value = MaxStunGauge / GuardCount;
+        //}       
 
     }
 
