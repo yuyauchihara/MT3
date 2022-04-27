@@ -26,10 +26,10 @@ public class Barrier : MonoBehaviour
             //GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255,255);
         }
 
-        if(core1Del == true && core2Del == true && core3Del == true)
-        {
-            gameObject.SetActive(false);
-        }
+        //if(Core[0].SetActive == false && Core[1].SetActive == false)
+        //{
+        //    gameObject.SetActive(false);
+        //}
 
 
 
