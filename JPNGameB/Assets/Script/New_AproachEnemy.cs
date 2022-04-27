@@ -70,7 +70,15 @@ public class New_AproachEnemy : MonoBehaviour
 
     IEnumerator KnockBack()
     {
-        GetComponent<Rigidbody2D>().velocity = new Vector2(8f, 0);
+        if(Direction == -1)
+        {
+            GetComponent<Rigidbody2D>().velocity = new Vector2(8f, 0);
+        }
+        else if (Direction == 1)
+        {
+            GetComponent<Rigidbody2D>().velocity = new Vector2(-8f, 0);
+        }
+        
         yield return new WaitForSeconds(0.5f);
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         StanFlag = true;
