@@ -20,6 +20,10 @@ public class Barrier : MonoBehaviour
     void Update()
     {
         
+        if(Core[0].activeSelf == false && Core[1].activeSelf == false)
+        {
+            Destroy(gameObject,1);
+        }
 
         if (BarrierHP == 1)
         {
