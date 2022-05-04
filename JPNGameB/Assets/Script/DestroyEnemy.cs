@@ -23,8 +23,15 @@ public class DestroyEnemy : MonoBehaviour
             {
                 audioSource.PlayOneShot(HitSound);
                 OnePlay = true;
-            }           
-            //Destroy(gameObject, 2);
+            }
+            StartCoroutine("AcFal");
         }
     }
+
+    IEnumerator AcFal()
+    {
+        yield return new WaitForSeconds(1.0f);
+        gameObject.SetActive(false);
+    }
+
 }

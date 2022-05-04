@@ -68,6 +68,36 @@ public class PlayerHP : MonoBehaviour
             Destroy(other.gameObject);
         }
 
+
+
+        if (other.gameObject.tag == "HightPower" && !PlayerDamage.isDamage) //強装弾によるダメージ
+        {
+            if (Move.parryf == false)
+            {
+                HealthPoint -= 2;
+                audioSource.PlayOneShot(HitPlayerSound); //被弾音再生
+                Destroy(other.gameObject);
+                if (HealthPoint == 0)
+                {
+                    Invoke("ChangeScene", 2.0f);
+                }
+            }
+        }
+        if (other.gameObject.tag == "HightPower" && Move.Pdirection == true && h2 > 0 && yuya_Parry.Parysc == false)
+        {
+            HealthPoint -= 2;
+            audioSource.PlayOneShot(HitPlayerSound); //被弾音再生
+            Destroy(other.gameObject);
+        }
+        if (other.gameObject.tag == "HightPower" && Move.Pdirection == false && h2 < 0 && yuya_Parry.Parysc == false)
+        {
+            HealthPoint -= 2;
+            audioSource.PlayOneShot(HitPlayerSound); //被弾音再生
+            Destroy(other.gameObject);
+        }
+
+
+
         if (other.gameObject.tag == "Sekkin" && !PlayerDamage.isDamage) //近接攻撃によるダメージ 
         {
 
