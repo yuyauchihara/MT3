@@ -16,15 +16,18 @@ public class FryEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector2(move, 0);
+        transform.Translate(move, 0, 0);
     }
 
     IEnumerator Fry()
     {
-        move = -8f;
-        yield return new WaitForSeconds(3f);
-        move = 0f;
-        yield return new WaitForSeconds(5f);
+        while(true)
+        {
+            move = -0.1f;
+            yield return new WaitForSeconds(3.0f);
+            move = 0.1f;
+            yield return new WaitForSeconds(3.0f);
+        }
     }
 
 }
