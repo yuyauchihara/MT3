@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActiveMuzzle : MonoBehaviour
+public class StageMgr : MonoBehaviour
 {
-    public GameObject Barrier,Muzzle;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,9 +13,6 @@ public class ActiveMuzzle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Barrier.activeSelf == false)
-        {
-            Muzzle.SetActive(true);
-        }
+        
     }
 }
