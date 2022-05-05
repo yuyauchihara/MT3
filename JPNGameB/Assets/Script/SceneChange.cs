@@ -27,6 +27,15 @@ public class SceneChange : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKey("joystick button 1"))
+        {
+            Scene = 3;
+        }
+        else if (Input.GetKey("joystick button 3"))
+        {
+            Scene = 6;
+        }
+
         if (SceneMode)           //モードの切り替えでtrueになったらもう片方をfalseにする
         {
             StageMode = false;
