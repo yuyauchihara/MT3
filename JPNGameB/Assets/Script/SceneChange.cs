@@ -22,7 +22,7 @@ public class SceneChange : MonoBehaviour
     void Start()
     {
         StageName = new string[] { "1-1", "1-2", "1-3", "2-1", "2-2", "2-3", "3-1", "3-2", "3-3" };     //ステージを切り替えるための変数
-        SceneChangeName = new string[] { "title", "StageSlect", "clear" };                     //シーンを切り替えるための変数
+        SceneChangeName = new string[] { "title", "StageSelect", "clear" };                     //シーンを切り替えるための変数
     }
 
     void Update()

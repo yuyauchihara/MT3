@@ -24930,11 +24930,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3341d90a5939c9f49812d9dedc080f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scene: 5
-  StageMode: 1
-  SceneMode: 0
+  Scene: 1
+  StageMode: 0
+  SceneMode: 1
   fadeout: {fileID: 848581423}
-  FadeOutInMode: 1
+  FadeOutInMode: 0
   title: 0
 --- !u!4 &1591711102
 Transform:

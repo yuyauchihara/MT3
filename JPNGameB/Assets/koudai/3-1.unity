@@ -906,7 +906,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &264565924
 GameObject:
@@ -3358,7 +3358,7 @@ Transform:
   - {fileID: 1060268048}
   - {fileID: 562229508}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1127497428
 GameObject:
@@ -3827,11 +3827,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3341d90a5939c9f49812d9dedc080f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scene: 7
-  StageMode: 1
-  SceneMode: 0
+  Scene: 1
+  StageMode: 0
+  SceneMode: 1
   fadeout: {fileID: 337975775}
-  FadeOutInMode: 1
+  FadeOutInMode: 0
   title: 0
 --- !u!4 &1418037211
 Transform:
@@ -26778,7 +26778,7 @@ RectTransform:
   - {fileID: 580195297}
   - {fileID: 1024276227}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
