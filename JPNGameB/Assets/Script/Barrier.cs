@@ -4,35 +4,25 @@ using UnityEngine;
 
 public class Barrier : MonoBehaviour
 {
-    public GameObject Core1, Core2, Core3;
+    public GameObject[] Core;
+    int Yososu = 0;
     int BarrierHP = 2;
     bool core1Del = false, core2Del = false, core3Del = false;
     bool ChangeColor = false;
+    
     // Start is called before the first frame update
     void Start()
     {
-
+        Yososu = Core.Length;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Core1.activeSelf == false && core1Del == false)
+        
+        if(Core[0].activeSelf == false && Core[1].activeSelf == false && Core[2].activeSelf == false)
         {
-            BarrierHP--;
-            core1Del = true;
-        }
-
-        if (Core2.activeSelf == false && core2Del == false)
-        {
-            BarrierHP--;
-            core2Del = true;
-        }
-
-        if (Core3.activeSelf == false && core3Del == false)
-        {
-            BarrierHP--;
-            core3Del = true;
+            gameObject.SetActive(false);
         }
 
         if (BarrierHP == 1)
@@ -40,10 +30,13 @@ public class Barrier : MonoBehaviour
             //GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255,255);
         }
 
-        if(core1Del == true && core2Del == true && core3Del == true)
-        {
-            gameObject.SetActive(false);
-        }
+        //if(Core[0].SetActive == false && Core[1].SetActive == false)
+        //{
+        //    gameObject.SetActive(false);
+        //}
+
+
+
     }
 
     void OnTriggerEnter2D(Collider2D other)

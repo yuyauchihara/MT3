@@ -187,7 +187,7 @@ public class yuya_Parry : MonoBehaviour
     void OnTriggerStay2D(Collider2D other)
     {
 
-        if (other.gameObject.tag == "bullet") //リフレクション
+        if (other.gameObject.tag == "bullet" || other.gameObject.tag == "HightPower") //リフレクション
         {
             GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
             if (Input.GetKeyUp("joystick button 5") || Input.GetKeyUp(KeyCode.Q))

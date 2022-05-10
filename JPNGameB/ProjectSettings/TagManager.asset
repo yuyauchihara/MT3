@@ -16,6 +16,8 @@ TagManager:
   - Battle
   - fade
   - Fade
+  - FxTemporaire
+  - HightPower
   layers:
   - Default
   - TransparentFX

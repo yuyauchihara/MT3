@@ -46,5 +46,21 @@ public class EnemyBody : MonoBehaviour
                 bullet.FriendlyFireFlag = false;
             }
         }
+
+        if (other.gameObject.tag == "HightPower")
+        {
+            if (bullet.FriendlyFireFlag == true)
+            {
+                //gameObject.SetActive(false);
+                Life -= 2;
+                Destroy(other.gameObject);
+                if (CameraChange.Battle == true)
+                {
+                    Check.DeleteEnemy += 1;
+                }
+                Check.BattleEnemyDelete = true;
+                bullet.FriendlyFireFlag = false;
+            }
+        }
     }
 }

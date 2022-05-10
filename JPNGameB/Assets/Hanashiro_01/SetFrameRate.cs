@@ -2,21 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActiveMuzzle : MonoBehaviour
+public class SetFrameRate : MonoBehaviour
 {
-    public GameObject Barrier,Muzzle;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Application.targetFrameRate = 50;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Barrier.activeSelf == false)
-        {
-            Muzzle.SetActive(true);
-        }
+        
     }
 }
