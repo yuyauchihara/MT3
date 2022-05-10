@@ -56,7 +56,7 @@ public class yuya_Parry : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Move.Pdirection);
+        Debug.Log(Parysc);
         //var h = Input.GetAxis("JoyHorizontal");//横
         var v = Input.GetAxis("JoyVertical");//右スティックの縦 
         var h = Input.GetAxis("Horizontal");//左スティックの横
@@ -123,7 +123,7 @@ public class yuya_Parry : MonoBehaviour
         }
 
 
-        if (Move.Pdirection == true && H < 0 || Move.Pdirection == false && H > 0)
+        if (Move.Pdirection == true && H <= 0 || Move.Pdirection == false && H >= 0)
         {
             Parysc = false;
         }
@@ -133,13 +133,13 @@ public class yuya_Parry : MonoBehaviour
         //    spriteRenderer.sprite = sprite;
         //}
 
-        if (Input.GetKeyUp("joystick button 5") && Move.GuardTime == false || Input.GetKeyUp(KeyCode.Q) && Move.GuardTime == false)//リフレクションなどのモーション
-        {
-            //spriteRenderer.sprite = sprite2;//画像切り替え
+        //if (Input.GetKeyUp("joystick button 5") && Move.GuardTime == false || Input.GetKeyUp(KeyCode.Q) && Move.GuardTime == false)//リフレクションなどのモーション
+        //{
+        //    //spriteRenderer.sprite = sprite2;//画像切り替え
             
 
-            StartCoroutine(cooltime());
-        }
+        //    StartCoroutine(cooltime());
+        //}
 
         if (Move.GuardTime == true)
         {
@@ -254,6 +254,7 @@ public class yuya_Parry : MonoBehaviour
                     Refrb.velocity = new Vector2(1 * RefSpeed * -1, 0);
                     ParyFlag = true; //音声の為のフラグ SoundMgr.csと共有
                     Parysc = true;
+                    StartCoroutine(cooltime());
                     bullet.FriendlyFireFlag = true;
                 }
 
@@ -263,6 +264,7 @@ public class yuya_Parry : MonoBehaviour
                     Refrb.velocity = new Vector2(1 * RefSpeed, 0);
                     ParyFlag = true; //音声の為のフラグ SoundMgr.csと共有
                     Parysc = true;
+                    StartCoroutine(cooltime());
                     bullet.FriendlyFireFlag = true;
                 }
 
