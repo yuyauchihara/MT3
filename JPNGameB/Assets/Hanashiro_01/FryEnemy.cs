@@ -33,7 +33,7 @@ public class FryEnemy : MonoBehaviour
             yield return new WaitForSeconds(4.5f);
             muzzle.SetActive(true);
             move = 0.08f;
-            yield return new WaitForSeconds(5.3f);
+            yield return new WaitForSeconds(4.3f);
         }
     }
 
