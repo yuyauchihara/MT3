@@ -56,7 +56,7 @@ public class yuya_Parry : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(Parysc);
+        Debug.Log(Move.Pdirection);
         //var h = Input.GetAxis("JoyHorizontal");//横
         var v = Input.GetAxis("JoyVertical");//右スティックの縦 
         var h = Input.GetAxis("Horizontal");//左スティックの横
