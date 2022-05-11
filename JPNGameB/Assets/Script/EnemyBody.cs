@@ -18,6 +18,11 @@ public class EnemyBody : MonoBehaviour
         if(Life <= 0)
         {
             gameObject.SetActive(false);
+            if (CameraChange.Battle == true)
+            {
+                Check.DeleteEnemy += 1;
+            }
+            Check.BattleEnemyDelete = true;
         }
     }
 
@@ -38,11 +43,6 @@ public class EnemyBody : MonoBehaviour
                 //gameObject.SetActive(false);
                 Life--;
                 Destroy(other.gameObject);
-                if (CameraChange.Battle == true)
-                {
-                    Check.DeleteEnemy += 1;
-                }
-                Check.BattleEnemyDelete = true;
                 bullet.FriendlyFireFlag = false;
             }
         }
@@ -54,11 +54,6 @@ public class EnemyBody : MonoBehaviour
                 //gameObject.SetActive(false);
                 Life -= 2;
                 Destroy(other.gameObject);
-                if (CameraChange.Battle == true)
-                {
-                    Check.DeleteEnemy += 1;
-                }
-                Check.BattleEnemyDelete = true;
                 bullet.FriendlyFireFlag = false;
             }
         }
