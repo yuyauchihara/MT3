@@ -144,6 +144,8 @@ public class yuya_Parry : MonoBehaviour
         if (Move.GuardTime == true)
         {
             transform.localPosition = new Vector3(-0.2f, sy + 0f, -2f);
+            StartCoroutine(GardAnim());
+            
         }
 
         //if ()
@@ -189,7 +191,7 @@ public class yuya_Parry : MonoBehaviour
 
         if (other.gameObject.tag == "bullet" || other.gameObject.tag == "HightPower") //リフレクション
         {
-            GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
+            //GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
             if (Input.GetKeyUp("joystick button 5") || Input.GetKeyUp(KeyCode.Q))
             {
                 ShieldGuard.GuardCount = 0;
@@ -274,7 +276,7 @@ public class yuya_Parry : MonoBehaviour
 
         if (other.gameObject.tag == "Sekkin")
         {
-            GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
+            //GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
             if (Input.GetKeyUp("joystick button 5") || Input.GetKeyUp(KeyCode.Q))
             {
                 if (Move.GuardTime == false)
@@ -290,12 +292,12 @@ public class yuya_Parry : MonoBehaviour
     {
         if (other.gameObject.tag == "bullet")
         {
-            GetComponent<SpriteRenderer>().color = new Color(0, 220, 255);
+            //GetComponent<SpriteRenderer>().color = new Color(0, 220, 255);
         }
 
         if (other.gameObject.tag == "Sekkin")
         {
-            GetComponent<SpriteRenderer>().color = new Color(0, 220, 255);
+            //GetComponent<SpriteRenderer>().color = new Color(0, 220, 255);
         }
 
     }
@@ -306,5 +308,13 @@ public class yuya_Parry : MonoBehaviour
 
         Parysc = false;
         
+    }
+
+    IEnumerator GardAnim()
+    {
+        yield return new WaitForSeconds(0.1f);
+        transform.localPosition = new Vector3(-0.84f, 0.58f, 0.05f);
+        transform.rotation = Quaternion.Euler(0, 0, -55);
+
     }
 }
