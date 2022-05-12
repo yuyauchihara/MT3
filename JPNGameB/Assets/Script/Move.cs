@@ -224,7 +224,7 @@ public class Move : MonoBehaviour
         float bunshi = MaxStunGauge - ShieldGuard.GuardCount;
 
         StunSlider.value = bunshi / MaxStunGauge;
-        Debug.Log(ShieldGuard.GuardCount);
+        //Debug.Log(ShieldGuard.GuardCount);
     }
 
     IEnumerator Reflection()
