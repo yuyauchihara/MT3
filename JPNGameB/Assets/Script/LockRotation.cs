@@ -5,11 +5,17 @@ using UnityEngine.UI;
 
 public class LockRotation : MonoBehaviour
 {
-	[SerializeField]
-	[Tooltip("対象物(向く方向)")]
+	//[SerializeField]
+	//[Tooltip("対象物(向く方向)")]
 	private GameObject target;
 
-	private void Update()
+
+    void Start()
+    {
+		target = GameObject.Find("Player");
+	}
+
+    private void Update()
 	{
 		// 対象物と自分自身の座標からベクトルを算出
 		Vector2 dir = target.transform.position - this.transform.position;

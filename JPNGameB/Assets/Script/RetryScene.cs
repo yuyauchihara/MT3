@@ -28,7 +28,7 @@ public class RetryScene : MonoBehaviour
 
     void RetryChangeScene()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("1-1");
     }
 
     void GameEnd()

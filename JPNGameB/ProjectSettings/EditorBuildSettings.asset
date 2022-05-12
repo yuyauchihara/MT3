@@ -9,6 +9,27 @@ EditorBuildSettings:
     path: Assets/koudai/title.unity
     guid: bcdbd3828c266994eb2bbc0de0b9d915
   - enabled: 1
+    path: Assets/koudai/StageSelect.unity
+    guid: 0e2b1a342855e1c4eb8d6a30a538b2f7
+  - enabled: 1
+    path: Assets/koudai/1-1.unity
+    guid: 9c403b0103c5e1e40b6f29e6439c3435
+  - enabled: 1
+    path: Assets/koudai/1-2.unity
+    guid: 214ffcefd99324349a36a3348869a90e
+  - enabled: 1
+    path: Assets/Hanashiro_01/1-3.unity
+    guid: 752e4cf6e932ab149a3afe4074ac3090
+  - enabled: 1
+    path: Assets/koudai/2-1.unity
+    guid: dc6eedbfc4a81564f9d34277c7cb7fc5
+  - enabled: 1
+    path: Assets/koudai/2-2.unity
+    guid: 132d3ced8958d89428bd8437f22b8835
+  - enabled: 1
+    path: Assets/koudai/3-1.unity
+    guid: a950d5c3379d4c049bc83b8c645a7c2c
+  - enabled: 0
     path: Assets/Scenes/Main.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 0
@@ -23,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/koudai/retry.unity
     guid: 19e1aa058ac382f4bbab12350035438d
+  - enabled: 1
+    path: Assets/nakama/GameOver.unity
+    guid: a8628d55bca0d2d4cae629497992ec75
   m_configObjects: {}
