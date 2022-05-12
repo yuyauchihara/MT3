@@ -56,7 +56,7 @@ public class yuya_Parry : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Parysc);
+        //Debug.Log(Parysc);
         //var h = Input.GetAxis("JoyHorizontal");//横
         var v = Input.GetAxis("JoyVertical");//右スティックの縦 
         var h = Input.GetAxis("Horizontal");//左スティックの横
@@ -78,6 +78,8 @@ public class yuya_Parry : MonoBehaviour
                 return;
             }
         }
+
+        
 
         if (Move.Pdirection == true && v == 0)
         {
@@ -156,12 +158,18 @@ public class yuya_Parry : MonoBehaviour
             }
         }
 
-        //if ()
+        //if (Input.GetKeyDown("joystick button 5") || Input.GetKeyDown(KeyCode.Q))
         //{
+        //    if (Move.Pdirection == true)
+        //    {
+        //        transform.rotation = Quaternion.Euler(0, 0, 0);
+        //    }
 
+        //    if (Move.Pdirection == false)
+        //    {
+        //        transform.rotation = Quaternion.Euler(0, 180, 0);
+        //    }
         //}
-
-
 
         if (Input.GetKeyUp("joystick button 5"))
         {
@@ -265,6 +273,7 @@ public class yuya_Parry : MonoBehaviour
                     ParyFlag = true; //音声の為のフラグ SoundMgr.csと共有
                     Parysc = true;
                     StartCoroutine(cooltime());
+                    StartCoroutine(GardAnim());
                     bullet.FriendlyFireFlag = true;
                 }
 
@@ -275,6 +284,7 @@ public class yuya_Parry : MonoBehaviour
                     ParyFlag = true; //音声の為のフラグ SoundMgr.csと共有
                     Parysc = true;
                     StartCoroutine(cooltime());
+                    StartCoroutine(GardAnim2());
                     bullet.FriendlyFireFlag = true;
                 }
 
@@ -323,9 +333,10 @@ public class yuya_Parry : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         transform.localPosition = new Vector3(-0.84f, 0.51f, 0.05f);
         transform.rotation = Quaternion.Euler(0, 0, -55);
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.15f);
         transform.rotation = Quaternion.Euler(0, 0, 0);
         transform.localPosition = new Vector2(0.04f, 0f);
+
     }
 
     IEnumerator GardAnim2()
@@ -333,7 +344,7 @@ public class yuya_Parry : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         transform.localPosition = new Vector3(-0.84f, 0.51f, -0.57f);
         transform.rotation = Quaternion.Euler(0, 0, 55);
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.15f);
         transform.rotation = Quaternion.Euler(0, 180, 0);
         transform.localPosition = new Vector2(0.04f, 0f);
     }
