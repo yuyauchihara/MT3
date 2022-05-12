@@ -11,29 +11,57 @@ public class Muzzle2_3 : MonoBehaviour
     AudioSource audioSource;
     public AudioClip ShotSound;
     public float ShotSpan;
+    int ShotCount = 0;
+
+    bool colcall = false;
+
+    int f = 0;
+
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();       
     }
 
-    void Update()
+    private void FixedUpdate()
     {
         count += Time.deltaTime;
+        Debug.Log(ShotCount);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (count >= ShotSpan && collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && ShotCount < 3 && f == 0)
+        {
+            Burst();
+        }
+        else if (ShotCount == 3 && f == 0)
+        {
+            f = 1;
+            StartCoroutine("loopBurst");
+        }
+    }
+
+    void Burst()
+    {
+        if(count >= 0.3f && ShotCount < 3)
         {
             GameObject bullet = (GameObject)Instantiate(bulletPre, transform.position, Quaternion.identity);
+            ShotCount++;
             Rigidbody2D Bprb = bullet.GetComponent<Rigidbody2D>();
             audioSource.PlayOneShot(ShotSound);         
             Vector2 force = this.transform.up;
-            Bprb.AddForce(force * BulletSped);
+            Bprb.AddForce(force * BulletSped);            
 
             Destroy(bullet, 5f);
             count = 0;
         }
+    }
+
+    IEnumerator loopBurst()
+    {
+        yield return new WaitForSeconds(3.0f);
+        ShotCount = 0;
+        f = 0;
     }
 }
