@@ -35,7 +35,7 @@ public class Muzzle2_3 : MonoBehaviour
         {
             Burst();
         }
-        else if (ShotCount == 3 && f == 0)
+        else if (ShotCount == 2 && f == 0)
         {
             f = 1;
             StartCoroutine("loopBurst");
@@ -44,7 +44,7 @@ public class Muzzle2_3 : MonoBehaviour
 
     void Burst()
     {
-        if(count >= 0.3f && ShotCount < 3)
+        if(count >= 0.6f && ShotCount < 2)
         {
             GameObject bullet = (GameObject)Instantiate(bulletPre, transform.position, Quaternion.identity);
             ShotCount++;
