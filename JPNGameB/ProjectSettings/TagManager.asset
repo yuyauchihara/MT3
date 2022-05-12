@@ -11,6 +11,13 @@ TagManager:
   - gaol
   - shield area
   - shieldarea
+  - Wall(kari)
+  - Rock
+  - Battle
+  - fade
+  - Fade
+  - FxTemporaire
+  - HightPower
   layers:
   - Default
   - TransparentFX
