@@ -67,7 +67,7 @@ public class Move : MonoBehaviour
     public ParticleSystem StunEf;
 
     //スタンゲージ
-    public Slider StunSlider;
+    Slider StunSlider;
     float MaxStunGauge = 3.0f;
 
     //アニメーション用
@@ -82,6 +82,8 @@ public class Move : MonoBehaviour
         m_ObjectCollider = GetComponent<BoxCollider2D>();
         shield.gameObject.SetActive(false);
         anim = GetComponent<Animator>(); //アニメーション用
+
+        StunSlider = GameObject.Find("StunGauge").GetComponent<Slider>(); 
     }
 
     // Update is called once per frame
