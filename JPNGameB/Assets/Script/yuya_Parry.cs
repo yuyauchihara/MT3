@@ -45,6 +45,7 @@ public class yuya_Parry : MonoBehaviour
 
     public GameObject GuardArea;
     ShieldGuard SG;
+    public static bool Parymotion = false;
 
     void Start()
     {
@@ -56,7 +57,7 @@ public class yuya_Parry : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(Parysc);
+        Debug.Log(Parymotion);
         //var h = Input.GetAxis("JoyHorizontal");//横
         var v = Input.GetAxis("JoyVertical");//右スティックの縦 
         var h = Input.GetAxis("Horizontal");//左スティックの横
@@ -81,7 +82,7 @@ public class yuya_Parry : MonoBehaviour
 
         
 
-        if (Move.Pdirection == true && v == 0)
+        if (Move.Pdirection == true && v == 0 && Parymotion == false)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
             transform.localPosition = new Vector2(0.04f, 0f);
@@ -90,7 +91,7 @@ public class yuya_Parry : MonoBehaviour
             sy = 0;
         }
 
-        if (Move.Pdirection == false && v == 0)
+        if (Move.Pdirection == false && v == 0 && Parymotion == false)
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
             transform.localPosition = new Vector2(0.04f, 0f);
@@ -101,31 +102,31 @@ public class yuya_Parry : MonoBehaviour
 
 
 
-        if (Move.Pdirection == true && H < 0 && v > 0 && sy < 0.31)//盾の移動
+        if (Move.Pdirection == true && H < 0 && v > 0 && sy < 0.31 && Parymotion == false)//盾の移動
         {
             sy = v * 0.3f;
             transform.localPosition = new Vector2(0.04f, sy + 0f);
         }
-        if (Move.Pdirection == false && H > 0 && v > 0 && sy < 0.31)//盾の移動
+        if (Move.Pdirection == false && H > 0 && v > 0 && sy < 0.31 && Parymotion == false)//盾の移動
         {
             sy = v * 0.3f;
             transform.localPosition = new Vector2(0.04f, sy + 0f);
         }
 
-        if (Move.Pdirection == true && v > 0 && sr < 41 && H < 0)//盾の回転
+        if (Move.Pdirection == true && v > 0 && sr < 41 && H < 0 && Parymotion == false)//盾の回転
         {
             sr = v * 40;
             transform.rotation = Quaternion.Euler(0, 0, sr);
         }
 
-        if (Move.Pdirection == false && v > 0 && sr > -41 && H > 0)//盾の回転
+        if (Move.Pdirection == false && v > 0 && sr > -41 && H > 0 && Parymotion == false)//盾の回転
         {
             sr = v * -40;
             transform.rotation = Quaternion.Euler(0, 180, -sr);
         }
 
 
-        if (Move.Pdirection == true && H <= 0 || Move.Pdirection == false && H >= 0)
+        if (Move.Pdirection == true && H <= 0 || Move.Pdirection == false && H >= 0 )
         {
             Parysc = false;
         }
@@ -143,17 +144,17 @@ public class yuya_Parry : MonoBehaviour
         //    StartCoroutine(cooltime());
         //}
 
-        if (Move.GuardTime == true)
+        if (Input.GetKeyUp("joystick button 5"))
         {
             if (Move.Pdirection == true)
             {
-                transform.localPosition = new Vector3(-0.2f, sy + 0f, -2f);
+                //transform.localPosition = new Vector3(-0.2f, sy + 0f, -2f);
                 StartCoroutine(GardAnim());
             }
 
             if (Move.Pdirection == false)
             {
-                transform.localPosition = new Vector3(-0.2f, sy + 0f, 0f);
+                //transform.localPosition = new Vector3(-0.2f, sy + 0f, 0f);
                 StartCoroutine(GardAnim2());
             }
         }
@@ -330,22 +331,26 @@ public class yuya_Parry : MonoBehaviour
 
     IEnumerator GardAnim()
     {
+        Parymotion = true;
         yield return new WaitForSeconds(0.1f);
         transform.localPosition = new Vector3(-0.84f, 0.51f, 0.05f);
         transform.rotation = Quaternion.Euler(0, 0, -55);
-        yield return new WaitForSeconds(0.15f);
+        yield return new WaitForSeconds(0.3f);
         transform.rotation = Quaternion.Euler(0, 0, 0);
         transform.localPosition = new Vector2(0.04f, 0f);
+        Parymotion = false;
 
     }
 
     IEnumerator GardAnim2()
     {
+        Parymotion = true;
         yield return new WaitForSeconds(0.1f);
         transform.localPosition = new Vector3(-0.84f, 0.51f, -0.57f);
         transform.rotation = Quaternion.Euler(0, 0, 55);
-        yield return new WaitForSeconds(0.15f);
+        yield return new WaitForSeconds(0.3f);
         transform.rotation = Quaternion.Euler(0, 180, 0);
         transform.localPosition = new Vector2(0.04f, 0f);
+        Parymotion = false;
     }
 }
