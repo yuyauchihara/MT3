@@ -25,6 +25,7 @@ public class Move : MonoBehaviour
     float RefSpeed = 10f; //リフレの速度
 
     public GameObject shield;
+    public GameObject ShieldGuid;
 
     ApproachEnemy CF;
 
@@ -97,7 +98,14 @@ public class Move : MonoBehaviour
 
         //Ref = new Vector2(H * 100,V * 100); //ここが毎フレーム更新されるため謎の誘導を受けている
 
-
+        if (h != 0)
+        {
+            anim.SetBool("run", true);
+        }
+        else
+        {
+            anim.SetBool("run", false);
+        }
 
         if (Pdirection == true && h2 > 0) //パリィ
         {
@@ -170,6 +178,7 @@ public class Move : MonoBehaviour
 
         if (Input.GetKey("joystick button 5")  && GuardTime == false || Input.GetKey(KeyCode.Q) && GuardTime == false)
         {
+            ShieldGuid.gameObject.SetActive(true);
             if (JumpTest.StunPlayer == false)
             {
                 HoldShield = true;
@@ -182,8 +191,8 @@ public class Move : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Q) && GuardTime == false || Input.GetKeyUp("joystick button 5") && GuardTime == false)
         {
-            spriteRenderer.sprite = sprite2;//画像切り替え
-
+            StartCoroutine(Gmotion());
+            ShieldGuid.gameObject.SetActive(false);
             anim.SetBool("p_guard", true);
             GuardTime = true;
             StartCoroutine(Gcool());
@@ -280,5 +289,12 @@ public class Move : MonoBehaviour
         GuardTime = false;
         shield.gameObject.SetActive(false);
         moveSpeed = 10.5f;
+    }
+
+    IEnumerator Gmotion()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        spriteRenderer.sprite = sprite2;//画像切り替え
     }
 }

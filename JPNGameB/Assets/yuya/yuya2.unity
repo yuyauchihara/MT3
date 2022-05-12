@@ -374,7 +374,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 77428673}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.808916, y: -2.8274574, z: 101.93125}
+  m_LocalPosition: {x: -5.9158907, y: -2.8274574, z: 101.93125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 623648249}
@@ -483,7 +483,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.88408643, y: 1}
+    m_SensorSize: {x: 0.82711196, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -733,6 +733,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179603689}
   m_CullTransparentMesh: 0
+--- !u!1 &184656147 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6018794207933482452, guid: 549edd24beb58c447a34faea9a7b5cb4,
+    type: 3}
+  m_PrefabInstance: {fileID: 6018794206590393037}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &202706090
 GameObject:
   m_ObjectHideFlags: 0
@@ -794,7 +800,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.88408643, y: 1}
+    m_SensorSize: {x: 0.82711196, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3930,7 +3936,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.88408643, y: 1}
+    m_SensorSize: {x: 0.82711196, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -20804,7 +20810,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.88408643, y: 1}
+    m_SensorSize: {x: 0.82711196, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -20913,12 +20919,12 @@ PrefabInstance:
     - target: {fileID: 6018794206783139449, guid: 549edd24beb58c447a34faea9a7b5cb4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.6773061
+      value: 0.6334584
       objectReference: {fileID: 0}
     - target: {fileID: 6018794206783139449, guid: 549edd24beb58c447a34faea9a7b5cb4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.765532
+      value: 0.77176774
       objectReference: {fileID: 0}
     - target: {fileID: 6018794207085624973, guid: 549edd24beb58c447a34faea9a7b5cb4,
         type: 3}
@@ -20961,10 +20967,21 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.newSize.y
       value: 1.89
       objectReference: {fileID: 0}
+    - target: {fileID: 8159147264581408365, guid: 549edd24beb58c447a34faea9a7b5cb4,
+        type: 3}
+      propertyPath: sprite2
+      value: 
+      objectReference: {fileID: 21300000, guid: f9f1324f24424314ebe14cb66f257851,
+        type: 3}
+    - target: {fileID: 8159147264581408365, guid: 549edd24beb58c447a34faea9a7b5cb4,
+        type: 3}
+      propertyPath: ShieldGuid
+      value: 
+      objectReference: {fileID: 184656147}
     - target: {fileID: 8159147264581408366, guid: 549edd24beb58c447a34faea9a7b5cb4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.2
+      value: -12.25
       objectReference: {fileID: 0}
     - target: {fileID: 8159147264581408366, guid: 549edd24beb58c447a34faea9a7b5cb4,
         type: 3}

@@ -143,9 +143,17 @@ public class yuya_Parry : MonoBehaviour
 
         if (Move.GuardTime == true)
         {
-            transform.localPosition = new Vector3(-0.2f, sy + 0f, -2f);
-            StartCoroutine(GardAnim());
-            
+            if (Move.Pdirection == true)
+            {
+                transform.localPosition = new Vector3(-0.2f, sy + 0f, -2f);
+                StartCoroutine(GardAnim());
+            }
+
+            if (Move.Pdirection == false)
+            {
+                transform.localPosition = new Vector3(-0.2f, sy + 0f, 0f);
+                StartCoroutine(GardAnim2());
+            }
         }
 
         //if ()
@@ -236,7 +244,7 @@ public class yuya_Parry : MonoBehaviour
                     {
                         RefFlag = true; //音声再生で使用、SoundMgr.csと共有
                         Rigidbody2D Refrb = other.gameObject.GetComponent<Rigidbody2D>();
-                        Refrb.velocity = new Vector2(Mathf.Cos(radian * Mathf.Deg2Rad) * RefSpeed, Mathf.Sin(radian * Mathf.Deg2Rad) * RefSpeed);
+                        Refrb.velocity = new Vector2(Mathf.Cos(radian * Mathf.Deg2Rad) * RefSpeed, Mathf.Sin(-sr * Mathf.Deg2Rad) * RefSpeed);
                         bullet.FriendlyFireFlag = true;
                     }
 
@@ -313,8 +321,20 @@ public class yuya_Parry : MonoBehaviour
     IEnumerator GardAnim()
     {
         yield return new WaitForSeconds(0.1f);
-        transform.localPosition = new Vector3(-0.84f, 0.58f, 0.05f);
+        transform.localPosition = new Vector3(-0.84f, 0.51f, 0.05f);
         transform.rotation = Quaternion.Euler(0, 0, -55);
+        yield return new WaitForSeconds(0.05f);
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+        transform.localPosition = new Vector2(0.04f, 0f);
+    }
 
+    IEnumerator GardAnim2()
+    {
+        yield return new WaitForSeconds(0.1f);
+        transform.localPosition = new Vector3(-0.84f, 0.51f, -0.57f);
+        transform.rotation = Quaternion.Euler(0, 0, 55);
+        yield return new WaitForSeconds(0.05f);
+        transform.rotation = Quaternion.Euler(0, 180, 0);
+        transform.localPosition = new Vector2(0.04f, 0f);
     }
 }
