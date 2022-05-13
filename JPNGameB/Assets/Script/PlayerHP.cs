@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHP : MonoBehaviour
 {
-    public Slider Tairyoku;
+    Slider Tairyoku;
     public AudioClip HitPlayerSound;
     AudioSource audioSource;
     ShieldGuard shieldGuard;
@@ -20,6 +20,8 @@ public class PlayerHP : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         shieldGuard = GetComponent<ShieldGuard>();
+
+        Tairyoku = GameObject.Find("HP").GetComponent<Slider>();
     }
 
     // Update is called once per frame
