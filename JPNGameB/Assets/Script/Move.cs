@@ -67,25 +67,30 @@ public class Move : MonoBehaviour
     public ParticleSystem StunEf;
 
     //スタンゲージ
-    public Slider StunSlider;
+    Slider StunSlider;
     float MaxStunGauge = 3.0f;
 
     //アニメーション用
     private Animator anim = null;
-    
+
+    public static bool Pmotion = false;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         m_ObjectCollider = GetComponent<BoxCollider2D>();
         shield.gameObject.SetActive(false);
         anim = GetComponent<Animator>(); //アニメーション用
+
+        StunSlider = GameObject.Find("StunGauge").GetComponent<Slider>(); 
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        //Debug.Log(parryf);
+        //Debug.Log(Pmotion);
         var h = Input.GetAxis("Horizontal");//左スティックの横
         var h2 = Input.GetAxis("JoyHorizontal");//右スティックの横 //0420_h2の型をfloatで宣言
 
@@ -98,14 +103,6 @@ public class Move : MonoBehaviour
 
         //Ref = new Vector2(H * 100,V * 100); //ここが毎フレーム更新されるため謎の誘導を受けている
 
-        if (h != 0)
-        {
-            anim.SetBool("run", true);
-        }
-        else
-        {
-            anim.SetBool("run", false);
-        }
 
         if (Pdirection == true && h2 > 0) //パリィ
         {
@@ -198,6 +195,15 @@ public class Move : MonoBehaviour
             StartCoroutine(Gcool());
         }
 
+        if (h != 0 && Pmotion == false)
+        {
+            anim.SetBool("run", true);
+        }
+        else
+        {
+            anim.SetBool("run", false);
+        }
+
         //Debug.Log(moveSG.GuardCount);
         if (ShieldGuard.GuardCount >= 3)
         {
@@ -224,7 +230,7 @@ public class Move : MonoBehaviour
         float bunshi = MaxStunGauge - ShieldGuard.GuardCount;
 
         StunSlider.value = bunshi / MaxStunGauge;
-        Debug.Log(ShieldGuard.GuardCount);
+        //Debug.Log(ShieldGuard.GuardCount);
     }
 
     IEnumerator Reflection()
@@ -282,8 +288,9 @@ public class Move : MonoBehaviour
 
     IEnumerator Gcool()
     {
+        Pmotion = true;
         yield return new WaitForSeconds(0.5f);
-
+        Pmotion = false;
         anim.SetBool("p_guard", false);
         HoldShield = false;
         GuardTime = false;
@@ -293,6 +300,7 @@ public class Move : MonoBehaviour
 
     IEnumerator Gmotion()
     {
+
         yield return new WaitForSeconds(0.1f);
 
         spriteRenderer.sprite = sprite2;//画像切り替え

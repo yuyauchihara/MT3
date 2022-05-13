@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/koudai/3-1.unity
     guid: a950d5c3379d4c049bc83b8c645a7c2c
+  - enabled: 1
+    path: Assets/nakama/3-2.unity
+    guid: bcc69b48ad84b1345a900a9cd0e4e001
   - enabled: 0
     path: Assets/Scenes/Main.unity
     guid: 2cda990e2423bbf4892e6590ba056729
