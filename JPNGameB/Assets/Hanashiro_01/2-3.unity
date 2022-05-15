@@ -312,8 +312,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy: {fileID: 1792380901353452453, guid: b20b3d79966cda549bccc37e47116b5d, type: 3}
+  MirrorBoss: {fileID: 1017211498892342598, guid: 0921964c140e6c6498d83085b31147aa,
+    type: 3}
   Point1: {fileID: 1681755706}
   Point2: {fileID: 319791050}
+  PointBoss: {fileID: 1811925785}
 --- !u!4 &150650738
 Transform:
   m_ObjectHideFlags: 0
@@ -326,7 +329,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &282843979 stripped
 ParticleSystem:
@@ -19288,7 +19291,7 @@ PrefabInstance:
     - target: {fileID: 6018794206783139449, guid: 549edd24beb58c447a34faea9a7b5cb4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5244006
+      value: 0.39749146
       objectReference: {fileID: 0}
     - target: {fileID: 6018794206783139449, guid: 549edd24beb58c447a34faea9a7b5cb4,
         type: 3}
@@ -19394,6 +19397,7 @@ GameObject:
   - component: {fileID: 670709765}
   - component: {fileID: 670709767}
   - component: {fileID: 670709768}
+  - component: {fileID: 670709769}
   m_Layer: 0
   m_Name: EnemyCore
   m_TagString: Untagged
@@ -19504,6 +19508,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Life: 50
+--- !u!114 &670709769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670709764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a8109f90728894087c09fe9c43fca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &827165760
 GameObject:
   m_ObjectHideFlags: 0
@@ -20085,7 +20101,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.4784689, y: 1}
+    m_SensorSize: {x: 0.36267605, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -20102,7 +20118,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1301805165}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 47.181934, y: 0.09680259, z: -10.1}
+  m_LocalPosition: {x: 47.016953, y: 0.09680259, z: -10.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1312707763}
@@ -20285,7 +20301,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPre: {fileID: 5090128467653935869, guid: d3a3fdd1ee10c0e42a25d211321618f6,
     type: 3}
-  HeavyBullet: {fileID: 0}
+  HeavyBullet: {fileID: 8323630349827380754, guid: 75ac48e2ae1655e40a00234393e81829,
+    type: 3}
   BulletSped: 300
   ChangeFlag: 0
   ShotSound: {fileID: 8300000, guid: 295279267ba26504791093dd55d5a496, type: 3}
@@ -21042,6 +21059,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1811925785
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1811925786}
+  m_Layer: 0
+  m_Name: PointBoss
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1811925786
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811925785}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 60.09, y: -0.41, z: -24.77529}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2087443031
 GameObject:

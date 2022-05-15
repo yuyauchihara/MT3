@@ -21,6 +21,8 @@ public class Muzzle2_3 : MonoBehaviour
     private int BurstCount = 0;
     public static bool isBursted = false;
 
+    bool isHeavyAttack = false;
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();       
@@ -34,6 +36,12 @@ public class Muzzle2_3 : MonoBehaviour
         if(BurstCount >= 4)
         {
             isBursted = true;
+        }
+
+        if(StageMgr2_3.isZenmetu == true && isHeavyAttack == false)
+        {
+            StartCoroutine("HigthPowerAttack");
+            isHeavyAttack = true;
         }
 
     }
@@ -73,5 +81,15 @@ public class Muzzle2_3 : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
         ShotCount = 0;
         f = 0;
+    }
+
+    IEnumerator HigthPowerAttack()
+    {
+        yield return new WaitForSeconds(1.0f); //チャージしてる感
+        GameObject bullet = (GameObject)Instantiate(HeavyBullet, transform.position, Quaternion.identity);
+        Rigidbody2D Bprb = bullet.GetComponent<Rigidbody2D>();
+        audioSource.PlayOneShot(ShotSound);
+        Vector2 force = this.transform.up;
+        Bprb.AddForce(force * BulletSped);
     }
 }
