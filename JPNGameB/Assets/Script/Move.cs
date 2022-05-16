@@ -26,6 +26,7 @@ public class Move : MonoBehaviour
 
     public GameObject shield;
     public GameObject ShieldGuid;
+    public GameObject ude;
 
     ApproachEnemy CF;
 
@@ -74,6 +75,7 @@ public class Move : MonoBehaviour
     private Animator anim = null;
 
     public static bool Pmotion = false;
+    public bool gardmove = false;
 
 
     void Start()
@@ -81,9 +83,12 @@ public class Move : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         m_ObjectCollider = GetComponent<BoxCollider2D>();
         shield.gameObject.SetActive(false);
+        ude.gameObject.SetActive(false);
         anim = GetComponent<Animator>(); //アニメーション用
 
-        StunSlider = GameObject.Find("StunGauge").GetComponent<Slider>(); 
+        StunSlider = GameObject.Find("StunGauge").GetComponent<Slider>();
+        gardmove = false;
+        Pmotion = false;
     }
 
     // Update is called once per frame
@@ -103,6 +108,17 @@ public class Move : MonoBehaviour
 
         //Ref = new Vector2(H * 100,V * 100); //ここが毎フレーム更新されるため謎の誘導を受けている
 
+        if (Pdirection == false)
+        {
+            ude.transform.localPosition = new Vector3(-0.45f, 0.078f, -5f);
+
+        }
+
+        if (Pdirection == true)
+        {
+            ude.transform.localPosition = new Vector3(-0.45f, 0.078f, 0.6f);
+
+        }
 
         if (Pdirection == true && h2 > 0) //パリィ
         {
@@ -132,7 +148,7 @@ public class Move : MonoBehaviour
             }
         }
 
-        if(JumpTest.StunPlayer == false)
+        if(JumpTest.StunPlayer == false && Pmotion == false)
         {
             if (h < 0)
             {
@@ -181,27 +197,40 @@ public class Move : MonoBehaviour
                 HoldShield = true;
                 //GetComponent<Renderer>().material.color = blue.color;
                 shield.gameObject.SetActive(true);
+                ude.gameObject.SetActive(true);
                 moveSpeed = 5.5f;
                 spriteRenderer.sprite = sprite;//画像切り替え
             }
         }
 
-        if (Input.GetKeyUp(KeyCode.Q) && GuardTime == false || Input.GetKeyUp("joystick button 5") && GuardTime == false)
-        {
-            StartCoroutine(Gmotion());
-            ShieldGuid.gameObject.SetActive(false);
-            anim.SetBool("p_guard", true);
-            GuardTime = true;
-            StartCoroutine(Gcool());
-        }
+        
 
-        if (h != 0 && Pmotion == false)
+        if (h != 0 && Pmotion == false && gardmove == false)
         {
             anim.SetBool("run", true);
         }
         else
         {
             anim.SetBool("run", false);
+        }
+
+        if (Input.GetKey("joystick button 5") && h != 0)
+        {
+            anim.SetBool("gmove", true);
+            gardmove = true;
+        }
+        else{
+            anim.SetBool("gmove", false);
+            gardmove = false;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Q) && GuardTime == false && JumpTest.StunPlayer == false || Input.GetKeyUp("joystick button 5") && GuardTime == false && JumpTest.StunPlayer == false)
+        {
+            StartCoroutine(Gmotion());
+            ShieldGuid.gameObject.SetActive(false);
+            anim.SetBool("p_guard", true);
+            GuardTime = true;
+            StartCoroutine(Gcool());
         }
 
         //Debug.Log(moveSG.GuardCount);
@@ -220,6 +249,7 @@ public class Move : MonoBehaviour
         {           
             HoldShield = false;
             shield.gameObject.SetActive(false);
+            ude.gameObject.SetActive(false);
             StunEf.Play();
             //ShieldGuard.GuardCount = 0;            
         }else if(JumpTest.StunPlayer == false)
@@ -288,14 +318,20 @@ public class Move : MonoBehaviour
 
     IEnumerator Gcool()
     {
+        ude.gameObject.SetActive(false);
+        Transform tate = shield.transform;
         Pmotion = true;
         yield return new WaitForSeconds(0.5f);
-        Pmotion = false;
         anim.SetBool("p_guard", false);
         HoldShield = false;
         GuardTime = false;
         shield.gameObject.SetActive(false);
+        
         moveSpeed = 10.5f;
+        Pmotion = false;
+
+        tate.transform.rotation = Quaternion.Euler(0, 0, 0);
+        tate.transform.localPosition = new Vector2(0.05f, 0f);
     }
 
     IEnumerator Gmotion()

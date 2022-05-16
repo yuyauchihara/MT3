@@ -17,6 +17,8 @@ public class JumpTest: MonoBehaviour
     private bool Jump = false;
     //private bool lockJump = false;
     private bool canTimekasika = false;
+    private bool Pstay = false;
+    public bool BossMode = false;
 
     private float ySpeed = 0;
     private float moveSpeed = 10.5f;     //速度
@@ -39,6 +41,8 @@ public class JumpTest: MonoBehaviour
     public GameObject Shield;
     //ShieldGuard SG;
 
+    public GameObject BossObj;
+
     void Start()
     {
         //コンポーネントのインスタンスを捕まえる
@@ -49,6 +53,7 @@ public class JumpTest: MonoBehaviour
         ugoki = 0;
         ShieldGuard.GuardCount = 0;
         //SG = GuardArea.GetComponent<ShieldGuard>();
+        Pstay = false;
     }
 
     void FixedUpdate()
@@ -62,11 +67,11 @@ public class JumpTest: MonoBehaviour
         if (isGround)
         {
             ySpeed = -gravity;
-            if (!Move.HoldShield)
+            if (!Move.HoldShield && Pstay == false)
             {
                 moveSpeed = 10.5f;
             }
-            if(Move.HoldShield)
+            if(Move.HoldShield && Pstay == false)
             {
                 moveSpeed = 5.5f;
             }
@@ -161,11 +166,11 @@ public class JumpTest: MonoBehaviour
         {
             if(BattleCount > 110)
             {
-                if (!Move.HoldShield)
+                if (!Move.HoldShield && Pstay == false)
                 {
                     moveSpeed = 10.5f;
                 }
-                else if (Move.HoldShield)
+                else if (Move.HoldShield && Pstay == false)
                 {
                     moveSpeed = 5.5f;
                 }
@@ -182,19 +187,27 @@ public class JumpTest: MonoBehaviour
         {
             if (BattleExit > 110)
             {
-                if (!Move.HoldShield)
+                if (!Move.HoldShield && Pstay == false)
                 {
                     moveSpeed = 10.5f;
                 }
-                else if (Move.HoldShield)
+                else if (Move.HoldShield && Pstay == false)
                 {
                     moveSpeed = 5.5f;
                 }
             }
             else
             {
-                moveSpeed = 0.0f;
-                BattleExit++;
+               if (!BossMode)
+                {
+                    moveSpeed = 0.0f;
+                    BattleExit++;
+                }
+                else if (BossMode && BossObj == null)
+                {
+                    moveSpeed = 0.0f;
+                    BattleExit++;
+                }
             }
             BattleCount = 0;
         }
@@ -212,6 +225,11 @@ public class JumpTest: MonoBehaviour
         {
             rb.velocity = new Vector2(0, ySpeed);
         }
+
+        if (Input.GetKeyUp("joystick button 5"))
+        {
+            StartCoroutine("Stay");
+        }
     }
     
     IEnumerator Stun() //プレイヤーをスタン状態にするコルーチン
@@ -222,5 +240,13 @@ public class JumpTest: MonoBehaviour
         StunPlayer = false;
         //Shield.SetActive(true);
         ShieldGuard.GuardCount = 0;
+    }
+
+    IEnumerator Stay()
+    {
+        Pstay = true;
+        moveSpeed = 0;
+        yield return new WaitForSeconds(0.4f);
+        Pstay = false;
     }
 }

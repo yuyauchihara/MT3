@@ -5,36 +5,96 @@ using UnityEngine;
 public class FryEnemy : MonoBehaviour
 {
     Rigidbody2D rb;
-    float move;
+    //public GameObject target;
     public GameObject muzzle;
-    // Start is called before the first frame update
+    float move;
+    private bool Seigen = false;
+    private bool kaisuu = false;
+
+    private int Time = 0;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        StartCoroutine("Fry");
+        //StartCoroutine("Fry");
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        transform.Translate(move, 0, 0);
-    }
-
-    IEnumerator Fry()
-    {
-        while(true)
+        if (other.gameObject.tag == "FlySeigen")
         {
-            yield return new WaitForSeconds(2.0f);
-            move = -0.08f;
-            yield return new WaitForSeconds(5.3f);
+            Seigen = true;
+            Time = 0;
             move = 0f;
             muzzle.SetActive(false);
             StageMgr.isBossAttack = true;
-            yield return new WaitForSeconds(4.5f);
-            muzzle.SetActive(true);
-            move = 0.08f;
-            yield return new WaitForSeconds(4.3f);
+        }
+
+        if(other.gameObject.tag == "FlySeigenR")
+        {
+            Seigen = false;
+            Time = 0;
+            move = 0f;
         }
     }
 
+    void Update()
+    {
+        transform.Translate(move, 0, 0);
+        //transform.position = Vector3.MoveTowards(transform.position, target.transform.position, move);
+    }
+
+    void FixedUpdate()
+    {
+        if (Time > 120)
+        {
+            FlyEnemyMove();
+        }
+        
+        if(Time <= 180)
+        {
+            Time++;
+        }
+
+        Debug.Log(Time);
+    }
+
+    void FlyEnemyMove()
+    {
+        if (!Seigen)
+        {
+            move = -0.08f;
+        }
+        else if (Seigen)
+        {
+            if (Time > 180)
+            {
+                muzzle.SetActive(true);
+                move = 0.08f;
+            }
+            //else
+            //{
+            //    move = 0f;
+            //    muzzle.SetActive(false);
+            //    StageMgr.isBossAttack = true;
+            //}
+        }
+    }
+
+    //IEnumerator Fry()
+    //{
+    //    while(true)
+    //    {
+    //        yield return new WaitForSeconds(2.0f);
+    //        move = -0.08f;
+    //        yield return new WaitForSeconds(5.3f);
+    //        move = 0f;
+    //        muzzle.SetActive(false);
+    //        StageMgr.isBossAttack = true;
+    //        yield return new WaitForSeconds(4.5f);
+    //        muzzle.SetActive(true);
+    //        move = 0.08f;
+    //        yield return new WaitForSeconds(4.3f);
+    //    }
+    //}
 }

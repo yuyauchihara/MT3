@@ -18,6 +18,8 @@ TagManager:
   - Fade
   - FxTemporaire
   - HightPower
+  - FlySeigen
+  - FlySeigenR
   layers:
   - Default
   - TransparentFX
