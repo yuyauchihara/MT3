@@ -7,20 +7,30 @@ public class PlayerDamage : MonoBehaviour
     public SpriteRenderer sp;
     // ダメージ判定フラグ
     public static bool isDamage { get; set; }
+    public GameObject PLY;
+    PlayerHP PH;
 
-    
+    void Start()
+    {
+        isDamage = false;
+        PH = PLY.GetComponent<PlayerHP>();
+    }
+
     void Update()
     {
-        
+        Debug.Log(isDamage);
         // ダメージを受けている場合、点滅させる
-        if (isDamage)
+        if (isDamage && PH.HealthPoint > 0)
         {
-
-            float level = Mathf.Abs(Mathf.Sin(Time.time * 10));
-            sp.color = new Color(1f, 1f, 1f, level);
-
+            //if (PH.HealthPoint >= 0) {
+                float level = Mathf.Abs(Mathf.Sin(Time.time * 10));
+            //if (PH.HealthPoint != 0)
+            //{
+                sp.color = new Color(1f, 1f, 1f, level);
+            //}
+            //}
+            //sp.color = new Color(1f, 1f, 1f, 1f);
         }
-
     }
 
     // トリガー発生時
