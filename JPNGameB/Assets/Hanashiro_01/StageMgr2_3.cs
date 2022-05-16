@@ -7,13 +7,14 @@ public class StageMgr2_3 : MonoBehaviour
     public GameObject Enemy; //雑魚
     public GameObject Boss; //ボス
     public GameObject MirrorBoss; //ミラーボス
-    public GameObject Point1, Point2, PointBoss;
+    public GameObject Mirror; //鏡
+    public GameObject Point1, Point2, PointMirror, PointBoss;
     private bool isSpawned = false;
     public static bool isZenmetu = false;
 
     bool isMBSpawned = false;
 
-    GameObject Zako1,Zako2,MirBos;
+    GameObject Zako1,Zako2,MirBos,Mir;
     // Start is called before the first frame update
     void Start()
     {
