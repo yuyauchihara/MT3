@@ -28,7 +28,7 @@ public class fadeoutScene : MonoBehaviour
         fadeCanvas = GameObject.FindGameObjectWithTag("Fade");//Canvasをみつける
         fadeCanvas.GetComponent<FadeManager>().fadeIn();//フェードインフラグを立てる
 
-        Debug.Log("Name:" + fadeCanvas.name);
+        //Debug.Log("Name:" + fadeCanvas.name);
     }
 
     public async void fadeSceneChange()//ボタン操作などで呼び出す

@@ -9,10 +9,6 @@ public class Check : MonoBehaviour
     public static int DeleteEnemy = 0;
     public static bool BattleEnemyDelete = false;
 
-    void Update()
-    {     
-        Debug.Log(EnemySousu);
-    }
     private void CheckStart()
     {
         CameraChange.Battle = false;
