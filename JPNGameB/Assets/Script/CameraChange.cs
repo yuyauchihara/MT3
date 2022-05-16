@@ -31,13 +31,13 @@ public class CameraChange : MonoBehaviour
         else if (Boss){
             if (other.tag == "Player" /*&& Battle*/ && BossEnemy != null)
             {
-                Debug.Log(BossEnemy);
+                //Debug.Log(BossEnemy);
                 vCamera.Priority = 100;
             }
 
             if (other.tag == "Player" && BossEnemy == null)
             {
-                Debug.Log(BossEnemy);
+                //Debug.Log(BossEnemy);
                 vCamera.Priority = 5;
             }
         }

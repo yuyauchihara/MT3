@@ -10,6 +10,9 @@ public class StageMgr : MonoBehaviour
     public static bool isBossAttack = false;
     GameObject fryEne;
 
+    private int Pos = 0;
+    private float flyPos = 0;
+
     public GameObject BossEnemy;
     // Start is called before the first frame update
     void Start()
@@ -22,7 +25,20 @@ public class StageMgr : MonoBehaviour
     {
         if(Barrier.activeSelf == false && isSpawn == false && BossEnemy != null)
         {
-            fryEne = Instantiate(FryEnemy, transform.position, Quaternion.identity);
+            Pos = Random.Range(0, 3);
+            switch (Pos)
+            {
+                case 0:
+                    flyPos = 0.50f;
+                    break;
+                case 1:
+                    flyPos = 5.50f;
+                    break;
+                case 2:
+                    flyPos = 10.5f;
+                    break;
+            }
+            fryEne = Instantiate(FryEnemy, new Vector3(flyPos, 3.63f, 0), Quaternion.identity);
             isSpawn = true;
         }
 

@@ -19,6 +19,7 @@ TagManager:
   - FxTemporaire
   - HightPower
   - FlySeigen
+  - FlySeigenR
   layers:
   - Default
   - TransparentFX

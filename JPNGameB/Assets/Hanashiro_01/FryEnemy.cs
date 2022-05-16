@@ -9,11 +9,33 @@ public class FryEnemy : MonoBehaviour
     public GameObject muzzle;
     float move;
     private bool Seigen = false;
-    
+    private bool kaisuu = false;
+
+    private int Time = 0;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        StartCoroutine("Fry");
+        //StartCoroutine("Fry");
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "FlySeigen")
+        {
+            Seigen = true;
+            Time = 0;
+            move = 0f;
+            muzzle.SetActive(false);
+            StageMgr.isBossAttack = true;
+        }
+
+        if(other.gameObject.tag == "FlySeigenR")
+        {
+            Seigen = false;
+            Time = 0;
+            move = 0f;
+        }
     }
 
     void Update()
@@ -22,34 +44,57 @@ public class FryEnemy : MonoBehaviour
         //transform.position = Vector3.MoveTowards(transform.position, target.transform.position, move);
     }
 
-    IEnumerator Fry()
+    void FixedUpdate()
     {
-        while(true)
+        if (Time > 120)
         {
-            if (!Seigen)
+            FlyEnemyMove();
+        }
+        
+        if(Time <= 180)
+        {
+            Time++;
+        }
+
+        Debug.Log(Time);
+    }
+
+    void FlyEnemyMove()
+    {
+        if (!Seigen)
+        {
+            move = -0.08f;
+        }
+        else if (Seigen)
+        {
+            if (Time > 180)
             {
-                yield return new WaitForSeconds(2.0f);
-                move = -0.08f;
-                //yield return new WaitForSeconds(5.3f);
-            }
-            else if (Seigen)
-            {
-                move = 0f;
-                muzzle.SetActive(false);
-                StageMgr.isBossAttack = true;
-                yield return new WaitForSeconds(4.5f);
                 muzzle.SetActive(true);
                 move = 0.08f;
-                //yield return new WaitForSeconds(4.3f);
             }
+            //else
+            //{
+            //    move = 0f;
+            //    muzzle.SetActive(false);
+            //    StageMgr.isBossAttack = true;
+            //}
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "FlySeigen")
-        {
-            Seigen = true;
-        }
-    }
+    //IEnumerator Fry()
+    //{
+    //    while(true)
+    //    {
+    //        yield return new WaitForSeconds(2.0f);
+    //        move = -0.08f;
+    //        yield return new WaitForSeconds(5.3f);
+    //        move = 0f;
+    //        muzzle.SetActive(false);
+    //        StageMgr.isBossAttack = true;
+    //        yield return new WaitForSeconds(4.5f);
+    //        muzzle.SetActive(true);
+    //        move = 0.08f;
+    //        yield return new WaitForSeconds(4.3f);
+    //    }
+    //}
 }
