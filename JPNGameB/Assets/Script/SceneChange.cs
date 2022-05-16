@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneChange : MonoBehaviour
 {
     public int Scene = 0;
+    public int RetrySceneNum = 0;
     public static string SceneName;
     private string[] StageName;
     private string[] SceneChangeName;
@@ -31,7 +32,7 @@ public class SceneChange : MonoBehaviour
         StageName = new string[] { "1-1", "1-2", "1-3", "2-1", "2-2", "2-3", "3-1", "3-2", "3-3" };     //ステージを切り替えるための変数
         SceneChangeName = new string[] { "title", "StageSelect", "clear" };                     //シーンを切り替えるための変数
 
-        NowScene = StageName[Scene];
+        NowScene = StageName[Nownum];
     }
 
     void Update()
