@@ -204,6 +204,14 @@ public class Move : MonoBehaviour
             anim.SetBool("run", false);
         }
 
+        if (Input.GetKey("joystick button 5") /*&& h != 0*/)
+        {
+            anim.SetBool("gmove", true);
+        }
+        else{
+            anim.SetBool("gmove", false);
+        }
+
         //Debug.Log(moveSG.GuardCount);
         if (ShieldGuard.GuardCount >= 3)
         {
@@ -288,14 +296,18 @@ public class Move : MonoBehaviour
 
     IEnumerator Gcool()
     {
+        Transform tate = shield.transform;
         Pmotion = true;
         yield return new WaitForSeconds(0.5f);
-        Pmotion = false;
         anim.SetBool("p_guard", false);
         HoldShield = false;
         GuardTime = false;
-        shield.gameObject.SetActive(false);
+        shield.gameObject.SetActive(false);       
         moveSpeed = 10.5f;
+        Pmotion = false;
+
+        tate.transform.rotation = Quaternion.Euler(0, 0, 0);
+        tate.transform.localPosition = new Vector2(0.05f, 0f);
     }
 
     IEnumerator Gmotion()
