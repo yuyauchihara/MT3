@@ -278,6 +278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HitSound: {fileID: 8300000, guid: 2cd142e9b8058e843abf6efdebf00818, type: 3}
   Enemy: {fileID: 866232972723259638}
+  BossEnemy: 0
 --- !u!114 &772652144763535221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,7 +291,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0e55f6eb4652942879b3db0abf7022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 7415517667851065980, guid: 10b4765aa4ed9e846ba4e5e49f6e5e8b, type: 3}
   muzzle: {fileID: 866232973385146346}
+  move: 0
 --- !u!1001 &1325980127776810212
 PrefabInstance:
   m_ObjectHideFlags: 0

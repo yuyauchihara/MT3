@@ -9,6 +9,9 @@ public class DestroyEnemy : MonoBehaviour
     public AudioClip HitSound;
     [SerializeField] GameObject Enemy;
     bool OnePlay = false;
+
+    public bool BossEnemy = false;
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -31,7 +34,13 @@ public class DestroyEnemy : MonoBehaviour
     IEnumerator AcFal()
     {
         yield return new WaitForSeconds(1.0f);
-        gameObject.SetActive(false);
+        if (!BossEnemy)
+        {
+            gameObject.SetActive(false);
+        }else if (BossEnemy)
+        {
+            Destroy(gameObject);
+        }
     }
 
 }

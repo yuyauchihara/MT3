@@ -10,6 +10,7 @@ public class StageMgr : MonoBehaviour
     public static bool isBossAttack = false;
     GameObject fryEne;
 
+    public GameObject BossEnemy;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +20,7 @@ public class StageMgr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Barrier.activeSelf == false && isSpawn == false)
+        if(Barrier.activeSelf == false && isSpawn == false && BossEnemy != null)
         {
             fryEne = Instantiate(FryEnemy, transform.position, Quaternion.identity);
             isSpawn = true;
@@ -28,6 +29,11 @@ public class StageMgr : MonoBehaviour
         if(fryEne.activeSelf == false && isStartCol == false)
         {
             StartCoroutine("Spawn");
+        }
+
+        if(BossEnemy == null)
+        {
+            Destroy(fryEne);
         }
 
     }

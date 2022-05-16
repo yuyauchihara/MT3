@@ -5,36 +5,51 @@ using UnityEngine;
 public class FryEnemy : MonoBehaviour
 {
     Rigidbody2D rb;
-    float move;
+    //public GameObject target;
     public GameObject muzzle;
-    // Start is called before the first frame update
+    float move;
+    private bool Seigen = false;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         StartCoroutine("Fry");
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.Translate(move, 0, 0);
+        //transform.position = Vector3.MoveTowards(transform.position, target.transform.position, move);
     }
 
     IEnumerator Fry()
     {
         while(true)
         {
-            yield return new WaitForSeconds(2.0f);
-            move = -0.08f;
-            yield return new WaitForSeconds(5.3f);
-            move = 0f;
-            muzzle.SetActive(false);
-            StageMgr.isBossAttack = true;
-            yield return new WaitForSeconds(4.5f);
-            muzzle.SetActive(true);
-            move = 0.08f;
-            yield return new WaitForSeconds(4.3f);
+            if (!Seigen)
+            {
+                yield return new WaitForSeconds(2.0f);
+                move = -0.08f;
+                //yield return new WaitForSeconds(5.3f);
+            }
+            else if (Seigen)
+            {
+                move = 0f;
+                muzzle.SetActive(false);
+                StageMgr.isBossAttack = true;
+                yield return new WaitForSeconds(4.5f);
+                muzzle.SetActive(true);
+                move = 0.08f;
+                //yield return new WaitForSeconds(4.3f);
+            }
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "FlySeigen")
+        {
+            Seigen = true;
+        }
+    }
 }
