@@ -160,12 +160,13 @@ MonoBehaviour:
   KillAprEnmyFlg: 0
   shield: {fileID: 8626218120590323280}
   ShieldGuid: {fileID: 8626218120934806898}
+  ude: {fileID: 7171612716482147367}
   KnockFlag: 0
   spriteRenderer: {fileID: 8626218120590323243}
   sprite: {fileID: 21300000, guid: 10d12453dabf694439bd4e36c219616b, type: 3}
   sprite2: {fileID: 21300000, guid: f9f1324f24424314ebe14cb66f257851, type: 3}
   StunEf: {fileID: 4345599312276197609}
-  StunSlider: {fileID: 0}
+  gardmove: 0
 --- !u!58 &6127828892908455626
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -217,9 +218,11 @@ MonoBehaviour:
   wallR: {fileID: 8626218120307506806}
   BattleCount: 0
   BattleExit: 0
+  BossMode: 0
   jumpLimitTime: 0.5
   GuardArea: {fileID: 8626218121174068997}
   Shield: {fileID: 8626218120590323280}
+  BossObj: {fileID: 0}
 --- !u!114 &8626218121334825799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,6 +242,87 @@ MonoBehaviour:
   wallL: {fileID: 0}
   head: {fileID: 0}
   jumpLimitTime: 1
+--- !u!1 &7171612716482147367
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4485641233677787479}
+  - component: {fileID: 8474580955632264802}
+  m_Layer: 0
+  m_Name: ude
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4485641233677787479
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7171612716482147367}
+  m_LocalRotation: {x: -0, y: -0, z: 0.08606424, w: 0.9962896}
+  m_LocalPosition: {x: -0.23, y: 0.098, z: 0.09000003}
+  m_LocalScale: {x: 4.214621, y: 0.626139, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8626218120590323287}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 9.874001}
+--- !u!212 &8474580955632264802
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7171612716482147367}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: b29641bc3f9fcb7479b6ddfd0649e198, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1.8}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &8626218119389625322
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,7 +385,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd5a37bdfa9769f41b7f04b017b1ea6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tairyoku: {fileID: 0}
   HitPlayerSound: {fileID: 8300000, guid: 157b6186f66d7644eb607d846c801238, type: 3}
   HealthPoint: 10
 --- !u!114 &8626218119389625327
@@ -748,7 +831,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8626218120277294808}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.151233, y: 1.6439997, z: -10}
+  m_LocalPosition: {x: 1.5007665, y: 0.7569994, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8626218121268972706}
@@ -782,7 +865,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.48
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1177,6 +1260,7 @@ Transform:
   m_Children:
   - {fileID: 8626218120292200379}
   - {fileID: 8626218120934806897}
+  - {fileID: 4485641233677787479}
   m_Father: {fileID: 8626218119778416193}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
