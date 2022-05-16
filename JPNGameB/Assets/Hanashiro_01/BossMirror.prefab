@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6b2c131a481e94d8aef7d8180ec02a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Life: 50
+  Life: 3
 --- !u!1 &1017211498892342598
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,9 +258,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8005617579781192634}
-  - component: {fileID: 4396639896411625735}
   - component: {fileID: 6629592897442516108}
   - component: {fileID: 7250516729638669305}
+  - component: {fileID: 1032474422026192688}
   m_Layer: 0
   m_Name: Muzzle
   m_TagString: Untagged
@@ -282,26 +282,6 @@ Transform:
   m_Father: {fileID: 6785761187239648160}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4396639896411625735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4706785054976959970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abe8311c950a1cf47be0a0c4d99885df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPre: {fileID: 5090128467653935869, guid: d3a3fdd1ee10c0e42a25d211321618f6,
-    type: 3}
-  HeavyBullet: {fileID: 8323630349827380754, guid: 75ac48e2ae1655e40a00234393e81829,
-    type: 3}
-  BulletSped: 300
-  ChangeFlag: 0
-  ShotSound: {fileID: 8300000, guid: 295279267ba26504791093dd55d5a496, type: 3}
-  ShotSpan: 5
 --- !u!61 &6629592897442516108
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -424,3 +404,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1032474422026192688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4706785054976959970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64bd563da7c9c764288d7eb6608141cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPre: {fileID: 5090128467653935869, guid: d3a3fdd1ee10c0e42a25d211321618f6,
+    type: 3}
+  HeavyBullet: {fileID: 8323630349827380754, guid: 75ac48e2ae1655e40a00234393e81829,
+    type: 3}
+  BulletSped: 350
+  ChangeFlag: 0
+  ShotSound: {fileID: 8300000, guid: 295279267ba26504791093dd55d5a496, type: 3}
+  ShotSpan: 3
