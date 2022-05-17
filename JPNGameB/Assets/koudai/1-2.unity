@@ -1556,6 +1556,7 @@ GameObject:
   m_Component:
   - component: {fileID: 311012599}
   - component: {fileID: 311012598}
+  - component: {fileID: 311012600}
   m_Layer: 0
   m_Name: SceneChangeObject
   m_TagString: Untagged
@@ -1576,11 +1577,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Scene: 2
+  RetrySceneNum: 1
   StageMode: 1
   SceneMode: 0
   fadeout: {fileID: 155472509}
   FadeOutInMode: 1
   title: 0
+  RetryMode: 0
 --- !u!4 &311012599
 Transform:
   m_ObjectHideFlags: 0
@@ -1595,6 +1598,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &311012600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311012597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ecef31e6a126e544ad23b0dd9bcbde9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &313842834
 GameObject:
   m_ObjectHideFlags: 0
@@ -1641,6 +1656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sp: {fileID: 423995873}
+  PLY: {fileID: 0}
 --- !u!114 &313842837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2021,9 +2037,11 @@ MonoBehaviour:
   wallR: {fileID: 1612814013}
   BattleCount: 0
   BattleExit: 0
+  BossMode: 0
   jumpLimitTime: 0.5
   GuardArea: {fileID: 0}
   Shield: {fileID: 0}
+  BossObj: {fileID: 0}
 --- !u!1 &427446812
 GameObject:
   m_ObjectHideFlags: 0
@@ -2070,7 +2088,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.4784689, y: 1}
+    m_SensorSize: {x: 1.3731707, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3041,7 +3059,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 645021233}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.08829, y: -2.4906235, z: 101.93125}
+  m_LocalPosition: {x: -13.193587, y: -2.4906235, z: 101.93125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2135613636}
@@ -3150,7 +3168,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.4784689, y: 1}
+    m_SensorSize: {x: 1.3731707, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3302,6 +3320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sp: {fileID: 2102808078}
+  PLY: {fileID: 0}
 --- !u!114 &655630501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3890,6 +3909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sp: {fileID: 799544651}
+  PLY: {fileID: 0}
 --- !u!114 &730374661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4720,9 +4740,11 @@ MonoBehaviour:
   wallR: {fileID: 1114467606}
   BattleCount: 0
   BattleExit: 0
+  BossMode: 0
   jumpLimitTime: 0.5
   GuardArea: {fileID: 1810486035}
   Shield: {fileID: 1831217576}
+  BossObj: {fileID: 0}
 --- !u!95 &799544655
 Animator:
   serializedVersion: 3
@@ -4895,6 +4917,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8626218119389625327, guid: 12ec795fe32d89f418784d8432af9037,
+        type: 3}
+      propertyPath: PLY
+      value: 
+      objectReference: {fileID: 1728969857}
     - target: {fileID: 8626218120277294812, guid: 12ec795fe32d89f418784d8432af9037,
         type: 3}
       propertyPath: orthographic size
@@ -4903,12 +4930,12 @@ PrefabInstance:
     - target: {fileID: 8626218120277294815, guid: 12ec795fe32d89f418784d8432af9037,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.36622268
+      value: 2.6843746
       objectReference: {fileID: 0}
     - target: {fileID: 8626218120277294815, guid: 12ec795fe32d89f418784d8432af9037,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5074695
+      value: 0.5253689
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12ec795fe32d89f418784d8432af9037, type: 3}
@@ -5186,6 +5213,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 0.8000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 485396195856553499, guid: b20b3d79966cda549bccc37e47116b5d,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 485396195856553508, guid: b20b3d79966cda549bccc37e47116b5d,
         type: 3}
@@ -5516,6 +5548,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vCamera: {fileID: 1291661911}
   BattleWall: {fileID: 430296985}
+  Boss: 0
+  BossEnemy: {fileID: 0}
 --- !u!61 &1002080796
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5748,6 +5782,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vCamera: {fileID: 1068176764}
   BattleWall: {fileID: 430296985}
+  Boss: 0
+  BossEnemy: {fileID: 0}
 --- !u!61 &1015315365
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6393,7 +6429,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.4784689, y: 1}
+    m_SensorSize: {x: 1.3731707, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -6653,9 +6689,11 @@ MonoBehaviour:
   wallR: {fileID: 1045074572}
   BattleCount: 0
   BattleExit: 0
+  BossMode: 0
   jumpLimitTime: 0.5
   GuardArea: {fileID: 267078264}
   Shield: {fileID: 1492192780}
+  BossObj: {fileID: 0}
 --- !u!1 &1091285465
 GameObject:
   m_ObjectHideFlags: 3
@@ -7605,7 +7643,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.4784689, y: 1}
+    m_SensorSize: {x: 1.3731707, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -8835,6 +8873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sp: {fileID: 1079430189}
+  PLY: {fileID: 0}
 --- !u!114 &1624931454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9112,7 +9151,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1693584436
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9266,6 +9305,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vCamera: {fileID: 427446813}
   BattleWall: {fileID: 430296985}
+  Boss: 0
+  BossEnemy: {fileID: 0}
 --- !u!61 &1701664718
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9362,6 +9403,12 @@ Transform:
   m_Father: {fileID: 2102808079}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1728969857 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8626218119389625322, guid: 12ec795fe32d89f418784d8432af9037,
+    type: 3}
+  m_PrefabInstance: {fileID: 869911500}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1756737490
 GameObject:
   m_ObjectHideFlags: 0
@@ -25264,9 +25311,11 @@ MonoBehaviour:
   wallR: {fileID: 1612784145}
   BattleCount: 0
   BattleExit: 0
+  BossMode: 0
   jumpLimitTime: 0.5
   GuardArea: {fileID: 1218582462}
   Shield: {fileID: 393181111}
+  BossObj: {fileID: 0}
 --- !u!212 &2102808078 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2502893377878238597, guid: 3364dd32b6eb791479c8b7fd5b8062bf,

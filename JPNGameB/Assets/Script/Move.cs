@@ -148,7 +148,7 @@ public class Move : MonoBehaviour
             }
         }
 
-        if(JumpTest.StunPlayer == false)
+        if(JumpTest.StunPlayer == false && Pmotion == false)
         {
             if (h < 0)
             {
@@ -224,7 +224,7 @@ public class Move : MonoBehaviour
             gardmove = false;
         }
 
-        if (Input.GetKeyUp(KeyCode.Q) && GuardTime == false || Input.GetKeyUp("joystick button 5") && GuardTime == false)
+        if (Input.GetKeyUp(KeyCode.Q) && GuardTime == false && JumpTest.StunPlayer == false || Input.GetKeyUp("joystick button 5") && GuardTime == false && JumpTest.StunPlayer == false)
         {
             StartCoroutine(Gmotion());
             ShieldGuid.gameObject.SetActive(false);

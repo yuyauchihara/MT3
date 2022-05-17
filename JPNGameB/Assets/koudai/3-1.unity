@@ -712,11 +712,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Scene: 0
+  RetrySceneNum: 0
   StageMode: 0
   SceneMode: 1
   fadeout: {fileID: 0}
   FadeOutInMode: 0
   title: 0
+  RetryMode: 0
 --- !u!4 &169007548
 Transform:
   m_ObjectHideFlags: 0
@@ -1338,6 +1340,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vCamera: {fileID: 1575502218}
   BattleWall: {fileID: 0}
+  Boss: 0
+  BossEnemy: {fileID: 0}
 --- !u!61 &311814546
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3006,9 +3010,11 @@ MonoBehaviour:
   wallR: {fileID: 717343993}
   BattleCount: 0
   BattleExit: 0
+  BossMode: 0
   jumpLimitTime: 0.5
   GuardArea: {fileID: 542736048}
   Shield: {fileID: 1892404242}
+  BossObj: {fileID: 0}
 --- !u!95 &772882784
 Animator:
   serializedVersion: 3
@@ -3510,9 +3516,11 @@ MonoBehaviour:
   wallR: {fileID: 1670471319}
   BattleCount: 0
   BattleExit: 0
+  BossMode: 0
   jumpLimitTime: 0.5
   GuardArea: {fileID: 51623168}
   Shield: {fileID: 2054398060}
+  BossObj: {fileID: 0}
 --- !u!114 &929422597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4345,6 +4353,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vCamera: {fileID: 373148128}
   BattleWall: {fileID: 0}
+  Boss: 0
+  BossEnemy: {fileID: 0}
 --- !u!61 &1099831899
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5111,12 +5121,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3341d90a5939c9f49812d9dedc080f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scene: 1
-  StageMode: 0
-  SceneMode: 1
+  Scene: 7
+  RetrySceneNum: 6
+  StageMode: 1
+  SceneMode: 0
   fadeout: {fileID: 337975775}
   FadeOutInMode: 0
   title: 0
+  RetryMode: 0
 --- !u!4 &1418037211
 Transform:
   m_ObjectHideFlags: 0
@@ -5845,6 +5857,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sp: {fileID: 772882780}
+  PLY: {fileID: 0}
 --- !u!114 &1577386520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5857,7 +5870,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd5a37bdfa9769f41b7f04b017b1ea6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tairyoku: {fileID: 580195298}
   HitPlayerSound: {fileID: 8300000, guid: 157b6186f66d7644eb607d846c801238, type: 3}
   HealthPoint: 10
 --- !u!70 &1577386521
@@ -6178,6 +6190,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vCamera: {fileID: 961728007}
   BattleWall: {fileID: 0}
+  Boss: 0
+  BossEnemy: {fileID: 0}
 --- !u!61 &1690167336
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6388,6 +6402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sp: {fileID: 929422594}
+  PLY: {fileID: 0}
 --- !u!114 &1724470677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6400,7 +6415,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd5a37bdfa9769f41b7f04b017b1ea6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tairyoku: {fileID: 0}
   HitPlayerSound: {fileID: 8300000, guid: 157b6186f66d7644eb607d846c801238, type: 3}
   HealthPoint: 10
 --- !u!70 &1724470678
@@ -27752,6 +27766,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vCamera: {fileID: 1384374010}
   BattleWall: {fileID: 0}
+  Boss: 0
+  BossEnemy: {fileID: 0}
 --- !u!61 &1804010025
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28181,6 +28197,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vCamera: {fileID: 632587005}
   BattleWall: {fileID: 0}
+  Boss: 0
+  BossEnemy: {fileID: 0}
 --- !u!61 &1938243624
 BoxCollider2D:
   m_ObjectHideFlags: 0

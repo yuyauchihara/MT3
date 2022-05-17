@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class RetryScene : MonoBehaviour
 {
+
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -28,7 +28,7 @@ public class RetryScene : MonoBehaviour
 
     void RetryChangeScene()
     {
-        SceneManager.LoadScene("1-1");
+        //SceneManager.LoadScene("3-2");
     }
 
     void GameEnd()
