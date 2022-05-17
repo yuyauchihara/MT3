@@ -1,27 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 // CanvasGroupコンポーネントがアタッチされていない場合、アタッチ
 [RequireComponent(typeof(CanvasGroup))]
 public class TitleT : MonoBehaviour
 {
+    public SpriteRenderer sp;
 
-    MeshRenderer mesh;
-
-    void Start()
+    void Update()
     {
-        mesh = GetComponent<MeshRenderer>();
-        mesh.material.color = mesh.material.color - new Color32(0, 0, 0, 0);
-        StartCoroutine("Transparent");
-    }
-
-    IEnumerator Transparent()
-    {
-        for (int i = 0; i < 255; i++)
-        {
-            mesh.material.color = mesh.material.color - new Color32(0, 0, 0, 1);
-            yield return new WaitForSeconds(0.01f);
-        }
+        float level = Mathf.Abs(Mathf.Sin(Time.time * 3));
+        sp.color = new Color(1f, 1f, 1f, level);
     }
 }
