@@ -40,13 +40,13 @@ public class ShieldGuard : MonoBehaviour
         }
 
         // ダメージを受けている場合、点滅させる
-        if (isDamage)
-        {
+        //if (isDamage)
+        //{
 
-            float level = Mathf.Abs(Mathf.Sin(Time.time * 10));
-            sp.color = new Color(1f, 1f, 1f, level);
+        //    float level = Mathf.Abs(Mathf.Sin(Time.time * 10));
+        //    sp.color = new Color(1f, 1f, 1f, level);
 
-        }
+        //}
 
         //if(GuardCount >= 3)
         //{

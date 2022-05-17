@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneChange : MonoBehaviour
 {
     public int Scene = 0;
+    public int RetrySceneNum = 0;
     public static string SceneName;
     private string[] StageName;
     private string[] SceneChangeName;
@@ -19,22 +20,31 @@ public class SceneChange : MonoBehaviour
 
     public bool title = false;          //タイトルならtrueにしとく
 
+    public bool RetryMode = false;          //リトライシーンではtrueにする
+
+    private string NowScene;
+
+    public static int Nownum = 0;
+
+
     void Start()
     {
         StageName = new string[] { "1-1", "1-2", "1-3", "2-1", "2-2", "2-3", "3-1", "3-2", "3-3" };     //ステージを切り替えるための変数
         SceneChangeName = new string[] { "title", "StageSelect", "clear" };                     //シーンを切り替えるための変数
+
+        NowScene = StageName[Nownum];
     }
 
     void Update()
     {
-        if (Input.GetKey("joystick button 1"))
-        {
-            Scene = 3;
-        }
-        else if (Input.GetKey("joystick button 3"))
-        {
-            Scene = 6;
-        }
+        //if (Input.GetKey("joystick button 1"))
+        //{
+        //    Scene = 3;
+        //}
+        //else if (Input.GetKey("joystick button 3"))
+        //{
+        //    Scene = 6;
+        //}
 
         if (SceneMode)           //モードの切り替えでtrueになったらもう片方をfalseにする
         {
@@ -53,19 +63,35 @@ public class SceneChange : MonoBehaviour
         {
             SceneMode = true;
         }
-
-        if(Input.GetKey("joystick button 0") && title || Input.GetKey("joystick button 1") && title || Input.GetKey("joystick button 3") && title)
+        if (title)
         {
-            if (SceneMode)
+            if (Input.GetKey("joystick button 0") || Input.GetKey("joystick button 1") || Input.GetKey("joystick button 3"))
             {
-                SceneName = SceneChangeName[Scene];
-                Change();
-            }
+                if (SceneMode)
+                {
+                    SceneName = SceneChangeName[Scene];
+                    Change();
+                }
 
-            if (StageMode)
+                if (StageMode)
+                {
+                    SceneName = StageName[Scene];
+                    Change();
+                }
+            }
+        }
+
+        if (RetryMode)
+        {
+            //リトライ
+            if (Input.GetKey("joystick button 0"))
             {
-                SceneName = StageName[Scene];
-                Change();
+                RetryScene();
+            }
+            //ゲーム終了
+            if (Input.GetKey("joystick button 1"))
+            {
+                GameEnd();
             }
         }
 
@@ -130,5 +156,10 @@ public class SceneChange : MonoBehaviour
     public void Change()
     {
         SceneManager.LoadScene(SceneName);
+    }
+
+    public void RetryScene()
+    {
+        SceneManager.LoadScene(NowScene);
     }
 }

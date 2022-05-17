@@ -290,9 +290,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1247310311}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be2a69cc8b065dd4a9330421ca0ad159, type: 3}
+  m_Script: {fileID: 11500000, guid: 3341d90a5939c9f49812d9dedc080f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Scene: 0
+  StageMode: 0
+  SceneMode: 1
+  fadeout: {fileID: 0}
+  FadeOutInMode: 1
+  title: 0
+  RetryMode: 1
 --- !u!4 &1247310313
 Transform:
   m_ObjectHideFlags: 0
