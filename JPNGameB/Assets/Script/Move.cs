@@ -56,6 +56,8 @@ public class Move : MonoBehaviour
 
     public static bool GuardTime = false;//盾のクールタイム用のフラグ
 
+    private bool tatedasif = false;
+
     public SpriteRenderer spriteRenderer;
     public Sprite sprite;
     public Sprite sprite2;
@@ -80,6 +82,7 @@ public class Move : MonoBehaviour
 
     void Start()
     {
+        tatedasif = false;
         rb = GetComponent<Rigidbody2D>();
         m_ObjectCollider = GetComponent<BoxCollider2D>();
         shield.gameObject.SetActive(false);
@@ -95,7 +98,7 @@ public class Move : MonoBehaviour
     void Update()
     {
 
-        //Debug.Log(Pmotion);
+        Debug.Log(tatedasif);
         var h = Input.GetAxis("Horizontal");//左スティックの横
         var h2 = Input.GetAxis("JoyHorizontal");//右スティックの横 //0420_h2の型をfloatで宣言
 
@@ -189,8 +192,9 @@ public class Move : MonoBehaviour
         //    StartCoroutine("counter");
         //}
 
-        if (Input.GetKey("joystick button 5")  && GuardTime == false || Input.GetKey(KeyCode.Q) && GuardTime == false)
+        if (Input.GetKey("joystick button 5")  && GuardTime == false && tatedasif == true|| Input.GetKey(KeyCode.Q) && GuardTime == false && tatedasif == true)
         {
+            
             ShieldGuid.gameObject.SetActive(true);
             if (JumpTest.StunPlayer == false)
             {
@@ -200,10 +204,20 @@ public class Move : MonoBehaviour
                 ude.gameObject.SetActive(true);
                 moveSpeed = 5.5f;
                 spriteRenderer.sprite = sprite;//画像切り替え
+
             }
         }
 
-        
+        if (Input.GetKeyDown("joystick button 5"))
+        {
+            anim.SetBool("tatedasi", true);
+            StartCoroutine(tatedasiC());
+        }
+        else
+        {
+            anim.SetBool("tatedasi", false);
+            tatedasif = false;
+        }
 
         if (h != 0 && Pmotion == false && gardmove == false)
         {
@@ -224,12 +238,30 @@ public class Move : MonoBehaviour
             gardmove = false;
         }
 
+        if (Input.GetKey("joystick button 5") && h <= 0.3 || Input.GetKey("joystick button 5") && h >= 0.3)
+        {
+            anim.SetBool("NGuard", true);
+        }
+        else
+        {
+            anim.SetBool("NGuard", false);
+        }
+
+        if (isStun == true)
+        {
+            anim.SetBool("PStan", true);
+        }
+        else if(isStun == false)
+        {
+            anim.SetBool("PStan", false);
+        }
+
         if (Input.GetKeyUp(KeyCode.Q) && GuardTime == false && JumpTest.StunPlayer == false || Input.GetKeyUp("joystick button 5") && GuardTime == false && JumpTest.StunPlayer == false)
         {
             StartCoroutine(Gmotion());
             ShieldGuid.gameObject.SetActive(false);
             anim.SetBool("p_guard", true);
-            GuardTime = true;
+            GuardTime = true;          
             StartCoroutine(Gcool());
         }
 
@@ -325,13 +357,24 @@ public class Move : MonoBehaviour
         anim.SetBool("p_guard", false);
         HoldShield = false;
         GuardTime = false;
+        tatedasif = false;
         shield.gameObject.SetActive(false);
         
         moveSpeed = 10.5f;
         Pmotion = false;
 
-        tate.transform.rotation = Quaternion.Euler(0, 0, 0);
-        tate.transform.localPosition = new Vector2(0.05f, 0f);
+        if (Pdirection == true)
+        {
+            tate.transform.rotation = Quaternion.Euler(0, 0, 0);
+            tate.transform.localPosition = new Vector2(0.05f, 0f);
+        }
+
+        if (Pdirection == false)
+        {
+            tate.transform.rotation = Quaternion.Euler(0, 180, 0);
+            tate.transform.localPosition = new Vector2(0.05f, 0f);
+        }
+
     }
 
     IEnumerator Gmotion()
@@ -340,5 +383,11 @@ public class Move : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
 
         spriteRenderer.sprite = sprite2;//画像切り替え
+    }
+
+    IEnumerator tatedasiC()
+    {
+        yield return new WaitForSeconds(0.4f);
+        tatedasif = true;
     }
 }
