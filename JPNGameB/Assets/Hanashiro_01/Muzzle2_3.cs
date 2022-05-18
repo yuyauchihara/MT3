@@ -18,7 +18,7 @@ public class Muzzle2_3 : MonoBehaviour
 
     int f = 0;
 
-    private int BurstCount = 0;
+    public static int BurstCount = 0;
     public static bool isBursted = false;
 
     bool isHeavyAttack = false;
@@ -36,6 +36,10 @@ public class Muzzle2_3 : MonoBehaviour
         if(BurstCount >= 4)
         {
             isBursted = true;
+        }
+        else
+        {
+            isBursted = false;
         }
         
         if(StageMgr2_3.isZenmetu == true && isHeavyAttack == false)
@@ -92,7 +96,7 @@ public class Muzzle2_3 : MonoBehaviour
         Vector2 force = this.transform.up;
         Bprb.AddForce(force * BulletSped);
 
-        yield return new WaitForSeconds(2.5f);       
-        BurstCount = 0;
+        //yield return new WaitForSeconds(2.5f);       
+        //BurstCount = 0;
     }
 }

@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8195206041835547544}
-  - component: {fileID: 8195206041835547551}
   - component: {fileID: 8195206041835547550}
   - component: {fileID: 8195206041835547545}
+  - component: {fileID: 2194413273648279332}
   m_Layer: 0
   m_Name: 'Muzzle '
   m_TagString: Untagged
@@ -26,33 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8195206041835547547}
-  m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
-  m_LocalPosition: {x: 0.42, y: -0.19, z: 80.40089}
-  m_LocalScale: {x: 0.82089233, y: 1.4750001, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: -0.7071068}
+  m_LocalPosition: {x: 1.153, y: 0.029, z: -5.375}
+  m_LocalScale: {x: 0.37533304, y: 1.0906465, z: 1}
   m_Children: []
-  m_Father: {fileID: 8195206042750217160}
+  m_Father: {fileID: 8195206042973866544}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
---- !u!114 &8195206041835547551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8195206041835547547}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abe8311c950a1cf47be0a0c4d99885df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPre: {fileID: 5090128467653935869, guid: d3a3fdd1ee10c0e42a25d211321618f6,
-    type: 3}
-  HeavyBullet: {fileID: 8323630349827380754, guid: 75ac48e2ae1655e40a00234393e81829,
-    type: 3}
-  BulletSped: 300
-  ChangeFlag: 0
-  ShotSound: {fileID: 8300000, guid: 295279267ba26504791093dd55d5a496, type: 3}
-  ShotSpan: 5
 --- !u!61 &8195206041835547550
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -77,7 +57,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 9.22, y: 14.12}
+  m_Size: {x: 3.53, y: 14.12}
   m_EdgeRadius: 0
 --- !u!82 &8195206041835547545
 AudioSource:
@@ -175,6 +155,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2194413273648279332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8195206041835547547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcc193b89f51be24385e34bc47cd4634, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPre: {fileID: 8323630349827380754, guid: 75ac48e2ae1655e40a00234393e81829,
+    type: 3}
+  BulletSped: 400
+  ChangeFlag: 0
+  ShotSound: {fileID: 0}
+  ShotSpan: 5
 --- !u!1 &8195206042750217163
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +200,6 @@ Transform:
   m_LocalPosition: {x: 40.86, y: -2.058425, z: -85.77589}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 8195206041835547544}
   - {fileID: 8195206042973866544}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -219,6 +216,7 @@ GameObject:
   - component: {fileID: 8195206042973866551}
   - component: {fileID: 8195206042973866550}
   - component: {fileID: 8195206042973866545}
+  - component: {fileID: 3574360539351897949}
   m_Layer: 0
   m_Name: MirrorCore
   m_TagString: Untagged
@@ -236,9 +234,10 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.597, y: 0.169, z: 85.77589}
   m_LocalScale: {x: 1.3524089, y: 2.187104, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 8195206041835547544}
   m_Father: {fileID: 8195206042750217160}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8195206042973866551
 SpriteRenderer:
@@ -336,4 +335,17 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 5
+--- !u!114 &3574360539351897949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8195206042973866547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef6b2c131a481e94d8aef7d8180ec02a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Life: 3
