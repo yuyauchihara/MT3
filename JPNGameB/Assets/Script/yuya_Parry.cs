@@ -80,50 +80,96 @@ public class yuya_Parry : MonoBehaviour
             }
         }
 
-        
-
-        if (Move.Pdirection == true && v == 0 && Move.Pmotion == false)
+        if (Move.Pdirection == true)
         {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-            transform.localPosition = new Vector3(0.172f, 0.024f, -0.5f);
-            ShieldRote = 0;
-            sr = 0;
-            sy = 0;
+            if(v == 0 && Move.Pmotion == false)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                transform.localPosition = new Vector3(0.172f, 0.024f, -0.5f);
+                ShieldRote = 0;
+                sr = 0;
+                sy = 0;
+            }
+
+            if(H < 0 && v > 0 && sy < 0.31 && Move.Pmotion == false)
+            {
+                sy = v * 0.3f;
+                transform.localPosition = new Vector2(0.172f, sy + 0.024f);
+            }
+            
+            if (v > 0 && sr < 41 && H < 0 && Move.Pmotion == false)
+            {
+                sr = v * 40;
+                transform.rotation = Quaternion.Euler(0, 0, sr);
+            }
         }
 
-        if (Move.Pdirection == false && v == 0 && Move.Pmotion == false)
+        if (Move.Pdirection == false)
         {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-            transform.localPosition = new Vector3(0.172f, 0.024f, 0.5f);
-            ShieldRote = 0;
-            sr = 0;
-            sy = 0;
+            if (v == 0 && Move.Pmotion == false)
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+                transform.localPosition = new Vector3(0.172f, 0.024f, 0.5f);
+                ShieldRote = 0;
+                sr = 0;
+                sy = 0;
+            }
+
+            if (H > 0 && v > 0 && sy < 0.31 && Move.Pmotion == false)
+            {
+                sy = v * 0.3f;
+                transform.localPosition = new Vector2(0.172f, sy + 0.024f);
+            }
+            
+            if (v > 0 && sr > -41 && H > 0 && Move.Pmotion == false)
+            {
+                sr = v * -40;
+                transform.rotation = Quaternion.Euler(0, 180, -sr);
+            }
         }
+
+        //if (Move.Pdirection == true && v == 0 && Move.Pmotion == false)
+        //{
+        //    transform.rotation = Quaternion.Euler(0, 0, 0);
+        //    transform.localPosition = new Vector3(0.172f, 0.024f, -0.5f);
+        //    ShieldRote = 0;
+        //    sr = 0;
+        //    sy = 0;
+        //}
+
+        //if (Move.Pdirection == false && v == 0 && Move.Pmotion == false)
+        //{
+        //    transform.rotation = Quaternion.Euler(0, 180, 0);
+        //    transform.localPosition = new Vector3(0.172f, 0.024f, 0.5f);
+        //    ShieldRote = 0;
+        //    sr = 0;
+        //    sy = 0;
+        //}
 
 
 
-        if (Move.Pdirection == true && H < 0 && v > 0 && sy < 0.31 && Move.Pmotion == false)//盾の移動
-        {
-            sy = v * 0.3f;
-            transform.localPosition = new Vector2(0.172f, sy + 0.024f);
-        }
-        if (Move.Pdirection == false && H > 0 && v > 0 && sy < 0.31 && Move.Pmotion == false)//盾の移動
-        {
-            sy = v * 0.3f;
-            transform.localPosition = new Vector2(0.172f, sy + 0.024f);
-        }
+        //if (Move.Pdirection == true && H < 0 && v > 0 && sy < 0.31 && Move.Pmotion == false)//盾の移動
+        //{
+        //    sy = v * 0.3f;
+        //    transform.localPosition = new Vector2(0.172f, sy + 0.024f);
+        //}
+        //if (Move.Pdirection == false && H > 0 && v > 0 && sy < 0.31 && Move.Pmotion == false)//盾の移動
+        //{
+        //    sy = v * 0.3f;
+        //    transform.localPosition = new Vector2(0.172f, sy + 0.024f);
+        //}
 
-        if (Move.Pdirection == true && v > 0 && sr < 41 && H < 0 && Move.Pmotion == false)//盾の回転
-        {
-            sr = v * 40;
-            transform.rotation = Quaternion.Euler(0, 0, sr);
-        }
+        //if (Move.Pdirection == true && v > 0 && sr < 41 && H < 0 && Move.Pmotion == false)//盾の回転
+        //{
+        //    sr = v * 40;
+        //    transform.rotation = Quaternion.Euler(0, 0, sr);
+        //}
 
-        if (Move.Pdirection == false && v > 0 && sr > -41 && H > 0 && Move.Pmotion == false)//盾の回転
-        {
-            sr = v * -40;
-            transform.rotation = Quaternion.Euler(0, 180, -sr);
-        }
+        //if (Move.Pdirection == false && v > 0 && sr > -41 && H > 0 && Move.Pmotion == false)//盾の回転
+        //{
+        //    sr = v * -40;
+        //    transform.rotation = Quaternion.Euler(0, 180, -sr);
+        //}
 
 
         if (Move.Pdirection == true && H <= 0 || Move.Pdirection == false && H >= 0 )
@@ -131,46 +177,19 @@ public class yuya_Parry : MonoBehaviour
             Parysc = false;
         }
 
-        //if (Input.GetKey("joystick button 5") && Move.GuardTime == false || Input.GetKey(KeyCode.Q) && Move.GuardTime == false)
-        //{
-        //    spriteRenderer.sprite = sprite;
-        //}
-
-        //if (Input.GetKeyUp("joystick button 5") && Move.GuardTime == false || Input.GetKeyUp(KeyCode.Q) && Move.GuardTime == false)//リフレクションなどのモーション
-        //{
-        //    //spriteRenderer.sprite = sprite2;//画像切り替え
-            
-
-        //    StartCoroutine(cooltime());
-        //}
 
         if (Input.GetKeyUp("joystick button 5"))
         {
             if (Move.Pdirection == true)
             {
-                //transform.localPosition = new Vector3(-0.2f, sy + 0f, -2f);
                 StartCoroutine(GardAnim());
             }
 
             if (Move.Pdirection == false)
             {
-                //transform.localPosition = new Vector3(-0.2f, sy + 0f, 0f);
                 StartCoroutine(GardAnim2());
             }
         }
-
-        //if (Input.GetKeyDown("joystick button 5") || Input.GetKeyDown(KeyCode.Q))
-        //{
-        //    if (Move.Pdirection == true)
-        //    {
-        //        transform.rotation = Quaternion.Euler(0, 0, 0);
-        //    }
-
-        //    if (Move.Pdirection == false)
-        //    {
-        //        transform.rotation = Quaternion.Euler(0, 180, 0);
-        //    }
-        //}
 
         if (Input.GetKeyUp("joystick button 5"))
         {
