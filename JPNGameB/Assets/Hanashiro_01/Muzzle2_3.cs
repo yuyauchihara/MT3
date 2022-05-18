@@ -37,11 +37,11 @@ public class Muzzle2_3 : MonoBehaviour
         {
             isBursted = true;
         }
-
+        
         if(StageMgr2_3.isZenmetu == true && isHeavyAttack == false)
         {
             StartCoroutine("HigthPowerAttack");
-            isHeavyAttack = true;
+            isHeavyAttack = true;          
         }
 
     }
@@ -91,5 +91,8 @@ public class Muzzle2_3 : MonoBehaviour
         audioSource.PlayOneShot(ShotSound);
         Vector2 force = this.transform.up;
         Bprb.AddForce(force * BulletSped);
+
+        yield return new WaitForSeconds(2.5f);       
+        BurstCount = 0;
     }
 }
