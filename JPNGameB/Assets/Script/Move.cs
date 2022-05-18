@@ -227,7 +227,7 @@ public class Move : MonoBehaviour
             anim.SetBool("tatedasi", false);
         }
 
-        if (h != 0 && Pmotion == false && gardmove == false)
+        if (h != 0 && Pmotion == false /*&& gardmove == false*/)
         {
             anim.SetBool("run", true);
         }
@@ -394,7 +394,7 @@ public class Move : MonoBehaviour
 
     IEnumerator tatedasiC()
     {
-        yield return new WaitForSeconds(0.37f);
+        yield return new WaitForSeconds(0.2f);
         tatedasif = true;
     }
 }
