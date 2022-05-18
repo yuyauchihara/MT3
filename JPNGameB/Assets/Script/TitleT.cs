@@ -9,9 +9,15 @@ public class TitleT : MonoBehaviour
 {
     public SpriteRenderer sp;
 
+    void Start()
+    {
+        
+    }
+
     void Update()
     {
         float level = Mathf.Abs(Mathf.Sin(Time.time * 3));
         sp.color = new Color(1f, 1f, 1f, level);
+
     }
 }
