@@ -18,7 +18,7 @@ public class PlayerDamage : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(isDamage);
+        //Debug.Log(isDamage);
         // ダメージを受けている場合、点滅させる
         if (isDamage && PH.HealthPoint > 0)
         {

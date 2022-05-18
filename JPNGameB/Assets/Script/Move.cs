@@ -83,12 +83,21 @@ public class Move : MonoBehaviour
     void Start()
     {
         tatedasif = false;
+        Guard = false;
+        KnockFlag = false;
+        counterflag = false;
+        keyIsBlock = false;
+        parryf = false;
+        HoldShield = false;
+        Pdirection = true;
+        GuardTime = false;
+        tatedasif = false;
+        isStun = false;
         rb = GetComponent<Rigidbody2D>();
         m_ObjectCollider = GetComponent<BoxCollider2D>();
         shield.gameObject.SetActive(false);
         ude.gameObject.SetActive(false);
         anim = GetComponent<Animator>(); //アニメーション用
-
         StunSlider = GameObject.Find("StunGauge").GetComponent<Slider>();
         gardmove = false;
         Pmotion = false;
@@ -192,7 +201,7 @@ public class Move : MonoBehaviour
         //    StartCoroutine("counter");
         //}
 
-        if (Input.GetKey("joystick button 5")  && GuardTime == false && tatedasif == true|| Input.GetKey(KeyCode.Q) && GuardTime == false && tatedasif == true)
+        if (Input.GetKey("joystick button 5") && GuardTime == false && tatedasif == true || Input.GetKey(KeyCode.Q) && GuardTime == false && tatedasif == true)
         {
             
             ShieldGuid.gameObject.SetActive(true);
@@ -216,7 +225,6 @@ public class Move : MonoBehaviour
         else
         {
             anim.SetBool("tatedasi", false);
-            tatedasif = false;
         }
 
         if (h != 0 && Pmotion == false && gardmove == false)
@@ -357,11 +365,9 @@ public class Move : MonoBehaviour
         anim.SetBool("p_guard", false);
         HoldShield = false;
         GuardTime = false;
-        tatedasif = false;
-        shield.gameObject.SetActive(false);
-        
         moveSpeed = 10.5f;
         Pmotion = false;
+        tatedasif = false;
 
         if (Pdirection == true)
         {
@@ -375,6 +381,7 @@ public class Move : MonoBehaviour
             tate.transform.localPosition = new Vector2(0.05f, 0f);
         }
 
+        shield.gameObject.SetActive(false);
     }
 
     IEnumerator Gmotion()
@@ -387,7 +394,7 @@ public class Move : MonoBehaviour
 
     IEnumerator tatedasiC()
     {
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.37f);
         tatedasif = true;
     }
 }

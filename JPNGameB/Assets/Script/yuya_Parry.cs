@@ -50,6 +50,9 @@ public class yuya_Parry : MonoBehaviour
     void Start()
     {
         parryf = false;
+        RefFlag = false;
+        ParyFlag = false;
+        Parysc = false;
         Application.targetFrameRate = 50;
         SG = GuardArea.GetComponent<ShieldGuard>();
     }
