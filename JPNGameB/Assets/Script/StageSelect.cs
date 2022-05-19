@@ -9,7 +9,7 @@ public class StageSelect : MonoBehaviour
 
     void Start()
     {
-        Object = GameObject.Find("GameObject");
+        Object = GameObject.Find("SceneChangeObject");
         code = Object.GetComponent<SceneChange>();
     }
 

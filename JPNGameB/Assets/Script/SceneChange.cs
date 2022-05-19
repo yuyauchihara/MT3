@@ -8,7 +8,7 @@ public class SceneChange : MonoBehaviour
     public int Scene = 0;
     public int RetrySceneNum = 0;
     public static string SceneName;
-    private string[] StageName;
+    public string[] StageName;
     private string[] SceneChangeName;
 
     public bool StageMode = false;      //ステージを変える方(trueならステージ切り替えモード)
@@ -22,15 +22,14 @@ public class SceneChange : MonoBehaviour
 
     public bool RetryMode = false;          //リトライシーンではtrueにする
 
-    private string NowScene;
+    public string NowScene;
 
     public static int Nownum = 0;
 
-
     void Start()
     {
-        StageName = new string[] { "1-1", "1-2", "1-3", "2-1", "2-2", "2-3", "3-1", "3-2", "3-3" };     //ステージを切り替えるための変数
-        SceneChangeName = new string[] { "title", "StageSelect", "clear" };                     //シーンを切り替えるための変数
+        StageName = new string[] { "1-1", "1-2", "1-3", "2-1", "2-2", "2-3", "3-1", "3-2", "3-3" };     //ステージを切り替えるための変数   StageModeがtrueの時
+        SceneChangeName = new string[] { "title", "StageSelect", "clear" };                     //シーンを切り替えるための変数 SceneModeがtrueの時
 
         NowScene = StageName[Nownum];
     }
@@ -50,7 +49,7 @@ public class SceneChange : MonoBehaviour
         {
             StageMode = false;
         }
-        else
+        else if(!SceneMode)
         {
             StageMode = true;
         }
@@ -59,45 +58,45 @@ public class SceneChange : MonoBehaviour
         {
             SceneMode = false;
         }
-        else
+        else if(!StageMode)
         {
             SceneMode = true;
         }
-        if (title)
-        {
-            if (Input.GetKey("joystick button 0") || Input.GetKey("joystick button 1") || Input.GetKey("joystick button 3"))
-            {
-                if (SceneMode)
-                {
-                    SceneName = SceneChangeName[Scene];
-                    Change();
-                }
+        //if (title)
+        //{
+        //    if (Input.GetKey("joystick button 0") || Input.GetKey("joystick button 1") || Input.GetKey("joystick button 3"))
+        //    {
+        //        if (SceneMode)
+        //        {
+        //            SceneName = SceneChangeName[Scene];
+        //            Change();
+        //        }
 
-                if (StageMode)
-                {
-                    SceneName = StageName[Scene];
-                    Change();
-                }
-            }
-        }
+        //        if (StageMode)
+        //        {
+        //            SceneName = StageName[Scene];
+        //            Change();
+        //        }
+        //    }
+        //}
 
-        if (RetryMode)
-        {
-            //リトライ
-            if (Input.GetKey("joystick button 0"))
-            {
-                RetryScene();
-            }
-            //ゲーム終了
-            if (Input.GetKey("joystick button 1"))
-            {
-                GameEnd();
-            }
-        }
+        //if (RetryMode)
+        //{
+        //    //リトライ
+        //    if (Input.GetKey("joystick button 0"))
+        //    {
+        //        RetryScene();
+        //    }
+        //    //ゲーム終了
+        //    if (Input.GetKey("joystick button 1"))
+        //    {
+        //        GameEnd();
+        //    }
+        //}
 
     }
 
-    void ChangeStage()
+    public void ChangeStage()
     {
         SceneName = StageName[Scene];
         if (FadeOutInMode)
@@ -110,7 +109,7 @@ public class SceneChange : MonoBehaviour
         }
     }
 
-    void ChangeScene()
+    public void ChangeScene()
     {
         if (Scene < 3)                                  //格納している変数の値を超えていない
         {
@@ -148,7 +147,7 @@ public class SceneChange : MonoBehaviour
 
     }
 
-    void GameEnd()
+    public void GameEnd()
     {
         Application.Quit();
     }

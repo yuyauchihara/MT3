@@ -13,7 +13,7 @@ public class GameOver : MonoBehaviour
 
     void Update()
     {
-        Invoke("GameOverChangeScene", 1.0f);
+        Invoke("GameOverChangeScene", 3.0f);
     }
 
     void GameOverChangeScene()
