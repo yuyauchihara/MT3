@@ -265,6 +265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HitSound: {fileID: 8300000, guid: 2cd142e9b8058e843abf6efdebf00818, type: 3}
   Enemy: {fileID: 485396195856553498}
+  BossEnemy: 0
 --- !u!1001 &1792380900523162120
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -276,6 +277,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TEst
+      objectReference: {fileID: 0}
+    - target: {fileID: 2189780391588244499, guid: c16f93bfb35716a40b233da579e37148,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 957ded43a870c0747a8828b559e7111b,
+        type: 3}
+    - target: {fileID: 2189780391588244499, guid: c16f93bfb35716a40b233da579e37148,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2189780391588244499, guid: c16f93bfb35716a40b233da579e37148,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2189780391588244499, guid: c16f93bfb35716a40b233da579e37148,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2189780391588244524, guid: c16f93bfb35716a40b233da579e37148,
         type: 3}
@@ -347,10 +369,25 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0.03
       objectReference: {fileID: 0}
+    - target: {fileID: 2189780391979072271, guid: c16f93bfb35716a40b233da579e37148,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.14
+      objectReference: {fileID: 0}
     - target: {fileID: 5234569213583412156, guid: c16f93bfb35716a40b233da579e37148,
         type: 3}
       propertyPath: Life
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5234569213583412157, guid: c16f93bfb35716a40b233da579e37148,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5234569213583412157, guid: c16f93bfb35716a40b233da579e37148,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5234569213711839731, guid: c16f93bfb35716a40b233da579e37148,
         type: 3}

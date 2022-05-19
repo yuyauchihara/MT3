@@ -58,7 +58,7 @@ public class StageMgr : MonoBehaviour
     {
         isBossAttack = true;
         isStartCol = true;
-        yield return new WaitForSeconds(5.5f);
+        yield return new WaitForSeconds(3.5f);
         isStartCol = false;
         isSpawn = false;
     }

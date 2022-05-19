@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1916507760299731580}
   - component: {fileID: 5957794606129679511}
   - component: {fileID: 611475577694695330}
+  - component: {fileID: 5486241958241698354}
   m_Layer: 0
   m_Name: bal
   m_TagString: Untagged
@@ -95,6 +96,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d96ca78fc85ac4daac1ae19a05e406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5486241958241698354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6858147403243180592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f5a92c491486c4bae45879767479d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  core: {fileID: 8195206042973866547}
 --- !u!1 &8195206041835547547
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,7 +281,7 @@ MonoBehaviour:
   BulletSped: 400
   ChangeFlag: 0
   ShotSound: {fileID: 0}
-  ShotSpan: 2
+  ShotSpan: 5
 --- !u!1 &8195206042750217163
 GameObject:
   m_ObjectHideFlags: 0
