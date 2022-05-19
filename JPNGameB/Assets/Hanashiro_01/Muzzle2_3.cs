@@ -13,19 +13,21 @@ public class Muzzle2_3 : MonoBehaviour
     public AudioClip ShotSound;
     public float ShotSpan;
     int ShotCount = 0;
+    public static bool BossShot = false;
 
     bool colcall = false;
 
     int f = 0;
 
-    private int BurstCount = 0;
+    public static int BurstCount = 0;
     public static bool isBursted = false;
 
     bool isHeavyAttack = false;
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();       
+        audioSource = GetComponent<AudioSource>();
+        BossShot = false;
     }
 
     private void FixedUpdate()
@@ -36,6 +38,10 @@ public class Muzzle2_3 : MonoBehaviour
         if(BurstCount >= 4)
         {
             isBursted = true;
+        }
+        else
+        {
+            isBursted = false;
         }
         
         if(StageMgr2_3.isZenmetu == true && isHeavyAttack == false)
@@ -50,19 +56,21 @@ public class Muzzle2_3 : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && ShotCount < 3 && f == 0 && BurstCount <= 3)
         {
-            Burst();
+            Burst(); //この関数で発砲
         }
         else if (ShotCount == 2 && f == 0)
         {
             f = 1;
-            StartCoroutine("loopBurst");
+            BossShot = false;
+            StartCoroutine("loopBurst"); //バースト間間隔
         }
     }
 
     void Burst()
     {
-        if(count >= 0.6f && ShotCount < 2)
+        if(count >= 0.6f && ShotCount < 2) //0.6s間隔で2点バーストする
         {
+            BossShot = true;
             GameObject bullet = (GameObject)Instantiate(bulletPre, transform.position, Quaternion.identity);
             ShotCount++;
             Rigidbody2D Bprb = bullet.GetComponent<Rigidbody2D>();
@@ -72,7 +80,7 @@ public class Muzzle2_3 : MonoBehaviour
 
             Destroy(bullet, 5f);
             count = 0;
-        }      
+        }
     }
 
     IEnumerator loopBurst()
@@ -92,7 +100,7 @@ public class Muzzle2_3 : MonoBehaviour
         Vector2 force = this.transform.up;
         Bprb.AddForce(force * BulletSped);
 
-        yield return new WaitForSeconds(2.5f);       
-        BurstCount = 0;
+        //yield return new WaitForSeconds(2.5f);       
+        //BurstCount = 0;
     }
 }
