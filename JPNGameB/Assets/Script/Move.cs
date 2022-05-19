@@ -91,7 +91,7 @@ public class Move : MonoBehaviour
         HoldShield = false;
         Pdirection = true;
         GuardTime = false;
-        tatedasif = false;
+        //tatedasif = false;
         isStun = false;
         rb = GetComponent<Rigidbody2D>();
         m_ObjectCollider = GetComponent<BoxCollider2D>();
@@ -119,6 +119,8 @@ public class Move : MonoBehaviour
         //H = Input.GetAxis("JoyHorizontal") * -1;//左スティックの横　リフレクション
 
         //Ref = new Vector2(H * 100,V * 100); //ここが毎フレーム更新されるため謎の誘導を受けている
+
+        
 
         if (Pdirection == false)
         {
@@ -201,7 +203,7 @@ public class Move : MonoBehaviour
         //    StartCoroutine("counter");
         //}
 
-        if (Input.GetKey("joystick button 5") && GuardTime == false && tatedasif == true || Input.GetKey(KeyCode.Q) && GuardTime == false && tatedasif == true)
+        if (Input.GetKey("joystick button 5") && GuardTime == false/* && tatedasif == true */|| Input.GetKey(KeyCode.Q) && GuardTime == false /*&& tatedasif == true*/)
         {
             
             ShieldGuid.gameObject.SetActive(true);
@@ -217,15 +219,15 @@ public class Move : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown("joystick button 5"))
-        {
-            anim.SetBool("tatedasi", true);
-            StartCoroutine(tatedasiC());
-        }
-        else
-        {
-            anim.SetBool("tatedasi", false);
-        }
+        //if (Input.GetKeyDown("joystick button 5"))
+        //{
+        //    anim.SetBool("tatedasi", true);
+        //    StartCoroutine(tatedasiC());
+        //}
+        //else
+        //{
+        //    anim.SetBool("tatedasi", false);
+        //}
 
         if (h != 0 && Pmotion == false /*&& gardmove == false*/)
         {
@@ -345,6 +347,23 @@ public class Move : MonoBehaviour
                 KnockFlag = true;
             }
         }
+
+        if (other.gameObject.tag == "jumparea")
+        {
+            anim.SetBool("jump", true);
+            Debug.Log("とおった");
+        }
+
+        
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "jumparea")
+        {
+            anim.SetBool("jump", false);
+            Debug.Log("とおっってない");
+        }
     }
 
     IEnumerator counter()
@@ -367,7 +386,7 @@ public class Move : MonoBehaviour
         GuardTime = false;
         moveSpeed = 10.5f;
         Pmotion = false;
-        tatedasif = false;
+        //tatedasif = false;
 
         if (Pdirection == true)
         {
@@ -392,9 +411,9 @@ public class Move : MonoBehaviour
         spriteRenderer.sprite = sprite2;//画像切り替え
     }
 
-    IEnumerator tatedasiC()
-    {
-        yield return new WaitForSeconds(0.2f);
-        tatedasif = true;
-    }
+    //IEnumerator tatedasiC()
+    //{
+    //    yield return new WaitForSeconds(0.2f);
+    //    tatedasif = true;
+    //}
 }
