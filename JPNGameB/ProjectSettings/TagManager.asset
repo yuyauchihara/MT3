@@ -20,6 +20,7 @@ TagManager:
   - HightPower
   - FlySeigen
   - FlySeigenR
+  - jumparea
   layers:
   - Default
   - TransparentFX

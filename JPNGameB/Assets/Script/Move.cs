@@ -120,6 +120,8 @@ public class Move : MonoBehaviour
 
         //Ref = new Vector2(H * 100,V * 100); //ここが毎フレーム更新されるため謎の誘導を受けている
 
+        
+
         if (Pdirection == false)
         {
             ude.transform.localPosition = new Vector3(-0.45f, 0.078f, -5f);
@@ -344,6 +346,23 @@ public class Move : MonoBehaviour
             {
                 KnockFlag = true;
             }
+        }
+
+        if (other.gameObject.tag == "jumparea")
+        {
+            anim.SetBool("jump", true);
+            Debug.Log("とおった");
+        }
+
+        
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "jumparea")
+        {
+            anim.SetBool("jump", false);
+            Debug.Log("とおっってない");
         }
     }
 
