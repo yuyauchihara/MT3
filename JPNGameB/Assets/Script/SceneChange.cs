@@ -26,6 +26,8 @@ public class SceneChange : MonoBehaviour
 
     public static int Nownum = 0;
 
+    public bool TitleBack = false;
+
     void Start()
     {
         StageName = new string[] { "1-1", "1-2", "1-3", "2-1", "2-2", "2-3", "3-1", "3-2", "3-3" };     //ステージを切り替えるための変数   StageModeがtrueの時
@@ -93,6 +95,11 @@ public class SceneChange : MonoBehaviour
         //        GameEnd();
         //    }
         //}
+
+        if(Input.GetKey("joystick button 1") && TitleBack)
+        {
+            SceneManager.LoadScene("Title");
+        }
 
     }
 
