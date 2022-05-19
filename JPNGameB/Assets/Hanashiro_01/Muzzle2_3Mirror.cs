@@ -13,6 +13,8 @@ public class Muzzle2_3Mirror : MonoBehaviour
     public AudioClip ShotSound;
     public float ShotSpan;
     int ShotCount = 0;
+    public static bool BossShot = false;
+
 
     bool colcall = false;
 
@@ -55,6 +57,7 @@ public class Muzzle2_3Mirror : MonoBehaviour
         else if (ShotCount == 2 && f == 0)
         {
             f = 1;
+            BossShot = false;
             StartCoroutine("loopBurst");
         }
     }
@@ -63,6 +66,7 @@ public class Muzzle2_3Mirror : MonoBehaviour
     {
         if (count >= 0.6f && ShotCount < 2)
         {
+            BossShot = true;
             GameObject bullet = (GameObject)Instantiate(bulletPre, transform.position, Quaternion.identity);
             ShotCount++;
             Rigidbody2D Bprb = bullet.GetComponent<Rigidbody2D>();
