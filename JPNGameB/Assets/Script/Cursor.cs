@@ -113,7 +113,7 @@ public class Cursor : MonoBehaviour
     {
         if (Pos == 1)
         {
-            scene.Scene = 0;
+            scene.Scene = 1;
             scene.ChangeScene();
         }
         else if (Pos == 2)
@@ -187,7 +187,7 @@ public class Cursor : MonoBehaviour
         }
         else if (Pos == 2)
         {
-            scene.Scene = 0;
+            scene.Scene = 1;
             scene.ChangeScene();
         }
     }

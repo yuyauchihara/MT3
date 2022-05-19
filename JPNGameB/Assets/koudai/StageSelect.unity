@@ -719,6 +719,7 @@ MonoBehaviour:
   title: 0
   RetryMode: 0
   NowScene: 
+  TitleBack: 1
 --- !u!4 &2054203817
 Transform:
   m_ObjectHideFlags: 0
