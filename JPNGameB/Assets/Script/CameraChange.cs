@@ -14,6 +14,12 @@ public class CameraChange : MonoBehaviour
     public bool Boss = false;
     public GameObject BossEnemy;
 
+    void Start()
+    {
+        Battle = false;
+        Boss = false;
+    }
+
     private void OnTriggerStay2D(Collider2D other)
     {
         if (!Boss)
