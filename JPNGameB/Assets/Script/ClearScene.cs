@@ -8,11 +8,11 @@ public class ClearScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("ChangeScene", 2.0f);
+        Invoke("ChangeScene", 5.6f);
     }
 
     void ChangeScene()
     {
-        SceneManager.LoadScene("retry");
+        SceneManager.LoadScene("StageSelect");
     }
 }

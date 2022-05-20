@@ -387,8 +387,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -28, y: -186}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -5, y: -226}
+  m_SizeDelta: {x: 286.49, y: 106.86}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1312890675
 MonoBehaviour:
@@ -399,7 +399,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1312890673}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -408,20 +408,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 51
-    m_FontStyle: 3
-    m_BestFit: 0
-    m_MinSize: 5
-    m_MaxSize: 51
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 1
-    m_VerticalOverflow: 1
-    m_LineSpacing: 1
-  m_Text: Start
+  m_Sprite: {fileID: 21300000, guid: 7de1f046e6b5706478adbef73113688a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1312890676
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -547,8 +543,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -28.000015, y: -306.7}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -4.999977, y: -373.7}
+  m_SizeDelta: {x: 286.49, y: 106.86}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1337437711
 MonoBehaviour:
@@ -559,7 +555,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1337437709}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -568,20 +564,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 51
-    m_FontStyle: 3
-    m_BestFit: 0
-    m_MinSize: 5
-    m_MaxSize: 51
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 1
-    m_VerticalOverflow: 1
-    m_LineSpacing: 1
-  m_Text: Exit
+  m_Sprite: {fileID: 21300000, guid: 0bfde5c669006b8448430721ba76a02e, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1337437712
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -709,12 +701,12 @@ PrefabInstance:
         type: 3}
       propertyPath: Text1
       value: 
-      objectReference: {fileID: 1312890675}
+      objectReference: {fileID: 0}
     - target: {fileID: 7063400042373453986, guid: f39d2a2d013f25d46835fcd84f9f134b,
         type: 3}
       propertyPath: Text2
       value: 
-      objectReference: {fileID: 1337437711}
+      objectReference: {fileID: 0}
     - target: {fileID: 7063400042373453986, guid: f39d2a2d013f25d46835fcd84f9f134b,
         type: 3}
       propertyPath: TitleMode
@@ -783,12 +775,12 @@ PrefabInstance:
     - target: {fileID: 7063400042373453999, guid: f39d2a2d013f25d46835fcd84f9f134b,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 814.3
+      value: 773.2
       objectReference: {fileID: 0}
     - target: {fileID: 7063400042373453999, guid: f39d2a2d013f25d46835fcd84f9f134b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -205.70001
+      value: -241.40001
       objectReference: {fileID: 0}
     - target: {fileID: 7063400042373453999, guid: f39d2a2d013f25d46835fcd84f9f134b,
         type: 3}
@@ -871,6 +863,7 @@ MonoBehaviour:
   title: 0
   RetryMode: 0
   NowScene: 
+  TitleBack: 0
 --- !u!4 &1787803645
 Transform:
   m_ObjectHideFlags: 0
