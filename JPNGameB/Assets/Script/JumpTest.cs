@@ -54,6 +54,7 @@ public class JumpTest: MonoBehaviour
         ShieldGuard.GuardCount = 0;
         //SG = GuardArea.GetComponent<ShieldGuard>();
         Pstay = false;
+        StunPlayer = false;
     }
 
     void FixedUpdate()

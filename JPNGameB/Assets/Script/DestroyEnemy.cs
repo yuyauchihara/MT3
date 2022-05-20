@@ -37,7 +37,9 @@ public class DestroyEnemy : MonoBehaviour
         if (!BossEnemy)
         {
             gameObject.SetActive(false);
-        }else if (BossEnemy)
+            Destroy(gameObject);
+        }
+        else if (BossEnemy)
         {
             Destroy(gameObject);
         }
