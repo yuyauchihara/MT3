@@ -285,6 +285,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShotEnemy_3-4
       objectReference: {fileID: 0}
+    - target: {fileID: 5799295025426035124, guid: b20b3d79966cda549bccc37e47116b5d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5799295025426035125, guid: b20b3d79966cda549bccc37e47116b5d,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -21373,6 +21378,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &111503059 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 485396195856553498, guid: b20b3d79966cda549bccc37e47116b5d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1171255246}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &111503061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111503059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e0bed05d296e23409013a8f0d0af7c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParryHitEnemy: {fileID: 148922053}
 --- !u!1 &132863185 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2502893377878238616, guid: 3364dd32b6eb791479c8b7fd5b8062bf,
@@ -22098,12 +22122,12 @@ PrefabInstance:
     - target: {fileID: 6127828892908455624, guid: 12ec795fe32d89f418784d8432af9037,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20.12
+      value: 64.18
       objectReference: {fileID: 0}
     - target: {fileID: 6127828892908455624, guid: 12ec795fe32d89f418784d8432af9037,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.6
+      value: -7.42
       objectReference: {fileID: 0}
     - target: {fileID: 6127828892908455624, guid: 12ec795fe32d89f418784d8432af9037,
         type: 3}
@@ -22163,12 +22187,12 @@ PrefabInstance:
     - target: {fileID: 8626218120277294815, guid: 12ec795fe32d89f418784d8432af9037,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.908626
+      value: 1.3285946
       objectReference: {fileID: 0}
     - target: {fileID: 8626218120277294815, guid: 12ec795fe32d89f418784d8432af9037,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.72277284
+      value: 0.9248488
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12ec795fe32d89f418784d8432af9037, type: 3}
@@ -22730,7 +22754,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3560976, y: 1}
+    m_SensorSize: {x: 1.7270234, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -22747,7 +22771,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534986983}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.256906, y: -0.84244585, z: 101.93125}
+  m_LocalPosition: {x: 71.41402, y: -7.662446, z: 101.93125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1053596630}
@@ -24979,6 +25003,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShotEnemy_3-3
       objectReference: {fileID: 0}
+    - target: {fileID: 5799295025426035124, guid: b20b3d79966cda549bccc37e47116b5d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5799295025426035127, guid: b20b3d79966cda549bccc37e47116b5d,
         type: 3}
       propertyPath: target
@@ -25102,6 +25131,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 838585699}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &979498302 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 485396195856553498, guid: b20b3d79966cda549bccc37e47116b5d,
+    type: 3}
+  m_PrefabInstance: {fileID: 938433104}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &979498304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979498302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e0bed05d296e23409013a8f0d0af7c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParryHitEnemy: {fileID: 148922053}
 --- !u!1 &1010644964
 GameObject:
   m_ObjectHideFlags: 0
@@ -25236,7 +25284,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3560976, y: 1}
+    m_SensorSize: {x: 1.7270234, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -25886,6 +25934,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShotEnemy_3-2
       objectReference: {fileID: 0}
+    - target: {fileID: 5799295025426035124, guid: b20b3d79966cda549bccc37e47116b5d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5799295025426035127, guid: b20b3d79966cda549bccc37e47116b5d,
         type: 3}
       propertyPath: target
@@ -26131,6 +26184,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1218364792}
   m_CullTransparentMesh: 0
+--- !u!1 &1256101726 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 485396195856553498, guid: b20b3d79966cda549bccc37e47116b5d,
+    type: 3}
+  m_PrefabInstance: {fileID: 85600372}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1256101728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256101726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e0bed05d296e23409013a8f0d0af7c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParryHitEnemy: {fileID: 148922053}
 --- !u!1 &1292563369
 GameObject:
   m_ObjectHideFlags: 0
@@ -26677,7 +26749,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3560976, y: 1}
+    m_SensorSize: {x: 1.7270234, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -26747,7 +26819,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3560976, y: 1}
+    m_SensorSize: {x: 1.7270234, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
