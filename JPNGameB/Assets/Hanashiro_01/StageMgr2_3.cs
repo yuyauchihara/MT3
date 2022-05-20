@@ -26,7 +26,7 @@ public class StageMgr2_3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (DmgMgr.Dmg >= 6 && isMBSpawned == false) //ミラーフェーズ
+        if (DmgMgr.Dmg >= 15 && isMBSpawned == false) //ミラーフェーズ
         {
             MirBos = Instantiate(MirrorBoss, PointBoss.transform.position, Quaternion.identity);
             isMBSpawned = true;

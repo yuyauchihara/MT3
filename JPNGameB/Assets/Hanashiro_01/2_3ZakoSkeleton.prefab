@@ -389,6 +389,26 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 6.4
       objectReference: {fileID: 0}
+    - target: {fileID: 5234569213583412157, guid: c16f93bfb35716a40b233da579e37148,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 4.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 5234569213583412157, guid: c16f93bfb35716a40b233da579e37148,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 5234569213583412157, guid: c16f93bfb35716a40b233da579e37148,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5234569213583412157, guid: c16f93bfb35716a40b233da579e37148,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5234569213711839731, guid: c16f93bfb35716a40b233da579e37148,
         type: 3}
       propertyPath: ShotSound
