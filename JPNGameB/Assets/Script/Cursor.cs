@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Cursor : MonoBehaviour
 {
-    [SerializeField] public Text Text1;
-    [SerializeField] public Text Text2;
+    //[SerializeField] public Text Text1;
+    //[SerializeField] public Text Text2;
 
     public int Pos = 1;
     public int nummenu;
@@ -25,7 +25,7 @@ public class Cursor : MonoBehaviour
 
     void Start()
     {
-        Text1.fontSize = 61;
+        //Text1.fontSize = 61;
         if (MenuMode)
         {
             ModeNum = 1;
@@ -63,16 +63,16 @@ public class Cursor : MonoBehaviour
             Vector3 tmp = this.transform.position;
             this.transform.position = new Vector3(tmp.x, tmp.y - linewidth, tmp.z);
             Pos += 1;
-            Text2.fontSize = 61;
-            Text1.fontSize = 51;
+            //Text2.fontSize = 61;
+            //Text1.fontSize = 51;
         }
         else if (Input.GetAxisRaw("Vertical") == -1 && Pos != 1)
         {
             Vector3 tmp = this.transform.position;
             this.transform.position = new Vector3(tmp.x, tmp.y + linewidth, tmp.z);
             Pos -= 1;
-            Text1.fontSize = 61;
-            Text2.fontSize = 51;
+            //Text1.fontSize = 61;
+            //Text2.fontSize = 51;
         }
         if (Input.GetKeyDown("joystick button 0") /*&& Pos != 1*/)
         {
