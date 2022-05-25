@@ -12,6 +12,8 @@ public class DestroyEnemy : MonoBehaviour
 
     public bool BossEnemy = false;
 
+    public bool tumikaihi = false;
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -35,9 +37,13 @@ public class DestroyEnemy : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
         if (!BossEnemy)
-        {
+        {  
+            if (tumikaihi == true)
+            {
+                Destroy(gameObject);
+            }
             gameObject.SetActive(false);
-            Destroy(gameObject);
+            
         }
         else if (BossEnemy)
         {

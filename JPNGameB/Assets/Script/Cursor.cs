@@ -76,6 +76,7 @@ public class Cursor : MonoBehaviour
         }
         if (Input.GetKeyDown("joystick button 0") /*&& Pos != 1*/)
         {
+            Time.timeScale = 1;
             switch (ModeNum) {
                 default:
                     function();

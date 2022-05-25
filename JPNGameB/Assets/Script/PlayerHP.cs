@@ -51,7 +51,7 @@ public class PlayerHP : MonoBehaviour
                 HealthPoint--;
                 audioSource.PlayOneShot(HitPlayerSound); //被弾音再生
                 Destroy(other.gameObject);
-                if (HealthPoint == 0)
+                if (HealthPoint <= 0)
                 {
                     Invoke("ChangeScene", 0.5f);
                 }
@@ -79,7 +79,7 @@ public class PlayerHP : MonoBehaviour
                 HealthPoint -= 2;
                 audioSource.PlayOneShot(HitPlayerSound); //被弾音再生
                 Destroy(other.gameObject);
-                if (HealthPoint == 0)
+                if (HealthPoint <= 0)
                 {
                     Invoke("ChangeScene", 0.5f);
                 }
